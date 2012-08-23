@@ -10,6 +10,7 @@
 #import <Accounts/Accounts.h>
 #import <Twitter/Twitter.h>
 #import <Social/Social.h>
+#import <AudioToolbox/AudioServices.h>
 
 
 @interface AnonyFollowViewController ()
@@ -77,22 +78,39 @@
         }
     }];
 }
-
+- (void)presentLocalNotification{
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    if (localNotif) {
+        localNotif.hasAction=NO;
+        localNotif.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+    }
+}
+- (void)incrementBadge{
+    UIApplication* app = [UIApplication sharedApplication];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = app.applicationIconBadgeNumber+1;
+}
 -(void)CBScannerDidDiscoverUser:(NSString *)userName{
     [self followOnTwitter:userName];
+    userNames.text=[NSString stringWithFormat:@"%@%@%@",userNames.text,userName,@"\n"];
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+        AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+    }else{
+        [self presentLocalNotification];
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self getTwitterAcount];
-	// Do any additional setup after loading the view, typically from a nib.
+    UIApplication* app = [UIApplication sharedApplication];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = app.applicationIconBadgeNumber+1;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

@@ -16,6 +16,7 @@
 		0201DC0415E672AC00A212DC /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0201DC0215E672AC00A212DC /* MainStoryboard_iPhone.storyboard */; };
 		0201DC0715E672AC00A212DC /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0201DC0515E672AC00A212DC /* MainStoryboard_iPad.storyboard */; };
 		0201DC0A15E672AC00A212DC /* AnonyFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201DC0915E672AC00A212DC /* AnonyFollowViewController.m */; };
+		020D225415E6886300A4CDD3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020D225315E6886300A4CDD3 /* AudioToolbox.framework */; };
 		02B9542515E6733E005026B1 /* CBScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B9542415E6733E005026B1 /* CBScanner.m */; };
 		02B9542915E67471005026B1 /* CBAdvertizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B9542815E67471005026B1 /* CBAdvertizer.m */; };
 		02B9542B15E67A00005026B1 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542A15E67A00005026B1 /* CoreBluetooth.framework */; };
@@ -38,6 +39,7 @@
 		0201DC0615E672AC00A212DC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		0201DC0815E672AC00A212DC /* AnonyFollowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnonyFollowViewController.h; sourceTree = "<group>"; };
 		0201DC0915E672AC00A212DC /* AnonyFollowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnonyFollowViewController.m; sourceTree = "<group>"; };
+		020D225315E6886300A4CDD3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		02B9542315E6733E005026B1 /* CBScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBScanner.h; sourceTree = "<group>"; };
 		02B9542415E6733E005026B1 /* CBScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBScanner.m; sourceTree = "<group>"; };
 		02B9542715E67471005026B1 /* CBAdvertizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAdvertizer.h; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				020D225415E6886300A4CDD3 /* AudioToolbox.framework in Frameworks */,
 				02B9542F15E67A18005026B1 /* Accounts.framework in Frameworks */,
 				02B9542D15E67A06005026B1 /* Social.framework in Frameworks */,
 				02B9542B15E67A00005026B1 /* CoreBluetooth.framework in Frameworks */,
@@ -67,6 +70,7 @@
 		0201DBE115E672AC00A212DC = {
 			isa = PBXGroup;
 			children = (
+				020D225315E6886300A4CDD3 /* AudioToolbox.framework */,
 				02B9542E15E67A18005026B1 /* Accounts.framework */,
 				02B9542C15E67A06005026B1 /* Social.framework */,
 				02B9542A15E67A00005026B1 /* CoreBluetooth.framework */,

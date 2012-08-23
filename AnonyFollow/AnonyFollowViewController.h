@@ -15,6 +15,8 @@
     
     CBAdvertizer *advertizer;
     CBScanner    *scanner;
+    
+    IBOutlet UITextView *userNames;
 }
 @property (retain) CBAdvertizer *advertizer;
 @property (retain) CBScanner *scanner;
