@@ -10,9 +10,11 @@
 #define PRIMALY_SERVICE_UUID @"1802"
 @implementation CBAdvertizer
 @synthesize p_manager;
+@synthesize userName;
+@synthesize delegate;
 -(id)initWithUserName:(NSString*)_userName{
-    userName=_userName;
-    p_manager=[[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
+    self.userName=_userName;
+    self.p_manager=[[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
     return [super init];
 }
 
@@ -31,9 +33,12 @@
 
 #pragma CBPeripheralmanagerdelegate
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager*)manager{
-    NSLog(@"peripheral managerDidUpdateState %d",manager.state);
+    //NSLog(@"peripheral managerDidUpdateState %d",manager.state);
     if([self isLECapableHardware:manager]){
         [self advertise:manager withUserName:userName];
+        [self.delegate CBAdvertizerDidCangeState:CBAdvertizerStatePoweredOnAdvertizeing];
+    }else{
+        [self.delegate CBAdvertizerDidCangeState:[p_manager state]];
     }
 }
 
@@ -88,10 +93,24 @@
             return TRUE;
         case CBPeripheralManagerStateUnknown:
         default:
-            NSLog( @"Bluetooth is unknown.");
+            state = @"Bluetooth is unknown.";
             break;
             
     }
+    NSLog( @"CBPeripheralManager State:%@",state);
     return FALSE;
 }
+-(CBAdvertizerState)sartAdvertize{
+    if([self isLECapableHardware:self.p_manager]){
+        [self advertise:self.p_manager withUserName:self.userName];
+        return CBAdvertizerStatePoweredOnAdvertizeing;
+    }else{
+        return [self.p_manager state];
+    }
+}
+-(CBAdvertizerState)stopAdvertize{
+    [self.p_manager stopAdvertising];
+    return CBAdvertizerStatePoweredOnIdling;
+}
+
 @end

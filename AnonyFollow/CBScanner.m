@@ -11,8 +11,10 @@
 @implementation CBScanner
 @synthesize delegate;
 @synthesize c_manager;
+@synthesize UUIDStr;
+
 -(id)initinitWithDelegate:(id<CBScannerDelegate>)_delegate ServiceUUIDStr:(NSString*)_UUIDStr{
-    UUIDStr=_UUIDStr;
+    self.UUIDStr=_UUIDStr;
     self.delegate=_delegate;
     c_manager=[[CBCentralManager alloc] initWithDelegate:self queue:nil];
     return [super init];    
@@ -34,9 +36,12 @@
 
 #pragma CBPeripheralmanagerdelegate
 - (void)centralManagerDidUpdateState:(CBCentralManager *)manager{
-    NSLog(@"centrallManagerDidUpdateState %d",manager.state);
+    //NSLog(@"centrallManagerDidUpdateState %d",manager.state);
     if([self isLECapableHardware:manager]){
         [self scan:manager WithServices:UUIDStr];
+        [self.delegate CBScannerDidCangeState:CBScannerStatePoweredOnScaning];
+    }else{
+        [self.delegate CBScannerDidCangeState:[manager state]];
     }
 }
 
@@ -72,10 +77,25 @@
             return TRUE;
         case CBPeripheralManagerStateUnknown:
         default:
-            NSLog( @"Bluetooth is unknown.");
+            state = @"Bluetooth is unknown.";
             break;
             
     }
+    NSLog( @"CBCentralManager State:%@",state);
     return FALSE;
 }
+
+-(CBScannerState)sartScan{
+    if([self isLECapableHardware:self.c_manager]){
+        [self scan:self.c_manager WithServices:self.UUIDStr];
+        return CBScannerStatePoweredOnScaning;
+    }else{
+        return [self.c_manager state];
+    }
+}
+-(CBScannerState)stopScan{
+    [self.c_manager stopScan];
+    return CBScannerStatePoweredOnIdling;
+}
+
 @end
