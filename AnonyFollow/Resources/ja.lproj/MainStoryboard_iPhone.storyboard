@@ -413,6 +413,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="applicationNameCell" destination="esx-ck-V7u" id="eqE-BY-neE"/>
                         <outlet property="timerCell" destination="GeQ-8y-RFf" id="8kZ-zQ-rUS"/>
                         <outlet property="versionCell" destination="3Rf-QN-UVZ" id="7e6-NL-2um"/>
                     </connections>

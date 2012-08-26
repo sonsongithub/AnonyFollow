@@ -14,6 +14,16 @@
 
 @end
 
+@implementation NSBundle(SettingViewController)
+
++ (id)infoValueFromMainBundleForKey:(NSString*)key {
+	if ([[[self mainBundle] localizedInfoDictionary] objectForKey:key])
+		return [[[self mainBundle] localizedInfoDictionary] objectForKey:key];
+	return [[[self mainBundle] infoDictionary] objectForKey:key];
+}
+
+@end
+
 @implementation SettingViewController
 
 - (IBAction)dismiss:(id)sender {
@@ -43,6 +53,13 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
+	NSString *CFBundleShortVersionString = [NSBundle infoValueFromMainBundleForKey:@"CFBundleShortVersionString"];
+	NSString *CFBundleVersion = [NSBundle infoValueFromMainBundleForKey:@"CFBundleVersion"];
+	NSString *CFBundleGitRevision = [NSBundle infoValueFromMainBundleForKey:@"CFBundleGithubShortRevision"];
+	
+	self.versionCell.detailTextLabel.text = [NSString stringWithFormat:@"%@.%@.%@", CFBundleShortVersionString, CFBundleVersion,  CFBundleGitRevision];
+		
+	self.applicationNameCell.detailTextLabel.text = [NSBundle infoValueFromMainBundleForKey:@"CFBundleDisplayName"];
 	self.timerCell.detailTextLabel.text = [TimerLengthController currentTimerLengthTitle];
 }
 

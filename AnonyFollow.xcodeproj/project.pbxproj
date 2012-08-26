@@ -211,8 +211,8 @@
 				145194A715EA2BE800E853CA /* MainStoryboard_iPad.storyboard.string */,
 				145194AA15EA2BE800E853CA /* MainStoryboard_iPhone.storyboard.string */,
 				1451949C15EA2BCC00E853CA /* InfoPlist.strings */,
-				1451949E15EA2BCC00E853CA /* MainStoryboard_iPad.storyboard */,
 				145194A015EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard */,
+				1451949E15EA2BCC00E853CA /* MainStoryboard_iPad.storyboard */,
 				14BE1B6315EA282700F7547E /* image@1x */,
 				14BE1B6815EA282700F7547E /* image@2x */,
 			);
