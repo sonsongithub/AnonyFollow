@@ -22,6 +22,26 @@
 		02B9542B15E67A00005026B1 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542A15E67A00005026B1 /* CoreBluetooth.framework */; };
 		02B9542D15E67A06005026B1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542C15E67A06005026B1 /* Social.framework */; };
 		02B9542F15E67A18005026B1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542E15E67A18005026B1 /* Accounts.framework */; };
+		14BE1B6D15EA282700F7547E /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6415EA282700F7547E /* new.png */; };
+		14BE1B6E15EA282700F7547E /* none.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6515EA282700F7547E /* none.png */; };
+		14BE1B6F15EA282700F7547E /* PurchasePlusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6615EA282700F7547E /* PurchasePlusButton.png */; };
+		14BE1B7015EA282700F7547E /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6715EA282700F7547E /* setting.png */; };
+		14BE1B7115EA282700F7547E /* new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6915EA282700F7547E /* new@2x.png */; };
+		14BE1B7215EA282700F7547E /* none@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6A15EA282700F7547E /* none@2x.png */; };
+		14BE1B7315EA282700F7547E /* PurchasePlusButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6B15EA282700F7547E /* PurchasePlusButton@2x.png */; };
+		14BE1B7415EA282700F7547E /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6C15EA282700F7547E /* setting@2x.png */; };
+		14BE1B8B15EA289300F7547E /* AccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B7615EA289200F7547E /* AccountCell.m */; };
+		14BE1B8C15EA289300F7547E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B7815EA289200F7547E /* AppDelegate.m */; };
+		14BE1B8D15EA289300F7547E /* MainListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B7A15EA289300F7547E /* MainListViewController.m */; };
+		14BE1B8E15EA289300F7547E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B7C15EA289300F7547E /* SettingViewController.m */; };
+		14BE1B8F15EA289300F7547E /* SNStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B7E15EA289300F7547E /* SNStatusBarView.m */; };
+		14BE1B9015EA289300F7547E /* TimerLengthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B8015EA289300F7547E /* TimerLengthController.m */; };
+		14BE1B9115EA289300F7547E /* TimerLengthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B8215EA289300F7547E /* TimerLengthViewController.m */; };
+		14BE1B9215EA289300F7547E /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B8415EA289300F7547E /* TweetCell.m */; };
+		14BE1B9315EA289300F7547E /* TweetContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B8615EA289300F7547E /* TweetContentView.m */; };
+		14BE1B9415EA289300F7547E /* TwitterAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B8815EA289300F7547E /* TwitterAccountInfo.m */; };
+		14BE1B9515EA289300F7547E /* TwitterTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B8A15EA289300F7547E /* TwitterTweet.m */; };
+		14BE1B9715EA28BF00F7547E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BE1B9615EA28BF00F7547E /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +67,37 @@
 		02B9542A15E67A00005026B1 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		02B9542C15E67A06005026B1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		02B9542E15E67A18005026B1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		14BE1B6415EA282700F7547E /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
+		14BE1B6515EA282700F7547E /* none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = none.png; sourceTree = "<group>"; };
+		14BE1B6615EA282700F7547E /* PurchasePlusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurchasePlusButton.png; sourceTree = "<group>"; };
+		14BE1B6715EA282700F7547E /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
+		14BE1B6915EA282700F7547E /* new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new@2x.png"; sourceTree = "<group>"; };
+		14BE1B6A15EA282700F7547E /* none@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "none@2x.png"; sourceTree = "<group>"; };
+		14BE1B6B15EA282700F7547E /* PurchasePlusButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PurchasePlusButton@2x.png"; sourceTree = "<group>"; };
+		14BE1B6C15EA282700F7547E /* setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting@2x.png"; sourceTree = "<group>"; };
+		14BE1B7515EA289200F7547E /* AccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCell.h; sourceTree = "<group>"; };
+		14BE1B7615EA289200F7547E /* AccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCell.m; sourceTree = "<group>"; };
+		14BE1B7715EA289200F7547E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		14BE1B7815EA289200F7547E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		14BE1B7915EA289300F7547E /* MainListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainListViewController.h; sourceTree = "<group>"; };
+		14BE1B7A15EA289300F7547E /* MainListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainListViewController.m; sourceTree = "<group>"; };
+		14BE1B7B15EA289300F7547E /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		14BE1B7C15EA289300F7547E /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		14BE1B7D15EA289300F7547E /* SNStatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNStatusBarView.h; sourceTree = "<group>"; };
+		14BE1B7E15EA289300F7547E /* SNStatusBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNStatusBarView.m; sourceTree = "<group>"; };
+		14BE1B7F15EA289300F7547E /* TimerLengthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerLengthController.h; sourceTree = "<group>"; };
+		14BE1B8015EA289300F7547E /* TimerLengthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerLengthController.m; sourceTree = "<group>"; };
+		14BE1B8115EA289300F7547E /* TimerLengthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerLengthViewController.h; sourceTree = "<group>"; };
+		14BE1B8215EA289300F7547E /* TimerLengthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerLengthViewController.m; sourceTree = "<group>"; };
+		14BE1B8315EA289300F7547E /* TweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
+		14BE1B8415EA289300F7547E /* TweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
+		14BE1B8515EA289300F7547E /* TweetContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetContentView.h; sourceTree = "<group>"; };
+		14BE1B8615EA289300F7547E /* TweetContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetContentView.m; sourceTree = "<group>"; };
+		14BE1B8715EA289300F7547E /* TwitterAccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAccountInfo.h; sourceTree = "<group>"; };
+		14BE1B8815EA289300F7547E /* TwitterAccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAccountInfo.m; sourceTree = "<group>"; };
+		14BE1B8915EA289300F7547E /* TwitterTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterTweet.h; sourceTree = "<group>"; };
+		14BE1B8A15EA289300F7547E /* TwitterTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterTweet.m; sourceTree = "<group>"; };
+		14BE1B9615EA28BF00F7547E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14BE1B9715EA28BF00F7547E /* QuartzCore.framework in Frameworks */,
 				020D225415E6886300A4CDD3 /* AudioToolbox.framework in Frameworks */,
 				02B9542F15E67A18005026B1 /* Accounts.framework in Frameworks */,
 				02B9542D15E67A06005026B1 /* Social.framework in Frameworks */,
@@ -70,10 +122,6 @@
 		0201DBE115E672AC00A212DC = {
 			isa = PBXGroup;
 			children = (
-				020D225315E6886300A4CDD3 /* AudioToolbox.framework */,
-				02B9542E15E67A18005026B1 /* Accounts.framework */,
-				02B9542C15E67A06005026B1 /* Social.framework */,
-				02B9542A15E67A00005026B1 /* CoreBluetooth.framework */,
 				0201DBF615E672AC00A212DC /* AnonyFollow */,
 				0201DBEF15E672AC00A212DC /* Frameworks */,
 				0201DBED15E672AC00A212DC /* Products */,
@@ -91,6 +139,11 @@
 		0201DBEF15E672AC00A212DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				14BE1B9615EA28BF00F7547E /* QuartzCore.framework */,
+				020D225315E6886300A4CDD3 /* AudioToolbox.framework */,
+				02B9542E15E67A18005026B1 /* Accounts.framework */,
+				02B9542C15E67A06005026B1 /* Social.framework */,
+				02B9542A15E67A00005026B1 /* CoreBluetooth.framework */,
 				0201DBF015E672AC00A212DC /* UIKit.framework */,
 				0201DBF215E672AC00A212DC /* Foundation.framework */,
 				0201DBF415E672AC00A212DC /* CoreGraphics.framework */,
@@ -101,6 +154,29 @@
 		0201DBF615E672AC00A212DC /* AnonyFollow */ = {
 			isa = PBXGroup;
 			children = (
+				14BE1B7515EA289200F7547E /* AccountCell.h */,
+				14BE1B7615EA289200F7547E /* AccountCell.m */,
+				14BE1B7715EA289200F7547E /* AppDelegate.h */,
+				14BE1B7815EA289200F7547E /* AppDelegate.m */,
+				14BE1B7915EA289300F7547E /* MainListViewController.h */,
+				14BE1B7A15EA289300F7547E /* MainListViewController.m */,
+				14BE1B7B15EA289300F7547E /* SettingViewController.h */,
+				14BE1B7C15EA289300F7547E /* SettingViewController.m */,
+				14BE1B7D15EA289300F7547E /* SNStatusBarView.h */,
+				14BE1B7E15EA289300F7547E /* SNStatusBarView.m */,
+				14BE1B7F15EA289300F7547E /* TimerLengthController.h */,
+				14BE1B8015EA289300F7547E /* TimerLengthController.m */,
+				14BE1B8115EA289300F7547E /* TimerLengthViewController.h */,
+				14BE1B8215EA289300F7547E /* TimerLengthViewController.m */,
+				14BE1B8315EA289300F7547E /* TweetCell.h */,
+				14BE1B8415EA289300F7547E /* TweetCell.m */,
+				14BE1B8515EA289300F7547E /* TweetContentView.h */,
+				14BE1B8615EA289300F7547E /* TweetContentView.m */,
+				14BE1B8715EA289300F7547E /* TwitterAccountInfo.h */,
+				14BE1B8815EA289300F7547E /* TwitterAccountInfo.m */,
+				14BE1B8915EA289300F7547E /* TwitterTweet.h */,
+				14BE1B8A15EA289300F7547E /* TwitterTweet.m */,
+				14BE1B6215EA282700F7547E /* Resources */,
 				0201DBFF15E672AC00A212DC /* AnonyFollowAppDelegate.h */,
 				0201DC0015E672AC00A212DC /* AnonyFollowAppDelegate.m */,
 				02B9542315E6733E005026B1 /* CBScanner.h */,
@@ -125,6 +201,37 @@
 				0201DBFE15E672AC00A212DC /* AnonyFollow-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		14BE1B6215EA282700F7547E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				14BE1B6315EA282700F7547E /* image@1x */,
+				14BE1B6815EA282700F7547E /* image@2x */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		14BE1B6315EA282700F7547E /* image@1x */ = {
+			isa = PBXGroup;
+			children = (
+				14BE1B6415EA282700F7547E /* new.png */,
+				14BE1B6515EA282700F7547E /* none.png */,
+				14BE1B6615EA282700F7547E /* PurchasePlusButton.png */,
+				14BE1B6715EA282700F7547E /* setting.png */,
+			);
+			path = "image@1x";
+			sourceTree = "<group>";
+		};
+		14BE1B6815EA282700F7547E /* image@2x */ = {
+			isa = PBXGroup;
+			children = (
+				14BE1B6915EA282700F7547E /* new@2x.png */,
+				14BE1B6A15EA282700F7547E /* none@2x.png */,
+				14BE1B6B15EA282700F7547E /* PurchasePlusButton@2x.png */,
+				14BE1B6C15EA282700F7547E /* setting@2x.png */,
+			);
+			path = "image@2x";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +289,14 @@
 				0201DBFB15E672AC00A212DC /* InfoPlist.strings in Resources */,
 				0201DC0415E672AC00A212DC /* MainStoryboard_iPhone.storyboard in Resources */,
 				0201DC0715E672AC00A212DC /* MainStoryboard_iPad.storyboard in Resources */,
+				14BE1B6D15EA282700F7547E /* new.png in Resources */,
+				14BE1B6E15EA282700F7547E /* none.png in Resources */,
+				14BE1B6F15EA282700F7547E /* PurchasePlusButton.png in Resources */,
+				14BE1B7015EA282700F7547E /* setting.png in Resources */,
+				14BE1B7115EA282700F7547E /* new@2x.png in Resources */,
+				14BE1B7215EA282700F7547E /* none@2x.png in Resources */,
+				14BE1B7315EA282700F7547E /* PurchasePlusButton@2x.png in Resources */,
+				14BE1B7415EA282700F7547E /* setting@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +312,17 @@
 				0201DC0A15E672AC00A212DC /* AnonyFollowViewController.m in Sources */,
 				02B9542515E6733E005026B1 /* CBScanner.m in Sources */,
 				02B9542915E67471005026B1 /* CBAdvertizer.m in Sources */,
+				14BE1B8B15EA289300F7547E /* AccountCell.m in Sources */,
+				14BE1B8C15EA289300F7547E /* AppDelegate.m in Sources */,
+				14BE1B8D15EA289300F7547E /* MainListViewController.m in Sources */,
+				14BE1B8E15EA289300F7547E /* SettingViewController.m in Sources */,
+				14BE1B8F15EA289300F7547E /* SNStatusBarView.m in Sources */,
+				14BE1B9015EA289300F7547E /* TimerLengthController.m in Sources */,
+				14BE1B9115EA289300F7547E /* TimerLengthViewController.m in Sources */,
+				14BE1B9215EA289300F7547E /* TweetCell.m in Sources */,
+				14BE1B9315EA289300F7547E /* TweetContentView.m in Sources */,
+				14BE1B9415EA289300F7547E /* TwitterAccountInfo.m in Sources */,
+				14BE1B9515EA289300F7547E /* TwitterTweet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
