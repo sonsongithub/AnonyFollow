@@ -63,6 +63,9 @@
 			tweetaa.accountInfo = self.accountInfo;
 			tweetaa.text = [tweet objectForKey:@"text"];
 			[self.tweets addObject:tweetaa];
+			
+			tweetaa.contentSize = [TwitterTweet sizeOfText:tweetaa.text withWidth:254 font:[UIFont systemFontOfSize:12]];
+			
 		}
 	}
 	[self.tableView reloadData];
@@ -86,6 +89,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return [self.tweets count];
+}
+
+- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	TwitterTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
+	return [tweet height];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

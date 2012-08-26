@@ -10,6 +10,7 @@
 
 #import "TwitterAccountInfo.h"
 #import "TwitterTweet.h"
+#import "TweetContentView.h"
 
 @implementation TweetCell
 
@@ -29,6 +30,7 @@
 
 - (void)setTweet:(TwitterTweet *)tweet {
 	_tweet = tweet;
+	self.tweetContentView.tweet = self.tweet;
 	[self update:nil];
 }
 

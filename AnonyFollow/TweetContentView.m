@@ -8,6 +8,8 @@
 
 #import "TweetContentView.h"
 
+#import "TwitterTweet.h"
+
 @implementation TweetContentView
 
 - (id)initWithFrame:(CGRect)frame
@@ -19,13 +21,18 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	self.backgroundColor = [UIColor clearColor];
 }
-*/
+
+- (void)setTweet:(TwitterTweet *)tweet {
+	_tweet = tweet;
+	[self setNeedsDisplay];
+}
+
+- (void)drawRect:(CGRect)rect {
+	[self.tweet.text drawInRect:rect withFont:[UIFont systemFontOfSize:12] lineBreakMode:NSLineBreakByCharWrapping];
+}
 
 @end

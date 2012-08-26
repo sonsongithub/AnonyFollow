@@ -124,54 +124,62 @@
         <scene sceneID="8tS-U2-HOU">
             <objects>
                 <tableViewController id="m05-tk-sR0" customClass="TimeLineViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="157" sectionHeaderHeight="22" sectionFooterHeight="22" id="r2L-hY-oPr">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="r2L-hY-oPr">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="100" id="duJ-fO-3QO" customClass="TweetCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="100"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="90" id="duJ-fO-3QO" customClass="TweetCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view translatesAutoresizingMaskIntoConstraints="NO" contentMode="scaleToFill" id="jXk-u6-ZCe" customClass="TweetContentView">
                                             <color key="backgroundColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
                                         </view>
-                                        <imageView translatesAutoresizingMaskIntoConstraints="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="none.png" id="u3w-hE-Aqg">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="Olm-bd-P1e"/>
-                                            </constraints>
-                                        </imageView>
+                                        <imageView translatesAutoresizingMaskIntoConstraints="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="none.png" id="u3w-hE-Aqg"/>
                                         <imageView translatesAutoresizingMaskIntoConstraints="NO" userInteractionEnabled="NO" contentMode="scaleToFill" id="EoY-OC-DRf">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="48" id="Ima-NR-cT1"/>
-                                                <constraint firstAttribute="height" constant="48" id="au3-0D-O73"/>
+                                                <constraint firstAttribute="height" constant="48" id="ZW7-pe-QGt"/>
                                             </constraints>
                                         </imageView>
                                         <imageView translatesAutoresizingMaskIntoConstraints="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="new.png" id="CO6-JL-X82">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="ELv-bd-UDn"/>
+                                                <constraint firstAttribute="height" constant="50" id="aae-Y4-6pc"/>
+                                                <constraint firstAttribute="width" constant="50" id="da2-kF-eK3"/>
                                             </constraints>
                                         </imageView>
+                                        <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="2012/12/08/12:00:00" textAlignment="right" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="qcP-mm-en5">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="OoY-dL-TeI"/>
+                                                <constraint firstAttribute="height" constant="21" id="ZoC-6C-YWh"/>
+                                            </constraints>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="EoY-OC-DRf" firstAttribute="centerX" secondItem="CO6-JL-X82" secondAttribute="centerX" type="default" id="21M-ZF-C2p"/>
-                                    <constraint firstItem="u3w-hE-Aqg" firstAttribute="trailing" secondItem="CO6-JL-X82" secondAttribute="trailing" type="default" id="8pu-tC-d3e"/>
-                                    <constraint firstItem="EoY-OC-DRf" firstAttribute="centerY" secondItem="CO6-JL-X82" secondAttribute="centerY" type="default" id="BJa-av-xIb"/>
-                                    <constraint firstAttribute="trailing" secondItem="jXk-u6-ZCe" secondAttribute="trailing" constant="5" id="S0z-Jk-iTq"/>
+                                    <constraint firstItem="EoY-OC-DRf" firstAttribute="top" secondItem="duJ-fO-3QO" secondAttribute="top" constant="3" id="48u-X1-9By"/>
+                                    <constraint firstItem="EoY-OC-DRf" firstAttribute="top" secondItem="u3w-hE-Aqg" secondAttribute="top" type="default" id="7gW-GK-P34"/>
+                                    <constraint firstItem="CO6-JL-X82" firstAttribute="centerX" secondItem="EoY-OC-DRf" secondAttribute="centerX" type="default" id="BoU-21-ThS"/>
+                                    <constraint firstItem="qcP-mm-en5" firstAttribute="trailing" secondItem="jXk-u6-ZCe" secondAttribute="trailing" type="default" id="GK1-Sc-2rl"/>
+                                    <constraint firstItem="u3w-hE-Aqg" firstAttribute="leading" secondItem="duJ-fO-3QO" secondAttribute="leading" constant="4" id="Hbg-I6-kJt"/>
+                                    <constraint firstItem="qcP-mm-en5" firstAttribute="top" secondItem="duJ-fO-3QO" secondAttribute="top" type="default" id="MQZ-1C-HXW"/>
+                                    <constraint firstItem="jXk-u6-ZCe" firstAttribute="top" secondItem="duJ-fO-3QO" secondAttribute="top" constant="17" id="SSI-Dp-ydP"/>
+                                    <constraint firstAttribute="trailing" secondItem="qcP-mm-en5" secondAttribute="trailing" constant="5" id="YrP-Vr-rbL"/>
                                     <constraint firstItem="u3w-hE-Aqg" firstAttribute="leading" secondItem="CO6-JL-X82" secondAttribute="leading" type="default" id="a2u-ph-4yd"/>
+                                    <constraint firstItem="EoY-OC-DRf" firstAttribute="top" secondItem="CO6-JL-X82" secondAttribute="top" type="default" id="aGv-cr-ZhF"/>
+                                    <constraint firstAttribute="bottom" secondItem="jXk-u6-ZCe" secondAttribute="bottom" constant="7" id="cJC-6f-lpt"/>
                                     <constraint firstItem="jXk-u6-ZCe" firstAttribute="leading" secondItem="EoY-OC-DRf" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="f2R-rq-kdf"/>
-                                    <constraint firstItem="jXk-u6-ZCe" firstAttribute="top" secondItem="EoY-OC-DRf" secondAttribute="top" type="default" id="fHg-K7-bnJ"/>
-                                    <constraint firstItem="u3w-hE-Aqg" firstAttribute="top" secondItem="CO6-JL-X82" secondAttribute="top" type="default" id="iSR-nT-bRk"/>
-                                    <constraint firstItem="u3w-hE-Aqg" firstAttribute="top" secondItem="duJ-fO-3QO" secondAttribute="top" constant="4" id="jAF-Xp-rQL"/>
-                                    <constraint firstItem="jXk-u6-ZCe" firstAttribute="centerY" secondItem="duJ-fO-3QO" secondAttribute="centerY" type="default" id="oqx-Rm-PK8"/>
-                                    <constraint firstItem="u3w-hE-Aqg" firstAttribute="leading" secondItem="duJ-fO-3QO" secondAttribute="leading" constant="4" id="tFe-g6-X1G"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="dateLabel" destination="qcP-mm-en5" id="qCE-HV-bgA"/>
                                     <outlet property="iconImageView" destination="EoY-OC-DRf" id="Moc-mt-jkh"/>
                                     <outlet property="ribbonImageView" destination="CO6-JL-X82" id="dKF-Xf-PVA"/>
                                     <outlet property="tweetContentView" destination="jXk-u6-ZCe" id="EBk-4u-txy"/>
@@ -555,6 +563,7 @@ See the License for the specific language governing permissions and limitations 
         <class className="TweetCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetCell.h"/>
             <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="tweetContentView" candidateClass="TweetContentView"/>

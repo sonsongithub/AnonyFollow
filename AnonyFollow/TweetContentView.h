@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class TwitterTweet;
+
 @interface TweetContentView : UIView
+
+@property (nonatomic, strong) TwitterTweet *tweet;
 
 @end

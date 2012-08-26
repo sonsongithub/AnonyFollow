@@ -19,6 +19,7 @@
 @property (nonatomic, strong) IBOutlet UIImageView *ribbonImageView;
 
 @property (nonatomic, strong) IBOutlet TweetContentView *tweetContentView;
+@property (nonatomic, strong) IBOutlet UILabel *dateLabel;
 
 @property (nonatomic, strong) TwitterTweet *tweet;
 @end

@@ -10,4 +10,14 @@
 
 @implementation TwitterTweet
 
++ (CGSize)sizeOfText:(NSString*)text withWidth:(float)width font:(UIFont*)font {
+	return [text sizeWithFont:font constrainedToSize:CGSizeMake(width, 10000000) lineBreakMode:NSLineBreakByCharWrapping];
+}
+
+- (float)height {
+	DNSLog(@"%f", self.contentSize.height);
+	float height = self.contentSize.height + 17 + 5;
+	return height > 60 ? height : 60;
+}
+
 @end
