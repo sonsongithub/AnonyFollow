@@ -24,6 +24,7 @@
 		145194A415EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145194A015EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard */; };
 		145194BD15EA51CB00E853CA /* DownloadQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 145194BA15EA51CB00E853CA /* DownloadQueue.m */; };
 		145194BE15EA51CB00E853CA /* DownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 145194BC15EA51CB00E853CA /* DownloadTask.m */; };
+		145194C115EA5EBC00E853CA /* TimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 145194C015EA5EBC00E853CA /* TimeLineViewController.m */; };
 		14BE1B6D15EA282700F7547E /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6415EA282700F7547E /* new.png */; };
 		14BE1B6E15EA282700F7547E /* none.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6515EA282700F7547E /* none.png */; };
 		14BE1B6F15EA282700F7547E /* PurchasePlusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6615EA282700F7547E /* PurchasePlusButton.png */; };
@@ -78,6 +79,8 @@
 		145194BA15EA51CB00E853CA /* DownloadQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadQueue.m; sourceTree = "<group>"; };
 		145194BB15EA51CB00E853CA /* DownloadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTask.h; sourceTree = "<group>"; };
 		145194BC15EA51CB00E853CA /* DownloadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTask.m; sourceTree = "<group>"; };
+		145194BF15EA5EBB00E853CA /* TimeLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineViewController.h; sourceTree = "<group>"; };
+		145194C015EA5EBC00E853CA /* TimeLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineViewController.m; sourceTree = "<group>"; };
 		14BE1B6415EA282700F7547E /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
 		14BE1B6515EA282700F7547E /* none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = none.png; sourceTree = "<group>"; };
 		14BE1B6615EA282700F7547E /* PurchasePlusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurchasePlusButton.png; sourceTree = "<group>"; };
@@ -191,6 +194,8 @@
 				14BE1B8815EA289300F7547E /* TwitterAccountInfo.m */,
 				14BE1B8915EA289300F7547E /* TwitterTweet.h */,
 				14BE1B8A15EA289300F7547E /* TwitterTweet.m */,
+				145194BF15EA5EBB00E853CA /* TimeLineViewController.h */,
+				145194C015EA5EBC00E853CA /* TimeLineViewController.m */,
 				14BE1B6215EA282700F7547E /* Resources */,
 				0201DBFF15E672AC00A212DC /* AnonyFollowAppDelegate.h */,
 				0201DC0015E672AC00A212DC /* AnonyFollowAppDelegate.m */,
@@ -376,6 +381,7 @@
 				14BE1B9515EA289300F7547E /* TwitterTweet.m in Sources */,
 				145194BD15EA51CB00E853CA /* DownloadQueue.m in Sources */,
 				145194BE15EA51CB00E853CA /* DownloadTask.m in Sources */,
+				145194C115EA5EBC00E853CA /* TimeLineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class DownloadTask;
+
 @interface TwitterAccountInfo : NSObject
 
 @property (nonatomic, strong) NSString *screenName;
 @property (nonatomic, strong) NSString *userID;
 @property (nonatomic, strong) UIImage *iconImage;
 
+- (DownloadTask*)taskForUserTimeline;
 - (BOOL)tryToDownloadIconImage;
 
 @end

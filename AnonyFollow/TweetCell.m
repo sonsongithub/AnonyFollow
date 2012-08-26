@@ -8,6 +8,9 @@
 
 #import "TweetCell.h"
 
+#import "TwitterAccountInfo.h"
+#import "TwitterTweet.h"
+
 @implementation TweetCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -17,6 +20,16 @@
         // Initialization code
     }
     return self;
+}
+
+- (void)update:(NSNotification*)notification {
+	self.iconImageView.image = self.tweet.accountInfo.iconImage;
+	self.vacantImageView.hidden = (self.tweet.accountInfo.iconImage != nil);
+}
+
+- (void)setTweet:(TwitterTweet *)tweet {
+	_tweet = tweet;
+	[self update:nil];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

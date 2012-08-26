@@ -120,10 +120,10 @@
             </objects>
             <point key="canvasLocation" x="780" y="330"/>
         </scene>
-        <!--Table View Controller - @sonson_twit's timeline-->
+        <!--Time Line View Controller - @sonson_twit's timeline-->
         <scene sceneID="8tS-U2-HOU">
             <objects>
-                <tableViewController id="m05-tk-sR0" sceneMemberID="viewController">
+                <tableViewController id="m05-tk-sR0" customClass="TimeLineViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="157" sectionHeaderHeight="22" sectionFooterHeight="22" id="r2L-hY-oPr">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -516,6 +516,55 @@ See the License for the specific language governing permissions and limitations 
         <image name="none.png" width="50" height="50"/>
         <image name="setting.png" width="24" height="24"/>
     </resources>
+    <classes>
+        <class className="AccountCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="screenNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="MainListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="select:"/>
+                <relationship kind="action" name="trash:"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SettingViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismiss:"/>
+                <relationship kind="outlet" name="applicationNameCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="timerCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="versionCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="TimeLineViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeLineViewController.h"/>
+        </class>
+        <class className="TimerLengthViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimerLengthViewController.h"/>
+        </class>
+        <class className="TweetCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tweetContentView" candidateClass="TweetContentView"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="TweetContentView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetContentView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

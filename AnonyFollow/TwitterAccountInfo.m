@@ -14,6 +14,13 @@
 
 @implementation TwitterAccountInfo
 
+- (DownloadTask*)taskForUserTimeline {
+	NSString *URLString = [NSString stringWithFormat:@"https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name=%@", self.screenName];
+	DownloadTask *task = [[DownloadTask alloc] init];
+	task.request = [NSURLRequest requestWithURL:[NSURL URLWithString:URLString]];
+	return task;
+}
+
 - (BOOL)tryToDownloadIconImage {
 	
 	if (self.iconImage)
@@ -27,8 +34,6 @@
 	task.delegate = self;
 	[[DownloadQueue sharedInstance] addTask:task];
 	
-//	if (!self.tableView.isDragging && !self.tableView.isDecelerating) {
-//	}
 	return YES;
 }
 

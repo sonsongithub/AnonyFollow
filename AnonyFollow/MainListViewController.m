@@ -15,6 +15,7 @@
 #import "AppDelegate.h"
 #import "TwitterAccountInfo.h"
 #import "AccountCell.h"
+#import "TimeLineViewController.h"
 
 #import "DownloadQueue.h"
 
@@ -83,8 +84,16 @@
 	}
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.destinationViewController isKindOfClass:[TimeLineViewController class]]) {
+		TimeLineViewController *vc = (TimeLineViewController*)segue.destinationViewController;
+		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+		vc.accountInfo = [self.accounts objectAtIndex:indexPath.row];
+	}
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
 	[[DownloadQueue sharedInstance] clearQueue];
 }
 
