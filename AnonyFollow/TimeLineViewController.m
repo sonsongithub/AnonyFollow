@@ -34,6 +34,10 @@
 	
 	self.tweets = [NSMutableArray array];
 }
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	[[DownloadQueue sharedInstance] clearQueue];
+}
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
