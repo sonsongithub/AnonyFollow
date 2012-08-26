@@ -27,7 +27,18 @@
 @implementation SettingViewController
 
 - (IBAction)dismiss:(id)sender {
-	[self dismissViewControllerAnimated:YES completion:^(void){}];
+	if ([UIApplication sharedApplication].statusBarHidden) {
+		[UIView animateWithDuration:0.4
+						 animations:^(void) {
+							 self.navigationController.view.frame = CGRectMake(0, 0, 320, 480);
+						 }
+						 completion:^(BOOL success) {
+							 [self dismissViewControllerAnimated:YES completion:^(void){}];
+						 }];
+	}
+	else {
+		[self dismissViewControllerAnimated:YES completion:^(void){}];
+	}
 }
 
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -38,11 +49,11 @@
     return self;
 }
 - (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
 	if ([UIApplication sharedApplication].statusBarHidden) {
 		[UIView animateWithDuration:0.4 animations:^(void){
-	[super viewDidAppear:animated];self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
-	
-	}];
+			self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
+		}];
 	}
 }
 
