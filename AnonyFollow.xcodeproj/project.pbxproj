@@ -22,8 +22,6 @@
 		145194A215EA2BCC00E853CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1451949C15EA2BCC00E853CA /* InfoPlist.strings */; };
 		145194A315EA2BCC00E853CA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1451949E15EA2BCC00E853CA /* MainStoryboard_iPad.storyboard */; };
 		145194A415EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145194A015EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard */; };
-		145194AC15EA2BE800E853CA /* MainStoryboard_iPad.storyboard.string in Resources */ = {isa = PBXBuildFile; fileRef = 145194A715EA2BE800E853CA /* MainStoryboard_iPad.storyboard.string */; };
-		145194AD15EA2BE800E853CA /* MainStoryboard_iPhone.storyboard.string in Resources */ = {isa = PBXBuildFile; fileRef = 145194AA15EA2BE800E853CA /* MainStoryboard_iPhone.storyboard.string */; };
 		14BE1B6D15EA282700F7547E /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6415EA282700F7547E /* new.png */; };
 		14BE1B6E15EA282700F7547E /* none.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6515EA282700F7547E /* none.png */; };
 		14BE1B6F15EA282700F7547E /* PurchasePlusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6615EA282700F7547E /* PurchasePlusButton.png */; };
@@ -251,6 +249,7 @@
 			buildConfigurationList = 0201DC0D15E672AC00A212DC /* Build configuration list for PBXNativeTarget "AnonyFollow" */;
 			buildPhases = (
 				1451949B15EA2B8500E853CA /* Make Japanese Storyboard files automatically */,
+				145194B315EA2D9300E853CA /* Update git revision and build number */,
 				0201DBE815E672AC00A212DC /* Sources */,
 				0201DBE915E672AC00A212DC /* Frameworks */,
 				0201DBEA15E672AC00A212DC /* Resources */,
@@ -308,8 +307,6 @@
 				145194A215EA2BCC00E853CA /* InfoPlist.strings in Resources */,
 				145194A315EA2BCC00E853CA /* MainStoryboard_iPad.storyboard in Resources */,
 				145194A415EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard in Resources */,
-				145194AC15EA2BE800E853CA /* MainStoryboard_iPad.storyboard.string in Resources */,
-				145194AD15EA2BE800E853CA /* MainStoryboard_iPhone.storyboard.string in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +326,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# make iPhone's storyboard file for ja\nibtool --generate-stringsfile $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPhone.storyboard.string --import-strings-file $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPhone.storyboard.string $SRCROOT/AnonyFollow/Resources/en.lproj/MainStoryboard_iPhone.storyboard\nibtool --write $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPhone.storyboard -d $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPhone.storyboard.string $SRCROOT/AnonyFollow/Resources/en.lproj/MainStoryboard_iPhone.storyboard\n\n# make iPad's storyboard file for ja\nibtool --generate-stringsfile $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPad.storyboard.string --import-strings-file $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPad.storyboard.string $SRCROOT/AnonyFollow/Resources/en.lproj/MainStoryboard_iPad.storyboard\nibtool --write $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPad.storyboard -d $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPad.storyboard.string $SRCROOT/AnonyFollow/Resources/en.lproj/MainStoryboard_iPad.storyboard";
+		};
+		145194B315EA2D9300E853CA /* Update git revision and build number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Update git revision and build number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# update github revision\nhash=$(git rev-parse HEAD)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleGithubRevision $hash\" \"$INFOPLIST_FILE\"\nshorthash=$(git rev-parse --short HEAD)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleGithubShortRevision $shorthash\" \"$INFOPLIST_FILE\"\n\n# update build number\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
