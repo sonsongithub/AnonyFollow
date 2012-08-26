@@ -14,4 +14,6 @@
 @property (nonatomic, strong) NSString *userID;
 @property (nonatomic, strong) UIImage *iconImage;
 
+- (BOOL)tryToDownloadIconImage;
+
 @end

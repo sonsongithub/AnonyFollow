@@ -13,4 +13,6 @@
 - (IBAction)trash:(id)sender;
 - (IBAction)select:(id)sender;
 
+@property (nonatomic, strong) NSMutableArray *accounts;
+
 @end

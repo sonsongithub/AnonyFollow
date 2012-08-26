@@ -129,7 +129,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="duJ-fO-3QO" customClass="TweetCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="100" id="duJ-fO-3QO" customClass="TweetCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -194,7 +194,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T0C-Uv-qBy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320" y="749"/>
+            <point key="canvasLocation" x="1320" y="624"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="W0J-X7-07Q">
@@ -229,7 +229,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6A-6Z-Xv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320" y="-97"/>
+            <point key="canvasLocation" x="1320" y="-25"/>
         </scene>
         <!--Setting View Controller - Settings-->
         <scene sceneID="fXA-Oi-X9B">
@@ -294,7 +294,7 @@
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="B4P-Bh-ZZn" detailTextLabel="KCM-V8-Xox" style="IBUITableViewCellStyleValue1" id="sPX-0a-90U">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="B4P-Bh-ZZn" detailTextLabel="KCM-V8-Xox" style="IBUITableViewCellStyleValue1" id="sPX-0a-90U">
                                         <rect key="frame" x="0.0" y="135" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -368,7 +368,7 @@
                             </tableViewSection>
                             <tableViewSection id="O0e-CL-FB5">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="tVP-Yz-zbw" detailTextLabel="m4g-Na-rN4" style="IBUITableViewCellStyleValue1" id="GeQ-8y-RFf">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="tVP-Yz-zbw" detailTextLabel="m4g-Na-rN4" style="IBUITableViewCellStyleValue1" id="GeQ-8y-RFf">
                                         <rect key="frame" x="0.0" y="288" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -420,7 +420,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QtC-9H-lk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1803" y="-97"/>
+            <point key="canvasLocation" x="1803" y="-25"/>
         </scene>
         <!--View Controller - Copyrights-->
         <scene sceneID="TFI-U0-22L">
@@ -435,7 +435,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jj4-ay-hWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2344" y="-1289"/>
+            <point key="canvasLocation" x="2344" y="-686"/>
         </scene>
         <!--Timer Length View Controller - Timer length-->
         <scene sceneID="sGT-TS-bMy">
@@ -466,7 +466,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Uj-wJ-zhh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2344" y="-97"/>
+            <point key="canvasLocation" x="2344" y="624"/>
         </scene>
         <!--View Controller - License-->
         <scene sceneID="MMB-0n-u5A">
@@ -508,7 +508,7 @@ See the License for the specific language governing permissions and limitations 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5KL-2Z-75t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2344" y="-695"/>
+            <point key="canvasLocation" x="2344" y="-25"/>
         </scene>
     </scenes>
     <resources>

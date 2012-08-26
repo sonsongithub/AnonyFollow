@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString *AccountCellUpdateNotification;
+
 @class TwitterAccountInfo;
 
 @interface AccountCell : UITableViewCell

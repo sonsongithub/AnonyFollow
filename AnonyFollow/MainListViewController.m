@@ -13,6 +13,10 @@
 @end
 
 #import "AppDelegate.h"
+#import "TwitterAccountInfo.h"
+#import "AccountCell.h"
+
+#import "DownloadQueue.h"
 
 @implementation MainListViewController
 
@@ -51,15 +55,43 @@
     [super viewDidLoad];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 	
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	self.accounts = [NSMutableArray array];
+	
+	NSArray *samples = [NSArray arrayWithObjects:
+						@"sonson_twit",
+						@"fladdict",
+						@"hakochin",
+						@"iakiyama",
+						@"soendoen",
+						@"yazhuhua",
+						@"dancingpandor",
+						@"tyfk",
+						@"tokyopengwyn",
+						@"blogranger",
+						@"rsebbe",
+						@"goando",
+						@"kentakeuchi2003",
+						@"keita_f",
+						nil
+						];
+	
+	for (NSString *account in samples) {
+		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
+		info.screenName = account;
+		[self.accounts addObject:info];
+		
+	}
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+	[[DownloadQueue sharedInstance] clearQueue];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
+	
+	[self loadImagesForOnscreenRows];
 	
 		[UIView animateWithDuration:0.4 animations:^(void){
 			self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
@@ -91,17 +123,45 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return [self.accounts count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    AccountCell *cell = (AccountCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     // Configure the cell...
-    
+	TwitterAccountInfo *info = [self.accounts objectAtIndex:indexPath.row];
+	cell.accountInfo = info;
+	
+	if (!self.tableView.isDragging && !self.tableView.isDecelerating)
+		[info tryToDownloadIconImage];
+	
     return cell;
+}
+
+#pragma mark - Thumbnail rendering and downloading
+
+- (void)loadImagesForOnscreenRows {
+	DNSLogMethod
+    if ([self.accounts count] > 0) {
+		NSArray *visibleCells = [self.tableView visibleCells];
+		for (AccountCell *cell in visibleCells) {
+			TwitterAccountInfo *info = cell.accountInfo;
+			
+			if (!self.tableView.isDragging && !self.tableView.isDecelerating)
+				[info tryToDownloadIconImage];
+		}
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (!decelerate) {
+        [self loadImagesForOnscreenRows];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self loadImagesForOnscreenRows];
 }
 
 // Override to support conditional editing of the table view.

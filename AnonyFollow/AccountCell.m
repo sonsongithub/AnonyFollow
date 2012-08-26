@@ -8,7 +8,26 @@
 
 #import "AccountCell.h"
 
+#import "TwitterAccountInfo.h"
+#import "DownloadQueue.h"
+
+NSString *AccountCellUpdateNotification = @"AccountCellUpdateNotification";
+
 @implementation AccountCell
+
+- (void)update:(NSNotification*)notification {
+	self.iconImageView.image = self.accountInfo.iconImage;
+
+	self.vacantImageView.hidden = (self.accountInfo.iconImage != nil);
+		
+	self.screenNameLabel.text = self.accountInfo.screenName;
+}
+
+- (void)setAccountInfo:(TwitterAccountInfo *)accountInfo {
+	_accountInfo = accountInfo;
+	
+	[self update:nil];
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -22,10 +41,13 @@
 - (void)awakeFromNib {
 	[super awakeFromNib];
 	[self prepareForReuse];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update:) name:AccountCellUpdateNotification object:nil];
 }
 
 - (void)prepareForReuse {
 	[super prepareForReuse];
+	
+	[[DownloadQueue sharedInstance] removeTasksOfDelegate:self];
 	
 	UIImage *image = [UIImage imageNamed:@"PurchasePlusButton.png"];
 	UIImage *strechable = [image stretchableImageWithLeftCapWidth:10 topCapHeight:10];
