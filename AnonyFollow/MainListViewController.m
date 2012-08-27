@@ -16,26 +16,61 @@
 #import "TwitterAccountInfo.h"
 #import "AccountCell.h"
 #import "TimeLineViewController.h"
-
 #import "DownloadQueue.h"
+#import "LockScreenView.h"
+
+#import "CBAdvertizer.h"
+#import "CBScanner.h"
+
+#import <Accounts/Accounts.h>
 
 @implementation MainListViewController
 
+- (void)enableBroadcasting {
+	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+	
+	self.segmentedControl.userInteractionEnabled = NO;
+	
+	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+		if(granted) {
+			NSArray *accountsArray = [accountStore accountsWithAccountType:accountType];
+			if ([accountsArray count] > 0) {
+				// Grab the initial Twitter account to tweet from.
+				ACAccount *twitterAccount = [accountsArray objectAtIndex:0];
+				dispatch_async(dispatch_get_main_queue(), ^(void) {
+					
+					self.advertizer = [[CBAdvertizer alloc] initWithUserName:twitterAccount.username];
+					self.scanner = [[CBScanner alloc] initinitWithDelegate:nil ServiceUUIDStr:nil];
+					
+					AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+					[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+					[del.barView setColor:[UIColor greenColor]];
+					[del.barView setMessage:NSLocalizedString(@"Broadcasting...", nil)];
+				});
+			}
+			else{
+				NSLog(@"No Twitter Account");
+				self.segmentedControl.selectedSegmentIndex = 0;
+			}
+		}else{
+			NSLog(@"accountStore accesss denied");
+			self.segmentedControl.selectedSegmentIndex = 0;
+		}
+		self.segmentedControl.userInteractionEnabled = YES;
+	}];
+}
+
 - (IBAction)select:(id)sender {
-	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-	UISegmentedControl *control = sender;
+	UISegmentedControl *control = self.segmentedControl;
 	if (control.selectedSegmentIndex == 0) {
 		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 	}
 	if (control.selectedSegmentIndex == 1) {
-		[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-		[del.barView setColor:[UIColor greenColor]];
-		[del.barView setMessage:NSLocalizedString(@"Broadcasting...", nil)];
+		[self enableBroadcasting];
 	}
 	if (control.selectedSegmentIndex == 2) {
-		[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-		[del.barView setColor:[UIColor redColor]];
-		[del.barView setMessage:NSLocalizedString(@"Broadcasting on background...", nil)];
+		[self enableBroadcasting];
 	}
 }
 
@@ -102,15 +137,12 @@
 	
 	[self loadImagesForOnscreenRows];
 	
-		[UIView animateWithDuration:0.4 animations:^(void){
-			self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
-		}];
+	[UIView animateWithDuration:0.4 animations:^(void){
+		self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
+	}];
 	
-//	if ([UIApplication sharedApplication].statusBarHidden) {
-//		[UIView animateWithDuration:0.4 animations:^(void){
-//			self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
-//		}];
-//	}
+//	[[[UIApplication sharedApplication] keyWindow] addSubview:self.lockScreenView];
+//	self.lockScreenView.frame = self.navigationController.view.frame;
 }
 
 - (void)didReceiveMemoryWarning

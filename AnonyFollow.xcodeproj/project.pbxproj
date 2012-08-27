@@ -26,6 +26,9 @@
 		145194BE15EA51CB00E853CA /* DownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 145194BC15EA51CB00E853CA /* DownloadTask.m */; };
 		145194C115EA5EBC00E853CA /* TimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 145194C015EA5EBC00E853CA /* TimeLineViewController.m */; };
 		145194C915EA772100E853CA /* NSData+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 145194C815EA772100E853CA /* NSData+MD5.m */; };
+		1455709115EBC00D003DD49F /* LockScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1455708F15EBC00D003DD49F /* LockScreenView.xib */; };
+		1455709A15EBC0C7003DD49F /* LockScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1455709915EBC0C7003DD49F /* LockScreenView.m */; };
+		145570A215EBC3D1003DD49F /* MessageBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 145570A115EBC3D1003DD49F /* MessageBarButtonItem.m */; };
 		14BE1B6D15EA282700F7547E /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6415EA282700F7547E /* new.png */; };
 		14BE1B6E15EA282700F7547E /* none.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6515EA282700F7547E /* none.png */; };
 		14BE1B6F15EA282700F7547E /* PurchasePlusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6615EA282700F7547E /* PurchasePlusButton.png */; };
@@ -84,6 +87,11 @@
 		145194C015EA5EBC00E853CA /* TimeLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineViewController.m; sourceTree = "<group>"; };
 		145194C715EA772100E853CA /* NSData+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MD5.h"; sourceTree = "<group>"; };
 		145194C815EA772100E853CA /* NSData+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MD5.m"; sourceTree = "<group>"; };
+		1455709015EBC00D003DD49F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LockScreenView.xib; sourceTree = "<group>"; };
+		1455709815EBC0C7003DD49F /* LockScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockScreenView.h; sourceTree = "<group>"; };
+		1455709915EBC0C7003DD49F /* LockScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockScreenView.m; sourceTree = "<group>"; };
+		145570A015EBC3D1003DD49F /* MessageBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBarButtonItem.h; sourceTree = "<group>"; };
+		145570A115EBC3D1003DD49F /* MessageBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBarButtonItem.m; sourceTree = "<group>"; };
 		14BE1B6415EA282700F7547E /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
 		14BE1B6515EA282700F7547E /* none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = none.png; sourceTree = "<group>"; };
 		14BE1B6615EA282700F7547E /* PurchasePlusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurchasePlusButton.png; sourceTree = "<group>"; };
@@ -201,6 +209,10 @@
 				14BE1B8A15EA289300F7547E /* TwitterTweet.m */,
 				145194BF15EA5EBB00E853CA /* TimeLineViewController.h */,
 				145194C015EA5EBC00E853CA /* TimeLineViewController.m */,
+				1455709815EBC0C7003DD49F /* LockScreenView.h */,
+				1455709915EBC0C7003DD49F /* LockScreenView.m */,
+				145570A015EBC3D1003DD49F /* MessageBarButtonItem.h */,
+				145570A115EBC3D1003DD49F /* MessageBarButtonItem.m */,
 				14BE1B6215EA282700F7547E /* Resources */,
 				0201DBFF15E672AC00A212DC /* AnonyFollowAppDelegate.h */,
 				0201DC0015E672AC00A212DC /* AnonyFollowAppDelegate.m */,
@@ -228,6 +240,7 @@
 		14BE1B6215EA282700F7547E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1455708F15EBC00D003DD49F /* LockScreenView.xib */,
 				145194A715EA2BE800E853CA /* MainStoryboard_iPad.storyboard.string */,
 				145194AA15EA2BE800E853CA /* MainStoryboard_iPhone.storyboard.string */,
 				1451949C15EA2BCC00E853CA /* InfoPlist.strings */,
@@ -327,6 +340,7 @@
 				145194A215EA2BCC00E853CA /* InfoPlist.strings in Resources */,
 				145194A315EA2BCC00E853CA /* MainStoryboard_iPad.storyboard in Resources */,
 				145194A415EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard in Resources */,
+				1455709115EBC00D003DD49F /* LockScreenView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +402,8 @@
 				145194BE15EA51CB00E853CA /* DownloadTask.m in Sources */,
 				145194C115EA5EBC00E853CA /* TimeLineViewController.m in Sources */,
 				145194C915EA772100E853CA /* NSData+MD5.m in Sources */,
+				1455709A15EBC0C7003DD49F /* LockScreenView.m in Sources */,
+				145570A215EBC3D1003DD49F /* MessageBarButtonItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +453,14 @@
 			name = MainStoryboard_iPhone.storyboard.string;
 			sourceTree = "<group>";
 		};
+		1455708F15EBC00D003DD49F /* LockScreenView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1455709015EBC00D003DD49F /* en */,
+			);
+			name = LockScreenView.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -448,7 +472,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuichi Yoshida (AK9FYY958C)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -463,6 +487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "29AFA855-1109-4E08-AA2B-A0E4DF69506D";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -476,7 +501,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuichi Yoshida (AK9FYY958C)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -484,6 +509,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "29AFA855-1109-4E08-AA2B-A0E4DF69506D";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

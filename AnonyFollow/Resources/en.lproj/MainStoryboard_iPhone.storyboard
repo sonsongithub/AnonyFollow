@@ -93,6 +93,8 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="4FB-Z4-Qjd"/>
+                        <barButtonItem title="account:name" width="200" style="plain" id="V6L-hT-jh0" customClass="MessageBarButtonItem"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="bOK-cQ-ALC"/>
                         <barButtonItem image="setting.png" style="plain" id="hVl-mV-gKY">
                             <connections>
                                 <segue destination="S4C-sh-H4c" kind="modal" id="2Pa-5z-RjJ"/>
@@ -115,8 +117,17 @@
                         </segmentedControl>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="lockScreenView" destination="8zj-sc-9LN" id="kIS-JX-NgL"/>
+                        <outlet property="segmentedControl" destination="PRI-Cf-RyL" id="QI1-qQ-4wR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V64-tl-zsq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="8zj-sc-9LN" customClass="LockScreenView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="780" y="330"/>
         </scene>
@@ -535,12 +546,23 @@ See the License for the specific language governing permissions and limitations 
                 <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
             </relationships>
         </class>
+        <class className="LockScreenView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LockScreenView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
+            </relationships>
+        </class>
         <class className="MainListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MainListViewController.h"/>
             <relationships>
                 <relationship kind="action" name="select:"/>
                 <relationship kind="action" name="trash:"/>
+                <relationship kind="outlet" name="lockScreenView" candidateClass="LockScreenView"/>
+                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
             </relationships>
+        </class>
+        <class className="MessageBarButtonItem" superclassName="UIBarButtonItem">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MessageBarButtonItem.h"/>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
