@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class LockScreenView;
+#import "CBAdvertizer.h"
+#import "CBScanner.h"
 
+@class LockScreenView;
 @class CBScanner;
 @class CBAdvertizer;
 
-@interface MainListViewController : UITableViewController
+@interface MainListViewController : UITableViewController <CBScannerDelegate, CBAdvertizerDelegate>
 
 - (IBAction)trash:(id)sender;
 - (IBAction)select:(id)sender;

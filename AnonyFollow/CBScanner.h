@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import <CoreBluetooth/CoreBluetooth.h>
 
+extern NSString *kCBScannerInfoUserNameKey;
+
+@class CBScanner;
 
 typedef NS_ENUM(NSInteger, CBScannerState) {
 	CBScannerStateUnknown = 0,
@@ -21,19 +25,19 @@ typedef NS_ENUM(NSInteger, CBScannerState) {
 } NS_ENUM_AVAILABLE(NA, 6_0);
 
 @protocol CBScannerDelegate <NSObject>
--(void)CBScannerDidDiscoverUser:(NSString*)userName;
--(void)CBScannerDidCangeState:(CBScannerState)state;
+- (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo;
+- (void)scannerDidChangeStatus:(CBScanner*)scanner;
 @end
 
-@interface CBScanner : NSObject<CBCentralManagerDelegate>{
-    id<CBScannerDelegate> delegate;
-    NSString *UUIDStr;
-    CBCentralManager *c_manager;
-}
-@property (retain) id<CBScannerDelegate> delegate;
-@property (retain) CBCentralManager *c_manager;
-@property (copy) NSString *UUIDStr;
--(id)initinitWithDelegate:(id<CBScannerDelegate>)_delegate ServiceUUIDStr:(NSString*)_UUIDStr;
--(CBScannerState)sartScan;
--(CBScannerState)stopScan;
+@interface CBScanner : NSObject<CBCentralManagerDelegate>
+
+@property (nonatomic, strong) id<CBScannerDelegate> delegate;
+@property (nonatomic, strong) CBCentralManager *manager;
+@property (nonatomic, copy) NSString *UUIDStr;
+
+- (id)initWithDelegate:(id<CBScannerDelegate>)delegate serviceUUID:(NSString*)UUIDStr;
+- (void)startScan;
+- (void)stopScan;
+- (BOOL)isAvailable;
+
 @end

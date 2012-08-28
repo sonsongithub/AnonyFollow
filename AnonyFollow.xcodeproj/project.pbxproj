@@ -187,8 +187,6 @@
 				145194BC15EA51CB00E853CA /* DownloadTask.m */,
 				14BE1B7715EA289200F7547E /* AppDelegate.h */,
 				14BE1B7815EA289200F7547E /* AppDelegate.m */,
-				14BE1B7915EA289300F7547E /* MainListViewController.h */,
-				14BE1B7A15EA289300F7547E /* MainListViewController.m */,
 				14BE1B7B15EA289300F7547E /* SettingViewController.h */,
 				14BE1B7C15EA289300F7547E /* SettingViewController.m */,
 				14BE1B7D15EA289300F7547E /* SNStatusBarView.h */,
@@ -213,6 +211,8 @@
 				1455709915EBC0C7003DD49F /* LockScreenView.m */,
 				145570A015EBC3D1003DD49F /* MessageBarButtonItem.h */,
 				145570A115EBC3D1003DD49F /* MessageBarButtonItem.m */,
+				14BE1B7915EA289300F7547E /* MainListViewController.h */,
+				14BE1B7A15EA289300F7547E /* MainListViewController.m */,
 				14BE1B6215EA282700F7547E /* Resources */,
 				0201DBFF15E672AC00A212DC /* AnonyFollowAppDelegate.h */,
 				0201DC0015E672AC00A212DC /* AnonyFollowAppDelegate.m */,
@@ -523,6 +523,7 @@
 				GCC_PREFIX_HEADER = "AnonyFollow/AnonyFollow-Prefix.pch";
 				INFOPLIST_FILE = "AnonyFollow/AnonyFollow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -534,6 +535,7 @@
 				GCC_PREFIX_HEADER = "AnonyFollow/AnonyFollow-Prefix.pch";
 				INFOPLIST_FILE = "AnonyFollow/AnonyFollow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

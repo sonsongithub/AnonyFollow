@@ -65,8 +65,8 @@
                 self.twitterUserName =twitterAccount.username;
                 self.twitterUserID   =twitterAccount.identifier;
                 
-                self.advertizer=[[CBAdvertizer alloc] initWithUserName:twitterUserName];
-                self.scanner=[[CBScanner alloc] initinitWithDelegate:self ServiceUUIDStr:nil];
+                self.advertizer=[[CBAdvertizer alloc] initWithDelegate:self userName:self.twitterUserName];
+                self.scanner=[[CBScanner alloc] initWithDelegate:self serviceUUID:nil];
                 NSLog(@"getTwitterAcount,%@,%@",self.twitterUserName,self.twitterUserID);
             }else{
                 NSLog(@"No Twitter Account");

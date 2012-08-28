@@ -19,12 +19,11 @@
 #import "DownloadQueue.h"
 #import "LockScreenView.h"
 
-#import "CBAdvertizer.h"
-#import "CBScanner.h"
-
 #import <Accounts/Accounts.h>
 
 @implementation MainListViewController
+
+#pragma mark - Instance method
 
 - (void)enableBroadcasting {
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
@@ -39,14 +38,8 @@
 				// Grab the initial Twitter account to tweet from.
 				ACAccount *twitterAccount = [accountsArray objectAtIndex:0];
 				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					
-					self.advertizer = [[CBAdvertizer alloc] initWithUserName:twitterAccount.username];
-					self.scanner = [[CBScanner alloc] initinitWithDelegate:nil ServiceUUIDStr:nil];
-					
-					AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-					[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-					[del.barView setColor:[UIColor greenColor]];
-					[del.barView setMessage:NSLocalizedString(@"Broadcasting...", nil)];
+					self.advertizer = [[CBAdvertizer alloc] initWithDelegate:self userName:twitterAccount.username];
+					self.scanner = [[CBScanner alloc] initWithDelegate:self serviceUUID:nil];
 				});
 			}
 			else{
@@ -54,6 +47,7 @@
 				self.segmentedControl.selectedSegmentIndex = 0;
 			}
 		}else{
+			// if user does not permit access to twitter account
 			NSLog(@"accountStore accesss denied");
 			self.segmentedControl.selectedSegmentIndex = 0;
 		}
@@ -64,6 +58,10 @@
 - (IBAction)select:(id)sender {
 	UISegmentedControl *control = self.segmentedControl;
 	if (control.selectedSegmentIndex == 0) {
+		[self.scanner stopScan];
+		self.scanner = nil;
+		[self.advertizer stopAdvertize];
+		self.advertizer = nil;
 		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 	}
 	if (control.selectedSegmentIndex == 1) {
@@ -75,6 +73,8 @@
 }
 
 - (IBAction)trash:(id)sender {
+	[self.accounts removeAllObjects];
+	[self.tableView reloadData];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -92,7 +92,8 @@
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 	
 	self.accounts = [NSMutableArray array];
-	
+
+#if 0
 	NSArray *samples = [NSArray arrayWithObjects:
 						@"sonson_twit",
 						@"fladdict",
@@ -117,6 +118,7 @@
 		[self.accounts addObject:info];
 		
 	}
+#endif
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -145,10 +147,39 @@
 //	self.lockScreenView.frame = self.navigationController.view.frame;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - CBAdvertizerDelegate
+
+- (void)advertizerDidChangeStatus:(CBAdvertizer*)advertizer {
+}
+
+#pragma mark - CBScannerDelegate
+
+- (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
+	NSString *username = [userInfo objectForKey:kCBScannerInfoUserNameKey];
+	TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
+	info.screenName = username;
+	[self.accounts addObject:info];
+	[self.tableView reloadData];
+	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	[del.barView pushTemporaryMessage:[NSString stringWithFormat:@"Found %@", username]];
+}
+
+- (void)scannerDidChangeStatus:(CBScanner*)scanner {
+	if ([self.scanner isAvailable]) {
+		AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+		[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+		[del.barView setColor:[UIColor greenColor]];
+		[del.barView setMessage:NSLocalizedString(@"Broadcasting...", nil)];
+	}
+	else {
+		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+		[self.scanner stopScan];
+		[self.advertizer stopAdvertize];
+	}
 }
 
 #pragma mark - Table view data source

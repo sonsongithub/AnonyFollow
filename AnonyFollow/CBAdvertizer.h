@@ -19,19 +19,20 @@ typedef NS_ENUM(NSInteger, CBAdvertizerState) {
     CBAdvertizerStatePoweredOnAdvertizeing,
 } NS_ENUM_AVAILABLE(NA, 6_0);
 
+@class CBAdvertizer;
+
 @protocol CBAdvertizerDelegate <NSObject>
--(void)CBAdvertizerDidCangeState:(CBAdvertizerState)state;
+- (void)advertizerDidChangeStatus:(CBAdvertizer*)advertizer;
 @end
 
-@interface CBAdvertizer : NSObject<CBPeripheralManagerDelegate>{
-    id<CBAdvertizerDelegate> delegate;
-    NSString *userName;
-    CBPeripheralManager *p_manager;
-}
--(id)initWithUserName:(NSString*)_userName;
--(CBAdvertizerState)sartAdvertize;
--(CBAdvertizerState)stopAdvertize;
-@property (retain) id<CBAdvertizerDelegate> delegate;
-@property (retain) CBPeripheralManager *p_manager;
-@property (copy) NSString *userName;
+@interface CBAdvertizer : NSObject<CBPeripheralManagerDelegate>
+
+- (id)initWithDelegate:(id<CBAdvertizerDelegate>)delegate userName:(NSString*)userName;
+- (void)startAdvertize;
+- (void)stopAdvertize;
+
+@property (nonatomic, strong) id<CBAdvertizerDelegate> delegate;
+@property (nonatomic, strong) CBPeripheralManager *manager;
+@property (nonatomic, copy) NSString *userName;
+
 @end

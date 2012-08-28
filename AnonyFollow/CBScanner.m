@@ -8,94 +8,96 @@
 
 #import "CBScanner.h"
 
+NSString *kCBScannerInfoUserNameKey = @"kCBScannerInfoUserNameKey";
+
 @implementation CBScanner
-@synthesize delegate;
-@synthesize c_manager;
-@synthesize UUIDStr;
 
--(id)initinitWithDelegate:(id<CBScannerDelegate>)_delegate ServiceUUIDStr:(NSString*)_UUIDStr{
-    self.UUIDStr=_UUIDStr;
-    self.delegate=_delegate;
-    c_manager=[[CBCentralManager alloc] initWithDelegate:self queue:nil];
-    return [super init];    
+#pragma mark - Instance method
+
+- (void)logState {
+	if (self.manager.state == CBCentralManagerStateUnsupported) {
+		NSLog(@"The platform/hardware doesn't support Bluetooth Low Energy.");
+	}
+	else if (self.manager.state == CBCentralManagerStateUnauthorized) {
+		NSLog(@"The app is not authorized to use Bluetooth Low Energy.");
+	}
+	else if (self.manager.state == CBCentralManagerStatePoweredOff) {
+		NSLog(@"Bluetooth is currently powered off.");
+	}
+	else if (self.manager.state == CBCentralManagerStateResetting) {
+		NSLog(@"Bluetooth is currently resetting.");
+	}
+	else if (self.manager.state == CBCentralManagerStatePoweredOn) {
+		NSLog(@"Bluetooth is currently powered on.");
+	}
+	else if (self.manager.state == CBCentralManagerStateUnknown) {
+		NSLog(@"Bluetooth is an unknown status.");
+	}
+	else {
+		NSLog(@"Unknown status code.");
+	}
+	
 }
 
-#pragma PERIPHERAL
-- (void)scan:(CBCentralManager*)manager WithServices:(NSString*)_UUIDStr
-{
-    NSLog(@"Start Scan..%@",_UUIDStr);
-    if(_UUIDStr){
-        NSArray *services=[NSArray arrayWithObjects:
-                           [CBUUID UUIDWithString:_UUIDStr],
-                           nil];
-        [manager scanForPeripheralsWithServices:services options:nil];
-    }else{
-        [manager scanForPeripheralsWithServices:nil options:nil];
+- (id)initWithDelegate:(id<CBScannerDelegate>)delegate serviceUUID:(NSString*)UUIDStr {
+	self = [super init];
+	if (self) {
+		self.UUIDStr = UUIDStr;
+		self.delegate = delegate;
+		self.manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+	}
+    return self;
+}
+
+- (BOOL)isAvailable {
+    return (self.manager.state == CBCentralManagerStatePoweredOn);
+}
+
+- (void)startScan {
+    if ([self isAvailable]) {
+		[self.manager scanForPeripheralsWithServices:nil options:nil];
+    }
+	else{
     }
 }
 
-#pragma CBPeripheralmanagerdelegate
-- (void)centralManagerDidUpdateState:(CBCentralManager *)manager{
-    //NSLog(@"centrallManagerDidUpdateState %d",manager.state);
-    if([self isLECapableHardware:manager]){
-        [self scan:manager WithServices:UUIDStr];
-        [self.delegate CBScannerDidCangeState:CBScannerStatePoweredOnScaning];
-    }else{
-        [self.delegate CBScannerDidCangeState:[manager state]];
-    }
+- (void)stopScan {
+    [self.manager stopScan];
 }
 
-- (void) centralManager:(CBCentralManager*)manager didDiscoverPeripheral:(CBPeripheral *)aPeripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
-{
-    NSArray *services=[advertisementData objectForKey:@"kCBAdvDataServiceUUIDs"];
-    NSString *userName=[advertisementData objectForKey:@"kCBAdvDataLocalName"];
-
-    NSLog(@"Peripheral discovered %@ %@,%@,Name:%@,%d",RSSI,aPeripheral.UUID,advertisementData,userName,[services count]);
-    [self.delegate CBScannerDidDiscoverUser:userName];
+- (void)dealloc {
+	DNSLogMethod
 }
 
+#pragma mark - CBCentralManagerDelegate
 
-- (BOOL) isLECapableHardware:(CBCentralManager*)manager
-{
-    NSString * state = nil;
-    switch ([manager state])
-    {
-        case CBPeripheralManagerStateUnsupported:
-            state = @"The platform/hardware doesn't support Bluetooth Low Energy.";
-            break;
-        case CBPeripheralManagerStateUnauthorized:
-            state = @"The app is not authorized to use Bluetooth Low Energy.";
-            break;
-        case CBPeripheralManagerStatePoweredOff:
-            state = @"Bluetooth is currently powered off.";
-            break;
-        case CBPeripheralManagerStateResetting:
-            state = @"Bluetooth is currently resetting.";
-            break;
-        case CBPeripheralManagerStatePoweredOn:
-            NSLog( @"Bluetooth is currently powered on.");
-            return TRUE;
-        case CBPeripheralManagerStateUnknown:
-        default:
-            state = @"Bluetooth is unknown.";
-            break;
-            
-    }
-    NSLog( @"CBCentralManager State:%@",state);
-    return FALSE;
+- (void)centralManagerDidUpdateState:(CBCentralManager *)manager {
+    [self logState];
+	
+	[self startScan];
+	
+	if ([self.delegate respondsToSelector:@selector(scannerDidChangeStatus:)])
+		[self.delegate scannerDidChangeStatus:self];
 }
 
--(CBScannerState)sartScan{
-    if([self isLECapableHardware:self.c_manager]){
-        [self scan:self.c_manager WithServices:self.UUIDStr];
-        return CBScannerStatePoweredOnScaning;
-    }else{
-        return [self.c_manager state];
-    }
-}
--(CBScannerState)stopScan{
-    [self.c_manager stopScan];
-    return CBScannerStatePoweredOnIdling;
+- (void) centralManager:(CBCentralManager*)manager
+  didDiscoverPeripheral:(CBPeripheral *)aPeripheral
+	  advertisementData:(NSDictionary *)advertisementData
+				   RSSI:(NSNumber *)RSSI {
+	DNSLogMethod
+    NSArray *services = [advertisementData objectForKey:@"kCBAdvDataServiceUUIDs"];
+    NSString *userName = [advertisementData objectForKey:@"kCBAdvDataLocalName"];
+
+    NSLog(@"Peripheral discovered %@ %@,%@,Name:%@,%d",RSSI, aPeripheral.UUID, advertisementData, userName, [services count]);
+	
+	if ([userName length]) {
+		NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+								  userName, kCBScannerInfoUserNameKey,
+								  nil];
+		
+		if ([self.delegate respondsToSelector:@selector(scanner:didDiscoverUser:)])
+			[self.delegate scanner:self didDiscoverUser:userInfo];
+	}
 }
 
 @end
