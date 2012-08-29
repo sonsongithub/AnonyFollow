@@ -8,11 +8,16 @@
 
 #import "AppDelegate.h"
 
+#import "SNStatusBarView.h"
+#import "SNReachablityChecker.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 	self.barView = [[SNStatusBarView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+	self.checker = [SNReachablityChecker reachabilityForInternetConnection];
+	[self.checker start];
 	[self.window addSubview:self.barView];
 	
     return YES;

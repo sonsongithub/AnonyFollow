@@ -18,6 +18,9 @@
 #import "TimeLineViewController.h"
 #import "DownloadQueue.h"
 #import "LockScreenView.h"
+#import "MessageBarButtonItem.h"
+#import "SNStatusBarView.h"
+#import "SNReachablityChecker.h"
 
 #import <Accounts/Accounts.h>
 
@@ -37,7 +40,9 @@
 			if ([accountsArray count] > 0) {
 				// Grab the initial Twitter account to tweet from.
 				ACAccount *twitterAccount = [accountsArray objectAtIndex:0];
+
 				dispatch_async(dispatch_get_main_queue(), ^(void) {
+					self.twitterAccountButton.label.text = twitterAccount.username;
 					self.advertizer = [[CBAdvertizer alloc] initWithDelegate:self userName:twitterAccount.username];
 					self.scanner = [[CBScanner alloc] initWithDelegate:self serviceUUID:nil];
 				});
@@ -90,6 +95,8 @@
 {
     [super viewDidLoad];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(reloadData) name:SNReachablityDidChangeNotification object:nil];
 	
 	self.accounts = [NSMutableArray array];
 
@@ -198,6 +205,13 @@
     return [self.accounts count];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	if (del.checker.status == SNReachablityCheckerReachableViaWiFi || del.checker.status == SNReachablityCheckerReachableViaWWAN) {
+		[self performSegueWithIdentifier:@"OpenTimeLine" sender:nil];
+	}
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AccountCell *cell = (AccountCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
@@ -246,35 +260,6 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
     }
-}
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
 }
 
 @end

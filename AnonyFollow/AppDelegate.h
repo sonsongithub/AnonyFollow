@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#import "SNStatusBarView.h"
+@class SNStatusBarView;
+@class SNReachablityChecker;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) SNStatusBarView *barView;
+@property (strong, nonatomic) SNReachablityChecker *checker;
 
 @end

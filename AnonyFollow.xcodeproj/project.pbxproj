@@ -19,6 +19,8 @@
 		02B9542B15E67A00005026B1 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542A15E67A00005026B1 /* CoreBluetooth.framework */; };
 		02B9542D15E67A06005026B1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542C15E67A06005026B1 /* Social.framework */; };
 		02B9542F15E67A18005026B1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542E15E67A18005026B1 /* Accounts.framework */; };
+		142770C215EE826B0062271A /* SNReachablityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 142770C115EE826B0062271A /* SNReachablityChecker.m */; };
+		142770C515EE82DD0062271A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142770C415EE82DD0062271A /* SystemConfiguration.framework */; };
 		145194A215EA2BCC00E853CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1451949C15EA2BCC00E853CA /* InfoPlist.strings */; };
 		145194A315EA2BCC00E853CA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1451949E15EA2BCC00E853CA /* MainStoryboard_iPad.storyboard */; };
 		145194A415EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145194A015EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard */; };
@@ -71,6 +73,9 @@
 		02B9542A15E67A00005026B1 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		02B9542C15E67A06005026B1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		02B9542E15E67A18005026B1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		142770C015EE826B0062271A /* SNReachablityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNReachablityChecker.h; sourceTree = "<group>"; };
+		142770C115EE826B0062271A /* SNReachablityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNReachablityChecker.m; sourceTree = "<group>"; };
+		142770C415EE82DD0062271A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1451949D15EA2BCC00E853CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1451949F15EA2BCC00E853CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		145194A115EA2BCC00E853CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
@@ -130,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				142770C515EE82DD0062271A /* SystemConfiguration.framework in Frameworks */,
 				14BE1B9715EA28BF00F7547E /* QuartzCore.framework in Frameworks */,
 				020D225415E6886300A4CDD3 /* AudioToolbox.framework in Frameworks */,
 				02B9542F15E67A18005026B1 /* Accounts.framework in Frameworks */,
@@ -164,6 +170,7 @@
 		0201DBEF15E672AC00A212DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				142770C415EE82DD0062271A /* SystemConfiguration.framework */,
 				14BE1B9615EA28BF00F7547E /* QuartzCore.framework */,
 				020D225315E6886300A4CDD3 /* AudioToolbox.framework */,
 				02B9542E15E67A18005026B1 /* Accounts.framework */,
@@ -213,6 +220,8 @@
 				145570A115EBC3D1003DD49F /* MessageBarButtonItem.m */,
 				14BE1B7915EA289300F7547E /* MainListViewController.h */,
 				14BE1B7A15EA289300F7547E /* MainListViewController.m */,
+				142770C015EE826B0062271A /* SNReachablityChecker.h */,
+				142770C115EE826B0062271A /* SNReachablityChecker.m */,
 				14BE1B6215EA282700F7547E /* Resources */,
 				0201DBFF15E672AC00A212DC /* AnonyFollowAppDelegate.h */,
 				0201DC0015E672AC00A212DC /* AnonyFollowAppDelegate.m */,
@@ -404,6 +413,7 @@
 				145194C915EA772100E853CA /* NSData+MD5.m in Sources */,
 				1455709A15EBC0C7003DD49F /* LockScreenView.m in Sources */,
 				145570A215EBC3D1003DD49F /* MessageBarButtonItem.m in Sources */,
+				142770C215EE826B0062271A /* SNReachablityChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

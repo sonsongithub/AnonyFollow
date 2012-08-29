@@ -105,6 +105,7 @@
 }
 
 - (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
     CGGradientRelease(self.gradientRef);
 }
 
@@ -121,6 +122,17 @@
 @end
 
 @implementation SNStatusBarView
+
+- (void)startBlinkingAnimation {
+	CAAnimation *alphaAnimation = [SNStatusBarBackView alphaAnimation];
+	
+	// make group
+	alphaAnimation.duration = 2;
+	alphaAnimation.repeatCount = HUGE_VALF;
+	
+	// commit animation
+	[self.lightingView.layer addAnimation:alphaAnimation forKey:@"hoge"];
+}
 
 - (UILabel*)makeMessageLabel {
 	UILabel *messageLabel = [[UILabel alloc] initWithFrame:self.frame];
@@ -139,15 +151,7 @@
 	self.lightingView = [[SNStatusBarBackView alloc] initWithFrame:self.frame color:color];
 	[self addSubview:self.lightingView];
 	[self sendSubviewToBack:self.lightingView];
-	
-	CAAnimation *alphaAnimation = [SNStatusBarBackView alphaAnimation];
-	
-	// make group
-	alphaAnimation.duration = 2;
-	alphaAnimation.repeatCount = HUGE_VALF;
-	
-	// commit animation
-	[self.lightingView.layer addAnimation:alphaAnimation forKey:@"hoge"];
+	[self startBlinkingAnimation];
 }
 
 - (void)pushTemporaryMessage:(NSString*)string {
@@ -174,6 +178,7 @@
 }
 
 - (void)update {
+	DNSLogMethod
 	[self pop];
 }
 
@@ -236,12 +241,17 @@
 					 }];
 }
 
+- (void)willEnterForeground:(NSNotification*)notification {
+	[self startBlinkingAnimation];
+}
+
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
 		self.queueingMessages = [NSMutableArray array];
 		self.clipsToBounds = YES;
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
     }
     return self;
 }

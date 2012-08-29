@@ -10,6 +10,8 @@
 
 #import "TwitterAccountInfo.h"
 #import "DownloadQueue.h"
+#import "AppDelegate.h"
+#import "SNReachablityChecker.h"
 
 NSString *AccountCellUpdateNotification = @"AccountCellUpdateNotification";
 
@@ -46,6 +48,10 @@ NSString *AccountCellUpdateNotification = @"AccountCellUpdateNotification";
 
 - (void)prepareForReuse {
 	[super prepareForReuse];
+	
+	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	self.followButton.hidden = !(del.checker.status == SNReachablityCheckerReachableViaWiFi || del.checker.status == SNReachablityCheckerReachableViaWWAN);
+	self.selectionStyle = (del.checker.status == SNReachablityCheckerReachableViaWiFi || del.checker.status == SNReachablityCheckerReachableViaWWAN) ? UITableViewCellSelectionStyleBlue : UITableViewCellEditingStyleNone;
 	
 	[[DownloadQueue sharedInstance] removeTasksOfDelegate:self];
 	

@@ -14,6 +14,7 @@
 @class LockScreenView;
 @class CBScanner;
 @class CBAdvertizer;
+@class MessageBarButtonItem;
 
 @interface MainListViewController : UITableViewController <CBScannerDelegate, CBAdvertizerDelegate>
 
@@ -22,6 +23,8 @@
 
 @property (strong, nonatomic) IBOutlet LockScreenView *lockScreenView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic, strong) IBOutlet MessageBarButtonItem *twitterAccountButton;
+
 @property (nonatomic, strong) NSMutableArray *accounts;
 
 @property (strong, nonatomic) CBScanner *scanner;

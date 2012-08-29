@@ -17,11 +17,14 @@
 	self.label.textColor = [UIColor whiteColor];
 	self.label.shadowColor = [UIColor blackColor];
 	self.label.shadowOffset = CGSizeMake(0, -1);
-	self.label.text = @"sonson_twit";
+	self.label.text = nil;
 	self.label.font = [UIFont boldSystemFontOfSize:16];
 	self.label.textAlignment = NSTextAlignmentCenter;
 	
 	self = [super initWithCustomView:self.label];
+	
+	self.target = self;
+	self.action = @selector(push:);
 	
 	return self;
 }
