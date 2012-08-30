@@ -48,11 +48,16 @@
     self.userName = userName;
 	self.delegate = delegate;
     self.manager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackgroundNotification:) name:UIApplicationDidEnterBackgroundNotification object:nil];
     return [super init];
 }
 
 - (BOOL)isAvailable {
 	return (self.manager.state == CBPeripheralManagerStatePoweredOn);
+}
+
+- (void)didEnterBackgroundNotification:(NSNotification*)notification {
+	[self stopAdvertize];
 }
 
 - (void)startAdvertize{

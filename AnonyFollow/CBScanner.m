@@ -45,8 +45,13 @@ NSString *kCBScannerInfoUserNameKey = @"kCBScannerInfoUserNameKey";
 		self.UUIDStr = UUIDStr;
 		self.delegate = delegate;
 		self.manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackgroundNotification:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 	}
     return self;
+}
+
+- (void)didEnterBackgroundNotification:(NSNotification*)notification {
+	[self stopScan];
 }
 
 - (BOOL)isAvailable {
