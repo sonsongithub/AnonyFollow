@@ -10,21 +10,13 @@
 
 #import "TimerLengthController.h"
 
-@interface SettingViewController ()
+@interface UIViewController(SettingViewController)
+
+- (IBAction)dismiss:(id)sender;
 
 @end
 
-@implementation NSBundle(SettingViewController)
-
-+ (id)infoValueFromMainBundleForKey:(NSString*)key {
-	if ([[[self mainBundle] localizedInfoDictionary] objectForKey:key])
-		return [[[self mainBundle] localizedInfoDictionary] objectForKey:key];
-	return [[[self mainBundle] infoDictionary] objectForKey:key];
-}
-
-@end
-
-@implementation SettingViewController
+@implementation UIViewController(SettingViewController)
 
 - (IBAction)dismiss:(id)sender {
 	if ([UIApplication sharedApplication].statusBarHidden) {
@@ -40,6 +32,23 @@
 		[self dismissViewControllerAnimated:YES completion:^(void){}];
 	}
 }
+@end
+
+@interface SettingViewController ()
+
+@end
+
+@implementation NSBundle(SettingViewController)
+
++ (id)infoValueFromMainBundleForKey:(NSString*)key {
+	if ([[[self mainBundle] localizedInfoDictionary] objectForKey:key])
+		return [[[self mainBundle] localizedInfoDictionary] objectForKey:key];
+	return [[[self mainBundle] infoDictionary] objectForKey:key];
+}
+
+@end
+
+@implementation SettingViewController
 
 - (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];

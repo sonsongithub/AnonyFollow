@@ -121,6 +121,7 @@
                         <outlet property="segmentedControl" destination="PRI-Cf-RyL" id="QI1-qQ-4wR"/>
                         <outlet property="twitterAccountButton" destination="V6L-hT-jh0" id="Qx3-Sy-K90"/>
                         <segue destination="m05-tk-sR0" kind="push" identifier="OpenTimeLine" id="Pgo-ye-ew1"/>
+                        <segue destination="hOG-Jn-GmV" kind="modal" identifier="DoSelectAccount" id="i3L-LL-U2o"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V64-tl-zsq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -206,7 +207,7 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="zJJ-N9-vId"/>
-                        <barButtonItem title="Follow" id="HGF-N2-MIu"/>
+                        <barButtonItem title="Follow" width="150" id="HGF-N2-MIu"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="9mh-N0-XXq"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="@sonson_twit's timeline" id="zpb-0P-P5R"/>
@@ -214,7 +215,54 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T0C-Uv-qBy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320" y="624"/>
+            <point key="canvasLocation" x="1320" y="330"/>
+        </scene>
+        <!--Table View Controller - Root View Controller-->
+        <scene sceneID="MaW-LZ-Nb2">
+            <objects>
+                <tableViewController id="6Oi-9U-Caj" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="o1D-hD-uF8">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="I2U-Pr-GXh">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="EtF-18-Kni">
+                        <barButtonItem key="rightBarButtonItem" title="Close" style="done" id="M3H-6a-B5x">
+                            <connections>
+                                <action selector="dismiss:" destination="6Oi-9U-Caj" id="3vI-Lc-aZv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QzU-yu-6r6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1803" y="988"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NDo-n6-tsp">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="hOG-Jn-GmV" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sAy-hb-XVw">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6Oi-9U-Caj" kind="relationship" relationship="rootViewController" id="8oT-pL-Fe4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iaa-9Q-DPD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1320" y="988"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="W0J-X7-07Q">
@@ -249,7 +297,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6A-6Z-Xv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320" y="-25"/>
+            <point key="canvasLocation" x="1320" y="-301"/>
         </scene>
         <!--Setting View Controller - Settings-->
         <scene sceneID="fXA-Oi-X9B">
@@ -440,7 +488,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QtC-9H-lk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1803" y="-25"/>
+            <point key="canvasLocation" x="1803" y="-301"/>
         </scene>
         <!--View Controller - Copyrights-->
         <scene sceneID="TFI-U0-22L">
@@ -455,7 +503,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jj4-ay-hWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2344" y="-686"/>
+            <point key="canvasLocation" x="2344" y="-970"/>
         </scene>
         <!--Timer Length View Controller - Timer length-->
         <scene sceneID="sGT-TS-bMy">
@@ -486,7 +534,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Uj-wJ-zhh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2344" y="624"/>
+            <point key="canvasLocation" x="2344" y="330"/>
         </scene>
         <!--View Controller - License-->
         <scene sceneID="MMB-0n-u5A">
@@ -528,7 +576,7 @@ See the License for the specific language governing permissions and limitations 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5KL-2Z-75t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2344" y="-25"/>
+            <point key="canvasLocation" x="2344" y="-301"/>
         </scene>
     </scenes>
     <resources>
@@ -572,7 +620,6 @@ See the License for the specific language governing permissions and limitations 
         <class className="SettingViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
             <relationships>
-                <relationship kind="action" name="dismiss:"/>
                 <relationship kind="outlet" name="applicationNameCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="timerCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="versionCell" candidateClass="UITableViewCell"/>
@@ -596,6 +643,12 @@ See the License for the specific language governing permissions and limitations 
         </class>
         <class className="TweetContentView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetContentView.h"/>
+        </class>
+        <class className="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismiss:"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

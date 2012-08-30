@@ -14,6 +14,4 @@
 @property (nonatomic, strong) IBOutlet UITableViewCell *versionCell;
 @property (nonatomic, strong) IBOutlet UITableViewCell *timerCell;
 
-- (IBAction)dismiss:(id)sender;
-
 @end

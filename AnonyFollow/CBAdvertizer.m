@@ -41,6 +41,7 @@
 }
 
 - (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	DNSLogMethod
 }
 

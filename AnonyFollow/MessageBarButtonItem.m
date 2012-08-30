@@ -61,7 +61,7 @@
 }
 
 - (void)setTwitterAccountUserName:(NSString*)string {
-	self.label.text = [NSString stringWithFormat:@"@%@", string];
+	self.label.text = [NSString stringWithFormat:@"%@", string];
 }
 
 @end
