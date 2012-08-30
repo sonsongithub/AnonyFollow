@@ -26,6 +26,10 @@
 
 @implementation MainListViewController
 
+- (void)didTouchMessageBarButtonItem:(MessageBarButtonItem*)item {
+	DNSLogMethod
+}
+
 #pragma mark - Instance method
 
 - (void)enableBroadcasting {
@@ -42,7 +46,7 @@
 				ACAccount *twitterAccount = [accountsArray objectAtIndex:0];
 
 				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					self.twitterAccountButton.label.text = twitterAccount.username;
+					[self.twitterAccountButton setTwitterAccountUserName:twitterAccount.username];
 					self.advertizer = [[CBAdvertizer alloc] initWithDelegate:self userName:twitterAccount.username];
 					self.scanner = [[CBScanner alloc] initWithDelegate:self serviceUUID:nil];
 				});
@@ -95,10 +99,9 @@
 {
     [super viewDidLoad];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-	
 	[[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(reloadData) name:SNReachablityDidChangeNotification object:nil];
-	
 	self.accounts = [NSMutableArray array];
+	self.twitterAccountButton.delegate = self;
 
 #if 0
 	NSArray *samples = [NSArray arrayWithObjects:

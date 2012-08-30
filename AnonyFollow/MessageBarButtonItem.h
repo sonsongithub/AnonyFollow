@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class MessageBarButtonItem;
+
+@interface NSObject(MessageBarButtonItem)
+- (void)didTouchMessageBarButtonItem:(MessageBarButtonItem*)item;
+@end
+
 @interface MessageBarButtonItem : UIBarButtonItem
 
 @property (nonatomic, strong) UILabel *label;
+@property (nonatomic, assign) id delegate;
+
+- (void)setTwitterAccountUserName:(NSString*)string;
 
 @end
