@@ -286,6 +286,12 @@
 
 - (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
 	NSString *username = [userInfo objectForKey:kCBScannerInfoUserNameKey];
+	
+	for (TwitterAccountInfo *existing in self.accounts) {
+		if ([existing.screenName isEqualToString:username])
+			return;
+	}
+	
 	TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 	info.screenName = username;
 	[self.accounts addObject:info];

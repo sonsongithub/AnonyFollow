@@ -16,7 +16,7 @@
 
 - (float)height {
 	DNSLog(@"%f", self.contentSize.height);
-	float height = self.contentSize.height + 17 + 5;
+	float height = self.contentSize.height + 31;
 	return height > 60 ? height : 60;
 }
 

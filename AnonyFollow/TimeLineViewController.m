@@ -70,7 +70,7 @@
 			
 			[self.tweets addObject:tweetaa];
 			
-			tweetaa.contentSize = [TwitterTweet sizeOfText:tweetaa.text withWidth:254 font:[UIFont systemFontOfSize:12]];
+			tweetaa.contentSize = [TwitterTweet sizeOfText:tweetaa.text withWidth:227 font:[UIFont systemFontOfSize:12]];
 			
 		}
 	}
