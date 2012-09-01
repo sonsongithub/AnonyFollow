@@ -121,7 +121,7 @@
                         <outlet property="segmentedControl" destination="PRI-Cf-RyL" id="QI1-qQ-4wR"/>
                         <outlet property="twitterAccountButton" destination="V6L-hT-jh0" id="Qx3-Sy-K90"/>
                         <segue destination="m05-tk-sR0" kind="push" identifier="OpenTimeLine" id="Pgo-ye-ew1"/>
-                        <segue destination="hOG-Jn-GmV" kind="modal" identifier="DoSelectAccount" id="i3L-LL-U2o"/>
+                        <segue destination="hOG-Jn-GmV" kind="modal" identifier="" id="i3L-LL-U2o"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V64-tl-zsq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -217,23 +217,55 @@
             </objects>
             <point key="canvasLocation" x="1320" y="330"/>
         </scene>
-        <!--Table View Controller - Select account-->
+        <!--Account Select View Controller - Select account-->
         <scene sceneID="MaW-LZ-Nb2">
             <objects>
-                <tableViewController id="6Oi-9U-Caj" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="o1D-hD-uF8">
+                <tableViewController id="6Oi-9U-Caj" customClass="AccountSelectViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="o1D-hD-uF8">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="I2U-Pr-GXh">
-                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="58" id="Xj2-c0-yda" customClass="AccountCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView translatesAutoresizingMaskIntoConstraints="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="none.png" id="Hg3-Iz-N4T"/>
+                                        <imageView translatesAutoresizingMaskIntoConstraints="NO" userInteractionEnabled="NO" contentMode="scaleToFill" id="lgb-6f-Byk">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="48" id="sUG-ak-Ete"/>
+                                                <constraint firstAttribute="width" constant="48" id="yGn-al-D9I"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="@sonson_twit" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="OgV-4m-F9w">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="181" id="Buy-aZ-l6G"/>
+                                                <constraint firstAttribute="height" constant="22" id="LPe-We-EGt"/>
+                                            </constraints>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.90000000000000002"/>
+                                <constraints>
+                                    <constraint firstItem="Hg3-Iz-N4T" firstAttribute="centerX" secondItem="lgb-6f-Byk" secondAttribute="centerX" type="default" id="AcF-5S-hDW"/>
+                                    <constraint firstItem="Hg3-Iz-N4T" firstAttribute="leading" secondItem="Xj2-c0-yda" secondAttribute="leading" constant="4" id="FB7-Zs-27a"/>
+                                    <constraint firstItem="OgV-4m-F9w" firstAttribute="top" secondItem="Xj2-c0-yda" secondAttribute="top" constant="17" id="Tyw-iP-Aze"/>
+                                    <constraint firstItem="OgV-4m-F9w" firstAttribute="leading" secondItem="lgb-6f-Byk" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="hFv-Ol-s8i"/>
+                                    <constraint firstItem="Hg3-Iz-N4T" firstAttribute="centerY" secondItem="lgb-6f-Byk" secondAttribute="centerY" type="default" id="pyR-gd-P1K"/>
+                                    <constraint firstItem="lgb-6f-Byk" firstAttribute="centerY" secondItem="Xj2-c0-yda" secondAttribute="centerY" type="default" id="u4G-Ze-J25"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="iconImageView" destination="lgb-6f-Byk" id="Z9X-ee-Ts6"/>
+                                    <outlet property="screenNameLabel" destination="OgV-4m-F9w" id="dVX-2x-H6d"/>
+                                    <outlet property="vacantImageView" destination="Hg3-Iz-N4T" id="S9P-Bh-Gbr"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -252,7 +284,7 @@
         <!--Navigation Controller-->
         <scene sceneID="NDo-n6-tsp">
             <objects>
-                <navigationController definesPresentationContext="YES" id="hOG-Jn-GmV" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SelectAccountNavigationController" definesPresentationContext="YES" id="hOG-Jn-GmV" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sAy-hb-XVw">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -584,6 +616,76 @@ See the License for the specific language governing permissions and limitations 
         <image name="none.png" width="50" height="50"/>
         <image name="setting.png" width="24" height="24"/>
     </resources>
+    <classes>
+        <class className="AccountCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="screenNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="AccountSelectViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountSelectViewController.h"/>
+        </class>
+        <class className="LockScreenView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LockScreenView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="MainListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="select:"/>
+                <relationship kind="action" name="trash:"/>
+                <relationship kind="outlet" name="lockScreenView" candidateClass="LockScreenView"/>
+                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="twitterAccountButton" candidateClass="MessageBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MessageBarButtonItem" superclassName="UIBarButtonItem">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MessageBarButtonItem.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SettingViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="applicationNameCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="timerCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="versionCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="TimeLineViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeLineViewController.h"/>
+        </class>
+        <class className="TimerLengthViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimerLengthViewController.h"/>
+        </class>
+        <class className="TweetCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tweetContentView" candidateClass="TweetContentView"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="TweetContentView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetContentView.h"/>
+        </class>
+        <class className="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismiss:"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

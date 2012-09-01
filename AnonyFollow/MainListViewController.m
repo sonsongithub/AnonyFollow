@@ -22,6 +22,8 @@
 #import "SNStatusBarView.h"
 #import "SNReachablityChecker.h"
 
+#import "AccountSelectViewController.h"
+
 #import <Accounts/Accounts.h>
 
 @interface ACAccountStore(MainListViewController)
@@ -77,8 +79,21 @@
 					self.scanner = nil;
 					[self.advertizer stopAdvertize];
 					self.advertizer = nil;
+					self.segmentedControl.selectedSegmentIndex = 0;
 					[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-					[self performSegueWithIdentifier:@"DoSelectAccount" sender:nil];
+					
+					UINavigationController *nv = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectAccountNavigationController"];
+					AccountSelectViewController *vc = (AccountSelectViewController*)nv.topViewController;
+					
+					NSMutableArray *nameList = [NSMutableArray array];
+					
+					NSArray *accountsArray = [accountStore accountsWithAccountType:[accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter]];
+					for (ACAccount *account in accountsArray) {
+						[nameList addObject:account.username];
+					}
+					vc.userNameList = nameList;
+					
+					[self presentViewController:nv animated:YES completion:^(void){}];
 				});
 			}
 			else {
@@ -178,35 +193,6 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(reloadData) name:SNReachablityDidChangeNotification object:nil];
 	self.accounts = [NSMutableArray array];
 	self.twitterAccountButton.delegate = self;
-
-	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-	
-	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-		if (error) {
-			NSLog(@"%@", [error localizedDescription]);
-		}
-		if (granted) {
-			NSString *twitterUserName = [accountStore twitterAvailableUserName];
-			if ([twitterUserName length]) {
-				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					[self.twitterAccountButton setTwitterAccountUserName:twitterUserName];
-				});
-			}
-			else {
-				DNSLog(@"No Twitter Account");
-				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"No account", nil)];
-				});
-			}
-		}
-		else {
-			DNSLog(@"accountStore accesss denied");
-			dispatch_async(dispatch_get_main_queue(), ^(void) {
-				[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"Not authorized", nil)];
-			});
-		}
-	}];
 #if 0
 	NSArray *samples = [NSArray arrayWithObjects:
 						@"sonson_twit",
@@ -257,8 +243,34 @@
 		self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
 	}];
 	
-//	[[[UIApplication sharedApplication] keyWindow] addSubview:self.lockScreenView];
-//	self.lockScreenView.frame = self.navigationController.view.frame;
+	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+	
+	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+		if (error) {
+			NSLog(@"%@", [error localizedDescription]);
+		}
+		if (granted) {
+			NSString *twitterUserName = [accountStore twitterAvailableUserName];
+			if ([twitterUserName length]) {
+				dispatch_async(dispatch_get_main_queue(), ^(void) {
+					[self.twitterAccountButton setTwitterAccountUserName:twitterUserName];
+				});
+			}
+			else {
+				DNSLog(@"No Twitter Account");
+				dispatch_async(dispatch_get_main_queue(), ^(void) {
+					[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"No account", nil)];
+				});
+			}
+		}
+		else {
+			DNSLog(@"accountStore accesss denied");
+			dispatch_async(dispatch_get_main_queue(), ^(void) {
+				[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"Not authorized", nil)];
+			});
+		}
+	}];
 }
 
 - (void)didReceiveMemoryWarning {
