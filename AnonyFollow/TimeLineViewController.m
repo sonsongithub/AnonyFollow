@@ -16,6 +16,8 @@
 #import "ACAccountStore+AnonyFollow.h"
 #import <Social/Social.h>
 
+#import "LoadingView.h"
+
 #import "UserInfoCell.h"
 
 @interface TimeLineViewController ()
@@ -23,15 +25,6 @@
 @end
 
 @implementation TimeLineViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (IBAction)follow:(id)sender {
 	[self followOnTwitter:self.accountInfo.screenName];
@@ -48,8 +41,15 @@
 	[[DownloadQueue sharedInstance] clearQueue];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[self.view bringSubviewToFront:self.loadingView];
+	self.title = [NSString stringWithFormat:NSLocalizedString(@"@%@", nil), self.accountInfo.screenName];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
+	
 	
 	
 	DNSLog(@"%@", self.accountInfo);
@@ -74,7 +74,9 @@
 		NSArray *info = [NSJSONSerialization JSONObjectWithData:task.data options:0 error:&error];
 		DNSLog(@"%@", [error localizedDescription]);
 		
+		NSLocale *locale = [NSLocale currentLocale];
 		NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+		[formatter setLocale:locale];
 		[formatter setDateFormat:@"ccc MMM dd HH:mm:ss z yyyy"];
 		
 		if ([info isKindOfClass:[info class]]) {
@@ -103,10 +105,19 @@
 		
 		[self.tableView reloadData];
 	}
+	
+	dispatch_async(dispatch_get_main_queue(), ^(void) {
+		if ([[DownloadQueue sharedInstance].queue count] == 0)
+			[self.view bringSubviewToFront:self.tableView];
+	});
 }
 
 - (void)didFailedDownloadTask:(DownloadTask*)task {
 	DNSLogMethod
+	dispatch_async(dispatch_get_main_queue(), ^(void) {
+		if ([[DownloadQueue sharedInstance].queue count] == 0)
+			[self.view bringSubviewToFront:self.tableView];
+	});
 }
 
 - (void)didReceiveMemoryWarning {

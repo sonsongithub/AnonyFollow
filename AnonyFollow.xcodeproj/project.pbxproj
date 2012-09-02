@@ -33,6 +33,8 @@
 		145570A215EBC3D1003DD49F /* MessageBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 145570A115EBC3D1003DD49F /* MessageBarButtonItem.m */; };
 		147E30B615F3696A0044D04F /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 147E30B515F3696A0044D04F /* UserInfoCell.m */; };
 		14B5F05415F370FF00630C06 /* BinarySearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B5F05315F370FF00630C06 /* BinarySearcher.m */; };
+		14B5F05715F383D000630C06 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B5F05515F383D000630C06 /* LoadingView.xib */; };
+		14B5F05A15F3840E00630C06 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B5F05915F3840E00630C06 /* LoadingView.m */; };
 		14BE1B6D15EA282700F7547E /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6415EA282700F7547E /* new.png */; };
 		14BE1B6E15EA282700F7547E /* none.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6515EA282700F7547E /* none.png */; };
 		14BE1B6F15EA282700F7547E /* PurchasePlusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6615EA282700F7547E /* PurchasePlusButton.png */; };
@@ -103,6 +105,9 @@
 		147E30B515F3696A0044D04F /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
 		14B5F05215F370FF00630C06 /* BinarySearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinarySearcher.h; sourceTree = "<group>"; };
 		14B5F05315F370FF00630C06 /* BinarySearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinarySearcher.m; sourceTree = "<group>"; };
+		14B5F05615F383D000630C06 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LoadingView.xib; sourceTree = "<group>"; };
+		14B5F05815F3840D00630C06 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		14B5F05915F3840E00630C06 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		14BE1B6415EA282700F7547E /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
 		14BE1B6515EA282700F7547E /* none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = none.png; sourceTree = "<group>"; };
 		14BE1B6615EA282700F7547E /* PurchasePlusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurchasePlusButton.png; sourceTree = "<group>"; };
@@ -236,6 +241,8 @@
 				142770C115EE826B0062271A /* SNReachablityChecker.m */,
 				144D72A115F2E93A00399A36 /* ACAccountStore+AnonyFollow.h */,
 				144D72A215F2E93A00399A36 /* ACAccountStore+AnonyFollow.m */,
+				14B5F05815F3840D00630C06 /* LoadingView.h */,
+				14B5F05915F3840E00630C06 /* LoadingView.m */,
 				14BE1B6215EA282700F7547E /* Resources */,
 				02B9542315E6733E005026B1 /* CBScanner.h */,
 				02B9542415E6733E005026B1 /* CBScanner.m */,
@@ -259,6 +266,7 @@
 		14BE1B6215EA282700F7547E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				14B5F05515F383D000630C06 /* LoadingView.xib */,
 				1455708F15EBC00D003DD49F /* LockScreenView.xib */,
 				145194A715EA2BE800E853CA /* MainStoryboard_iPad.storyboard.string */,
 				145194AA15EA2BE800E853CA /* MainStoryboard_iPhone.storyboard.string */,
@@ -360,6 +368,7 @@
 				145194A315EA2BCC00E853CA /* MainStoryboard_iPad.storyboard in Resources */,
 				145194A415EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard in Resources */,
 				1455709115EBC00D003DD49F /* LockScreenView.xib in Resources */,
+				14B5F05715F383D000630C06 /* LoadingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +435,7 @@
 				144D72A315F2E93A00399A36 /* ACAccountStore+AnonyFollow.m in Sources */,
 				147E30B615F3696A0044D04F /* UserInfoCell.m in Sources */,
 				14B5F05415F370FF00630C06 /* BinarySearcher.m in Sources */,
+				14B5F05A15F3840E00630C06 /* LoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +491,14 @@
 				1455709015EBC00D003DD49F /* en */,
 			);
 			name = LockScreenView.xib;
+			sourceTree = "<group>";
+		};
+		14B5F05515F383D000630C06 /* LoadingView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14B5F05615F383D000630C06 /* en */,
+			);
+			name = LoadingView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

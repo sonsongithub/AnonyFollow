@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @class TwitterAccountInfo;
+@class LoadingView;
 
-@interface TimeLineViewController : UITableViewController
+@interface TimeLineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tweets;
 @property (nonatomic, strong) TwitterAccountInfo *accountInfo;
+@property (nonatomic, strong) IBOutlet LoadingView *loadingView;
 
 - (IBAction)follow:(id)sender;
 
