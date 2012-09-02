@@ -24,6 +24,7 @@
 		self.db_key = key;
 		self.db_obj = obj;
         [self.db_key sortUsingComparator:[self compareNSNumber]];
+
 	}
     return self;
 }
