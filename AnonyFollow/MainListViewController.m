@@ -23,6 +23,7 @@
 #import "SNReachablityChecker.h"
 
 #import <Accounts/Accounts.h>
+#import "BinarySearcher.h"
 
 @interface ACAccountStore(MainListViewController)
 
@@ -207,6 +208,7 @@
 			});
 		}
 	}];
+    [self binarySearchTest];
 #if 0
 	NSArray *samples = [NSArray arrayWithObjects:
 						@"sonson_twit",
@@ -235,6 +237,39 @@
 #endif
 }
 
+- (void)incrementBadge{
+    UIApplication* app = [UIApplication sharedApplication];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = app.applicationIconBadgeNumber+1;
+}
+- (void)resetBadge{
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+}
+-(void)binarySearchTest{
+    // create twitter following DB
+    NSUInteger amount = 10000;
+    NSMutableArray *followingDB = [NSMutableArray arrayWithCapacity:amount];
+    
+    for (NSUInteger i = 0; i < amount-2; ++i)
+        [followingDB addObject:[NSNumber numberWithLongLong:i*2000000]];
+    
+    [followingDB addObject:[NSNumber numberWithLongLong:75743284]];//yusukeSekikawa
+    [followingDB addObject:[NSNumber numberWithLongLong:9677332]]; //sonson_twit
+    
+    for(NSNumber *hoge in followingDB)
+        ;//NSLog(@"hoge %lld",[hoge longLongValue]);
+    BinarySearcher *testSearcher =[[BinarySearcher alloc] initWithDB:followingDB andObj:followingDB];
+    for(NSNumber *hoge in followingDB)
+        ;//NSLog(@"hoge %lld",[hoge longLongValue]);
+    // Do binary Search!
+    if([testSearcher isKeyExist:[NSNumber numberWithLongLong:75743284]]){
+        NSLog(@"Already following");
+    }else{
+        NSLog(@"Not following");
+    }
+}
+
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.destinationViewController isKindOfClass:[TimeLineViewController class]]) {
 		TimeLineViewController *vc = (TimeLineViewController*)segue.destinationViewController;
@@ -252,6 +287,7 @@
 	[super viewDidAppear:animated];
 	
 	[self loadImagesForOnscreenRows];
+    [self resetBadge];
 	
 	[UIView animateWithDuration:0.4 animations:^(void){
 		self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
@@ -280,6 +316,7 @@
 	[self.tableView reloadData];
 	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
 	[del.barView pushTemporaryMessage:[NSString stringWithFormat:@"Found %@", username]];
+    [self incrementBadge];
 }
 
 - (void)scannerDidChangeStatus:(CBScanner*)scanner {

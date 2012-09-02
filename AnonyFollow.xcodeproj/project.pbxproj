@@ -11,14 +11,13 @@
 		0201DBF315E672AC00A212DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0201DBF215E672AC00A212DC /* Foundation.framework */; };
 		0201DBF515E672AC00A212DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0201DBF415E672AC00A212DC /* CoreGraphics.framework */; };
 		0201DBFD15E672AC00A212DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201DBFC15E672AC00A212DC /* main.m */; };
-		0201DC0115E672AC00A212DC /* AnonyFollowAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201DC0015E672AC00A212DC /* AnonyFollowAppDelegate.m */; };
-		0201DC0A15E672AC00A212DC /* AnonyFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201DC0915E672AC00A212DC /* AnonyFollowViewController.m */; };
 		020D225415E6886300A4CDD3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020D225315E6886300A4CDD3 /* AudioToolbox.framework */; };
 		02B9542515E6733E005026B1 /* CBScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B9542415E6733E005026B1 /* CBScanner.m */; };
 		02B9542915E67471005026B1 /* CBAdvertizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B9542815E67471005026B1 /* CBAdvertizer.m */; };
 		02B9542B15E67A00005026B1 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542A15E67A00005026B1 /* CoreBluetooth.framework */; };
 		02B9542D15E67A06005026B1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542C15E67A06005026B1 /* Social.framework */; };
 		02B9542F15E67A18005026B1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542E15E67A18005026B1 /* Accounts.framework */; };
+		02E4792115F2F6CE00E36157 /* BinarySearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E4792015F2F6CE00E36157 /* BinarySearcher.m */; };
 		142770C215EE826B0062271A /* SNReachablityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 142770C115EE826B0062271A /* SNReachablityChecker.m */; };
 		142770C515EE82DD0062271A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142770C415EE82DD0062271A /* SystemConfiguration.framework */; };
 		145194A215EA2BCC00E853CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1451949C15EA2BCC00E853CA /* InfoPlist.strings */; };
@@ -61,10 +60,6 @@
 		0201DBF815E672AC00A212DC /* AnonyFollow-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AnonyFollow-Info.plist"; sourceTree = "<group>"; };
 		0201DBFC15E672AC00A212DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0201DBFE15E672AC00A212DC /* AnonyFollow-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AnonyFollow-Prefix.pch"; sourceTree = "<group>"; };
-		0201DBFF15E672AC00A212DC /* AnonyFollowAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnonyFollowAppDelegate.h; sourceTree = "<group>"; };
-		0201DC0015E672AC00A212DC /* AnonyFollowAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnonyFollowAppDelegate.m; sourceTree = "<group>"; };
-		0201DC0815E672AC00A212DC /* AnonyFollowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnonyFollowViewController.h; sourceTree = "<group>"; };
-		0201DC0915E672AC00A212DC /* AnonyFollowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnonyFollowViewController.m; sourceTree = "<group>"; };
 		020D225315E6886300A4CDD3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		02B9542315E6733E005026B1 /* CBScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBScanner.h; sourceTree = "<group>"; };
 		02B9542415E6733E005026B1 /* CBScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBScanner.m; sourceTree = "<group>"; };
@@ -73,6 +68,8 @@
 		02B9542A15E67A00005026B1 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		02B9542C15E67A06005026B1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		02B9542E15E67A18005026B1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		02E4791F15F2F6CE00E36157 /* BinarySearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinarySearcher.h; sourceTree = "<group>"; };
+		02E4792015F2F6CE00E36157 /* BinarySearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinarySearcher.m; sourceTree = "<group>"; };
 		142770C015EE826B0062271A /* SNReachablityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNReachablityChecker.h; sourceTree = "<group>"; };
 		142770C115EE826B0062271A /* SNReachablityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNReachablityChecker.m; sourceTree = "<group>"; };
 		142770C415EE82DD0062271A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -223,14 +220,12 @@
 				142770C015EE826B0062271A /* SNReachablityChecker.h */,
 				142770C115EE826B0062271A /* SNReachablityChecker.m */,
 				14BE1B6215EA282700F7547E /* Resources */,
-				0201DBFF15E672AC00A212DC /* AnonyFollowAppDelegate.h */,
-				0201DC0015E672AC00A212DC /* AnonyFollowAppDelegate.m */,
 				02B9542315E6733E005026B1 /* CBScanner.h */,
 				02B9542415E6733E005026B1 /* CBScanner.m */,
 				02B9542715E67471005026B1 /* CBAdvertizer.h */,
 				02B9542815E67471005026B1 /* CBAdvertizer.m */,
-				0201DC0815E672AC00A212DC /* AnonyFollowViewController.h */,
-				0201DC0915E672AC00A212DC /* AnonyFollowViewController.m */,
+				02E4791F15F2F6CE00E36157 /* BinarySearcher.h */,
+				02E4792015F2F6CE00E36157 /* BinarySearcher.m */,
 				0201DBF715E672AC00A212DC /* Supporting Files */,
 			);
 			path = AnonyFollow;
@@ -392,8 +387,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0201DBFD15E672AC00A212DC /* main.m in Sources */,
-				0201DC0115E672AC00A212DC /* AnonyFollowAppDelegate.m in Sources */,
-				0201DC0A15E672AC00A212DC /* AnonyFollowViewController.m in Sources */,
 				02B9542515E6733E005026B1 /* CBScanner.m in Sources */,
 				02B9542915E67471005026B1 /* CBAdvertizer.m in Sources */,
 				14BE1B8B15EA289300F7547E /* AccountCell.m in Sources */,
@@ -414,6 +407,7 @@
 				1455709A15EBC0C7003DD49F /* LockScreenView.m in Sources */,
 				145570A215EBC3D1003DD49F /* MessageBarButtonItem.m in Sources */,
 				142770C215EE826B0062271A /* SNReachablityChecker.m in Sources */,
+				02E4792115F2F6CE00E36157 /* BinarySearcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
