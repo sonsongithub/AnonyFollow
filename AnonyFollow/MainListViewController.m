@@ -209,6 +209,36 @@
     }];
 }
 
+- (void)checkFollowing:(NSString*)screenNameA him:(NSString*)screenNameB {
+	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+        if(granted) {
+			ACAccount *account = [accountStore twitterCurrentAccount];
+			
+			if (account == nil)
+				return;
+			
+			NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
+			
+			SLRequest *postRequest;
+			[tempDict setValue:screenNameA forKey:@"screen_name_a"];
+			[tempDict setValue:screenNameB forKey:@"screen_name_b"];
+			postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodPOST URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/exists.json"] parameters:tempDict];
+			
+			[postRequest setAccount:account];
+			[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+				if (error == nil) {
+					NSError *jsonError = nil;
+					NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
+					DNSLog(@"%@", result);
+				}
+			}];
+        }
+    }];
+}
+
 - (IBAction)follow:(id)sender {
 	DNSLogMethod
 	UIButton *button = sender;
@@ -327,8 +357,6 @@
     }
 }
 
-
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.destinationViewController isKindOfClass:[TimeLineViewController class]]) {
 		TimeLineViewController *vc = (TimeLineViewController*)segue.destinationViewController;
@@ -396,18 +424,60 @@
 - (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
 	NSString *username = [userInfo objectForKey:kCBScannerInfoUserNameKey];
 	
-//	for (TwitterAccountInfo *existing in self.accounts) {
-//		if ([existing.screenName isEqualToString:username])
-//			return;
-//	}
+	for (TwitterAccountInfo *existing in self.accounts) {
+		if ([existing.screenName isEqualToString:username])
+			return;
+	}
 	
-	TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
-	info.screenName = username;
-	[self.accounts addObject:info];
-	[self.tableView reloadData];
-	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-	[del.barView pushTemporaryMessage:[NSString stringWithFormat:@"Found %@", username]];
-    [self incrementBadge];
+//	TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
+//	info.screenName = username;
+//	[self.accounts addObject:info];
+//	[self.tableView reloadData];
+//	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+//	[del.barView pushTemporaryMessage:[NSString stringWithFormat:@"Found %@", username]];
+//    [self incrementBadge];
+	
+	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+        if(granted) {
+			ACAccount *account = [accountStore twitterCurrentAccount];
+			
+			if (account == nil)
+				return;
+			
+			NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
+			
+			SLRequest *postRequest;
+			[tempDict setValue:account.username forKey:@"screen_name_a"];
+			[tempDict setValue:username forKey:@"screen_name_b"];
+			postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/exists.json"] parameters:tempDict];
+			
+			[postRequest setAccount:account];
+			[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+				if (error == nil) {
+					NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+					NSLog(@"%@", result);
+					if ([result isEqualToString:@"true"]) {
+					}
+					else if ([result isEqualToString:@"false"]) {
+						dispatch_async(dispatch_get_main_queue(), ^(void){
+							TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
+							info.screenName = username;
+							[self.accounts addObject:info];
+							[self.tableView reloadData];
+							AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+							[del.barView pushTemporaryMessage:[NSString stringWithFormat:@"Found %@", username]];
+						});
+					}
+					else {
+						// error
+					}
+				}
+			}];
+        }
+    }];
 }
 
 - (void)scannerDidChangeStatus:(CBScanner*)scanner {

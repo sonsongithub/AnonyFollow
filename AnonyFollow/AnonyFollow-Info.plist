@@ -9,9 +9,9 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGithubRevision</key>
-	<string>f632cc85224c643aec358bf1261a195d1f05b54e</string>
+	<string>a38588b2e6f66000548367c2cc681fd811f3fe72</string>
 	<key>CFBundleGithubShortRevision</key>
-	<string>f632cc8</string>
+	<string>a38588b</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.sonson.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -25,7 +25,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>825</string>
+	<string>832</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIBackgroundModes</key>

@@ -68,6 +68,8 @@
 	}
 }
 
+#pragma mark - DownloadTask
+
 - (void)didDownloadTask:(DownloadTask*)task {
 	if ([task.identifier isEqualToString:@"taskForUserTimeline"]) {
 		NSError *error = nil;

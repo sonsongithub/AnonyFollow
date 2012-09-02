@@ -10,6 +10,8 @@
 
 #import "TimerLengthController.h"
 
+#import "FriendsDownloader.h"
+
 @interface UIViewController(SettingViewController)
 
 - (IBAction)dismiss:(id)sender;
@@ -68,6 +70,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	self.downloader = [[FriendsDownloader alloc] init];
+	[self.downloader startWithScreenName:@"sonson_twit" completion:^(BOOL success) {
+		DNSLog(@"hoge");
+	}];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

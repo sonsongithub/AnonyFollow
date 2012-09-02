@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class FriendsDownloader;
+
 @interface SettingViewController : UITableViewController
 
 @property (nonatomic, strong) IBOutlet UITableViewCell *applicationNameCell;
 @property (nonatomic, strong) IBOutlet UITableViewCell *versionCell;
 @property (nonatomic, strong) IBOutlet UITableViewCell *timerCell;
+
+@property (nonatomic, strong) FriendsDownloader *downloader;
 
 @end
