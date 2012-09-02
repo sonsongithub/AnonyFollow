@@ -7,7 +7,7 @@
 //
 
 #import "CBScanner.h"
-
+// #define CBScannerAllowDuplicatesKey
 NSString *kCBScannerInfoUserNameKey = @"kCBScannerInfoUserNameKey";
 
 @implementation CBScanner
@@ -59,8 +59,12 @@ NSString *kCBScannerInfoUserNameKey = @"kCBScannerInfoUserNameKey";
 }
 
 - (void)startScan {
+    NSDictionary *options=nil;
+#ifdef CBScannerAllowDuplicatesKey
+    options=[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:CBCentralManagerScanOptionAllowDuplicatesKey];
+#endif
     if ([self isAvailable]) {
-		[self.manager scanForPeripheralsWithServices:nil options:nil];
+		[self.manager scanForPeripheralsWithServices:nil options:options];
     }
 	else{
     }
