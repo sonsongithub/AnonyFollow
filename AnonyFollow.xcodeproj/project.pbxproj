@@ -11,8 +11,6 @@
 		0201DBF315E672AC00A212DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0201DBF215E672AC00A212DC /* Foundation.framework */; };
 		0201DBF515E672AC00A212DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0201DBF415E672AC00A212DC /* CoreGraphics.framework */; };
 		0201DBFD15E672AC00A212DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201DBFC15E672AC00A212DC /* main.m */; };
-		0201DC0115E672AC00A212DC /* AnonyFollowAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201DC0015E672AC00A212DC /* AnonyFollowAppDelegate.m */; };
-		0201DC0A15E672AC00A212DC /* AnonyFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201DC0915E672AC00A212DC /* AnonyFollowViewController.m */; };
 		020D225415E6886300A4CDD3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020D225315E6886300A4CDD3 /* AudioToolbox.framework */; };
 		02B9542515E6733E005026B1 /* CBScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B9542415E6733E005026B1 /* CBScanner.m */; };
 		02B9542915E67471005026B1 /* CBAdvertizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B9542815E67471005026B1 /* CBAdvertizer.m */; };
@@ -22,7 +20,6 @@
 		142770C215EE826B0062271A /* SNReachablityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 142770C115EE826B0062271A /* SNReachablityChecker.m */; };
 		142770C515EE82DD0062271A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142770C415EE82DD0062271A /* SystemConfiguration.framework */; };
 		144D729715F1F18F00399A36 /* AccountSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144D729615F1F18F00399A36 /* AccountSelectViewController.m */; };
-		144D72A015F264E100399A36 /* hogeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144D729F15F264E100399A36 /* hogeViewController.m */; };
 		144D72A315F2E93A00399A36 /* ACAccountStore+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 144D72A215F2E93A00399A36 /* ACAccountStore+AnonyFollow.m */; };
 		145194A215EA2BCC00E853CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1451949C15EA2BCC00E853CA /* InfoPlist.strings */; };
 		145194A315EA2BCC00E853CA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1451949E15EA2BCC00E853CA /* MainStoryboard_iPad.storyboard */; };
@@ -35,6 +32,7 @@
 		1455709A15EBC0C7003DD49F /* LockScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1455709915EBC0C7003DD49F /* LockScreenView.m */; };
 		145570A215EBC3D1003DD49F /* MessageBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 145570A115EBC3D1003DD49F /* MessageBarButtonItem.m */; };
 		147E30B615F3696A0044D04F /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 147E30B515F3696A0044D04F /* UserInfoCell.m */; };
+		14B5F05415F370FF00630C06 /* BinarySearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B5F05315F370FF00630C06 /* BinarySearcher.m */; };
 		14BE1B6D15EA282700F7547E /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6415EA282700F7547E /* new.png */; };
 		14BE1B6E15EA282700F7547E /* none.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6515EA282700F7547E /* none.png */; };
 		14BE1B6F15EA282700F7547E /* PurchasePlusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6615EA282700F7547E /* PurchasePlusButton.png */; };
@@ -65,10 +63,6 @@
 		0201DBF815E672AC00A212DC /* AnonyFollow-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AnonyFollow-Info.plist"; sourceTree = "<group>"; };
 		0201DBFC15E672AC00A212DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0201DBFE15E672AC00A212DC /* AnonyFollow-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AnonyFollow-Prefix.pch"; sourceTree = "<group>"; };
-		0201DBFF15E672AC00A212DC /* AnonyFollowAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnonyFollowAppDelegate.h; sourceTree = "<group>"; };
-		0201DC0015E672AC00A212DC /* AnonyFollowAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnonyFollowAppDelegate.m; sourceTree = "<group>"; };
-		0201DC0815E672AC00A212DC /* AnonyFollowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnonyFollowViewController.h; sourceTree = "<group>"; };
-		0201DC0915E672AC00A212DC /* AnonyFollowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnonyFollowViewController.m; sourceTree = "<group>"; };
 		020D225315E6886300A4CDD3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		02B9542315E6733E005026B1 /* CBScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBScanner.h; sourceTree = "<group>"; };
 		02B9542415E6733E005026B1 /* CBScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBScanner.m; sourceTree = "<group>"; };
@@ -82,8 +76,6 @@
 		142770C415EE82DD0062271A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		144D729515F1F18F00399A36 /* AccountSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSelectViewController.h; sourceTree = "<group>"; };
 		144D729615F1F18F00399A36 /* AccountSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSelectViewController.m; sourceTree = "<group>"; };
-		144D729E15F264E100399A36 /* hogeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hogeViewController.h; sourceTree = "<group>"; };
-		144D729F15F264E100399A36 /* hogeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hogeViewController.m; sourceTree = "<group>"; };
 		144D72A115F2E93A00399A36 /* ACAccountStore+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ACAccountStore+AnonyFollow.h"; sourceTree = "<group>"; };
 		144D72A215F2E93A00399A36 /* ACAccountStore+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ACAccountStore+AnonyFollow.m"; sourceTree = "<group>"; };
 		1451949D15EA2BCC00E853CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -109,6 +101,8 @@
 		145570A115EBC3D1003DD49F /* MessageBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBarButtonItem.m; sourceTree = "<group>"; };
 		147E30B415F3696A0044D04F /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
 		147E30B515F3696A0044D04F /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
+		14B5F05215F370FF00630C06 /* BinarySearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinarySearcher.h; sourceTree = "<group>"; };
+		14B5F05315F370FF00630C06 /* BinarySearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinarySearcher.m; sourceTree = "<group>"; };
 		14BE1B6415EA282700F7547E /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
 		14BE1B6515EA282700F7547E /* none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = none.png; sourceTree = "<group>"; };
 		14BE1B6615EA282700F7547E /* PurchasePlusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurchasePlusButton.png; sourceTree = "<group>"; };
@@ -198,6 +192,8 @@
 		0201DBF615E672AC00A212DC /* AnonyFollow */ = {
 			isa = PBXGroup;
 			children = (
+				14B5F05215F370FF00630C06 /* BinarySearcher.h */,
+				14B5F05315F370FF00630C06 /* BinarySearcher.m */,
 				145194C715EA772100E853CA /* NSData+MD5.h */,
 				145194C815EA772100E853CA /* NSData+MD5.m */,
 				145194B915EA51CB00E853CA /* DownloadQueue.h */,
@@ -241,17 +237,11 @@
 				144D72A115F2E93A00399A36 /* ACAccountStore+AnonyFollow.h */,
 				144D72A215F2E93A00399A36 /* ACAccountStore+AnonyFollow.m */,
 				14BE1B6215EA282700F7547E /* Resources */,
-				0201DBFF15E672AC00A212DC /* AnonyFollowAppDelegate.h */,
-				0201DC0015E672AC00A212DC /* AnonyFollowAppDelegate.m */,
 				02B9542315E6733E005026B1 /* CBScanner.h */,
 				02B9542415E6733E005026B1 /* CBScanner.m */,
 				02B9542715E67471005026B1 /* CBAdvertizer.h */,
 				02B9542815E67471005026B1 /* CBAdvertizer.m */,
-				0201DC0815E672AC00A212DC /* AnonyFollowViewController.h */,
-				0201DC0915E672AC00A212DC /* AnonyFollowViewController.m */,
 				0201DBF715E672AC00A212DC /* Supporting Files */,
-				144D729E15F264E100399A36 /* hogeViewController.h */,
-				144D729F15F264E100399A36 /* hogeViewController.m */,
 			);
 			path = AnonyFollow;
 			sourceTree = "<group>";
@@ -412,8 +402,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0201DBFD15E672AC00A212DC /* main.m in Sources */,
-				0201DC0115E672AC00A212DC /* AnonyFollowAppDelegate.m in Sources */,
-				0201DC0A15E672AC00A212DC /* AnonyFollowViewController.m in Sources */,
 				02B9542515E6733E005026B1 /* CBScanner.m in Sources */,
 				02B9542915E67471005026B1 /* CBAdvertizer.m in Sources */,
 				14BE1B8B15EA289300F7547E /* AccountCell.m in Sources */,
@@ -435,9 +423,9 @@
 				145570A215EBC3D1003DD49F /* MessageBarButtonItem.m in Sources */,
 				142770C215EE826B0062271A /* SNReachablityChecker.m in Sources */,
 				144D729715F1F18F00399A36 /* AccountSelectViewController.m in Sources */,
-				144D72A015F264E100399A36 /* hogeViewController.m in Sources */,
 				144D72A315F2E93A00399A36 /* ACAccountStore+AnonyFollow.m in Sources */,
 				147E30B615F3696A0044D04F /* UserInfoCell.m in Sources */,
+				14B5F05415F370FF00630C06 /* BinarySearcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

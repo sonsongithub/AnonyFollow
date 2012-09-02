@@ -24,6 +24,9 @@
 
 #import "AccountSelectViewController.h"
 
+#import <Accounts/Accounts.h>
+#import "BinarySearcher.h"
+
 #import "ACAccountStore+AnonyFollow.h"
 
 #import <Accounts/Accounts.h>
@@ -235,6 +238,36 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFollowUser:) name:@"didFollowUser" object:nil];
 	self.accounts = [NSMutableArray array];
 	self.twitterAccountButton.delegate = self;
+
+	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+	
+	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+		if (error) {
+			NSLog(@"%@", [error localizedDescription]);
+		}
+		if (granted) {
+			NSString *twitterUserName = [accountStore twitterAvailableUserName];
+			if ([twitterUserName length]) {
+				dispatch_async(dispatch_get_main_queue(), ^(void) {
+					[self.twitterAccountButton setTwitterAccountUserName:twitterUserName];
+				});
+			}
+			else {
+				DNSLog(@"No Twitter Account");
+				dispatch_async(dispatch_get_main_queue(), ^(void) {
+					[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"No account", nil)];
+				});
+			}
+		}
+		else {
+			DNSLog(@"accountStore accesss denied");
+			dispatch_async(dispatch_get_main_queue(), ^(void) {
+				[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"Not authorized", nil)];
+			});
+		}
+	}];
+    [self binarySearchTest];
 #if 0
 	NSArray *samples = [NSArray arrayWithObjects:
 						@"sonson_twit",
@@ -263,6 +296,39 @@
 #endif
 }
 
+- (void)incrementBadge{
+    UIApplication* app = [UIApplication sharedApplication];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = app.applicationIconBadgeNumber+1;
+}
+- (void)resetBadge{
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+}
+-(void)binarySearchTest{
+    // create twitter following DB
+    NSUInteger amount = 10000;
+    NSMutableArray *followingDB = [NSMutableArray arrayWithCapacity:amount];
+    
+    for (NSUInteger i = 0; i < amount-2; ++i)
+        [followingDB addObject:[NSNumber numberWithLongLong:i*2000000]];
+    
+    [followingDB addObject:[NSNumber numberWithLongLong:75743284]];//yusukeSekikawa
+    [followingDB addObject:[NSNumber numberWithLongLong:9677332]]; //sonson_twit
+    
+    for(NSNumber *hoge in followingDB)
+        ;//NSLog(@"hoge %lld",[hoge longLongValue]);
+    BinarySearcher *testSearcher =[[BinarySearcher alloc] initWithDB:followingDB andObj:followingDB];
+    for(NSNumber *hoge in followingDB)
+        ;//NSLog(@"hoge %lld",[hoge longLongValue]);
+    // Do binary Search!
+    if([testSearcher isKeyExist:[NSNumber numberWithLongLong:75743284]]){
+        NSLog(@"Already following");
+    }else{
+        NSLog(@"Not following");
+    }
+}
+
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.destinationViewController isKindOfClass:[TimeLineViewController class]]) {
 		TimeLineViewController *vc = (TimeLineViewController*)segue.destinationViewController;
@@ -280,6 +346,7 @@
 	[super viewDidAppear:animated];
 	
 	[self loadImagesForOnscreenRows];
+    [self resetBadge];
 	
 	[UIView animateWithDuration:0.4 animations:^(void){
 		self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
@@ -340,6 +407,7 @@
 	[self.tableView reloadData];
 	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
 	[del.barView pushTemporaryMessage:[NSString stringWithFormat:@"Found %@", username]];
+    [self incrementBadge];
 }
 
 - (void)scannerDidChangeStatus:(CBScanner*)scanner {
