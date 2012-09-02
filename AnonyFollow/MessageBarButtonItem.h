@@ -16,6 +16,8 @@
 
 @interface MessageBarButtonItem : UIBarButtonItem
 
+@property (nonatomic, strong) UIView *back;
+
 @property (nonatomic, strong) UILabel *label;
 @property (nonatomic, assign) id delegate;
 

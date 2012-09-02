@@ -8,7 +8,7 @@
         <scene sceneID="vAU-Ss-OUu">
             <objects>
                 <tableViewController autoresizesArchivedViewToFullSize="NO" id="B8J-gi-8rA" customClass="MainListViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="86" sectionHeaderHeight="22" sectionFooterHeight="22" id="7Zd-n0-L3c">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="58" sectionHeaderHeight="22" sectionFooterHeight="22" id="7Zd-n0-L3c">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,6 +57,9 @@
                                             <state key="highlighted">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="follow:" destination="B8J-gi-8rA" eventType="touchUpInside" id="6aX-aJ-v4X"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -211,7 +214,11 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="zJJ-N9-vId"/>
-                        <barButtonItem title="Follow" width="150" id="HGF-N2-MIu"/>
+                        <barButtonItem title="Follow" width="150" id="HGF-N2-MIu">
+                            <connections>
+                                <action selector="follow:" destination="m05-tk-sR0" id="jpU-UB-cmd"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="9mh-N0-XXq"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="@sonson_twit's timeline" id="zpb-0P-P5R"/>
@@ -580,7 +587,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" id="9y9-ft-ko4">
+                            <textView translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" id="9y9-ft-ko4">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="316" id="VYS-SJ-qQg"/>
                                 </constraints>
@@ -643,6 +650,7 @@ See the License for the specific language governing permissions and limitations 
         <class className="MainListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MainListViewController.h"/>
             <relationships>
+                <relationship kind="action" name="follow:"/>
                 <relationship kind="action" name="select:"/>
                 <relationship kind="action" name="trash:"/>
                 <relationship kind="outlet" name="lockScreenView" candidateClass="LockScreenView"/>
@@ -666,6 +674,9 @@ See the License for the specific language governing permissions and limitations 
         </class>
         <class className="TimeLineViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeLineViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="follow:"/>
+            </relationships>
         </class>
         <class className="TimerLengthViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TimerLengthViewController.h"/>

@@ -15,4 +15,6 @@
 @property (nonatomic, strong) NSMutableArray *tweets;
 @property (nonatomic, strong) TwitterAccountInfo *accountInfo;
 
+- (IBAction)follow:(id)sender;
+
 @end

@@ -24,40 +24,10 @@
 
 #import "AccountSelectViewController.h"
 
+#import "ACAccountStore+AnonyFollow.h"
+
 #import <Accounts/Accounts.h>
-
-@interface ACAccountStore(MainListViewController)
-
-- (NSString*)twitterAvailableUserName;
-
-@end
-
-@implementation ACAccountStore(MainListViewController)
-
-- (NSString*)twitterAvailableUserName {
-	NSArray *accountsArray = [self accountsWithAccountType:[self accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter]];
-	
-	NSString *currentTwitterUserName = [[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentTwitterUserName"];
-	
-	for (ACAccount *account in accountsArray) {
-		if ([currentTwitterUserName length]) {
-			if ([account.username isEqualToString:currentTwitterUserName])
-				return currentTwitterUserName;
-		}
-		else {
-			[[NSUserDefaults standardUserDefaults] setObject:account.username forKey:@"CurrentTwitterUserName"];
-			[[NSUserDefaults standardUserDefaults] synchronize];
-			return account.username;
-		}
-	}
-	
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"CurrentTwitterUserName"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	
-	return nil;
-}
-
-@end
+#import <Social/Social.h>
 
 @implementation MainListViewController
 
@@ -177,6 +147,72 @@
 	[self.tableView reloadData];
 }
 
+- (void)removeUserNameFromListWithUserName:(NSString*)userName {
+	//
+	NSMutableArray *indexPathToDeDeleted = [NSMutableArray array];
+	
+	DNSLog(@"Maybe, OK");
+	for (int i = [self.accounts count] - 1; i >= 0 ; i--) {
+		if (i < [self.accounts count]) {
+			TwitterAccountInfo *info = [self.accounts objectAtIndex:i];
+			if ([info.screenName isEqualToString:userName]) {
+				[indexPathToDeDeleted addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+				[self.accounts removeObjectAtIndex:i];
+				
+			}
+		}
+	}
+	
+	if ([indexPathToDeDeleted count]) {
+		[self.tableView deleteRowsAtIndexPaths:indexPathToDeDeleted withRowAnimation:UITableViewRowAnimationLeft];
+		for (AccountCell *cell in [self.tableView visibleCells]) {
+			NSIndexPath *path = [self.tableView indexPathForCell:cell];
+			cell.followButton.tag = path.row;
+		}
+	}
+}
+
+- (void)followOnTwitter:(NSString*)userName {
+    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+        if(granted) {
+			ACAccount *account = [accountStore twitterCurrentAccount];
+			
+			if (account == nil)
+				return;
+			
+			NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
+			[tempDict setValue:userName forKey:@"screen_name"];
+			
+			SLRequest *postRequest;
+			[tempDict setValue:@"true" forKey:@"follow"];
+			postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodPOST URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/create.json"] parameters:tempDict];
+                
+			[postRequest setAccount:account];
+			[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+				if ([urlResponse statusCode] == 403 ||  [urlResponse statusCode] == 200) {
+					dispatch_async(dispatch_get_main_queue(), ^(void){
+						[self removeUserNameFromListWithUserName:userName];
+					});
+				}
+				else {
+					// Error?
+					DNSLog(@"Error?");
+				}
+			}];
+        }
+    }];
+}
+
+- (IBAction)follow:(id)sender {
+	DNSLogMethod
+	UIButton *button = sender;
+	TwitterAccountInfo *info = [self.accounts objectAtIndex:button.tag];
+	[self followOnTwitter:info.screenName];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -186,11 +222,17 @@
     return self;
 }
 
+- (void)didFollowUser:(NSNotification*)notification {
+	NSString *userName = [[notification userInfo] objectForKey:@"userName"];
+	[self removeUserNameFromListWithUserName:userName];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 	[[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(reloadData) name:SNReachablityDidChangeNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFollowUser:) name:@"didFollowUser" object:nil];
 	self.accounts = [NSMutableArray array];
 	self.twitterAccountButton.delegate = self;
 #if 0
@@ -287,10 +329,10 @@
 - (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
 	NSString *username = [userInfo objectForKey:kCBScannerInfoUserNameKey];
 	
-	for (TwitterAccountInfo *existing in self.accounts) {
-		if ([existing.screenName isEqualToString:username])
-			return;
-	}
+//	for (TwitterAccountInfo *existing in self.accounts) {
+//		if ([existing.screenName isEqualToString:username])
+//			return;
+//	}
 	
 	TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 	info.screenName = username;
@@ -346,6 +388,8 @@
 	
 	if (!self.tableView.isDragging && !self.tableView.isDecelerating)
 		[info tryToDownloadIconImage];
+	
+	cell.followButton.tag = indexPath.row;
 	
     return cell;
 }

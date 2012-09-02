@@ -22,6 +22,8 @@
 		142770C215EE826B0062271A /* SNReachablityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 142770C115EE826B0062271A /* SNReachablityChecker.m */; };
 		142770C515EE82DD0062271A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142770C415EE82DD0062271A /* SystemConfiguration.framework */; };
 		144D729715F1F18F00399A36 /* AccountSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144D729615F1F18F00399A36 /* AccountSelectViewController.m */; };
+		144D72A015F264E100399A36 /* hogeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144D729F15F264E100399A36 /* hogeViewController.m */; };
+		144D72A315F2E93A00399A36 /* ACAccountStore+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 144D72A215F2E93A00399A36 /* ACAccountStore+AnonyFollow.m */; };
 		145194A215EA2BCC00E853CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1451949C15EA2BCC00E853CA /* InfoPlist.strings */; };
 		145194A315EA2BCC00E853CA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1451949E15EA2BCC00E853CA /* MainStoryboard_iPad.storyboard */; };
 		145194A415EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145194A015EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard */; };
@@ -79,6 +81,10 @@
 		142770C415EE82DD0062271A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		144D729515F1F18F00399A36 /* AccountSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSelectViewController.h; sourceTree = "<group>"; };
 		144D729615F1F18F00399A36 /* AccountSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSelectViewController.m; sourceTree = "<group>"; };
+		144D729E15F264E100399A36 /* hogeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hogeViewController.h; sourceTree = "<group>"; };
+		144D729F15F264E100399A36 /* hogeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hogeViewController.m; sourceTree = "<group>"; };
+		144D72A115F2E93A00399A36 /* ACAccountStore+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ACAccountStore+AnonyFollow.h"; sourceTree = "<group>"; };
+		144D72A215F2E93A00399A36 /* ACAccountStore+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ACAccountStore+AnonyFollow.m"; sourceTree = "<group>"; };
 		1451949D15EA2BCC00E853CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1451949F15EA2BCC00E853CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		145194A115EA2BCC00E853CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
@@ -227,6 +233,8 @@
 				144D729615F1F18F00399A36 /* AccountSelectViewController.m */,
 				142770C015EE826B0062271A /* SNReachablityChecker.h */,
 				142770C115EE826B0062271A /* SNReachablityChecker.m */,
+				144D72A115F2E93A00399A36 /* ACAccountStore+AnonyFollow.h */,
+				144D72A215F2E93A00399A36 /* ACAccountStore+AnonyFollow.m */,
 				14BE1B6215EA282700F7547E /* Resources */,
 				0201DBFF15E672AC00A212DC /* AnonyFollowAppDelegate.h */,
 				0201DC0015E672AC00A212DC /* AnonyFollowAppDelegate.m */,
@@ -237,6 +245,8 @@
 				0201DC0815E672AC00A212DC /* AnonyFollowViewController.h */,
 				0201DC0915E672AC00A212DC /* AnonyFollowViewController.m */,
 				0201DBF715E672AC00A212DC /* Supporting Files */,
+				144D729E15F264E100399A36 /* hogeViewController.h */,
+				144D729F15F264E100399A36 /* hogeViewController.m */,
 			);
 			path = AnonyFollow;
 			sourceTree = "<group>";
@@ -420,6 +430,8 @@
 				145570A215EBC3D1003DD49F /* MessageBarButtonItem.m in Sources */,
 				142770C215EE826B0062271A /* SNReachablityChecker.m in Sources */,
 				144D729715F1F18F00399A36 /* AccountSelectViewController.m in Sources */,
+				144D72A015F264E100399A36 /* hogeViewController.m in Sources */,
+				144D72A315F2E93A00399A36 /* ACAccountStore+AnonyFollow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

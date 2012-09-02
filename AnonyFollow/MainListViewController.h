@@ -20,6 +20,7 @@
 
 - (IBAction)trash:(id)sender;
 - (IBAction)select:(id)sender;
+- (IBAction)follow:(id)sender;
 
 @property (strong, nonatomic) IBOutlet LockScreenView *lockScreenView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
