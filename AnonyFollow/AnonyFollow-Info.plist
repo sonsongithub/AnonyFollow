@@ -9,9 +9,15 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGithubRevision</key>
+<<<<<<< HEAD
 	<string>0bbda57751518d8db9dc2daa407e9c7077a85d06</string>
 	<key>CFBundleGithubShortRevision</key>
 	<string>0bbda57</string>
+=======
+	<string>54e85b28c435b9220876c4b6ecb774478e807d82</string>
+	<key>CFBundleGithubShortRevision</key>
+	<string>54e85b2</string>
+>>>>>>> バックグラウンド　でもtwitter IDがスキャンできるようにした。
 	<key>CFBundleIdentifier</key>
 	<string>com.sonson.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -25,13 +31,18 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
+<<<<<<< HEAD
 	<string>820</string>
+=======
+	<string>177</string>
+>>>>>>> バックグラウンド　でもtwitter IDがスキャンできるようにした。
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
 		<string>bluetooth-peripheral</string>
+		<string>bluetooth-central</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard_iPhone</string>
@@ -40,6 +51,7 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+		<string>bluetooth-le</string>
 	</array>
 	<key>UIStatusBarHidden</key>
 	<true/>

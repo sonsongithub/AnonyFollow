@@ -7,7 +7,10 @@
 //
 
 #import "CBScanner.h"
-// #define CBScannerAllowDuplicatesKey
+//#define CBScannerAllowDuplicates
+#define CBScannerFilterServices
+
+
 NSString *kCBScannerInfoUserNameKey = @"kCBScannerInfoUserNameKey";
 
 @implementation CBScanner
@@ -51,7 +54,8 @@ NSString *kCBScannerInfoUserNameKey = @"kCBScannerInfoUserNameKey";
 }
 
 - (void)didEnterBackgroundNotification:(NSNotification*)notification {
-	[self stopScan];
+	DNSLogMethod
+    //[self stopScan];
 }
 
 - (BOOL)isAvailable {
@@ -59,19 +63,29 @@ NSString *kCBScannerInfoUserNameKey = @"kCBScannerInfoUserNameKey";
 }
 
 - (void)startScan {
-    NSDictionary *options=nil;
-#ifdef CBScannerAllowDuplicatesKey
-    options=[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:CBCentralManagerScanOptionAllowDuplicatesKey];
+
+#ifdef CBScannerAllowDuplicates
+    NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:CBCentralManagerScanOptionAllowDuplicatesKey];
+#else
+    NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:CBCentralManagerScanOptionAllowDuplicatesKey]; 
+#endif
+
+#ifdef CBScannerFilterServices
+    NSArray *serviceFilter  = [NSArray arrayWithObjects:[CBUUID UUIDWithString:@"1802"],nil];
+#else
+    NSArray *serviceFilter  = nil;
 #endif
     if ([self isAvailable]) {
-		[self.manager scanForPeripheralsWithServices:nil options:options];
+		[self.manager scanForPeripheralsWithServices:serviceFilter options:options];
     }
 	else{
     }
+    DNSLogMethod
 }
 
 - (void)stopScan {
     [self.manager stopScan];
+    DNSLogMethod
 }
 
 - (void)dealloc {
@@ -96,10 +110,35 @@ NSString *kCBScannerInfoUserNameKey = @"kCBScannerInfoUserNameKey";
 				   RSSI:(NSNumber *)RSSI {
 	DNSLogMethod
     NSArray *services = [advertisementData objectForKey:@"kCBAdvDataServiceUUIDs"];
+    
+#if 0
     NSString *userName = [advertisementData objectForKey:@"kCBAdvDataLocalName"];
+#else
+    NSString *userName=@"";
+    int cnt=0;
+    for(CBUUID *uuid in services)
+    {
+        if(cnt>0){
+            NSString *str= [[NSString alloc] initWithData:uuid.data encoding:NSASCIIStringEncoding];
+            userName=[userName stringByAppendingString:[NSString stringWithFormat:@"%@",str]];
+            NSLog(@"userName:%@",userName);
+        }
+        cnt++;
+    }
+    //NSLog(@"before userName:%d",[userName length]);
+    userName = [userName stringByReplacingOccurrencesOfString:@" " withString:@""];
+    //NSLog(@"after userName:%d",[userName length]);
 
-    NSLog(@"Peripheral discovered %@ %@,%@,Name:%@,%d",RSSI, aPeripheral.UUID, advertisementData, userName, [services count]);
-	
+#endif
+    if(userName==nil){
+        //Get twitter screen name from service UUIDs
+
+    }else{
+        ;
+    }
+    
+    NSLog(@"Peripheral discovered %@ %@,%@,Name:%@",RSSI, aPeripheral.UUID, advertisementData, userName);
+    NSLog(@"Peripheral discovered %@,%d",[advertisementData objectForKey:@"kCBAdvDataLocalName"], [services count]);
 	if ([userName length]) {
 		NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
 								  userName, kCBScannerInfoUserNameKey,

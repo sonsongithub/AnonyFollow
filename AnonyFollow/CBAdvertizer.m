@@ -8,6 +8,7 @@
 
 #import "CBAdvertizer.h"
 #define PRIMALY_SERVICE_UUID @"1802"
+#define ENABLE_BG_ADVERTIZE
 
 @implementation CBAdvertizer
 
@@ -58,7 +59,8 @@
 }
 
 - (void)didEnterBackgroundNotification:(NSNotification*)notification {
-	[self stopAdvertize];
+	//[self stopAdvertize];
+    DNSLogMethod
 }
 
 - (void)startAdvertize{
@@ -66,15 +68,37 @@
 		CBUUID* primaly_service_UUID=[CBUUID UUIDWithString:PRIMALY_SERVICE_UUID];
 		CBMutableService *services=[[CBMutableService alloc] initWithType:primaly_service_UUID primary:YES];
 		[self.manager addService:services];
-		NSArray *UUIDsArray=[NSArray arrayWithObjects:primaly_service_UUID,nil];
-		NSDictionary *adDict=[NSDictionary dictionaryWithObjectsAndKeys:
+    
+#ifdef ENABLE_BG_ADVERTIZE
+        char char_name[28];
+        for(int i=0;i<28;i++){
+            char_name[i]=0x20;
+        }
+        char_name[27]=0x0d;
+        memcpy(char_name, [self.userName cStringUsingEncoding:NSASCIIStringEncoding], [self.userName length]);
+        NSLog(@"char_name: %s,%d",char_name,[self.userName length]);
+        NSMutableArray *UUIDsArray=[NSMutableArray arrayWithObjects:primaly_service_UUID,nil];
+        for(int index=0;index<14;index ++){
+            [UUIDsArray addObject:[CBUUID UUIDWithData:[NSData dataWithBytes:&char_name[2*index] length:2]]];
+        }
+        NSDictionary *adDict=[NSDictionary dictionaryWithObjectsAndKeys:
+                              //UUIDsArray,			@"CBAdvertisementDataServiceUUIDsKey",
+							  //self.userName,		@"CBAdvertisementDataLocalNameKey",
 							  UUIDsArray,			@"kCBAdvDataServiceUUIDs",
-							  self.userName,		@"kCBAdvDataLocalName",
+							  @"A",                 @"kCBAdvDataLocalName",
 							  nil];
+#else
+        NSMutableArray *UUIDsArray=[NSMutableArray arrayWithObjects:primaly_service_UUID,nil];
+        NSDictionary *adDict=[NSDictionary dictionaryWithObjectsAndKeys:
+							  UUIDsArray,			@"kCBAdvDataServiceUUIDs",
+							  self.userName,        @"kCBAdvDataLocalName",
+							  nil];
+#endif
 		[self.manager startAdvertising:adDict];
     }
 	else{
     }
+    DNSLogMethod
 }
 
 - (void)stopAdvertize {
