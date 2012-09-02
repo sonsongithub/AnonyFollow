@@ -51,6 +51,15 @@
 	return task;
 }
 
+- (DownloadTask*)taskForUserInfo {
+	NSString *URLString = [NSString stringWithFormat:@"https://api.twitter.com/1/users/show.json?include_entities=true&screen_name=%@", self.screenName];
+	DownloadTask *task = [[DownloadTask alloc] init];
+	task.request = [NSURLRequest requestWithURL:[NSURL URLWithString:URLString]];
+	return task;
+}
+
+//https://api.twitter.com/1/users/show.json?screen_name=TwitterAPI&include_entities=true
+
 - (BOOL)tryToDownloadIconImage {
 	NSString *URLString = [NSString stringWithFormat:@"https://api.twitter.com/1/users/profile_image?screen_name=%@&size=bigger", self.screenName];
 	

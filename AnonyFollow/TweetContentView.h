@@ -12,6 +12,6 @@
 
 @interface TweetContentView : UIView
 
-@property (nonatomic, strong) TwitterTweet *tweet;
+@property (nonatomic, strong) NSString *text;
 
 @end

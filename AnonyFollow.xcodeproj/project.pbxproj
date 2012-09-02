@@ -34,6 +34,7 @@
 		1455709115EBC00D003DD49F /* LockScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1455708F15EBC00D003DD49F /* LockScreenView.xib */; };
 		1455709A15EBC0C7003DD49F /* LockScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1455709915EBC0C7003DD49F /* LockScreenView.m */; };
 		145570A215EBC3D1003DD49F /* MessageBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 145570A115EBC3D1003DD49F /* MessageBarButtonItem.m */; };
+		147E30B615F3696A0044D04F /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 147E30B515F3696A0044D04F /* UserInfoCell.m */; };
 		14BE1B6D15EA282700F7547E /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6415EA282700F7547E /* new.png */; };
 		14BE1B6E15EA282700F7547E /* none.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6515EA282700F7547E /* none.png */; };
 		14BE1B6F15EA282700F7547E /* PurchasePlusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6615EA282700F7547E /* PurchasePlusButton.png */; };
@@ -106,6 +107,8 @@
 		1455709915EBC0C7003DD49F /* LockScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockScreenView.m; sourceTree = "<group>"; };
 		145570A015EBC3D1003DD49F /* MessageBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBarButtonItem.h; sourceTree = "<group>"; };
 		145570A115EBC3D1003DD49F /* MessageBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBarButtonItem.m; sourceTree = "<group>"; };
+		147E30B415F3696A0044D04F /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
+		147E30B515F3696A0044D04F /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
 		14BE1B6415EA282700F7547E /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
 		14BE1B6515EA282700F7547E /* none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = none.png; sourceTree = "<group>"; };
 		14BE1B6615EA282700F7547E /* PurchasePlusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurchasePlusButton.png; sourceTree = "<group>"; };
@@ -213,6 +216,8 @@
 				14BE1B8215EA289300F7547E /* TimerLengthViewController.m */,
 				14BE1B7515EA289200F7547E /* AccountCell.h */,
 				14BE1B7615EA289200F7547E /* AccountCell.m */,
+				147E30B415F3696A0044D04F /* UserInfoCell.h */,
+				147E30B515F3696A0044D04F /* UserInfoCell.m */,
 				14BE1B8315EA289300F7547E /* TweetCell.h */,
 				14BE1B8415EA289300F7547E /* TweetCell.m */,
 				14BE1B8515EA289300F7547E /* TweetContentView.h */,
@@ -432,6 +437,7 @@
 				144D729715F1F18F00399A36 /* AccountSelectViewController.m in Sources */,
 				144D72A015F264E100399A36 /* hogeViewController.m in Sources */,
 				144D72A315F2E93A00399A36 /* ACAccountStore+AnonyFollow.m in Sources */,
+				147E30B615F3696A0044D04F /* UserInfoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

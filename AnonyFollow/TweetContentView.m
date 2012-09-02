@@ -12,27 +12,18 @@
 
 @implementation TweetContentView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
 - (void)awakeFromNib {
 	[super awakeFromNib];
 	self.backgroundColor = [UIColor clearColor];
 }
 
-- (void)setTweet:(TwitterTweet *)tweet {
-	_tweet = tweet;
+- (void)setText:(NSString *)text {
+	_text = text;
 	[self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect {
-	[self.tweet.text drawInRect:rect withFont:[UIFont systemFontOfSize:12] lineBreakMode:NSLineBreakByCharWrapping];
+	[self.text drawInRect:rect withFont:[UIFont systemFontOfSize:12] lineBreakMode:NSLineBreakByCharWrapping];
 }
 
 @end

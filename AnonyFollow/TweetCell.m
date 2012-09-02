@@ -30,7 +30,7 @@
 
 - (void)setTweet:(TwitterTweet *)tweet {
 	_tweet = tweet;
-	self.tweetContentView.tweet = self.tweet;
+	self.tweetContentView.text = self.tweet.text;
 	self.dateLabel.text = [self.tweet.created_at description];
 	[self update:nil];
 }

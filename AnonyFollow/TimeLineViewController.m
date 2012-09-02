@@ -16,6 +16,8 @@
 #import "ACAccountStore+AnonyFollow.h"
 #import <Social/Social.h>
 
+#import "UserInfoCell.h"
+
 @interface TimeLineViewController ()
 
 @end
@@ -52,36 +54,55 @@
 	
 	DNSLog(@"%@", self.accountInfo);
 	DNSLog(@"%@", self.accountInfo.iconImage);
-	
-	DownloadTask *task = [self.accountInfo taskForUserTimeline];
-	task.delegate = self;
-	
-	[[DownloadQueue sharedInstance] addTask:task];
+	{
+		DownloadTask *task = [self.accountInfo taskForUserInfo];
+		task.delegate = self;
+		task.identifier = @"taskForUserInfo";
+		[[DownloadQueue sharedInstance] addTask:task];
+	}
+	{
+		DownloadTask *task = [self.accountInfo taskForUserTimeline];
+		task.delegate = self;
+		task.identifier = @"taskForUserTimeline";
+		[[DownloadQueue sharedInstance] addTask:task];
+	}
 }
 
 - (void)didDownloadTask:(DownloadTask*)task {
-	NSError *error = nil;
-	NSArray *info = [NSJSONSerialization JSONObjectWithData:task.data options:0 error:&error];
-	DNSLog(@"%@", [error localizedDescription]);
-	
-	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-	[formatter setDateFormat:@"ccc MMM dd HH:mm:ss z yyyy"];
-	
-	if ([info isKindOfClass:[info class]]) {
-		for (NSDictionary *tweet in info) {
-			TwitterTweet *tweetaa = [[TwitterTweet alloc] init];
-			tweetaa.accountInfo = self.accountInfo;
-			tweetaa.text = [tweet objectForKey:@"text"];
-			
-			tweetaa.created_at = [formatter dateFromString:[tweet objectForKey:@"created_at"]];
-			
-			[self.tweets addObject:tweetaa];
-			
-			tweetaa.contentSize = [TwitterTweet sizeOfText:tweetaa.text withWidth:227 font:[UIFont systemFontOfSize:12]];
-			
+	if ([task.identifier isEqualToString:@"taskForUserTimeline"]) {
+		NSError *error = nil;
+		NSArray *info = [NSJSONSerialization JSONObjectWithData:task.data options:0 error:&error];
+		DNSLog(@"%@", [error localizedDescription]);
+		
+		NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+		[formatter setDateFormat:@"ccc MMM dd HH:mm:ss z yyyy"];
+		
+		if ([info isKindOfClass:[info class]]) {
+			for (NSDictionary *tweet in info) {
+				TwitterTweet *tweetaa = [[TwitterTweet alloc] init];
+				tweetaa.accountInfo = self.accountInfo;
+				tweetaa.text = [tweet objectForKey:@"text"];
+				
+				tweetaa.created_at = [formatter dateFromString:[tweet objectForKey:@"created_at"]];
+				
+				[self.tweets addObject:tweetaa];
+				
+				tweetaa.contentSize = [TwitterTweet sizeOfText:tweetaa.text withWidth:227 font:[UIFont systemFontOfSize:12]];
+				
+			}
 		}
+		[self.tableView reloadData];
 	}
-	[self.tableView reloadData];
+	else if ([task.identifier isEqualToString:@"taskForUserInfo"]) {
+		NSError *error = nil;
+		NSDictionary *info = [NSJSONSerialization JSONObjectWithData:task.data options:0 error:&error];
+		DNSLog(@"%@", info);
+		
+		self.accountInfo.name = [info objectForKey:@"name"];
+		self.accountInfo.description = [info objectForKey:@"description"];
+		
+		[self.tableView reloadData];
+	}
 }
 
 - (void)didFailedDownloadTask:(DownloadTask*)task {
@@ -96,25 +117,54 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [self.tweets count] > 0 ? 2 : 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [self.tweets count];
+	if (section == 0) {
+		return 1;
+	}
+	if (section == 1) {
+		return [self.tweets count];
+	}
+	return 0;
 }
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	TwitterTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
-	return [tweet height];
+	if (indexPath.section == 0) {
+		if ([self.accountInfo.description length]) {
+			CGSize size = [TwitterTweet sizeOfText:self.accountInfo.description withWidth:288 font:[UIFont systemFontOfSize:12]];
+			return size.height + 66;
+		}
+		else
+			return 68;
+	}
+	if (indexPath.section == 1) {
+		TwitterTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
+		return [tweet height];
+	}
+	return 0;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	if (section == 0)
+		return nil;
+	return NSLocalizedString(@"Recent tweets", nil);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    TweetCell *cell = (TweetCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    TwitterTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
-	cell.tweet = tweet;
-    
-    return cell;
+	if (indexPath.section == 0) {
+		UserInfoCell *cell = (UserInfoCell*)[tableView dequeueReusableCellWithIdentifier:@"InfoCell" forIndexPath:indexPath];
+		cell.accountInfo = self.accountInfo;
+		return cell;
+	}
+	if (indexPath.section == 1) {
+		TweetCell *cell = (TweetCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+		TwitterTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
+		cell.tweet = tweet;
+		return cell;
+	}
+	return nil;
 }
 
 - (void)followOnTwitter:(NSString*)userName {
