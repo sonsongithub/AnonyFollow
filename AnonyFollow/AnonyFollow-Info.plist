@@ -9,15 +9,9 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGithubRevision</key>
-<<<<<<< HEAD
 	<string>6eda89c5fb398b72502a1469be4948e46658a5f0</string>
 	<key>CFBundleGithubShortRevision</key>
 	<string>6eda89c</string>
-=======
-	<string>a38588b2e6f66000548367c2cc681fd811f3fe72</string>
-	<key>CFBundleGithubShortRevision</key>
-	<string>a38588b</string>
->>>>>>> Advertizer,Scannerコード整理
 	<key>CFBundleIdentifier</key>
 	<string>com.sonson.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -31,11 +25,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-<<<<<<< HEAD
 	<string>856</string>
-=======
-	<string>880</string>
->>>>>>> Advertizer,Scannerコード整理
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIBackgroundModes</key>
