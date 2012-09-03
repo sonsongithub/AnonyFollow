@@ -570,20 +570,28 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuichi Yoshida (AK9FYY958C)";
 =======
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 >>>>>>> Advertizer,Scannerコード整理
+=======
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuichi Yoshida (AK9FYY958C)";
+>>>>>>> バグフィックス
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AnonyFollow/AnonyFollow-Prefix.pch";
 				INFOPLIST_FILE = "AnonyFollow/AnonyFollow-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "29AFA855-1109-4E08-AA2B-A0E4DF69506D";
 =======
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 >>>>>>> Advertizer,Scannerコード整理
+=======
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "29AFA855-1109-4E08-AA2B-A0E4DF69506D";
+>>>>>>> バグフィックス
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
