@@ -27,6 +27,7 @@
 @property (nonatomic, strong) IBOutlet MessageBarButtonItem *twitterAccountButton;
 
 @property (nonatomic, strong) NSMutableArray *accounts;
+@property (nonatomic, strong) NSMutableArray *accountsCollectedOnBackground;
 
 @property (strong, nonatomic) CBScanner *scanner;
 @property (strong, nonatomic) CBAdvertizer *advertizer;

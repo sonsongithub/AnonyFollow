@@ -178,6 +178,14 @@
 	[self removeUserNameFromListWithUserName:userName];
 }
 
+- (void)willEnterForeground:(NSNotification*)notification {
+	DNSLogMethod
+	for (NSString *userName in self.accountsCollectedOnBackground) {
+		DNSLog(@"%@", userName);
+	}
+	[self.accountsCollectedOnBackground removeAllObjects];
+}
+
 #pragma mark - Thumbnail rendering and downloading
 
 - (void)loadImagesForOnscreenRows {
@@ -197,10 +205,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 	[[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(reloadData) name:SNReachablityDidChangeNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFollowUser:) name:@"didFollowUser" object:nil];
 	self.accounts = [NSMutableArray array];
+	self.accountsCollectedOnBackground = [NSMutableArray array];
 	self.twitterAccountButton.delegate = self;
 
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
@@ -313,10 +323,6 @@
 	}];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 #pragma mark - MessageBarButtonItemDelegate
 
 - (void)didTouchMessageBarButtonItem:(MessageBarButtonItem*)item {
@@ -407,13 +413,10 @@
 - (void)advertizerDidChangeStatus:(CBAdvertizer*)advertizer {
 }
 
-#pragma mark - CBScannerDelegate
-
-- (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
-	NSString *username = [userInfo objectForKey:kCBScannerInfoUserNameKey];
+- (void)addUserNameOnForeground:(NSString*)userName {
 	
 	for (TwitterAccountInfo *existing in self.accounts) {
-		if ([existing.screenName isEqualToString:username])
+		if ([existing.screenName isEqualToString:userName])
 			return;
 	}
 	
@@ -431,7 +434,7 @@
 			
 			SLRequest *postRequest;
 			[tempDict setValue:account.username forKey:@"screen_name_a"];
-			[tempDict setValue:username forKey:@"screen_name_b"];
+			[tempDict setValue:userName forKey:@"screen_name_b"];
 			postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/exists.json"] parameters:tempDict];
 			
 			[postRequest setAccount:account];
@@ -444,11 +447,11 @@
 					else if ([result isEqualToString:@"false"]) {
 						dispatch_async(dispatch_get_main_queue(), ^(void){
 							TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
-							info.screenName = username;
+							info.screenName = userName;
 							[self.accounts addObject:info];
 							[self.tableView reloadData];
 							AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-							[del.barView pushTemporaryMessage:[NSString stringWithFormat:@"Found %@", username]];
+							[del.barView pushTemporaryMessage:[NSString stringWithFormat:@"Found %@", userName]];
 						});
 					}
 					else {
@@ -458,6 +461,24 @@
 			}];
         }
     }];
+}
+
+- (void)addUserNameOnBackground:(NSString*)userName {
+	if (![self.accountsCollectedOnBackground indexOfObject:userName])
+		[self.accountsCollectedOnBackground addObject:userName];
+}
+
+#pragma mark - CBScannerDelegate
+
+- (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
+	NSString *username = [userInfo objectForKey:kCBScannerInfoUserNameKey];
+	
+	if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+		[self addUserNameOnBackground:username];
+	}
+	else {
+		[self addUserNameOnForeground:username];
+	}
 }
 
 - (void)scannerDidChangeStatus:(CBScanner*)scanner {
