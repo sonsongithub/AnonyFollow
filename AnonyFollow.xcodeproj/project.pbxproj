@@ -569,13 +569,21 @@
 		0201DC0E15E672AC00A212DC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+<<<<<<< HEAD
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuichi Yoshida (AK9FYY958C)";
+=======
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+>>>>>>> Advertizer,Scannerコード整理
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AnonyFollow/AnonyFollow-Prefix.pch";
 				INFOPLIST_FILE = "AnonyFollow/AnonyFollow-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+<<<<<<< HEAD
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "29AFA855-1109-4E08-AA2B-A0E4DF69506D";
+=======
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+>>>>>>> Advertizer,Scannerコード整理
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

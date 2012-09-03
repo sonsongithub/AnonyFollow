@@ -27,12 +27,13 @@ typedef NS_ENUM(NSInteger, CBAdvertizerState) {
 
 @interface CBAdvertizer : NSObject<CBPeripheralManagerDelegate>
 
-- (id)initWithDelegate:(id<CBAdvertizerDelegate>)delegate userName:(NSString*)userName;
+- (id)initWithDelegate:(id<CBAdvertizerDelegate>)delegate userName:(NSString*)userName serviceUUID:(NSString*)UUIDStr;
 - (void)startAdvertize;
 - (void)stopAdvertize;
 
 @property (nonatomic, strong) id<CBAdvertizerDelegate> delegate;
 @property (nonatomic, strong) CBPeripheralManager *manager;
 @property (nonatomic, copy) NSString *userName;
+@property (nonatomic, copy) NSString *UUIDStr;
 
 @end

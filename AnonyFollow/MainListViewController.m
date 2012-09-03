@@ -59,8 +59,8 @@
 			if ([twitterUserName length]) {
 				dispatch_async(dispatch_get_main_queue(), ^(void) {
 					[self.twitterAccountButton setTwitterAccountUserName:twitterUserName];
-					self.advertizer = [[CBAdvertizer alloc] initWithDelegate:self userName:twitterUserName];
-					self.scanner = [[CBScanner alloc] initWithDelegate:self serviceUUID:nil];
+					self.advertizer = [[CBAdvertizer alloc] initWithDelegate:self userName:twitterUserName serviceUUID:@"1802"];
+					self.scanner = [[CBScanner alloc] initWithDelegate:self serviceUUID:@"1802"];
 				});
 			}
 			else {
