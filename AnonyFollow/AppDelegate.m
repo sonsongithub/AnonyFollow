@@ -11,6 +11,8 @@
 #import "SNStatusBarView.h"
 #import "SNReachablityChecker.h"
 
+#import "NSString+AnonyFollow.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -19,6 +21,8 @@
 	self.checker = [SNReachablityChecker reachabilityForInternetConnection];
 	[self.checker start];
 	[self.window addSubview:self.barView];
+	
+	[NSString test_AnonyFollow];
 	
     return YES;
 }

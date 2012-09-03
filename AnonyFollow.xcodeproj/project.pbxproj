@@ -36,6 +36,11 @@
 		14B5F05715F383D000630C06 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B5F05515F383D000630C06 /* LoadingView.xib */; };
 		14B5F05A15F3840E00630C06 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B5F05915F3840E00630C06 /* LoadingView.m */; };
 		14B5F06815F3C05C00630C06 /* FriendsDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B5F06715F3C05C00630C06 /* FriendsDownloader.m */; };
+		14B7A5DD15F4F7D600D6BF0B /* NSString+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B7A5DC15F4F7D600D6BF0B /* NSString+AnonyFollow.m */; };
+		14B7A5E415F4F8DC00D6BF0B /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B7A5E115F4F8DC00D6BF0B /* GTMNSData+zlib.m */; };
+		14B7A5E515F4F8DC00D6BF0B /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B7A5E315F4F8DC00D6BF0B /* NSData+AES256.m */; };
+		14B7A5E715F4F90A00D6BF0B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B7A5E615F4F90A00D6BF0B /* libz.dylib */; };
+		14B7A5EC15F5005F00D6BF0B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B7A5EB15F5005F00D6BF0B /* Security.framework */; };
 		14BE1B6D15EA282700F7547E /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6415EA282700F7547E /* new.png */; };
 		14BE1B6E15EA282700F7547E /* none.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6515EA282700F7547E /* none.png */; };
 		14BE1B6F15EA282700F7547E /* PurchasePlusButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6615EA282700F7547E /* PurchasePlusButton.png */; };
@@ -111,6 +116,15 @@
 		14B5F05915F3840E00630C06 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		14B5F06615F3C05C00630C06 /* FriendsDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsDownloader.h; sourceTree = "<group>"; };
 		14B5F06715F3C05C00630C06 /* FriendsDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsDownloader.m; sourceTree = "<group>"; };
+		14B7A5DB15F4F7D600D6BF0B /* NSString+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AnonyFollow.h"; sourceTree = "<group>"; };
+		14B7A5DC15F4F7D600D6BF0B /* NSString+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AnonyFollow.m"; sourceTree = "<group>"; };
+		14B7A5DF15F4F8DC00D6BF0B /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		14B7A5E015F4F8DC00D6BF0B /* GTMNSData+zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSData+zlib.h"; sourceTree = "<group>"; };
+		14B7A5E115F4F8DC00D6BF0B /* GTMNSData+zlib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSData+zlib.m"; sourceTree = "<group>"; };
+		14B7A5E215F4F8DC00D6BF0B /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES256.h"; sourceTree = "<group>"; };
+		14B7A5E315F4F8DC00D6BF0B /* NSData+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES256.m"; sourceTree = "<group>"; };
+		14B7A5E615F4F90A00D6BF0B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		14B7A5EB15F5005F00D6BF0B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		14BE1B6415EA282700F7547E /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
 		14BE1B6515EA282700F7547E /* none.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = none.png; sourceTree = "<group>"; };
 		14BE1B6615EA282700F7547E /* PurchasePlusButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurchasePlusButton.png; sourceTree = "<group>"; };
@@ -149,6 +163,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14B7A5EC15F5005F00D6BF0B /* Security.framework in Frameworks */,
+				14B7A5E715F4F90A00D6BF0B /* libz.dylib in Frameworks */,
 				142770C515EE82DD0062271A /* SystemConfiguration.framework in Frameworks */,
 				14BE1B9715EA28BF00F7547E /* QuartzCore.framework in Frameworks */,
 				020D225415E6886300A4CDD3 /* AudioToolbox.framework in Frameworks */,
@@ -184,6 +200,8 @@
 		0201DBEF15E672AC00A212DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				14B7A5EB15F5005F00D6BF0B /* Security.framework */,
+				14B7A5E615F4F90A00D6BF0B /* libz.dylib */,
 				142770C415EE82DD0062271A /* SystemConfiguration.framework */,
 				14BE1B9615EA28BF00F7547E /* QuartzCore.framework */,
 				020D225315E6886300A4CDD3 /* AudioToolbox.framework */,
@@ -200,6 +218,13 @@
 		0201DBF615E672AC00A212DC /* AnonyFollow */ = {
 			isa = PBXGroup;
 			children = (
+				14B7A5DF15F4F8DC00D6BF0B /* GTMDefines.h */,
+				14B7A5E015F4F8DC00D6BF0B /* GTMNSData+zlib.h */,
+				14B7A5E115F4F8DC00D6BF0B /* GTMNSData+zlib.m */,
+				14B7A5E215F4F8DC00D6BF0B /* NSData+AES256.h */,
+				14B7A5E315F4F8DC00D6BF0B /* NSData+AES256.m */,
+				14B7A5DB15F4F7D600D6BF0B /* NSString+AnonyFollow.h */,
+				14B7A5DC15F4F7D600D6BF0B /* NSString+AnonyFollow.m */,
 				14B5F06615F3C05C00630C06 /* FriendsDownloader.h */,
 				14B5F06715F3C05C00630C06 /* FriendsDownloader.m */,
 				14B5F05215F370FF00630C06 /* BinarySearcher.h */,
@@ -442,6 +467,9 @@
 				14B5F05415F370FF00630C06 /* BinarySearcher.m in Sources */,
 				14B5F05A15F3840E00630C06 /* LoadingView.m in Sources */,
 				14B5F06815F3C05C00630C06 /* FriendsDownloader.m in Sources */,
+				14B7A5DD15F4F7D600D6BF0B /* NSString+AnonyFollow.m in Sources */,
+				14B7A5E415F4F8DC00D6BF0B /* GTMNSData+zlib.m in Sources */,
+				14B7A5E515F4F8DC00D6BF0B /* NSData+AES256.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
