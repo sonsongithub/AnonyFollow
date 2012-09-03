@@ -89,4 +89,8 @@
 	self.timerCell.detailTextLabel.text = [TimerLengthController currentTimerLengthTitle];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
 @end

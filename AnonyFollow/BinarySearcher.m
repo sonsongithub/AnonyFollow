@@ -13,6 +13,29 @@
 @synthesize db_key;
 @synthesize db_obj;
 
++ (void)test {
+    // create twitter following DB
+    NSUInteger amount = 10000;
+    NSMutableArray *followingDB = [NSMutableArray arrayWithCapacity:amount];
+    
+    for (NSUInteger i = 0; i < amount-2; ++i)
+        [followingDB addObject:[NSNumber numberWithLongLong:i*2000000]];
+    
+    [followingDB addObject:[NSNumber numberWithLongLong:75743284]];//yusukeSekikawa
+    [followingDB addObject:[NSNumber numberWithLongLong:9677332]]; //sonson_twit
+    
+    for(NSNumber *hoge in followingDB)
+        ;//NSLog(@"hoge %lld",[hoge longLongValue]);
+    BinarySearcher *testSearcher =[[BinarySearcher alloc] initWithDB:followingDB andObj:followingDB];
+    for(NSNumber *hoge in followingDB)
+        ;//NSLog(@"hoge %lld",[hoge longLongValue]);
+    // Do binary Search!
+    if([testSearcher isKeyExist:[NSNumber numberWithLongLong:75743284]]){
+        NSLog(@"Already following");
+    }else{
+        NSLog(@"Not following");
+    }
+}
 
 - (id)initWithDB:(NSMutableArray*)key andObj:(NSMutableArray*)obj {
 	self = [super init];

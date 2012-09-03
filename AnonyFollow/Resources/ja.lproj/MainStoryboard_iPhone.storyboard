@@ -123,7 +123,7 @@
                         <outlet property="lockScreenView" destination="8zj-sc-9LN" id="kIS-JX-NgL"/>
                         <outlet property="segmentedControl" destination="PRI-Cf-RyL" id="QI1-qQ-4wR"/>
                         <outlet property="twitterAccountButton" destination="V6L-hT-jh0" id="Qx3-Sy-K90"/>
-                        <segue destination="hOG-Jn-GmV" kind="modal" identifier="" id="i3L-LL-U2o"/>
+                        <segue destination="hOG-Jn-GmV" kind="modal" identifier="ToSelectAccountViewController" id="i3L-LL-U2o"/>
                         <segue destination="3fT-LL-GZo" kind="push" identifier="OpenTimeLine" id="HtN-Yp-sIX"/>
                     </connections>
                 </tableViewController>

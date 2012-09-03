@@ -25,7 +25,6 @@
 #import "AccountSelectViewController.h"
 
 #import <Accounts/Accounts.h>
-#import "BinarySearcher.h"
 
 #import "ACAccountStore+AnonyFollow.h"
 
@@ -34,59 +33,16 @@
 
 @implementation MainListViewController
 
-- (void)didTouchMessageBarButtonItem:(MessageBarButtonItem*)item {
-	DNSLogMethod
-	
-	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-	
-	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-		if (error) {
-			NSLog(@"%@", [error localizedDescription]);
-		}
-		if (granted) {
-			NSString *twitterUserName = [accountStore twitterAvailableUserName];
-			if ([twitterUserName length]) {
-				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					[self.scanner stopScan];
-					self.scanner = nil;
-					[self.advertizer stopAdvertize];
-					self.advertizer = nil;
-					self.segmentedControl.selectedSegmentIndex = 0;
-					[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-					
-					UINavigationController *nv = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectAccountNavigationController"];
-					AccountSelectViewController *vc = (AccountSelectViewController*)nv.topViewController;
-					
-					NSMutableArray *nameList = [NSMutableArray array];
-					
-					NSArray *accountsArray = [accountStore accountsWithAccountType:[accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter]];
-					for (ACAccount *account in accountsArray) {
-						[nameList addObject:account.username];
-					}
-					vc.userNameList = nameList;
-					
-					[self presentViewController:nv animated:YES completion:^(void){}];
-				});
-			}
-			else {
-				DNSLog(@"No Twitter Account");
-				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"No account", nil)];
-				});
-			}
-		}
-		else {
-			DNSLog(@"accountStore accesss denied");
-			dispatch_async(dispatch_get_main_queue(), ^(void) {
-				[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"Not authorized", nil)];
-			});
-		}
-	}];
+#pragma mark - Instance method
 
+- (void)incrementBadge {
+    UIApplication* app = [UIApplication sharedApplication];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = app.applicationIconBadgeNumber+1;
 }
 
-#pragma mark - Instance method
+- (void)resetBadge {
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+}
 
 - (void)enableBroadcasting {
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
@@ -126,28 +82,6 @@
 			self.segmentedControl.userInteractionEnabled = YES;
 		});
 	}];
-}
-
-- (IBAction)select:(id)sender {
-	UISegmentedControl *control = self.segmentedControl;
-	if (control.selectedSegmentIndex == 0) {
-		[self.scanner stopScan];
-		self.scanner = nil;
-		[self.advertizer stopAdvertize];
-		self.advertizer = nil;
-		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-	}
-	if (control.selectedSegmentIndex == 1) {
-		[self enableBroadcasting];
-	}
-	if (control.selectedSegmentIndex == 2) {
-		[self enableBroadcasting];
-	}
-}
-
-- (IBAction)trash:(id)sender {
-	[self.accounts removeAllObjects];
-	[self.tableView reloadData];
 }
 
 - (void)removeUserNameFromListWithUserName:(NSString*)userName {
@@ -239,29 +173,29 @@
     }];
 }
 
-- (IBAction)follow:(id)sender {
-	DNSLogMethod
-	UIButton *button = sender;
-	TwitterAccountInfo *info = [self.accounts objectAtIndex:button.tag];
-	[self followOnTwitter:info.screenName];
-}
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)didFollowUser:(NSNotification*)notification {
 	NSString *userName = [[notification userInfo] objectForKey:@"userName"];
 	[self removeUserNameFromListWithUserName:userName];
 }
 
-- (void)viewDidLoad
-{
+#pragma mark - Thumbnail rendering and downloading
+
+- (void)loadImagesForOnscreenRows {
+	DNSLogMethod
+    if ([self.accounts count] > 0) {
+		NSArray *visibleCells = [self.tableView visibleCells];
+		for (AccountCell *cell in visibleCells) {
+			TwitterAccountInfo *info = cell.accountInfo;
+			
+			if (!self.tableView.isDragging && !self.tableView.isDecelerating)
+				[info tryToDownloadIconImage];
+		}
+    }
+}
+
+#pragma mark - UIViewController life cycle
+
+- (void)viewDidLoad {
     [super viewDidLoad];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 	[[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(reloadData) name:SNReachablityDidChangeNotification object:nil];
@@ -297,7 +231,7 @@
 			});
 		}
 	}];
-    [self binarySearchTest];
+	
 #if 0
 	NSArray *samples = [NSArray arrayWithObjects:
 						@"sonson_twit",
@@ -324,37 +258,6 @@
 		
 	}
 #endif
-}
-
-- (void)incrementBadge{
-    UIApplication* app = [UIApplication sharedApplication];
-    [UIApplication sharedApplication].applicationIconBadgeNumber = app.applicationIconBadgeNumber+1;
-}
-- (void)resetBadge{
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-}
--(void)binarySearchTest{
-    // create twitter following DB
-    NSUInteger amount = 10000;
-    NSMutableArray *followingDB = [NSMutableArray arrayWithCapacity:amount];
-    
-    for (NSUInteger i = 0; i < amount-2; ++i)
-        [followingDB addObject:[NSNumber numberWithLongLong:i*2000000]];
-    
-    [followingDB addObject:[NSNumber numberWithLongLong:75743284]];//yusukeSekikawa
-    [followingDB addObject:[NSNumber numberWithLongLong:9677332]]; //sonson_twit
-    
-    for(NSNumber *hoge in followingDB)
-        ;//NSLog(@"hoge %lld",[hoge longLongValue]);
-    BinarySearcher *testSearcher =[[BinarySearcher alloc] initWithDB:followingDB andObj:followingDB];
-    for(NSNumber *hoge in followingDB)
-        ;//NSLog(@"hoge %lld",[hoge longLongValue]);
-    // Do binary Search!
-    if([testSearcher isKeyExist:[NSNumber numberWithLongLong:75743284]]){
-        NSLog(@"Already following");
-    }else{
-        NSLog(@"Not following");
-    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -414,6 +317,91 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - MessageBarButtonItemDelegate
+
+- (void)didTouchMessageBarButtonItem:(MessageBarButtonItem*)item {
+	DNSLogMethod
+	
+	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+	
+	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+		if (error) {
+			NSLog(@"%@", [error localizedDescription]);
+		}
+		if (granted) {
+			NSString *twitterUserName = [accountStore twitterAvailableUserName];
+			if ([twitterUserName length]) {
+				dispatch_async(dispatch_get_main_queue(), ^(void) {
+					[self.scanner stopScan];
+					self.scanner = nil;
+					[self.advertizer stopAdvertize];
+					self.advertizer = nil;
+					self.segmentedControl.selectedSegmentIndex = 0;
+					[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+					
+					UINavigationController *nv = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectAccountNavigationController"];
+					AccountSelectViewController *vc = (AccountSelectViewController*)nv.topViewController;
+					
+					NSMutableArray *nameList = [NSMutableArray array];
+					
+					NSArray *accountsArray = [accountStore accountsWithAccountType:[accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter]];
+					for (ACAccount *account in accountsArray) {
+						[nameList addObject:account.username];
+					}
+					vc.userNameList = nameList;
+					
+					[self presentViewController:nv animated:YES completion:^(void){}];
+				});
+			}
+			else {
+				DNSLog(@"No Twitter Account");
+				dispatch_async(dispatch_get_main_queue(), ^(void) {
+					[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"No account", nil)];
+				});
+			}
+		}
+		else {
+			DNSLog(@"accountStore accesss denied");
+			dispatch_async(dispatch_get_main_queue(), ^(void) {
+				[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"Not authorized", nil)];
+			});
+		}
+	}];
+	
+}
+
+#pragma mark - IBAction
+
+- (IBAction)follow:(id)sender {
+	DNSLogMethod
+	UIButton *button = sender;
+	TwitterAccountInfo *info = [self.accounts objectAtIndex:button.tag];
+	[self followOnTwitter:info.screenName];
+}
+
+- (IBAction)select:(id)sender {
+	UISegmentedControl *control = self.segmentedControl;
+	if (control.selectedSegmentIndex == 0) {
+		[self.scanner stopScan];
+		self.scanner = nil;
+		[self.advertizer stopAdvertize];
+		self.advertizer = nil;
+		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+	}
+	if (control.selectedSegmentIndex == 1) {
+		[self enableBroadcasting];
+	}
+	if (control.selectedSegmentIndex == 2) {
+		[self enableBroadcasting];
+	}
+}
+
+- (IBAction)trash:(id)sender {
+	[self.accounts removeAllObjects];
+	[self.tableView reloadData];
+}
+
 #pragma mark - CBAdvertizerDelegate
 
 - (void)advertizerDidChangeStatus:(CBAdvertizer*)advertizer {
@@ -428,14 +416,6 @@
 		if ([existing.screenName isEqualToString:username])
 			return;
 	}
-	
-//	TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
-//	info.screenName = username;
-//	[self.accounts addObject:info];
-//	[self.tableView reloadData];
-//	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-//	[del.barView pushTemporaryMessage:[NSString stringWithFormat:@"Found %@", username]];
-//    [self incrementBadge];
 	
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
@@ -530,21 +510,6 @@
 	cell.followButton.tag = indexPath.row;
 	
     return cell;
-}
-
-#pragma mark - Thumbnail rendering and downloading
-
-- (void)loadImagesForOnscreenRows {
-	DNSLogMethod
-    if ([self.accounts count] > 0) {
-		NSArray *visibleCells = [self.tableView visibleCells];
-		for (AccountCell *cell in visibleCells) {
-			TwitterAccountInfo *info = cell.accountInfo;
-			
-			if (!self.tableView.isDragging && !self.tableView.isDecelerating)
-				[info tryToDownloadIconImage];
-		}
-    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
