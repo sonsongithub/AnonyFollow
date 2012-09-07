@@ -186,6 +186,11 @@
 	[self.accountsCollectedOnBackground removeAllObjects];
 }
 
+- (void)didEnterBackground:(NSNotification*)notification {
+	DNSLogMethod
+	[[DownloadQueue sharedInstance] clearQueue];
+}
+
 #pragma mark - Thumbnail rendering and downloading
 
 - (void)loadImagesForOnscreenRows {
@@ -206,6 +211,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 	[[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(reloadData) name:SNReachablityDidChangeNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFollowUser:) name:@"didFollowUser" object:nil];
@@ -213,8 +219,10 @@
 	self.accountsCollectedOnBackground = [NSMutableArray array];
 	self.twitterAccountButton.delegate = self;
 	
+	AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	[appdelegate setupOriginalStatusBar];
 	// Sometimes, application crashes here.
-/*
+
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
 	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 	
@@ -270,7 +278,6 @@
 		
 	}
 #endif
-*/
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -286,16 +293,21 @@
 	[[DownloadQueue sharedInstance] clearQueue];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	
 	[self loadImagesForOnscreenRows];
     [self resetBadge];
-	
+
 	[UIView animateWithDuration:0.4 animations:^(void){
 		self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
 	}];
-	
+
+#if 1
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
 	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 	
@@ -324,6 +336,7 @@
 			});
 		}
 	}];
+#endif
 }
 
 #pragma mark - MessageBarButtonItemDelegate

@@ -15,15 +15,17 @@
 
 @implementation AppDelegate
 
+- (void)setupOriginalStatusBar {
+	if (self.barView == nil) {
+		self.barView = [[SNStatusBarView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+		self.checker = [SNReachablityChecker reachabilityForInternetConnection];
+		[self.checker start];
+		[self.window addSubview:self.barView];
+	}
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-	self.barView = [[SNStatusBarView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
-	self.checker = [SNReachablityChecker reachabilityForInternetConnection];
-	[self.checker start];
-	[self.window addSubview:self.barView];
-	
-	[NSString test_AnonyFollow];
-	
     return YES;
 }
 

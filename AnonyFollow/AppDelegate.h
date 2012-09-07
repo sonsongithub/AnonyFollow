@@ -17,4 +17,6 @@
 @property (strong, nonatomic) SNStatusBarView *barView;
 @property (strong, nonatomic) SNReachablityChecker *checker;
 
+- (void)setupOriginalStatusBar;
+
 @end
