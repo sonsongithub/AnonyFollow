@@ -16,7 +16,8 @@
 
 #include <assert.h>
 
-@implementation NSString(AnonyFollow)
+
+@implementation NSString(private)
 
 - (unsigned int)hexIntValue {
     unsigned int result;
@@ -30,9 +31,8 @@
 	char *table = (char*)malloc(sizeof(char) * 27);
 	
 	table[0] = '_';
-	for (int i = 1; i < 27; i++) {
+	for (int i = 1; i < 27; i++)
 		table[i] = i + 96;
-	}
 	
 	for (int i = 0; i < length; i++) {
 		uint16_t randomized_code = 0;
@@ -47,8 +47,12 @@
 	return p;
 }
 
+@end
+
+@implementation NSString(AnonyFollow)
+
 + (void)test_AnonyFollow {
-#if 0
+#if 1
 	for (int length = 3; length < 16; length++) {
 		for (int i = 0; i < 100; i++) {
 			char *p = [self randomStringWithLength:length];
@@ -68,6 +72,7 @@
 			free(p);
 		}
 	}
+	NSLog(@"decode and encode test is passed.");
 #endif
 }
 
@@ -94,30 +99,10 @@
 	NSMutableData *data = [NSMutableData data];
 	for (int i = 0; i < [string length]; i+=2) {
 		NSString *sub = [string substringWithRange:NSMakeRange(i, 2)];
-		NSLog(@"%@, %d", sub, i);
 		unsigned char c = [sub hexIntValue];
-		
-		NSLog(@"%02x", c);
-		
 		[data appendBytes:&c length:sizeof(c)];
 	}
 	return [NSString stringWithAnonyFollowEncodedData:data];
 }
-
-//
-//- (NSData*)anonyFollowEncryptedData {
-//	NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-//	return [data dataEncryptedWithKey:@"hoaaaage"];
-//}
-//
-//- (NSString*)anonyFollowEncryptedString {
-//	NSData *encryptedData = [self anonyFollowEncryptedData];
-//	NSMutableString *buf = [NSMutableString string];
-//	char *p = (char*)[encryptedData bytes];
-//	for (int i = 0; i < [encryptedData length]; i++)
-//		[buf appendFormat:@"%02x", *(p + i)];
-//	
-//	return [NSString stringWithString:buf];
-//}
 
 @end
