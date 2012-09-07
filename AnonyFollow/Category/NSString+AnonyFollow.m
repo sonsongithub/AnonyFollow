@@ -16,7 +16,6 @@
 
 #include <assert.h>
 
-
 @implementation NSString(private)
 
 - (unsigned int)hexIntValue {

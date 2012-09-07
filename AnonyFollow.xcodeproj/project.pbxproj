@@ -12,33 +12,44 @@
 		0201DBF515E672AC00A212DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0201DBF415E672AC00A212DC /* CoreGraphics.framework */; };
 		0201DBFD15E672AC00A212DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201DBFC15E672AC00A212DC /* main.m */; };
 		020D225415E6886300A4CDD3 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020D225315E6886300A4CDD3 /* AudioToolbox.framework */; };
-		02B9542515E6733E005026B1 /* CBScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B9542415E6733E005026B1 /* CBScanner.m */; };
-		02B9542915E67471005026B1 /* CBAdvertizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B9542815E67471005026B1 /* CBAdvertizer.m */; };
 		02B9542B15E67A00005026B1 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542A15E67A00005026B1 /* CoreBluetooth.framework */; };
 		02B9542D15E67A06005026B1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542C15E67A06005026B1 /* Social.framework */; };
 		02B9542F15E67A18005026B1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542E15E67A18005026B1 /* Accounts.framework */; };
-		142770C215EE826B0062271A /* SNReachablityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 142770C115EE826B0062271A /* SNReachablityChecker.m */; };
 		142770C515EE82DD0062271A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142770C415EE82DD0062271A /* SystemConfiguration.framework */; };
-		144D729715F1F18F00399A36 /* AccountSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 144D729615F1F18F00399A36 /* AccountSelectViewController.m */; };
-		144D72A315F2E93A00399A36 /* ACAccountStore+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 144D72A215F2E93A00399A36 /* ACAccountStore+AnonyFollow.m */; };
 		145194A215EA2BCC00E853CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1451949C15EA2BCC00E853CA /* InfoPlist.strings */; };
 		145194A315EA2BCC00E853CA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1451949E15EA2BCC00E853CA /* MainStoryboard_iPad.storyboard */; };
 		145194A415EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145194A015EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard */; };
-		145194BD15EA51CB00E853CA /* DownloadQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 145194BA15EA51CB00E853CA /* DownloadQueue.m */; };
-		145194BE15EA51CB00E853CA /* DownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 145194BC15EA51CB00E853CA /* DownloadTask.m */; };
-		145194C115EA5EBC00E853CA /* TimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 145194C015EA5EBC00E853CA /* TimeLineViewController.m */; };
-		145194C915EA772100E853CA /* NSData+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 145194C815EA772100E853CA /* NSData+MD5.m */; };
 		1455709115EBC00D003DD49F /* LockScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1455708F15EBC00D003DD49F /* LockScreenView.xib */; };
-		1455709A15EBC0C7003DD49F /* LockScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1455709915EBC0C7003DD49F /* LockScreenView.m */; };
-		145570A215EBC3D1003DD49F /* MessageBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 145570A115EBC3D1003DD49F /* MessageBarButtonItem.m */; };
-		147E30B615F3696A0044D04F /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 147E30B515F3696A0044D04F /* UserInfoCell.m */; };
-		14B5F05415F370FF00630C06 /* BinarySearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B5F05315F370FF00630C06 /* BinarySearcher.m */; };
+		14A2833815FA486D00880424 /* ACAccountStore+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A282F815FA486D00880424 /* ACAccountStore+AnonyFollow.m */; };
+		14A2833915FA486D00880424 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A282FA15FA486D00880424 /* NSData+AES256.m */; };
+		14A2833A15FA486D00880424 /* NSData+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A282FC15FA486D00880424 /* NSData+MD5.m */; };
+		14A2833B15FA486D00880424 /* NSString+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A282FE15FA486D00880424 /* NSString+AnonyFollow.m */; };
+		14A2833C15FA486D00880424 /* AccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2830115FA486D00880424 /* AccountCell.m */; };
+		14A2833D15FA486D00880424 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2830315FA486D00880424 /* TweetCell.m */; };
+		14A2833E15FA486D00880424 /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2830515FA486D00880424 /* UserInfoCell.m */; };
+		14A2833F15FA486D00880424 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2830815FA486D00880424 /* AppDelegate.m */; };
+		14A2834015FA486D00880424 /* BinarySearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2830A15FA486D00880424 /* BinarySearcher.m */; };
+		14A2834115FA486D00880424 /* CBAdvertizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2830C15FA486D00880424 /* CBAdvertizer.m */; };
+		14A2834215FA486D00880424 /* CBScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2830E15FA486D00880424 /* CBScanner.m */; };
+		14A2834315FA486D00880424 /* DownloadQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831015FA486D00880424 /* DownloadQueue.m */; };
+		14A2834415FA486D00880424 /* DownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831215FA486D00880424 /* DownloadTask.m */; };
+		14A2834515FA486D00880424 /* FriendsDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831415FA486D00880424 /* FriendsDownloader.m */; };
+		14A2834615FA486D00880424 /* SNReachablityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831615FA486D00880424 /* SNReachablityChecker.m */; };
+		14A2834715FA486D00880424 /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831A15FA486D00880424 /* GTMNSData+zlib.m */; };
+		14A2834815FA486D00880424 /* TwitterAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831D15FA486D00880424 /* TwitterAccountInfo.m */; };
+		14A2834915FA486D00880424 /* TwitterTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831F15FA486D00880424 /* TwitterTweet.m */; };
+		14A2834A15FA486D00880424 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832215FA486D00880424 /* LoadingView.m */; };
+		14A2834B15FA486D00880424 /* LockScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832415FA486D00880424 /* LockScreenView.m */; };
+		14A2834C15FA486D00880424 /* MessageBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832615FA486D00880424 /* MessageBarButtonItem.m */; };
+		14A2834D15FA486D00880424 /* SNStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832815FA486D00880424 /* SNStatusBarView.m */; };
+		14A2834E15FA486D00880424 /* TweetContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832A15FA486D00880424 /* TweetContentView.m */; };
+		14A2834F15FA486D00880424 /* AccountSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832D15FA486D00880424 /* AccountSelectViewController.m */; };
+		14A2835015FA486D00880424 /* MainListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832F15FA486D00880424 /* MainListViewController.m */; };
+		14A2835115FA486D00880424 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2833115FA486D00880424 /* SettingViewController.m */; };
+		14A2835215FA486D00880424 /* TimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2833315FA486D00880424 /* TimeLineViewController.m */; };
+		14A2835315FA486D00880424 /* TimerLengthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2833515FA486D00880424 /* TimerLengthController.m */; };
+		14A2835415FA486D00880424 /* TimerLengthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2833715FA486D00880424 /* TimerLengthViewController.m */; };
 		14B5F05715F383D000630C06 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B5F05515F383D000630C06 /* LoadingView.xib */; };
-		14B5F05A15F3840E00630C06 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B5F05915F3840E00630C06 /* LoadingView.m */; };
-		14B5F06815F3C05C00630C06 /* FriendsDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B5F06715F3C05C00630C06 /* FriendsDownloader.m */; };
-		14B7A5DD15F4F7D600D6BF0B /* NSString+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B7A5DC15F4F7D600D6BF0B /* NSString+AnonyFollow.m */; };
-		14B7A5E415F4F8DC00D6BF0B /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B7A5E115F4F8DC00D6BF0B /* GTMNSData+zlib.m */; };
-		14B7A5E515F4F8DC00D6BF0B /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 14B7A5E315F4F8DC00D6BF0B /* NSData+AES256.m */; };
 		14B7A5E715F4F90A00D6BF0B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B7A5E615F4F90A00D6BF0B /* libz.dylib */; };
 		14B7A5EC15F5005F00D6BF0B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B7A5EB15F5005F00D6BF0B /* Security.framework */; };
 		14BE1B6D15EA282700F7547E /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6415EA282700F7547E /* new.png */; };
@@ -49,17 +60,6 @@
 		14BE1B7215EA282700F7547E /* none@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6A15EA282700F7547E /* none@2x.png */; };
 		14BE1B7315EA282700F7547E /* PurchasePlusButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6B15EA282700F7547E /* PurchasePlusButton@2x.png */; };
 		14BE1B7415EA282700F7547E /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6C15EA282700F7547E /* setting@2x.png */; };
-		14BE1B8B15EA289300F7547E /* AccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B7615EA289200F7547E /* AccountCell.m */; };
-		14BE1B8C15EA289300F7547E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B7815EA289200F7547E /* AppDelegate.m */; };
-		14BE1B8D15EA289300F7547E /* MainListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B7A15EA289300F7547E /* MainListViewController.m */; };
-		14BE1B8E15EA289300F7547E /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B7C15EA289300F7547E /* SettingViewController.m */; };
-		14BE1B8F15EA289300F7547E /* SNStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B7E15EA289300F7547E /* SNStatusBarView.m */; };
-		14BE1B9015EA289300F7547E /* TimerLengthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B8015EA289300F7547E /* TimerLengthController.m */; };
-		14BE1B9115EA289300F7547E /* TimerLengthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B8215EA289300F7547E /* TimerLengthViewController.m */; };
-		14BE1B9215EA289300F7547E /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B8415EA289300F7547E /* TweetCell.m */; };
-		14BE1B9315EA289300F7547E /* TweetContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B8615EA289300F7547E /* TweetContentView.m */; };
-		14BE1B9415EA289300F7547E /* TwitterAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B8815EA289300F7547E /* TwitterAccountInfo.m */; };
-		14BE1B9515EA289300F7547E /* TwitterTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B8A15EA289300F7547E /* TwitterTweet.m */; };
 		14BE1B9715EA28BF00F7547E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BE1B9615EA28BF00F7547E /* QuartzCore.framework */; };
 		14F5320A15F9D58A0080444A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5320815F9D58A0080444A /* icon.png */; };
 		14F5320B15F9D58A0080444A /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5320915F9D58A0080444A /* icon_retina.png */; };
@@ -78,20 +78,10 @@
 		0201DBFC15E672AC00A212DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0201DBFE15E672AC00A212DC /* AnonyFollow-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AnonyFollow-Prefix.pch"; sourceTree = "<group>"; };
 		020D225315E6886300A4CDD3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		02B9542315E6733E005026B1 /* CBScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBScanner.h; sourceTree = "<group>"; };
-		02B9542415E6733E005026B1 /* CBScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBScanner.m; sourceTree = "<group>"; };
-		02B9542715E67471005026B1 /* CBAdvertizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAdvertizer.h; sourceTree = "<group>"; };
-		02B9542815E67471005026B1 /* CBAdvertizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAdvertizer.m; sourceTree = "<group>"; };
 		02B9542A15E67A00005026B1 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		02B9542C15E67A06005026B1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		02B9542E15E67A18005026B1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		142770C015EE826B0062271A /* SNReachablityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNReachablityChecker.h; sourceTree = "<group>"; };
-		142770C115EE826B0062271A /* SNReachablityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNReachablityChecker.m; sourceTree = "<group>"; };
 		142770C415EE82DD0062271A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		144D729515F1F18F00399A36 /* AccountSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSelectViewController.h; sourceTree = "<group>"; };
-		144D729615F1F18F00399A36 /* AccountSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSelectViewController.m; sourceTree = "<group>"; };
-		144D72A115F2E93A00399A36 /* ACAccountStore+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ACAccountStore+AnonyFollow.h"; sourceTree = "<group>"; };
-		144D72A215F2E93A00399A36 /* ACAccountStore+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ACAccountStore+AnonyFollow.m"; sourceTree = "<group>"; };
 		1451949D15EA2BCC00E853CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1451949F15EA2BCC00E853CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		145194A115EA2BCC00E853CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
@@ -100,35 +90,67 @@
 		145194A815EA2BE800E853CA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/MainStoryboard_iPad.storyboard.string; sourceTree = "<group>"; };
 		145194A915EA2BE800E853CA /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ja; path = ja.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		145194AB15EA2BE800E853CA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/MainStoryboard_iPhone.storyboard.string; sourceTree = "<group>"; };
-		145194B915EA51CB00E853CA /* DownloadQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadQueue.h; sourceTree = "<group>"; };
-		145194BA15EA51CB00E853CA /* DownloadQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadQueue.m; sourceTree = "<group>"; };
-		145194BB15EA51CB00E853CA /* DownloadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTask.h; sourceTree = "<group>"; };
-		145194BC15EA51CB00E853CA /* DownloadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTask.m; sourceTree = "<group>"; };
-		145194BF15EA5EBB00E853CA /* TimeLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineViewController.h; sourceTree = "<group>"; };
-		145194C015EA5EBC00E853CA /* TimeLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineViewController.m; sourceTree = "<group>"; };
-		145194C715EA772100E853CA /* NSData+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MD5.h"; sourceTree = "<group>"; };
-		145194C815EA772100E853CA /* NSData+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MD5.m"; sourceTree = "<group>"; };
 		1455709015EBC00D003DD49F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LockScreenView.xib; sourceTree = "<group>"; };
-		1455709815EBC0C7003DD49F /* LockScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockScreenView.h; sourceTree = "<group>"; };
-		1455709915EBC0C7003DD49F /* LockScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockScreenView.m; sourceTree = "<group>"; };
-		145570A015EBC3D1003DD49F /* MessageBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBarButtonItem.h; sourceTree = "<group>"; };
-		145570A115EBC3D1003DD49F /* MessageBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBarButtonItem.m; sourceTree = "<group>"; };
-		147E30B415F3696A0044D04F /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
-		147E30B515F3696A0044D04F /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
-		14B5F05215F370FF00630C06 /* BinarySearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinarySearcher.h; sourceTree = "<group>"; };
-		14B5F05315F370FF00630C06 /* BinarySearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinarySearcher.m; sourceTree = "<group>"; };
+		14A282F715FA486D00880424 /* ACAccountStore+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ACAccountStore+AnonyFollow.h"; sourceTree = "<group>"; };
+		14A282F815FA486D00880424 /* ACAccountStore+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ACAccountStore+AnonyFollow.m"; sourceTree = "<group>"; };
+		14A282F915FA486D00880424 /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES256.h"; sourceTree = "<group>"; };
+		14A282FA15FA486D00880424 /* NSData+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES256.m"; sourceTree = "<group>"; };
+		14A282FB15FA486D00880424 /* NSData+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MD5.h"; sourceTree = "<group>"; };
+		14A282FC15FA486D00880424 /* NSData+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MD5.m"; sourceTree = "<group>"; };
+		14A282FD15FA486D00880424 /* NSString+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AnonyFollow.h"; sourceTree = "<group>"; };
+		14A282FE15FA486D00880424 /* NSString+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AnonyFollow.m"; sourceTree = "<group>"; };
+		14A2830015FA486D00880424 /* AccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCell.h; sourceTree = "<group>"; };
+		14A2830115FA486D00880424 /* AccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCell.m; sourceTree = "<group>"; };
+		14A2830215FA486D00880424 /* TweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
+		14A2830315FA486D00880424 /* TweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
+		14A2830415FA486D00880424 /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
+		14A2830515FA486D00880424 /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
+		14A2830715FA486D00880424 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		14A2830815FA486D00880424 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		14A2830915FA486D00880424 /* BinarySearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinarySearcher.h; sourceTree = "<group>"; };
+		14A2830A15FA486D00880424 /* BinarySearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BinarySearcher.m; sourceTree = "<group>"; };
+		14A2830B15FA486D00880424 /* CBAdvertizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAdvertizer.h; sourceTree = "<group>"; };
+		14A2830C15FA486D00880424 /* CBAdvertizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAdvertizer.m; sourceTree = "<group>"; };
+		14A2830D15FA486D00880424 /* CBScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBScanner.h; sourceTree = "<group>"; };
+		14A2830E15FA486D00880424 /* CBScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBScanner.m; sourceTree = "<group>"; };
+		14A2830F15FA486D00880424 /* DownloadQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadQueue.h; sourceTree = "<group>"; };
+		14A2831015FA486D00880424 /* DownloadQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadQueue.m; sourceTree = "<group>"; };
+		14A2831115FA486D00880424 /* DownloadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTask.h; sourceTree = "<group>"; };
+		14A2831215FA486D00880424 /* DownloadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTask.m; sourceTree = "<group>"; };
+		14A2831315FA486D00880424 /* FriendsDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsDownloader.h; sourceTree = "<group>"; };
+		14A2831415FA486D00880424 /* FriendsDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsDownloader.m; sourceTree = "<group>"; };
+		14A2831515FA486D00880424 /* SNReachablityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNReachablityChecker.h; sourceTree = "<group>"; };
+		14A2831615FA486D00880424 /* SNReachablityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNReachablityChecker.m; sourceTree = "<group>"; };
+		14A2831815FA486D00880424 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		14A2831915FA486D00880424 /* GTMNSData+zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSData+zlib.h"; sourceTree = "<group>"; };
+		14A2831A15FA486D00880424 /* GTMNSData+zlib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSData+zlib.m"; sourceTree = "<group>"; };
+		14A2831C15FA486D00880424 /* TwitterAccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAccountInfo.h; sourceTree = "<group>"; };
+		14A2831D15FA486D00880424 /* TwitterAccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAccountInfo.m; sourceTree = "<group>"; };
+		14A2831E15FA486D00880424 /* TwitterTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterTweet.h; sourceTree = "<group>"; };
+		14A2831F15FA486D00880424 /* TwitterTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterTweet.m; sourceTree = "<group>"; };
+		14A2832115FA486D00880424 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		14A2832215FA486D00880424 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		14A2832315FA486D00880424 /* LockScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockScreenView.h; sourceTree = "<group>"; };
+		14A2832415FA486D00880424 /* LockScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockScreenView.m; sourceTree = "<group>"; };
+		14A2832515FA486D00880424 /* MessageBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBarButtonItem.h; sourceTree = "<group>"; };
+		14A2832615FA486D00880424 /* MessageBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBarButtonItem.m; sourceTree = "<group>"; };
+		14A2832715FA486D00880424 /* SNStatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNStatusBarView.h; sourceTree = "<group>"; };
+		14A2832815FA486D00880424 /* SNStatusBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNStatusBarView.m; sourceTree = "<group>"; };
+		14A2832915FA486D00880424 /* TweetContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetContentView.h; sourceTree = "<group>"; };
+		14A2832A15FA486D00880424 /* TweetContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetContentView.m; sourceTree = "<group>"; };
+		14A2832C15FA486D00880424 /* AccountSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSelectViewController.h; sourceTree = "<group>"; };
+		14A2832D15FA486D00880424 /* AccountSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSelectViewController.m; sourceTree = "<group>"; };
+		14A2832E15FA486D00880424 /* MainListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainListViewController.h; sourceTree = "<group>"; };
+		14A2832F15FA486D00880424 /* MainListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainListViewController.m; sourceTree = "<group>"; };
+		14A2833015FA486D00880424 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		14A2833115FA486D00880424 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		14A2833215FA486D00880424 /* TimeLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineViewController.h; sourceTree = "<group>"; };
+		14A2833315FA486D00880424 /* TimeLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineViewController.m; sourceTree = "<group>"; };
+		14A2833415FA486D00880424 /* TimerLengthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerLengthController.h; sourceTree = "<group>"; };
+		14A2833515FA486D00880424 /* TimerLengthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerLengthController.m; sourceTree = "<group>"; };
+		14A2833615FA486D00880424 /* TimerLengthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerLengthViewController.h; sourceTree = "<group>"; };
+		14A2833715FA486D00880424 /* TimerLengthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerLengthViewController.m; sourceTree = "<group>"; };
 		14B5F05615F383D000630C06 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LoadingView.xib; sourceTree = "<group>"; };
-		14B5F05815F3840D00630C06 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
-		14B5F05915F3840E00630C06 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
-		14B5F06615F3C05C00630C06 /* FriendsDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsDownloader.h; sourceTree = "<group>"; };
-		14B5F06715F3C05C00630C06 /* FriendsDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsDownloader.m; sourceTree = "<group>"; };
-		14B7A5DB15F4F7D600D6BF0B /* NSString+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AnonyFollow.h"; sourceTree = "<group>"; };
-		14B7A5DC15F4F7D600D6BF0B /* NSString+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AnonyFollow.m"; sourceTree = "<group>"; };
-		14B7A5DF15F4F8DC00D6BF0B /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
-		14B7A5E015F4F8DC00D6BF0B /* GTMNSData+zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSData+zlib.h"; sourceTree = "<group>"; };
-		14B7A5E115F4F8DC00D6BF0B /* GTMNSData+zlib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSData+zlib.m"; sourceTree = "<group>"; };
-		14B7A5E215F4F8DC00D6BF0B /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES256.h"; sourceTree = "<group>"; };
-		14B7A5E315F4F8DC00D6BF0B /* NSData+AES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+AES256.m"; sourceTree = "<group>"; };
 		14B7A5E615F4F90A00D6BF0B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		14B7A5EB15F5005F00D6BF0B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		14BE1B6415EA282700F7547E /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
@@ -139,28 +161,6 @@
 		14BE1B6A15EA282700F7547E /* none@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "none@2x.png"; sourceTree = "<group>"; };
 		14BE1B6B15EA282700F7547E /* PurchasePlusButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PurchasePlusButton@2x.png"; sourceTree = "<group>"; };
 		14BE1B6C15EA282700F7547E /* setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting@2x.png"; sourceTree = "<group>"; };
-		14BE1B7515EA289200F7547E /* AccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountCell.h; sourceTree = "<group>"; };
-		14BE1B7615EA289200F7547E /* AccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountCell.m; sourceTree = "<group>"; };
-		14BE1B7715EA289200F7547E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		14BE1B7815EA289200F7547E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		14BE1B7915EA289300F7547E /* MainListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainListViewController.h; sourceTree = "<group>"; };
-		14BE1B7A15EA289300F7547E /* MainListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainListViewController.m; sourceTree = "<group>"; };
-		14BE1B7B15EA289300F7547E /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
-		14BE1B7C15EA289300F7547E /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
-		14BE1B7D15EA289300F7547E /* SNStatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNStatusBarView.h; sourceTree = "<group>"; };
-		14BE1B7E15EA289300F7547E /* SNStatusBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNStatusBarView.m; sourceTree = "<group>"; };
-		14BE1B7F15EA289300F7547E /* TimerLengthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerLengthController.h; sourceTree = "<group>"; };
-		14BE1B8015EA289300F7547E /* TimerLengthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerLengthController.m; sourceTree = "<group>"; };
-		14BE1B8115EA289300F7547E /* TimerLengthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerLengthViewController.h; sourceTree = "<group>"; };
-		14BE1B8215EA289300F7547E /* TimerLengthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerLengthViewController.m; sourceTree = "<group>"; };
-		14BE1B8315EA289300F7547E /* TweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
-		14BE1B8415EA289300F7547E /* TweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
-		14BE1B8515EA289300F7547E /* TweetContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetContentView.h; sourceTree = "<group>"; };
-		14BE1B8615EA289300F7547E /* TweetContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetContentView.m; sourceTree = "<group>"; };
-		14BE1B8715EA289300F7547E /* TwitterAccountInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAccountInfo.h; sourceTree = "<group>"; };
-		14BE1B8815EA289300F7547E /* TwitterAccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAccountInfo.m; sourceTree = "<group>"; };
-		14BE1B8915EA289300F7547E /* TwitterTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterTweet.h; sourceTree = "<group>"; };
-		14BE1B8A15EA289300F7547E /* TwitterTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterTweet.m; sourceTree = "<group>"; };
 		14BE1B9615EA28BF00F7547E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		14F5320815F9D58A0080444A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		14F5320915F9D58A0080444A /* icon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_retina.png; sourceTree = "<group>"; };
@@ -212,8 +212,8 @@
 		0201DBEF15E672AC00A212DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				14B7A5EB15F5005F00D6BF0B /* Security.framework */,
 				14B7A5E615F4F90A00D6BF0B /* libz.dylib */,
+				14B7A5EB15F5005F00D6BF0B /* Security.framework */,
 				142770C415EE82DD0062271A /* SystemConfiguration.framework */,
 				14BE1B9615EA28BF00F7547E /* QuartzCore.framework */,
 				020D225315E6886300A4CDD3 /* AudioToolbox.framework */,
@@ -230,66 +230,14 @@
 		0201DBF615E672AC00A212DC /* AnonyFollow */ = {
 			isa = PBXGroup;
 			children = (
-				14B7A5DF15F4F8DC00D6BF0B /* GTMDefines.h */,
-				14B7A5E015F4F8DC00D6BF0B /* GTMNSData+zlib.h */,
-				14B7A5E115F4F8DC00D6BF0B /* GTMNSData+zlib.m */,
-				14B7A5E215F4F8DC00D6BF0B /* NSData+AES256.h */,
-				14B7A5E315F4F8DC00D6BF0B /* NSData+AES256.m */,
-				14B7A5DB15F4F7D600D6BF0B /* NSString+AnonyFollow.h */,
-				14B7A5DC15F4F7D600D6BF0B /* NSString+AnonyFollow.m */,
-				14B5F06615F3C05C00630C06 /* FriendsDownloader.h */,
-				14B5F06715F3C05C00630C06 /* FriendsDownloader.m */,
-				14B5F05215F370FF00630C06 /* BinarySearcher.h */,
-				14B5F05315F370FF00630C06 /* BinarySearcher.m */,
-				145194C715EA772100E853CA /* NSData+MD5.h */,
-				145194C815EA772100E853CA /* NSData+MD5.m */,
-				145194B915EA51CB00E853CA /* DownloadQueue.h */,
-				145194BA15EA51CB00E853CA /* DownloadQueue.m */,
-				145194BB15EA51CB00E853CA /* DownloadTask.h */,
-				145194BC15EA51CB00E853CA /* DownloadTask.m */,
-				14BE1B7715EA289200F7547E /* AppDelegate.h */,
-				14BE1B7815EA289200F7547E /* AppDelegate.m */,
-				14BE1B7B15EA289300F7547E /* SettingViewController.h */,
-				14BE1B7C15EA289300F7547E /* SettingViewController.m */,
-				14BE1B7D15EA289300F7547E /* SNStatusBarView.h */,
-				14BE1B7E15EA289300F7547E /* SNStatusBarView.m */,
-				14BE1B7F15EA289300F7547E /* TimerLengthController.h */,
-				14BE1B8015EA289300F7547E /* TimerLengthController.m */,
-				14BE1B8115EA289300F7547E /* TimerLengthViewController.h */,
-				14BE1B8215EA289300F7547E /* TimerLengthViewController.m */,
-				14BE1B7515EA289200F7547E /* AccountCell.h */,
-				14BE1B7615EA289200F7547E /* AccountCell.m */,
-				147E30B415F3696A0044D04F /* UserInfoCell.h */,
-				147E30B515F3696A0044D04F /* UserInfoCell.m */,
-				14BE1B8315EA289300F7547E /* TweetCell.h */,
-				14BE1B8415EA289300F7547E /* TweetCell.m */,
-				14BE1B8515EA289300F7547E /* TweetContentView.h */,
-				14BE1B8615EA289300F7547E /* TweetContentView.m */,
-				14BE1B8715EA289300F7547E /* TwitterAccountInfo.h */,
-				14BE1B8815EA289300F7547E /* TwitterAccountInfo.m */,
-				14BE1B8915EA289300F7547E /* TwitterTweet.h */,
-				14BE1B8A15EA289300F7547E /* TwitterTweet.m */,
-				145194BF15EA5EBB00E853CA /* TimeLineViewController.h */,
-				145194C015EA5EBC00E853CA /* TimeLineViewController.m */,
-				1455709815EBC0C7003DD49F /* LockScreenView.h */,
-				1455709915EBC0C7003DD49F /* LockScreenView.m */,
-				145570A015EBC3D1003DD49F /* MessageBarButtonItem.h */,
-				145570A115EBC3D1003DD49F /* MessageBarButtonItem.m */,
-				14BE1B7915EA289300F7547E /* MainListViewController.h */,
-				14BE1B7A15EA289300F7547E /* MainListViewController.m */,
-				144D729515F1F18F00399A36 /* AccountSelectViewController.h */,
-				144D729615F1F18F00399A36 /* AccountSelectViewController.m */,
-				142770C015EE826B0062271A /* SNReachablityChecker.h */,
-				142770C115EE826B0062271A /* SNReachablityChecker.m */,
-				144D72A115F2E93A00399A36 /* ACAccountStore+AnonyFollow.h */,
-				144D72A215F2E93A00399A36 /* ACAccountStore+AnonyFollow.m */,
-				14B5F05815F3840D00630C06 /* LoadingView.h */,
-				14B5F05915F3840E00630C06 /* LoadingView.m */,
+				14A282F615FA486D00880424 /* Category */,
+				14A282FF15FA486D00880424 /* Cell */,
+				14A2830615FA486D00880424 /* Controller */,
+				14A2831715FA486D00880424 /* Google */,
+				14A2831B15FA486D00880424 /* Model */,
+				14A2832015FA486D00880424 /* View */,
+				14A2832B15FA486D00880424 /* ViewController */,
 				14BE1B6215EA282700F7547E /* Resources */,
-				02B9542315E6733E005026B1 /* CBScanner.h */,
-				02B9542415E6733E005026B1 /* CBScanner.m */,
-				02B9542715E67471005026B1 /* CBAdvertizer.h */,
-				02B9542815E67471005026B1 /* CBAdvertizer.m */,
 				0201DBF715E672AC00A212DC /* Supporting Files */,
 			);
 			path = AnonyFollow;
@@ -303,6 +251,114 @@
 				0201DBFE15E672AC00A212DC /* AnonyFollow-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		14A282F615FA486D00880424 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				14A282F715FA486D00880424 /* ACAccountStore+AnonyFollow.h */,
+				14A282F815FA486D00880424 /* ACAccountStore+AnonyFollow.m */,
+				14A282F915FA486D00880424 /* NSData+AES256.h */,
+				14A282FA15FA486D00880424 /* NSData+AES256.m */,
+				14A282FB15FA486D00880424 /* NSData+MD5.h */,
+				14A282FC15FA486D00880424 /* NSData+MD5.m */,
+				14A282FD15FA486D00880424 /* NSString+AnonyFollow.h */,
+				14A282FE15FA486D00880424 /* NSString+AnonyFollow.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		14A282FF15FA486D00880424 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				14A2830015FA486D00880424 /* AccountCell.h */,
+				14A2830115FA486D00880424 /* AccountCell.m */,
+				14A2830215FA486D00880424 /* TweetCell.h */,
+				14A2830315FA486D00880424 /* TweetCell.m */,
+				14A2830415FA486D00880424 /* UserInfoCell.h */,
+				14A2830515FA486D00880424 /* UserInfoCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		14A2830615FA486D00880424 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				14A2830715FA486D00880424 /* AppDelegate.h */,
+				14A2830815FA486D00880424 /* AppDelegate.m */,
+				14A2830915FA486D00880424 /* BinarySearcher.h */,
+				14A2830A15FA486D00880424 /* BinarySearcher.m */,
+				14A2830B15FA486D00880424 /* CBAdvertizer.h */,
+				14A2830C15FA486D00880424 /* CBAdvertizer.m */,
+				14A2830D15FA486D00880424 /* CBScanner.h */,
+				14A2830E15FA486D00880424 /* CBScanner.m */,
+				14A2830F15FA486D00880424 /* DownloadQueue.h */,
+				14A2831015FA486D00880424 /* DownloadQueue.m */,
+				14A2831115FA486D00880424 /* DownloadTask.h */,
+				14A2831215FA486D00880424 /* DownloadTask.m */,
+				14A2831315FA486D00880424 /* FriendsDownloader.h */,
+				14A2831415FA486D00880424 /* FriendsDownloader.m */,
+				14A2831515FA486D00880424 /* SNReachablityChecker.h */,
+				14A2831615FA486D00880424 /* SNReachablityChecker.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		14A2831715FA486D00880424 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				14A2831815FA486D00880424 /* GTMDefines.h */,
+				14A2831915FA486D00880424 /* GTMNSData+zlib.h */,
+				14A2831A15FA486D00880424 /* GTMNSData+zlib.m */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
+		14A2831B15FA486D00880424 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				14A2831C15FA486D00880424 /* TwitterAccountInfo.h */,
+				14A2831D15FA486D00880424 /* TwitterAccountInfo.m */,
+				14A2831E15FA486D00880424 /* TwitterTweet.h */,
+				14A2831F15FA486D00880424 /* TwitterTweet.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		14A2832015FA486D00880424 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				14A2832115FA486D00880424 /* LoadingView.h */,
+				14A2832215FA486D00880424 /* LoadingView.m */,
+				14A2832315FA486D00880424 /* LockScreenView.h */,
+				14A2832415FA486D00880424 /* LockScreenView.m */,
+				14A2832515FA486D00880424 /* MessageBarButtonItem.h */,
+				14A2832615FA486D00880424 /* MessageBarButtonItem.m */,
+				14A2832715FA486D00880424 /* SNStatusBarView.h */,
+				14A2832815FA486D00880424 /* SNStatusBarView.m */,
+				14A2832915FA486D00880424 /* TweetContentView.h */,
+				14A2832A15FA486D00880424 /* TweetContentView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		14A2832B15FA486D00880424 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				14A2832C15FA486D00880424 /* AccountSelectViewController.h */,
+				14A2832D15FA486D00880424 /* AccountSelectViewController.m */,
+				14A2832E15FA486D00880424 /* MainListViewController.h */,
+				14A2832F15FA486D00880424 /* MainListViewController.m */,
+				14A2833015FA486D00880424 /* SettingViewController.h */,
+				14A2833115FA486D00880424 /* SettingViewController.m */,
+				14A2833215FA486D00880424 /* TimeLineViewController.h */,
+				14A2833315FA486D00880424 /* TimeLineViewController.m */,
+				14A2833415FA486D00880424 /* TimerLengthController.h */,
+				14A2833515FA486D00880424 /* TimerLengthController.m */,
+				14A2833615FA486D00880424 /* TimerLengthViewController.h */,
+				14A2833715FA486D00880424 /* TimerLengthViewController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		14BE1B6215EA282700F7547E /* Resources */ = {
@@ -473,35 +529,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				0201DBFD15E672AC00A212DC /* main.m in Sources */,
-				02B9542515E6733E005026B1 /* CBScanner.m in Sources */,
-				02B9542915E67471005026B1 /* CBAdvertizer.m in Sources */,
-				14BE1B8B15EA289300F7547E /* AccountCell.m in Sources */,
-				14BE1B8C15EA289300F7547E /* AppDelegate.m in Sources */,
-				14BE1B8D15EA289300F7547E /* MainListViewController.m in Sources */,
-				14BE1B8E15EA289300F7547E /* SettingViewController.m in Sources */,
-				14BE1B8F15EA289300F7547E /* SNStatusBarView.m in Sources */,
-				14BE1B9015EA289300F7547E /* TimerLengthController.m in Sources */,
-				14BE1B9115EA289300F7547E /* TimerLengthViewController.m in Sources */,
-				14BE1B9215EA289300F7547E /* TweetCell.m in Sources */,
-				14BE1B9315EA289300F7547E /* TweetContentView.m in Sources */,
-				14BE1B9415EA289300F7547E /* TwitterAccountInfo.m in Sources */,
-				14BE1B9515EA289300F7547E /* TwitterTweet.m in Sources */,
-				145194BD15EA51CB00E853CA /* DownloadQueue.m in Sources */,
-				145194BE15EA51CB00E853CA /* DownloadTask.m in Sources */,
-				145194C115EA5EBC00E853CA /* TimeLineViewController.m in Sources */,
-				145194C915EA772100E853CA /* NSData+MD5.m in Sources */,
-				1455709A15EBC0C7003DD49F /* LockScreenView.m in Sources */,
-				145570A215EBC3D1003DD49F /* MessageBarButtonItem.m in Sources */,
-				142770C215EE826B0062271A /* SNReachablityChecker.m in Sources */,
-				144D729715F1F18F00399A36 /* AccountSelectViewController.m in Sources */,
-				144D72A315F2E93A00399A36 /* ACAccountStore+AnonyFollow.m in Sources */,
-				147E30B615F3696A0044D04F /* UserInfoCell.m in Sources */,
-				14B5F05415F370FF00630C06 /* BinarySearcher.m in Sources */,
-				14B5F05A15F3840E00630C06 /* LoadingView.m in Sources */,
-				14B5F06815F3C05C00630C06 /* FriendsDownloader.m in Sources */,
-				14B7A5DD15F4F7D600D6BF0B /* NSString+AnonyFollow.m in Sources */,
-				14B7A5E415F4F8DC00D6BF0B /* GTMNSData+zlib.m in Sources */,
-				14B7A5E515F4F8DC00D6BF0B /* NSData+AES256.m in Sources */,
+				14A2833815FA486D00880424 /* ACAccountStore+AnonyFollow.m in Sources */,
+				14A2833915FA486D00880424 /* NSData+AES256.m in Sources */,
+				14A2833A15FA486D00880424 /* NSData+MD5.m in Sources */,
+				14A2833B15FA486D00880424 /* NSString+AnonyFollow.m in Sources */,
+				14A2833C15FA486D00880424 /* AccountCell.m in Sources */,
+				14A2833D15FA486D00880424 /* TweetCell.m in Sources */,
+				14A2833E15FA486D00880424 /* UserInfoCell.m in Sources */,
+				14A2833F15FA486D00880424 /* AppDelegate.m in Sources */,
+				14A2834015FA486D00880424 /* BinarySearcher.m in Sources */,
+				14A2834115FA486D00880424 /* CBAdvertizer.m in Sources */,
+				14A2834215FA486D00880424 /* CBScanner.m in Sources */,
+				14A2834315FA486D00880424 /* DownloadQueue.m in Sources */,
+				14A2834415FA486D00880424 /* DownloadTask.m in Sources */,
+				14A2834515FA486D00880424 /* FriendsDownloader.m in Sources */,
+				14A2834615FA486D00880424 /* SNReachablityChecker.m in Sources */,
+				14A2834715FA486D00880424 /* GTMNSData+zlib.m in Sources */,
+				14A2834815FA486D00880424 /* TwitterAccountInfo.m in Sources */,
+				14A2834915FA486D00880424 /* TwitterTweet.m in Sources */,
+				14A2834A15FA486D00880424 /* LoadingView.m in Sources */,
+				14A2834B15FA486D00880424 /* LockScreenView.m in Sources */,
+				14A2834C15FA486D00880424 /* MessageBarButtonItem.m in Sources */,
+				14A2834D15FA486D00880424 /* SNStatusBarView.m in Sources */,
+				14A2834E15FA486D00880424 /* TweetContentView.m in Sources */,
+				14A2834F15FA486D00880424 /* AccountSelectViewController.m in Sources */,
+				14A2835015FA486D00880424 /* MainListViewController.m in Sources */,
+				14A2835115FA486D00880424 /* SettingViewController.m in Sources */,
+				14A2835215FA486D00880424 /* TimeLineViewController.m in Sources */,
+				14A2835315FA486D00880424 /* TimerLengthController.m in Sources */,
+				14A2835415FA486D00880424 /* TimerLengthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
