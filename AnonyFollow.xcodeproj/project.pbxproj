@@ -65,6 +65,8 @@
 		14F5320B15F9D58A0080444A /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5320915F9D58A0080444A /* icon_retina.png */; };
 		14F5321415F9E9D50080444A /* icon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5321215F9E9D50080444A /* icon_ipad.png */; };
 		14F5321515F9E9D50080444A /* icon_retina_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5321315F9E9D50080444A /* icon_retina_ipad.png */; };
+		14F5321715F9EF270080444A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5321615F9EF270080444A /* Default.png */; };
+		14F5321915F9EF2D0080444A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5321815F9EF2D0080444A /* Default@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,6 +166,8 @@
 		14F5320915F9D58A0080444A /* icon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_retina.png; sourceTree = "<group>"; };
 		14F5321215F9E9D50080444A /* icon_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_ipad.png; sourceTree = "<group>"; };
 		14F5321315F9E9D50080444A /* icon_retina_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_retina_ipad.png; sourceTree = "<group>"; };
+		14F5321615F9EF270080444A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		14F5321815F9EF2D0080444A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +325,7 @@
 		14BE1B6315EA282700F7547E /* image@1x */ = {
 			isa = PBXGroup;
 			children = (
+				14F5321615F9EF270080444A /* Default.png */,
 				14BE1B6415EA282700F7547E /* new.png */,
 				14BE1B6515EA282700F7547E /* none.png */,
 				14BE1B6615EA282700F7547E /* PurchasePlusButton.png */,
@@ -332,6 +337,7 @@
 		14BE1B6815EA282700F7547E /* image@2x */ = {
 			isa = PBXGroup;
 			children = (
+				14F5321815F9EF2D0080444A /* Default@2x.png */,
 				14BE1B6915EA282700F7547E /* new@2x.png */,
 				14BE1B6A15EA282700F7547E /* none@2x.png */,
 				14BE1B6B15EA282700F7547E /* PurchasePlusButton@2x.png */,
@@ -423,6 +429,8 @@
 				14F5320B15F9D58A0080444A /* icon_retina.png in Resources */,
 				14F5321415F9E9D50080444A /* icon_ipad.png in Resources */,
 				14F5321515F9E9D50080444A /* icon_retina_ipad.png in Resources */,
+				14F5321715F9EF270080444A /* Default.png in Resources */,
+				14F5321915F9EF2D0080444A /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
