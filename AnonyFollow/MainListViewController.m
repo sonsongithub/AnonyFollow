@@ -212,7 +212,9 @@
 	self.accounts = [NSMutableArray array];
 	self.accountsCollectedOnBackground = [NSMutableArray array];
 	self.twitterAccountButton.delegate = self;
-
+	
+	// Sometimes, application crashes here.
+/*
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
 	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 	
@@ -268,6 +270,7 @@
 		
 	}
 #endif
+*/
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -61,6 +61,8 @@
 		14BE1B9415EA289300F7547E /* TwitterAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B8815EA289300F7547E /* TwitterAccountInfo.m */; };
 		14BE1B9515EA289300F7547E /* TwitterTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 14BE1B8A15EA289300F7547E /* TwitterTweet.m */; };
 		14BE1B9715EA28BF00F7547E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BE1B9615EA28BF00F7547E /* QuartzCore.framework */; };
+		14F5320A15F9D58A0080444A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5320815F9D58A0080444A /* icon.png */; };
+		14F5320B15F9D58A0080444A /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5320915F9D58A0080444A /* icon_retina.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,6 +158,8 @@
 		14BE1B8915EA289300F7547E /* TwitterTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterTweet.h; sourceTree = "<group>"; };
 		14BE1B8A15EA289300F7547E /* TwitterTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterTweet.m; sourceTree = "<group>"; };
 		14BE1B9615EA28BF00F7547E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		14F5320815F9D58A0080444A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		14F5320915F9D58A0080444A /* icon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_retina.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +300,7 @@
 		14BE1B6215EA282700F7547E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				14F5320715F9D58A0080444A /* image */,
 				14B5F05515F383D000630C06 /* LoadingView.xib */,
 				1455708F15EBC00D003DD49F /* LockScreenView.xib */,
 				145194A715EA2BE800E853CA /* MainStoryboard_iPad.storyboard.string */,
@@ -329,6 +334,15 @@
 				14BE1B6C15EA282700F7547E /* setting@2x.png */,
 			);
 			path = "image@2x";
+			sourceTree = "<group>";
+		};
+		14F5320715F9D58A0080444A /* image */ = {
+			isa = PBXGroup;
+			children = (
+				14F5320815F9D58A0080444A /* icon.png */,
+				14F5320915F9D58A0080444A /* icon_retina.png */,
+			);
+			path = image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,6 +413,8 @@
 				145194A415EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard in Resources */,
 				1455709115EBC00D003DD49F /* LockScreenView.xib in Resources */,
 				14B5F05715F383D000630C06 /* LoadingView.xib in Resources */,
+				14F5320A15F9D58A0080444A /* icon.png in Resources */,
+				14F5320B15F9D58A0080444A /* icon_retina.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
