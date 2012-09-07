@@ -173,6 +173,8 @@
     }];
 }
 
+#pragma mark - NSNotification
+
 - (void)didFollowUser:(NSNotification*)notification {
 	NSString *userName = [[notification userInfo] objectForKey:@"userName"];
 	[self removeUserNameFromListWithUserName:userName];
@@ -221,6 +223,7 @@
 	
 	AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
 	[appdelegate setupOriginalStatusBar];
+	
 	// Sometimes, application crashes here.
 
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
@@ -251,33 +254,6 @@
 			});
 		}
 	}];
-	
-#if 0
-	NSArray *samples = [NSArray arrayWithObjects:
-						@"sonson_twit",
-						@"fladdict",
-						@"hakochin",
-						@"iakiyama",
-						@"soendoen",
-						@"yazhuhua",
-						@"dancingpandor",
-						@"tyfk",
-						@"tokyopengwyn",
-						@"blogranger",
-						@"rsebbe",
-						@"goando",
-						@"kentakeuchi2003",
-						@"keita_f",
-						nil
-						];
-	
-	for (NSString *account in samples) {
-		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
-		info.screenName = account;
-		[self.accounts addObject:info];
-		
-	}
-#endif
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
