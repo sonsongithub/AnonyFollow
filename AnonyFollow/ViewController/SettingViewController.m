@@ -12,42 +12,10 @@
 
 #import "FriendsDownloader.h"
 
-@interface UIViewController(SettingViewController)
-
-- (IBAction)dismiss:(id)sender;
-
-@end
-
-@implementation UIViewController(SettingViewController)
-
-- (IBAction)dismiss:(id)sender {
-	if ([UIApplication sharedApplication].statusBarHidden) {
-		[UIView animateWithDuration:0.4
-						 animations:^(void) {
-							 self.navigationController.view.frame = CGRectMake(0, 0, 320, 480);
-						 }
-						 completion:^(BOOL success) {
-							 [self dismissViewControllerAnimated:YES completion:^(void){}];
-						 }];
-	}
-	else {
-		[self dismissViewControllerAnimated:YES completion:^(void){}];
-	}
-}
-@end
+#import "NSBundle+AnonyFollow.h"
+#import "UIViewController+AnonyFollow.h"
 
 @interface SettingViewController ()
-
-@end
-
-@implementation NSBundle(SettingViewController)
-
-+ (id)infoValueFromMainBundleForKey:(NSString*)key {
-	if ([[[self mainBundle] localizedInfoDictionary] objectForKey:key])
-		return [[[self mainBundle] localizedInfoDictionary] objectForKey:key];
-	return [[[self mainBundle] infoDictionary] objectForKey:key];
-}
-
 @end
 
 @implementation SettingViewController

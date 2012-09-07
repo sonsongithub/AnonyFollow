@@ -49,6 +49,8 @@
 		14A2835215FA486D00880424 /* TimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2833315FA486D00880424 /* TimeLineViewController.m */; };
 		14A2835315FA486D00880424 /* TimerLengthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2833515FA486D00880424 /* TimerLengthController.m */; };
 		14A2835415FA486D00880424 /* TimerLengthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2833715FA486D00880424 /* TimerLengthViewController.m */; };
+		14A2835715FA4CEF00880424 /* UIViewController+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2835615FA4CEF00880424 /* UIViewController+AnonyFollow.m */; };
+		14A2835A15FA4D1000880424 /* NSBundle+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2835915FA4D1000880424 /* NSBundle+AnonyFollow.m */; };
 		14B5F05715F383D000630C06 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B5F05515F383D000630C06 /* LoadingView.xib */; };
 		14B7A5E715F4F90A00D6BF0B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B7A5E615F4F90A00D6BF0B /* libz.dylib */; };
 		14B7A5EC15F5005F00D6BF0B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B7A5EB15F5005F00D6BF0B /* Security.framework */; };
@@ -150,6 +152,10 @@
 		14A2833515FA486D00880424 /* TimerLengthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerLengthController.m; sourceTree = "<group>"; };
 		14A2833615FA486D00880424 /* TimerLengthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerLengthViewController.h; sourceTree = "<group>"; };
 		14A2833715FA486D00880424 /* TimerLengthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerLengthViewController.m; sourceTree = "<group>"; };
+		14A2835515FA4CEF00880424 /* UIViewController+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AnonyFollow.h"; sourceTree = "<group>"; };
+		14A2835615FA4CEF00880424 /* UIViewController+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AnonyFollow.m"; sourceTree = "<group>"; };
+		14A2835815FA4D1000880424 /* NSBundle+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+AnonyFollow.h"; sourceTree = "<group>"; };
+		14A2835915FA4D1000880424 /* NSBundle+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+AnonyFollow.m"; sourceTree = "<group>"; };
 		14B5F05615F383D000630C06 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LoadingView.xib; sourceTree = "<group>"; };
 		14B7A5E615F4F90A00D6BF0B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		14B7A5EB15F5005F00D6BF0B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -264,6 +270,10 @@
 				14A282FC15FA486D00880424 /* NSData+MD5.m */,
 				14A282FD15FA486D00880424 /* NSString+AnonyFollow.h */,
 				14A282FE15FA486D00880424 /* NSString+AnonyFollow.m */,
+				14A2835515FA4CEF00880424 /* UIViewController+AnonyFollow.h */,
+				14A2835615FA4CEF00880424 /* UIViewController+AnonyFollow.m */,
+				14A2835815FA4D1000880424 /* NSBundle+AnonyFollow.h */,
+				14A2835915FA4D1000880424 /* NSBundle+AnonyFollow.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -558,6 +568,8 @@
 				14A2835215FA486D00880424 /* TimeLineViewController.m in Sources */,
 				14A2835315FA486D00880424 /* TimerLengthController.m in Sources */,
 				14A2835415FA486D00880424 /* TimerLengthViewController.m in Sources */,
+				14A2835715FA4CEF00880424 /* UIViewController+AnonyFollow.m in Sources */,
+				14A2835A15FA4D1000880424 /* NSBundle+AnonyFollow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
