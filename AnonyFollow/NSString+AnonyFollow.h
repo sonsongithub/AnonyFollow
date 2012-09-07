@@ -8,10 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+#define KEY_ANONYFOLLOW @"sekky"
+
 @interface NSString(AnonyFollow)
 
-+ (void)test_AnonyFollow;
+//
+- (NSString*)encode;
+- (NSString*)decode;
 
+
+// test
++ (void)test_AnonyFollow;
 - (NSData*)anonyFollowEncryptedData;
 - (NSString*)anonyFollowEncryptedString;
 

@@ -18,6 +18,12 @@
 
 @implementation NSString(AnonyFollow)
 
+- (unsigned int)hexIntValue {
+    unsigned int result;
+    [[NSScanner scannerWithString:self] scanHexInt:&result];
+    return result;
+}
+
 + (char*)randomStringWithLength:(int)length {
 	char *p = (char*)malloc(sizeof(char) * (length + 1));
 	
@@ -42,31 +48,76 @@
 }
 
 + (void)test_AnonyFollow {
+#if 0
 	for (int length = 3; length < 16; length++) {
 		for (int i = 0; i < 100; i++) {
 			char *p = [self randomStringWithLength:length];
 			
 			NSString *string = [[NSString alloc] initWithBytes:p length:length encoding:NSASCIIStringEncoding];
-			[string anonyFollowEncryptedString];
+			
+			
+			NSData *encodedData = [string dataAnonyFollowEncoded];
+			NSString *encodedString = [string stringAnonyFollowEncoded];
+			
+			NSString *string_from_encodedData = [NSString stringWithAnonyFollowEncodedData:encodedData];
+			NSString *string_from_encodedString = [NSString stringWithAnonyFollowEncodedString:encodedString];
+			
+			assert([string isEqualToString:string_from_encodedData]);
+			assert([string isEqualToString:string_from_encodedString]);
+			
 			free(p);
 		}
 	}
-	
+#endif
 }
 
-- (NSData*)anonyFollowEncryptedData {
+- (NSData*)dataAnonyFollowEncoded {
 	NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-	return [data dataEncryptedWithKey:@"hoaaaage"];
+	return [data dataEncryptedWithKey:KEY_ANONYFOLLOW];
 }
 
-- (NSString*)anonyFollowEncryptedString {
-	NSData *encryptedData = [self anonyFollowEncryptedData];
+- (NSString*)stringAnonyFollowEncoded {
+	NSData *data = [self dataAnonyFollowEncoded];
 	NSMutableString *buf = [NSMutableString string];
-	char *p = (char*)[encryptedData bytes];
-	for (int i = 0; i < [encryptedData length]; i++)
+	unsigned char *p = (unsigned char*)[data bytes];
+	for (int i = 0; i < [data length]; i++)
 		[buf appendFormat:@"%02x", *(p + i)];
-	
 	return [NSString stringWithString:buf];
 }
+
++ (NSString*)stringWithAnonyFollowEncodedData:(NSData*)data {
+	NSData *decrypted = [data dataDecryptedWithKey:KEY_ANONYFOLLOW];
+	return [[NSString alloc] initWithBytes:[decrypted bytes] length:[decrypted length] encoding:NSUTF8StringEncoding];
+}
+
++ (NSString*)stringWithAnonyFollowEncodedString:(NSString*)string {
+	NSMutableData *data = [NSMutableData data];
+	for (int i = 0; i < [string length]; i+=2) {
+		NSString *sub = [string substringWithRange:NSMakeRange(i, 2)];
+		NSLog(@"%@, %d", sub, i);
+		unsigned char c = [sub hexIntValue];
+		
+		NSLog(@"%02x", c);
+		
+		[data appendBytes:&c length:sizeof(c)];
+	}
+	return [NSString stringWithAnonyFollowEncodedData:data];
+}
+
+//
+//- (NSData*)anonyFollowEncryptedData {
+//	NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
+//	return [data dataEncryptedWithKey:@"hoaaaage"];
+//}
+//
+//- (NSString*)anonyFollowEncryptedString {
+//	NSData *encryptedData = [self anonyFollowEncryptedData];
+//	NSMutableString *buf = [NSMutableString string];
+//	char *p = (char*)[encryptedData bytes];
+//	for (int i = 0; i < [encryptedData length]; i++)
+//		[buf appendFormat:@"%02x", *(p + i)];
+//	
+//	return [NSString stringWithString:buf];
+//}
 
 @end
