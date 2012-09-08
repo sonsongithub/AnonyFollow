@@ -7,11 +7,7 @@
 //
 
 #import "SettingViewController.h"
-
 #import "TimerLengthController.h"
-
-#import "FriendsDownloader.h"
-
 #import "NSBundle+AnonyFollow.h"
 #import "UIViewController+AnonyFollow.h"
 

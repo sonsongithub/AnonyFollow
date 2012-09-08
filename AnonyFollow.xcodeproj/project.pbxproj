@@ -33,7 +33,6 @@
 		14A2834215FA486D00880424 /* CBScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2830E15FA486D00880424 /* CBScanner.m */; };
 		14A2834315FA486D00880424 /* DownloadQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831015FA486D00880424 /* DownloadQueue.m */; };
 		14A2834415FA486D00880424 /* DownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831215FA486D00880424 /* DownloadTask.m */; };
-		14A2834515FA486D00880424 /* FriendsDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831415FA486D00880424 /* FriendsDownloader.m */; };
 		14A2834615FA486D00880424 /* SNReachablityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831615FA486D00880424 /* SNReachablityChecker.m */; };
 		14A2834715FA486D00880424 /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831A15FA486D00880424 /* GTMNSData+zlib.m */; };
 		14A2834815FA486D00880424 /* TwitterAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831D15FA486D00880424 /* TwitterAccountInfo.m */; };
@@ -119,8 +118,6 @@
 		14A2831015FA486D00880424 /* DownloadQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadQueue.m; sourceTree = "<group>"; };
 		14A2831115FA486D00880424 /* DownloadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTask.h; sourceTree = "<group>"; };
 		14A2831215FA486D00880424 /* DownloadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTask.m; sourceTree = "<group>"; };
-		14A2831315FA486D00880424 /* FriendsDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsDownloader.h; sourceTree = "<group>"; };
-		14A2831415FA486D00880424 /* FriendsDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsDownloader.m; sourceTree = "<group>"; };
 		14A2831515FA486D00880424 /* SNReachablityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNReachablityChecker.h; sourceTree = "<group>"; };
 		14A2831615FA486D00880424 /* SNReachablityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNReachablityChecker.m; sourceTree = "<group>"; };
 		14A2831815FA486D00880424 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -306,8 +303,6 @@
 				14A2831015FA486D00880424 /* DownloadQueue.m */,
 				14A2831115FA486D00880424 /* DownloadTask.h */,
 				14A2831215FA486D00880424 /* DownloadTask.m */,
-				14A2831315FA486D00880424 /* FriendsDownloader.h */,
-				14A2831415FA486D00880424 /* FriendsDownloader.m */,
 				14A2831515FA486D00880424 /* SNReachablityChecker.h */,
 				14A2831615FA486D00880424 /* SNReachablityChecker.m */,
 			);
@@ -552,7 +547,6 @@
 				14A2834215FA486D00880424 /* CBScanner.m in Sources */,
 				14A2834315FA486D00880424 /* DownloadQueue.m in Sources */,
 				14A2834415FA486D00880424 /* DownloadTask.m in Sources */,
-				14A2834515FA486D00880424 /* FriendsDownloader.m in Sources */,
 				14A2834615FA486D00880424 /* SNReachablityChecker.m in Sources */,
 				14A2834715FA486D00880424 /* GTMNSData+zlib.m in Sources */,
 				14A2834815FA486D00880424 /* TwitterAccountInfo.m in Sources */,
