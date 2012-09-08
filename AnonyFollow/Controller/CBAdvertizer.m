@@ -7,8 +7,9 @@
 //
 
 #import "CBAdvertizer.h"
-#define PRIMALY_SERVICE_UUID @"1802"
-#define ENABLE_BG_ADVERTIZE
+#import "NSString+AnonyFollow.h"
+
+
 
 @implementation CBAdvertizer
 
@@ -49,6 +50,9 @@
 - (id)initWithDelegate:(id<CBAdvertizerDelegate>)delegate userName:(NSString*)userName serviceUUID:(NSString*)UUIDStr {
     self.userName = userName;
     self.UUIDStr = UUIDStr;
+    while ([self.userName length]<UNAME_MAX_LEN) {
+        self.userName=[self.userName stringByAppendingFormat:@" "];
+    }
 	self.delegate = delegate;
     self.manager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackgroundNotification:) name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -60,54 +64,33 @@
 }
 
 - (void)didEnterBackgroundNotification:(NSNotification*)notification {
-	//[self stopAdvertize];
+	[self stopAdvertize];
     DNSLogMethod
 }
 
 - (void)startAdvertize{
     if ([self isAvailable]) {
 		CBUUID* primaly_service_UUID=[CBUUID UUIDWithString:self.UUIDStr];
-		CBMutableService *services=[[CBMutableService alloc] initWithType:primaly_service_UUID primary:YES];
-        
-        CBMutableService *services_02=[[CBMutableService alloc] initWithType:[CBUUID UUIDWithString:@"1800"] primary:YES];
+		CBMutableService *services=[[CBMutableService alloc] initWithType:primaly_service_UUID primary:YES];        
 		[self.manager addService:services];
-        [self.manager addService:services_02];
 
-#ifdef ENABLE_BG_ADVERTIZE
-#define MAX_SERVICE (28-2)
-        // maximun twitter user name length seems to be 15 characters(http://www.mediabistro.com/alltwitter/tag/maximum-username-length-on-twitter)
-        char char_name[MAX_SERVICE];
-        for(int i=0;i<(MAX_SERVICE-1);i++){
-            char_name[i]=' ';
-        }
-        char_name[MAX_SERVICE-1]='\n';
-        memcpy(char_name, [self.userName cStringUsingEncoding:NSASCIIStringEncoding], [self.userName length]);
-        //NSLog(@"char_name: %s,%d",char_name,[self.userName length]);
-        NSMutableArray *UUIDsArray=[NSMutableArray arrayWithObjects:primaly_service_UUID,nil];        
-        for(int index=0;index<(int)(MAX_SERVICE/2);index ++){
-            [UUIDsArray addObject:[CBUUID UUIDWithData:[NSData dataWithBytes:&char_name[2*index] length:2]]];
-        }
-        NSDictionary *adDict=[NSDictionary dictionaryWithObjectsAndKeys:
-                              //UUIDsArray,			@"CBAdvertisementDataServiceUUIDsKey",
-							  //self.userName,		@"CBAdvertisementDataLocalNameKey",
-							  UUIDsArray,			@"kCBAdvDataServiceUUIDs",
-							  @"",                  @"kCBAdvDataLocalName",
-							  nil];
-#if 0
-        CBMutableCharacteristic *test_characteristics_01=
-        [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:@"0f11"] properties:CBCharacteristicPropertyBroadcast value:[NSData dataWithBytes:char_name length:MAX_SERVICE] permissions:CBAttributePermissionsReadable];
-        NSArray *c_a=[NSArray arrayWithObjects:test_characteristics_01,nil];
-        [services setCharacteristics:c_a];
-#endif
-        
-#else
+        // maximun twitter user name length seems to be 15 characters
+        uint8_t encodedCData[ENCODED_UNAME_LEN];
+        NSData *encodedData = [self.userName dataAnonyFollowEncoded];
+        [encodedData getBytes:encodedCData];
+        assert([encodedData length]==ENCODED_UNAME_LEN);
         NSMutableArray *UUIDsArray=[NSMutableArray arrayWithObjects:primaly_service_UUID,nil];
+        
+        for(int index=0;index<(int)(ENCODED_UNAME_LEN/2);index ++){
+            CBUUID *tmp=[CBUUID UUIDWithData:[NSData dataWithBytes:&encodedCData[2*index+0] length:2]];
+            [UUIDsArray addObject:tmp];
+        }
         NSDictionary *adDict=[NSDictionary dictionaryWithObjectsAndKeys:
 							  UUIDsArray,			@"kCBAdvDataServiceUUIDs",
-							  self.userName,        @"kCBAdvDataLocalName",
+                              @"",                  @"kCBAdvDataLocalName",
 							  nil];
-#endif
 		[self.manager startAdvertising:adDict];
+        NSLog(@"startAdvertize %d,%d,%@,%s",[encodedData length],[self.userName length],self.userName,encodedCData);
     }
 	else{
     }

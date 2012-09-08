@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import <CoreBluetooth/CoreBluetooth.h>
-
+#import "CBAdvertizer.h"
 extern NSString *kCBScannerInfoUserNameKey;
 
 @class CBScanner;

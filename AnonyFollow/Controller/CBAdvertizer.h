@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 
+//#define CBScannerAllowDuplicates
+#define ENCODED_UNAME_LEN (16)
+#define UNAME_MAX_LEN     (15)
+
 typedef NS_ENUM(NSInteger, CBAdvertizerState) {
 	CBAdvertizerStateUnknown = 0,
 	CBAdvertizerStateResetting,

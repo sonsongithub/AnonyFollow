@@ -7,10 +7,11 @@
 //
 
 #import "CBScanner.h"
-//#define CBScannerAllowDuplicates
+#import "NSString+AnonyFollow.h"
 #define CBScannerFilterServices
 
 NSString *kCBScannerInfoUserNameKey = @"kCBScannerInfoUserNameKey";
+NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
 
 @implementation CBScanner
 #pragma mark - Instance method
@@ -102,45 +103,32 @@ NSString *kCBScannerInfoUserNameKey = @"kCBScannerInfoUserNameKey";
 	  advertisementData:(NSDictionary *)advertisementData
 				   RSSI:(NSNumber *)RSSI {
 	DNSLogMethod
-    NSArray *services = [advertisementData objectForKey:@"kCBAdvDataServiceUUIDs"];
+    NSMutableArray *services = [advertisementData objectForKey:@"kCBAdvDataServiceUUIDs"];
+    NSMutableData *encodedData=[NSMutableData dataWithCapacity:ENCODED_UNAME_LEN];
+    if([services count]!=(ENCODED_UNAME_LEN/2)+1){
+        return;
+    }
+    /* first byte should be 0x1802 */
+    [services removeObjectAtIndex:0];
     
-#if 0
-    NSString *userName = [advertisementData objectForKey:@"kCBAdvDataLocalName"];
-#else
-    NSString *userName=@"";
-    int cnt=0;
     for(CBUUID *uuid in services)
     {
-        if(cnt>0){
-            /* first byte should be 0x1802.*/
-            NSString *str= [[NSString alloc] initWithData:uuid.data encoding:NSASCIIStringEncoding];
-            userName=[userName stringByAppendingString:[NSString stringWithFormat:@"%@",str]];
-        }
-        cnt++;
+        uint8_t _data[2];
+        [uuid.data getBytes:_data];
+        [encodedData appendBytes:_data length:2];
     }
-    NSLog(@"userName:%@,%d",userName,[services count]);
-    //NSLog(@"before userName:%d",[userName length]);
+    NSString *userName = [NSString stringWithAnonyFollowEncodedData:encodedData];
     userName = [userName stringByReplacingOccurrencesOfString:@" " withString:@""];
-    //NSLog(@"after userName:%d",[userName length]);
-    //[aPeripheral discoverServices:[NSArray arrayWithObjects:[CBUUID UUIDWithString:@"0f11"],nil]];
-#endif
-    NSLog(@"Peripheral discovered %@ %@,%@,userName:%@,kCBAdvDataLocalName:%@",RSSI, aPeripheral.UUID, advertisementData, userName,[advertisementData objectForKey:@"kCBAdvDataLocalName"]);
+    
+    NSLog(@"Peripheral discovered RSSI:%@ UUID:%@,userName:%@",RSSI, aPeripheral.UUID, userName);
 	if ([userName length]) {
 		NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
 								  userName, kCBScannerInfoUserNameKey,
+                                  RSSI,     kCBScannerInfoUserRSSIKey,
 								  nil];
 		
 		if ([self.delegate respondsToSelector:@selector(scanner:didDiscoverUser:)])
 			[self.delegate scanner:self didDiscoverUser:userInfo];
 	}
 }
-#if 0
-- (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverServices:(NSError *)error
-{
-    for (CBService *aService in aPeripheral.services){
-        NSLog(@"A Service found with UUID: %@", aService.UUID);
-        [aPeripheral discoverCharacteristics:nil forService:aService];
-    }
-}
-#endif
 @end
