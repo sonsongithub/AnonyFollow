@@ -7,22 +7,29 @@
 //
 
 #import "SettingViewController.h"
-#import "TimerLengthController.h"
 #import "NSBundle+AnonyFollow.h"
 #import "UIViewController+AnonyFollow.h"
+#import "NSUserDefaults+AnonyFollow.h"
 
 @interface SettingViewController ()
 @end
 
 @implementation SettingViewController
 
-- (id)initWithStyle:(UITableViewStyle)style {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+- (IBAction)didChangeBackgroundSwitch:(id)sender {
+	if (sender == self.backgroundSwitch) {
+		[[NSUserDefaults standardUserDefaults] setBool:self.backgroundSwitch.on forKey:kAnonyFollowBackgroundScanEnabled];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
 }
+
+- (IBAction)didChangeShowFollowingSwitch:(id)sender {
+	if (sender == self.showFollowingSwitch) {
+		[[NSUserDefaults standardUserDefaults] setBool:self.showFollowingSwitch.on forKey:kAnonyFollowDebugShowFollowingUsers];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
+}
+
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	if ([UIApplication sharedApplication].statusBarHidden) {
@@ -34,6 +41,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	self.backgroundSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowBackgroundScanEnabled];
+	self.showFollowingSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowFollowingUsers];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -46,11 +55,13 @@
 	self.versionCell.detailTextLabel.text = [NSString stringWithFormat:@"%@.%@.%@", CFBundleShortVersionString, CFBundleVersion,  CFBundleGitRevision];
 		
 	self.applicationNameCell.detailTextLabel.text = [NSBundle infoValueFromMainBundleForKey:@"CFBundleDisplayName"];
-	self.timerCell.detailTextLabel.text = [TimerLengthController currentTimerLengthTitle];
 }
 
+#ifdef _DEBUG
+#else
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
+#endif
 
 @end

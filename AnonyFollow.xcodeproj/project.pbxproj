@@ -15,6 +15,7 @@
 		02B9542B15E67A00005026B1 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542A15E67A00005026B1 /* CoreBluetooth.framework */; };
 		02B9542D15E67A06005026B1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542C15E67A06005026B1 /* Social.framework */; };
 		02B9542F15E67A18005026B1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542E15E67A18005026B1 /* Accounts.framework */; };
+		141755A215FB1646006B10F7 /* NSUserDefaults+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 141755A115FB1646006B10F7 /* NSUserDefaults+AnonyFollow.m */; };
 		142770C515EE82DD0062271A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142770C415EE82DD0062271A /* SystemConfiguration.framework */; };
 		145194A215EA2BCC00E853CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1451949C15EA2BCC00E853CA /* InfoPlist.strings */; };
 		145194A315EA2BCC00E853CA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1451949E15EA2BCC00E853CA /* MainStoryboard_iPad.storyboard */; };
@@ -46,8 +47,6 @@
 		14A2835015FA486D00880424 /* MainListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832F15FA486D00880424 /* MainListViewController.m */; };
 		14A2835115FA486D00880424 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2833115FA486D00880424 /* SettingViewController.m */; };
 		14A2835215FA486D00880424 /* TimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2833315FA486D00880424 /* TimeLineViewController.m */; };
-		14A2835315FA486D00880424 /* TimerLengthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2833515FA486D00880424 /* TimerLengthController.m */; };
-		14A2835415FA486D00880424 /* TimerLengthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2833715FA486D00880424 /* TimerLengthViewController.m */; };
 		14A2835715FA4CEF00880424 /* UIViewController+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2835615FA4CEF00880424 /* UIViewController+AnonyFollow.m */; };
 		14A2835A15FA4D1000880424 /* NSBundle+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2835915FA4D1000880424 /* NSBundle+AnonyFollow.m */; };
 		14B5F05715F383D000630C06 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B5F05515F383D000630C06 /* LoadingView.xib */; };
@@ -82,6 +81,8 @@
 		02B9542A15E67A00005026B1 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		02B9542C15E67A06005026B1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		02B9542E15E67A18005026B1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		141755A015FB1646006B10F7 /* NSUserDefaults+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+AnonyFollow.h"; sourceTree = "<group>"; };
+		141755A115FB1646006B10F7 /* NSUserDefaults+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+AnonyFollow.m"; sourceTree = "<group>"; };
 		142770C415EE82DD0062271A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1451949D15EA2BCC00E853CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1451949F15EA2BCC00E853CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
@@ -145,10 +146,6 @@
 		14A2833115FA486D00880424 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		14A2833215FA486D00880424 /* TimeLineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineViewController.h; sourceTree = "<group>"; };
 		14A2833315FA486D00880424 /* TimeLineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineViewController.m; sourceTree = "<group>"; };
-		14A2833415FA486D00880424 /* TimerLengthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerLengthController.h; sourceTree = "<group>"; };
-		14A2833515FA486D00880424 /* TimerLengthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerLengthController.m; sourceTree = "<group>"; };
-		14A2833615FA486D00880424 /* TimerLengthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerLengthViewController.h; sourceTree = "<group>"; };
-		14A2833715FA486D00880424 /* TimerLengthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerLengthViewController.m; sourceTree = "<group>"; };
 		14A2835515FA4CEF00880424 /* UIViewController+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AnonyFollow.h"; sourceTree = "<group>"; };
 		14A2835615FA4CEF00880424 /* UIViewController+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AnonyFollow.m"; sourceTree = "<group>"; };
 		14A2835815FA4D1000880424 /* NSBundle+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+AnonyFollow.h"; sourceTree = "<group>"; };
@@ -271,6 +268,8 @@
 				14A2835615FA4CEF00880424 /* UIViewController+AnonyFollow.m */,
 				14A2835815FA4D1000880424 /* NSBundle+AnonyFollow.h */,
 				14A2835915FA4D1000880424 /* NSBundle+AnonyFollow.m */,
+				141755A015FB1646006B10F7 /* NSUserDefaults+AnonyFollow.h */,
+				141755A115FB1646006B10F7 /* NSUserDefaults+AnonyFollow.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -358,10 +357,6 @@
 				14A2833115FA486D00880424 /* SettingViewController.m */,
 				14A2833215FA486D00880424 /* TimeLineViewController.h */,
 				14A2833315FA486D00880424 /* TimeLineViewController.m */,
-				14A2833415FA486D00880424 /* TimerLengthController.h */,
-				14A2833515FA486D00880424 /* TimerLengthController.m */,
-				14A2833615FA486D00880424 /* TimerLengthViewController.h */,
-				14A2833715FA486D00880424 /* TimerLengthViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -560,10 +555,9 @@
 				14A2835015FA486D00880424 /* MainListViewController.m in Sources */,
 				14A2835115FA486D00880424 /* SettingViewController.m in Sources */,
 				14A2835215FA486D00880424 /* TimeLineViewController.m in Sources */,
-				14A2835315FA486D00880424 /* TimerLengthController.m in Sources */,
-				14A2835415FA486D00880424 /* TimerLengthViewController.m in Sources */,
 				14A2835715FA4CEF00880424 /* UIViewController+AnonyFollow.m in Sources */,
 				14A2835A15FA4D1000880424 /* NSBundle+AnonyFollow.m in Sources */,
+				141755A215FB1646006B10F7 /* NSUserDefaults+AnonyFollow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

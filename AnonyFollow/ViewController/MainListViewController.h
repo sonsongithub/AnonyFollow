@@ -11,6 +11,9 @@
 #import "CBAdvertizer.h"
 #import "CBScanner.h"
 
+extern NSString *kNotificationDidFollowUser;
+extern NSString *kNotificationUserInfoUserNameKey;
+
 @class LockScreenView;
 @class CBScanner;
 @class CBAdvertizer;

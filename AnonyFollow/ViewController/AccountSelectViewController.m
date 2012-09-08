@@ -10,6 +10,7 @@
 
 #import "TwitterAccountInfo.h"
 #import "AccountCell.h"
+#import "NSUserDefaults+AnonyFollow.h"
 
 @interface AccountSelectViewController ()
 
@@ -49,7 +50,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	AccountCell *cell = (AccountCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-	NSString *currentTwitterUserName = [[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentTwitterUserName"];
+	NSString *currentTwitterUserName = [[NSUserDefaults standardUserDefaults] objectForKey:kAnonyFollowCurrentTwitterUserName];
 	
     // Configure the cell...
 	TwitterAccountInfo *info = [self.accounts objectAtIndex:indexPath.row];
@@ -96,7 +97,7 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	TwitterAccountInfo *info = [self.accounts objectAtIndex:indexPath.row];
 		
-	[[NSUserDefaults standardUserDefaults] setObject:info.screenName forKey:@"CurrentTwitterUserName"];
+	[[NSUserDefaults standardUserDefaults] setObject:info.screenName forKey:kAnonyFollowCurrentTwitterUserName];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	[self.tableView reloadData];
 }

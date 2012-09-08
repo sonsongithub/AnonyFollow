@@ -8,17 +8,16 @@
 
 #import "TimeLineViewController.h"
 
+#import "MainListViewController.h"
 #import "DownloadQueue.h"
 #import "TwitterAccountInfo.h"
 #import "TwitterTweet.h"
 #import "TweetCell.h"
-
 #import "ACAccountStore+AnonyFollow.h"
-#import <Social/Social.h>
-
 #import "LoadingView.h"
-
 #import "UserInfoCell.h"
+
+#import <Social/Social.h>
 
 @interface TimeLineViewController ()
 
@@ -50,8 +49,6 @@
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	
-	
-	
 	DNSLog(@"%@", self.accountInfo);
 	DNSLog(@"%@", self.accountInfo.iconImage);
 	{
@@ -76,9 +73,8 @@
 		NSArray *info = [NSJSONSerialization JSONObjectWithData:task.data options:0 error:&error];
 		DNSLog(@"%@", [error localizedDescription]);
 		
-		NSLocale *locale = [NSLocale currentLocale];
 		NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-		[formatter setLocale:locale];
+		[formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
 		[formatter setDateFormat:@"ccc MMM dd HH:mm:ss z yyyy"];
 		
 		if ([info isKindOfClass:[info class]]) {
@@ -202,7 +198,7 @@
 			[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
 				if ([urlResponse statusCode] == 403 ||  [urlResponse statusCode] == 200) {
 					dispatch_async(dispatch_get_main_queue(), ^(void){
-						[[NSNotificationCenter defaultCenter] postNotificationName:@"didFollowUser" object:nil userInfo:[NSDictionary dictionaryWithObject:self.accountInfo.screenName forKey:@"userName"]];
+						[[NSNotificationCenter defaultCenter] postNotificationName:kNotificationUserInfoUserNameKey object:nil userInfo:[NSDictionary dictionaryWithObject:self.accountInfo.screenName forKey:kNotificationUserInfoUserNameKey]];
 						[self.navigationController popViewControllerAnimated:YES];
 					});
 				}

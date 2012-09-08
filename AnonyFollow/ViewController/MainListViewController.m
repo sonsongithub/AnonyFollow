@@ -8,8 +8,10 @@
 
 #import "MainListViewController.h"
 
-@interface MainListViewController ()
+NSString *kNotificationDidFollowUser = @"kNotificationDidFollowUser";
+NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey";
 
+@interface MainListViewController ()
 @end
 
 #import "AppDelegate.h"
@@ -21,13 +23,11 @@
 #import "MessageBarButtonItem.h"
 #import "SNStatusBarView.h"
 #import "SNReachablityChecker.h"
-
 #import "AccountSelectViewController.h"
+#import "NSUserDefaults+AnonyFollow.h"
 
 #import <Accounts/Accounts.h>
-
 #import "ACAccountStore+AnonyFollow.h"
-
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 
@@ -176,7 +176,7 @@
 #pragma mark - NSNotification
 
 - (void)didFollowUser:(NSNotification*)notification {
-	NSString *userName = [[notification userInfo] objectForKey:@"userName"];
+	NSString *userName = [[notification userInfo] objectForKey:kNotificationUserInfoUserNameKey];
 	[self removeUserNameFromListWithUserName:userName];
 }
 
@@ -190,6 +190,12 @@
 
 - (void)didEnterBackground:(NSNotification*)notification {
 	DNSLogMethod
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowBackgroundScanEnabled]) {
+		self.advertizer = nil;
+	}
+	else {
+		self.scanner = nil;
+	}
 	[[DownloadQueue sharedInstance] clearQueue];
 }
 
@@ -216,7 +222,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 	[[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(reloadData) name:SNReachablityDidChangeNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFollowUser:) name:@"didFollowUser" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFollowUser:) name:kNotificationDidFollowUser object:nil];
 	self.accounts = [NSMutableArray array];
 	self.accountsCollectedOnBackground = [NSMutableArray array];
 	self.twitterAccountButton.delegate = self;
@@ -412,52 +418,56 @@
 			return;
 	}
 	
-	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    
-    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-        if(granted) {
-			ACAccount *account = [accountStore twitterCurrentAccount];
-			
-			if (account == nil)
-				return;
-			
-			NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
-			
-			SLRequest *postRequest;
-			[tempDict setValue:account.username forKey:@"screen_name_a"];
-			[tempDict setValue:userName forKey:@"screen_name_b"];
-			postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/exists.json"] parameters:tempDict];
-			
-			[postRequest setAccount:account];
-			[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-				if (error == nil) {
-					NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-					NSLog(@"%@", result);
-					if ([result isEqualToString:@"true"]) {
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowFollowingUsers]) {
+		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
+		info.screenName = userName;
+		[self.accounts addObject:info];
+		[self.tableView reloadData];
+		AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+		[del.barView pushTemporaryMessage:[NSString stringWithFormat:@"Found %@", userName]];
+	}
+	else {
+		ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+		ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+		[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+			if(granted) {
+				ACAccount *account = [accountStore twitterCurrentAccount];
+				
+				if (account == nil)
+					return;
+				
+				NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
+				
+				SLRequest *postRequest;
+				[tempDict setValue:account.username forKey:@"screen_name_a"];
+				[tempDict setValue:userName forKey:@"screen_name_b"];
+				postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/exists.json"] parameters:tempDict];
+				
+				[postRequest setAccount:account];
+				[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+					if (error == nil) {
+						NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+						NSLog(@"%@", result);
+						if ([result isEqualToString:@"true"]) {
+						}
+						else if ([result isEqualToString:@"false"]) {
+							dispatch_async(dispatch_get_main_queue(), ^(void){
+								TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
+								info.screenName = userName;
+								[self.accounts addObject:info];
+								[self.tableView reloadData];
+								AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+								[del.barView pushTemporaryMessage:[NSString stringWithFormat:@"Found %@", userName]];
+							});
+						}
+						else {
+							// error
+						}
 					}
-					else if ([result isEqualToString:@"false"]) {
-						dispatch_async(dispatch_get_main_queue(), ^(void){
-							TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
-							info.screenName = userName;
-							[self.accounts addObject:info];
-							[self.tableView reloadData];
-							AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-							[del.barView pushTemporaryMessage:[NSString stringWithFormat:@"Found %@", userName]];
-						});
-					}
-					else {
-						// error
-					}
-				}
-			}];
-        }
-    }];
-}
-
-- (void)addUserNameOnBackground:(NSString*)userName {
-	if (![self.accountsCollectedOnBackground indexOfObject:userName])
-		[self.accountsCollectedOnBackground addObject:userName];
+				}];
+			}
+		}];
+	}
 }
 
 #pragma mark - CBScannerDelegate
@@ -466,7 +476,7 @@
 	NSString *username = [userInfo objectForKey:kCBScannerInfoUserNameKey];
 	
 	if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
-		[self addUserNameOnBackground:username];
+		// post local notification
 	}
 	else {
 		[self addUserNameOnForeground:username];

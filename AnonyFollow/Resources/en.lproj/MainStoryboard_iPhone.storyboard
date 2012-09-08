@@ -575,36 +575,73 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="O0e-CL-FB5">
+                            <tableViewSection footerTitle="Receiving notification to look for using this application near yourself on &quot;Background&quot; affects your battery life." id="O0e-CL-FB5">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="tVP-Yz-zbw" detailTextLabel="m4g-Na-rN4" style="IBUITableViewCellStyleValue1" id="GeQ-8y-RFf">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gKE-xC-mZ4">
                                         <rect key="frame" x="0.0" y="288" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Auto off" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="tVP-Yz-zbw">
-                                                    <rect key="frame" x="10" y="11" width="66" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Background" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="F80-go-rmF">
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="OFF" textAlignment="right" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="m4g-Na-rN4">
-                                                    <rect key="frame" x="236" y="11" width="34" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                </label>
+                                                <switch translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="dvH-7R-HDL">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="77" id="G3r-01-45L"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="didChangeBackgroundSwitch:" destination="nh6-bL-s6V" eventType="valueChanged" id="xI8-vs-zwx"/>
+                                                    </connections>
+                                                </switch>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="f3w-en-8k8" kind="push" id="t5I-B5-cFg"/>
-                                        </connections>
+                                        <constraints>
+                                            <constraint firstItem="dvH-7R-HDL" firstAttribute="leading" secondItem="F80-go-rmF" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="GAp-A3-baX"/>
+                                            <constraint firstItem="dvH-7R-HDL" firstAttribute="top" secondItem="gKE-xC-mZ4" secondAttribute="top" constant="9" id="QmV-eT-R3k"/>
+                                            <constraint firstAttribute="trailing" secondItem="dvH-7R-HDL" secondAttribute="trailing" constant="20" type="default" id="dy0-Io-wkJ"/>
+                                            <constraint firstItem="F80-go-rmF" firstAttribute="leading" secondItem="gKE-xC-mZ4" secondAttribute="leading" constant="20" type="default" id="oGn-o0-8zL"/>
+                                            <constraint firstItem="dvH-7R-HDL" firstAttribute="centerY" secondItem="F80-go-rmF" secondAttribute="centerY" type="default" id="ovQ-Ig-NFl"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Debug" footerTitle="" id="Au7-C0-ztQ">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="u05-Ij-zrB">
+                                        <rect key="frame" x="0.0" y="449" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Show following" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="euC-wx-7fs">
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                </label>
+                                                <switch translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Byz-m6-YJO">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="77" id="vPa-rW-pKD"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="didChangeShowFollowingSwitch:" destination="nh6-bL-s6V" eventType="valueChanged" id="kfx-hr-E0t"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="euC-wx-7fs" firstAttribute="leading" secondItem="u05-Ij-zrB" secondAttribute="leading" constant="20" type="default" id="Wpk-vS-SUh"/>
+                                            <constraint firstAttribute="trailing" secondItem="Byz-m6-YJO" secondAttribute="trailing" constant="20" type="default" id="Wyx-3b-ak7"/>
+                                            <constraint firstItem="Byz-m6-YJO" firstAttribute="centerY" secondItem="euC-wx-7fs" secondAttribute="centerY" type="default" id="fNn-kf-1Md"/>
+                                            <constraint firstItem="Byz-m6-YJO" firstAttribute="top" secondItem="u05-Ij-zrB" secondAttribute="top" constant="9" id="rLl-WC-wHk"/>
+                                            <constraint firstItem="Byz-m6-YJO" firstAttribute="leading" secondItem="euC-wx-7fs" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="sWl-7j-On7"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -623,7 +660,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="applicationNameCell" destination="esx-ck-V7u" id="eqE-BY-neE"/>
-                        <outlet property="timerCell" destination="GeQ-8y-RFf" id="8kZ-zQ-rUS"/>
+                        <outlet property="backgroundSwitch" destination="dvH-7R-HDL" id="eqc-87-4db"/>
+                        <outlet property="showFollowingSwitch" destination="Byz-m6-YJO" id="zum-l1-3Hd"/>
                         <outlet property="versionCell" destination="3Rf-QN-UVZ" id="7e6-NL-2um"/>
                     </connections>
                 </tableViewController>
@@ -645,37 +683,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jj4-ay-hWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2344" y="-970"/>
-        </scene>
-        <!--Timer Length View Controller - Timer length-->
-        <scene sceneID="sGT-TS-bMy">
-            <objects>
-                <tableViewController id="f3w-en-8k8" customClass="TimerLengthViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Cju-Le-5ZM">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="POc-VH-Wf9">
-                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="f3w-en-8k8" id="7cs-sH-gTh"/>
-                            <outlet property="delegate" destination="f3w-en-8k8" id="KSD-0k-gPi"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Timer length" id="MjW-KM-WA0"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Uj-wJ-zhh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2344" y="330"/>
         </scene>
         <!--View Controller - License-->
         <scene sceneID="MMB-0n-u5A">
@@ -725,6 +732,100 @@ See the License for the specific language governing permissions and limitations 
         <image name="none.png" width="50" height="50"/>
         <image name="setting.png" width="24" height="24"/>
     </resources>
+    <classes>
+        <class className="AccountCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="screenNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="AccountSelectViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountSelectViewController.h"/>
+        </class>
+        <class className="LoadingView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadingView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="indicator" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="LockScreenView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LockScreenView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="MainListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="follow:"/>
+                <relationship kind="action" name="select:"/>
+                <relationship kind="action" name="trash:"/>
+                <relationship kind="outlet" name="lockScreenView" candidateClass="LockScreenView"/>
+                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="twitterAccountButton" candidateClass="MessageBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MessageBarButtonItem" superclassName="UIBarButtonItem">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MessageBarButtonItem.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SettingViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didChangeBackgroundSwitch:"/>
+                <relationship kind="action" name="didChangeShowFollowingSwitch:"/>
+                <relationship kind="outlet" name="applicationNameCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="backgroundSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="showFollowingSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="versionCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="TimeLineViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeLineViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="follow:"/>
+                <relationship kind="outlet" name="loadingView" candidateClass="LoadingView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="TweetCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tweetContentView" candidateClass="TweetContentView"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="TweetContentView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetContentView.h"/>
+        </class>
+        <class className="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismiss:"/>
+            </relationships>
+        </class>
+        <class className="UserInfoCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserInfoCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="line1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="line2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tweetContentView" candidateClass="TweetContentView"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

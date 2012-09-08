@@ -8,12 +8,14 @@
 
 #import "ACAccountStore+AnonyFollow.h"
 
+#import "NSUserDefaults+AnonyFollow.h"
+
 @implementation ACAccountStore(AnonyFollow)
 
 - (NSString*)twitterAvailableUserName {
 	NSArray *accountsArray = [self accountsWithAccountType:[self accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter]];
 	
-	NSString *currentTwitterUserName = [[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentTwitterUserName"];
+	NSString *currentTwitterUserName = [[NSUserDefaults standardUserDefaults] objectForKey:kAnonyFollowCurrentTwitterUserName];
 	
 	for (ACAccount *account in accountsArray) {
 		if ([currentTwitterUserName length]) {
@@ -21,13 +23,13 @@
 				return currentTwitterUserName;
 		}
 		else {
-			[[NSUserDefaults standardUserDefaults] setObject:account.username forKey:@"CurrentTwitterUserName"];
+			[[NSUserDefaults standardUserDefaults] setObject:account.username forKey:kAnonyFollowCurrentTwitterUserName];
 			[[NSUserDefaults standardUserDefaults] synchronize];
 			return account.username;
 		}
 	}
 	
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"CurrentTwitterUserName"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:kAnonyFollowCurrentTwitterUserName];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	
 	return nil;
@@ -36,7 +38,7 @@
 - (ACAccount*)twitterCurrentAccount {
 	NSArray *accountsArray = [self accountsWithAccountType:[self accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter]];
 	
-	NSString *currentTwitterUserName = [[NSUserDefaults standardUserDefaults] objectForKey:@"CurrentTwitterUserName"];
+	NSString *currentTwitterUserName = [[NSUserDefaults standardUserDefaults] objectForKey:kAnonyFollowCurrentTwitterUserName];
 	
 	for (ACAccount *account in accountsArray) {
 		if ([currentTwitterUserName length]) {
@@ -45,13 +47,13 @@
 			}
 		}
 		else {
-			[[NSUserDefaults standardUserDefaults] setObject:account.username forKey:@"CurrentTwitterUserName"];
+			[[NSUserDefaults standardUserDefaults] setObject:account.username forKey:kAnonyFollowCurrentTwitterUserName];
 			[[NSUserDefaults standardUserDefaults] synchronize];
 			return account;
 		}
 	}
 	
-	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"CurrentTwitterUserName"];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:kAnonyFollowCurrentTwitterUserName];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	
 	return nil;
