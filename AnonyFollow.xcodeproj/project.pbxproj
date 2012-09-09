@@ -21,6 +21,8 @@
 		145194A315EA2BCC00E853CA /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1451949E15EA2BCC00E853CA /* MainStoryboard_iPad.storyboard */; };
 		145194A415EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 145194A015EA2BCC00E853CA /* MainStoryboard_iPhone.storyboard */; };
 		1455709115EBC00D003DD49F /* LockScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1455708F15EBC00D003DD49F /* LockScreenView.xib */; };
+		1481962B15FC4F34004B0BCB /* CopyrightContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1481962A15FC4F34004B0BCB /* CopyrightContactViewController.m */; };
+		1481963315FC5D1A004B0BCB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1481963215FC5D1A004B0BCB /* MessageUI.framework */; };
 		14A2833815FA486D00880424 /* ACAccountStore+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A282F815FA486D00880424 /* ACAccountStore+AnonyFollow.m */; };
 		14A2833915FA486D00880424 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A282FA15FA486D00880424 /* NSData+AES256.m */; };
 		14A2833A15FA486D00880424 /* NSData+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A282FC15FA486D00880424 /* NSData+MD5.m */; };
@@ -93,6 +95,9 @@
 		145194A915EA2BE800E853CA /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ja; path = ja.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		145194AB15EA2BE800E853CA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/MainStoryboard_iPhone.storyboard.string; sourceTree = "<group>"; };
 		1455709015EBC00D003DD49F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LockScreenView.xib; sourceTree = "<group>"; };
+		1481962915FC4F34004B0BCB /* CopyrightContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyrightContactViewController.h; sourceTree = "<group>"; };
+		1481962A15FC4F34004B0BCB /* CopyrightContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyrightContactViewController.m; sourceTree = "<group>"; };
+		1481963215FC5D1A004B0BCB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		14A282F715FA486D00880424 /* ACAccountStore+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ACAccountStore+AnonyFollow.h"; sourceTree = "<group>"; };
 		14A282F815FA486D00880424 /* ACAccountStore+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ACAccountStore+AnonyFollow.m"; sourceTree = "<group>"; };
 		14A282F915FA486D00880424 /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES256.h"; sourceTree = "<group>"; };
@@ -175,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1481963315FC5D1A004B0BCB /* MessageUI.framework in Frameworks */,
 				14B7A5EC15F5005F00D6BF0B /* Security.framework in Frameworks */,
 				14B7A5E715F4F90A00D6BF0B /* libz.dylib in Frameworks */,
 				142770C515EE82DD0062271A /* SystemConfiguration.framework in Frameworks */,
@@ -213,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				14B7A5E615F4F90A00D6BF0B /* libz.dylib */,
+				1481963215FC5D1A004B0BCB /* MessageUI.framework */,
 				14B7A5EB15F5005F00D6BF0B /* Security.framework */,
 				142770C415EE82DD0062271A /* SystemConfiguration.framework */,
 				14BE1B9615EA28BF00F7547E /* QuartzCore.framework */,
@@ -357,6 +364,8 @@
 				14A2833115FA486D00880424 /* SettingViewController.m */,
 				14A2833215FA486D00880424 /* TimeLineViewController.h */,
 				14A2833315FA486D00880424 /* TimeLineViewController.m */,
+				1481962915FC4F34004B0BCB /* CopyrightContactViewController.h */,
+				1481962A15FC4F34004B0BCB /* CopyrightContactViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -558,6 +567,7 @@
 				14A2835715FA4CEF00880424 /* UIViewController+AnonyFollow.m in Sources */,
 				14A2835A15FA4D1000880424 /* NSBundle+AnonyFollow.m in Sources */,
 				141755A215FB1646006B10F7 /* NSUserDefaults+AnonyFollow.m in Sources */,
+				1481962B15FC4F34004B0BCB /* CopyrightContactViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
