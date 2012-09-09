@@ -35,4 +35,8 @@
     return YES;
 }
 
+- (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
+	DNSLogMethod
+}
+
 @end

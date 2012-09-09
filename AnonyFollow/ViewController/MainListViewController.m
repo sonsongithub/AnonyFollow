@@ -173,6 +173,14 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
     }];
 }
 
+- (void)notifyRecevingOnBackground {
+	UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+	localNotif.alertBody = NSLocalizedString(@"Someone is using AnonyFollow.", nil);
+	localNotif.alertAction = NSLocalizedString(@"Find it.", nil);
+	localNotif.soundName = UILocalNotificationDefaultSoundName;
+	[[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+}
+
 #pragma mark - NSNotification
 
 - (void)didFollowUser:(NSNotification*)notification {
@@ -182,18 +190,24 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 
 - (void)willEnterForeground:(NSNotification*)notification {
 	DNSLogMethod
-	for (NSString *userName in self.accountsCollectedOnBackground) {
-		DNSLog(@"%@", userName);
-	}
-	[self.accountsCollectedOnBackground removeAllObjects];
+	DNSLog(@"%@", notification);
+	[self.scanner stopScan];
+	self.scanner = nil;
+	self.segmentedControl.selectedSegmentIndex = 0;
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 }
 
 - (void)didEnterBackground:(NSNotification*)notification {
 	DNSLogMethod
+	
+	[self.advertizer stopAdvertize];
+	self.advertizer = nil;
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+	
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowBackgroundScanEnabled]) {
-		self.advertizer = nil;
 	}
 	else {
+		[self.scanner stopScan];
 		self.scanner = nil;
 	}
 	[[DownloadQueue sharedInstance] clearQueue];
@@ -490,6 +504,7 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 	
 	if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
 		// post local notification
+		[self notifyRecevingOnBackground];
 	}
 	else {
 		[self addUserNameOnForeground:username];
