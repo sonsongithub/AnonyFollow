@@ -31,6 +31,8 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 
+typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
+
 @implementation MainListViewController
 
 #pragma mark - Instance method
@@ -45,42 +47,10 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 }
 
 - (void)enableBroadcasting {
-	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-	
-	self.segmentedControl.userInteractionEnabled = NO;
-	
-	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-		if (error) {
-			NSLog(@"%@", [error localizedDescription]);
-		}
-		if (granted) {
-			NSString *twitterUserName = [accountStore twitterAvailableUserName];
-			if ([twitterUserName length]) {
-				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					[self.twitterAccountButton setTwitterAccountUserName:twitterUserName];
-					self.advertizer = [[CBAdvertizer alloc] initWithDelegate:self userName:twitterUserName serviceUUID:@"1802"];
-					self.scanner = [[CBScanner alloc] initWithDelegate:self serviceUUID:@"1802"];
-				});
-			}
-			else {
-				DNSLog(@"No Twitter Account");
-				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"No account", nil)];
-					self.segmentedControl.selectedSegmentIndex = 0;
-				});
-			}
-		}
-		else {
-			DNSLog(@"accountStore accesss denied");
-			dispatch_async(dispatch_get_main_queue(), ^(void) {
-				[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"Not authorized", nil)];
-				self.segmentedControl.selectedSegmentIndex = 0;
-			});
-		}
-		dispatch_async(dispatch_get_main_queue(), ^(void) {
-			self.segmentedControl.userInteractionEnabled = YES;
-		});
+	[self performBlockAfterRequestingTwitterAccout:^(NSString *twitterUserName, ACAccountStore *accountStore) {		
+		[self.twitterAccountButton setTwitterAccountUserName:twitterUserName];
+		self.advertizer = [[CBAdvertizer alloc] initWithDelegate:self userName:twitterUserName serviceUUID:@"1802"];
+		self.scanner = [[CBScanner alloc] initWithDelegate:self serviceUUID:@"1802"];
 	}];
 }
 
@@ -143,42 +113,21 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
     }];
 }
 
-- (void)checkFollowing:(NSString*)screenNameA him:(NSString*)screenNameB {
-	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    
-    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-        if(granted) {
-			ACAccount *account = [accountStore twitterCurrentAccount];
-			
-			if (account == nil)
-				return;
-			
-			NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
-			
-			SLRequest *postRequest;
-			[tempDict setValue:screenNameA forKey:@"screen_name_a"];
-			[tempDict setValue:screenNameB forKey:@"screen_name_b"];
-			postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodPOST URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/exists.json"] parameters:tempDict];
-			
-			[postRequest setAccount:account];
-			[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-				if (error == nil) {
-					NSError *jsonError = nil;
-					NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
-					DNSLog(@"%@", result);
-				}
-			}];
-        }
-    }];
-}
-
 - (void)notifyRecevingOnBackground {
 	UILocalNotification *localNotif = [[UILocalNotification alloc] init];
 	localNotif.alertBody = NSLocalizedString(@"Someone is using AnonyFollow.", nil);
 	localNotif.alertAction = NSLocalizedString(@"Find it.", nil);
 	localNotif.soundName = UILocalNotificationDefaultSoundName;
 	[[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+}
+
+- (void)showAlertMessage:(NSString*)message {
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+														message:message
+													   delegate:nil
+											  cancelButtonTitle:nil
+											  otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+	[alertView show];
 }
 
 #pragma mark - NSNotification
@@ -239,22 +188,13 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 
 #pragma mark - UIViewController life cycle
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
-	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
-	[[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(reloadData) name:SNReachablityDidChangeNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFollowUser:) name:kNotificationDidFollowUser object:nil];
-	self.accounts = [NSMutableArray array];
-	self.accountsCollectedOnBackground = [NSMutableArray array];
-	self.twitterAccountButton.delegate = self;
-	
-	AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-	[appdelegate setupOriginalStatusBar];
-	
-	// Sometimes, application crashes here.
+- (void)updateAccountButtonMessage {
+	[self performBlockAfterRequestingTwitterAccout:^(NSString *twitterUserName, ACAccountStore *accountStore) {
+		[self.twitterAccountButton setTwitterAccountUserName:twitterUserName];
+	}];
+}
 
+- (void)performBlockAfterRequestingTwitterAccout:(AfterBlocks)blocks {
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
 	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 	
@@ -266,23 +206,52 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 			NSString *twitterUserName = [accountStore twitterAvailableUserName];
 			if ([twitterUserName length]) {
 				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					[self.twitterAccountButton setTwitterAccountUserName:twitterUserName];
+					blocks(twitterUserName, accountStore);
 				});
 			}
 			else {
 				DNSLog(@"No Twitter Account");
 				dispatch_async(dispatch_get_main_queue(), ^(void) {
+					[self showAlertMessage:NSLocalizedString(@"Plesase setup or authorize twitter account via Setting.app.", nil)];
 					[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"No account", nil)];
+					self.segmentedControl.selectedSegmentIndex = 0;
 				});
 			}
 		}
 		else {
 			DNSLog(@"accountStore accesss denied");
 			dispatch_async(dispatch_get_main_queue(), ^(void) {
+				[self showAlertMessage:NSLocalizedString(@"Plesase setup or authorize twitter account via Setting.app.", nil)];
 				[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"Not authorized", nil)];
+				self.segmentedControl.selectedSegmentIndex = 0;
 			});
 		}
 	}];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	
+	// setup notification
+	// background and foreground
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+	
+	// network status notification
+	[[NSNotificationCenter defaultCenter] addObserver:self.tableView selector:@selector(reloadData) name:SNReachablityDidChangeNotification object:nil];
+	
+	// notification of following
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFollowUser:) name:kNotificationDidFollowUser object:nil];
+	
+	// set up buffer
+	self.accounts = [NSMutableArray array];
+	self.accountsCollectedOnBackground = [NSMutableArray array];
+	self.twitterAccountButton.delegate = self;
+	
+	// setup status bar
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+	AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	[appdelegate setupOriginalStatusBar];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -312,36 +281,7 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 		self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
 	}];
 
-#if 1
-	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-	
-	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-		if (error) {
-			NSLog(@"%@", [error localizedDescription]);
-		}
-		if (granted) {
-			NSString *twitterUserName = [accountStore twitterAvailableUserName];
-			if ([twitterUserName length]) {
-				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					[self.twitterAccountButton setTwitterAccountUserName:twitterUserName];
-				});
-			}
-			else {
-				DNSLog(@"No Twitter Account");
-				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"No account", nil)];
-				});
-			}
-		}
-		else {
-			DNSLog(@"accountStore accesss denied");
-			dispatch_async(dispatch_get_main_queue(), ^(void) {
-				[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"Not authorized", nil)];
-			});
-		}
-	}];
-#endif
+	[self updateAccountButtonMessage];
 }
 
 #pragma mark - MessageBarButtonItemDelegate
@@ -349,53 +289,27 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 - (void)didTouchMessageBarButtonItem:(MessageBarButtonItem*)item {
 	DNSLogMethod
 	
-	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-	
-	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-		if (error) {
-			NSLog(@"%@", [error localizedDescription]);
+	[self performBlockAfterRequestingTwitterAccout:^(NSString *twitterUserName, ACAccountStore *accountStore) {
+		[self.scanner stopScan];
+		self.scanner = nil;
+		[self.advertizer stopAdvertize];
+		self.advertizer = nil;
+		self.segmentedControl.selectedSegmentIndex = 0;
+		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+
+		UINavigationController *nv = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectAccountNavigationController"];
+		AccountSelectViewController *vc = (AccountSelectViewController*)nv.topViewController;
+
+		NSMutableArray *nameList = [NSMutableArray array];
+
+		NSArray *accountsArray = [accountStore accountsWithAccountType:[accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter]];
+		for (ACAccount *account in accountsArray) {
+			[nameList addObject:account.username];
 		}
-		if (granted) {
-			NSString *twitterUserName = [accountStore twitterAvailableUserName];
-			if ([twitterUserName length]) {
-				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					[self.scanner stopScan];
-					self.scanner = nil;
-					[self.advertizer stopAdvertize];
-					self.advertizer = nil;
-					self.segmentedControl.selectedSegmentIndex = 0;
-					[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-					
-					UINavigationController *nv = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectAccountNavigationController"];
-					AccountSelectViewController *vc = (AccountSelectViewController*)nv.topViewController;
-					
-					NSMutableArray *nameList = [NSMutableArray array];
-					
-					NSArray *accountsArray = [accountStore accountsWithAccountType:[accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter]];
-					for (ACAccount *account in accountsArray) {
-						[nameList addObject:account.username];
-					}
-					vc.userNameList = nameList;
-					
-					[self presentViewController:nv animated:YES completion:^(void){}];
-				});
-			}
-			else {
-				DNSLog(@"No Twitter Account");
-				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"No account", nil)];
-				});
-			}
-		}
-		else {
-			DNSLog(@"accountStore accesss denied");
-			dispatch_async(dispatch_get_main_queue(), ^(void) {
-				[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"Not authorized", nil)];
-			});
-		}
+		vc.userNameList = nameList;
+
+		[self presentViewController:nv animated:YES completion:^(void){}];
 	}];
-	
 }
 
 #pragma mark - IBAction
@@ -417,9 +331,6 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 	}
 	if (control.selectedSegmentIndex == 1) {
-		[self enableBroadcasting];
-	}
-	if (control.selectedSegmentIndex == 2) {
 		[self enableBroadcasting];
 	}
 }
@@ -502,6 +413,8 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 - (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
 	NSString *username = [userInfo objectForKey:kCBScannerInfoUserNameKey];
 	
+	DNSLog(@"%d", [NSThread isMainThread]);
+	
 	if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
 		// post local notification
 		[self notifyRecevingOnBackground];
@@ -531,13 +444,11 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 	return 58;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.accounts count];
 }
 
@@ -573,15 +484,14 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
     [self loadImagesForOnscreenRows];
 }
 
-// Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
 
-// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+		[self.accounts removeObjectAtIndex:indexPath.row];
+		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
 
