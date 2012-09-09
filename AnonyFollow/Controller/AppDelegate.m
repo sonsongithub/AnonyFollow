@@ -21,6 +21,7 @@
 		self.checker = [SNReachablityChecker reachabilityForInternetConnection];
 		[self.checker start];
 		[self.window addSubview:self.barView];
+		[self.window sendSubviewToBack:self.barView];
 	}
 }
 
