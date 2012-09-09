@@ -28,6 +28,11 @@
 	self.vacantImageView.hidden = (self.tweet.accountInfo.iconImage != nil);
 }
 
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	self.ribbonImageView.hidden = YES;
+}
+
 - (void)setTweet:(TwitterTweet *)tweet {
 	_tweet = tweet;
 	self.tweetContentView.text = self.tweet.text;

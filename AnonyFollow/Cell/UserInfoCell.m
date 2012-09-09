@@ -14,6 +14,11 @@
 
 @implementation UserInfoCell
 
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	self.ribbonImageView.hidden = YES;
+}
+
 - (void)setAccountInfo:(TwitterAccountInfo *)accountInfo {
 	_accountInfo = accountInfo;
 	self.tweetContentView.text = accountInfo.description;

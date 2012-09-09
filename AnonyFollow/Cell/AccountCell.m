@@ -42,6 +42,7 @@ NSString *AccountCellUpdateNotification = @"AccountCellUpdateNotification";
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
+	self.ribbonImageView.hidden = YES;
 	[self prepareForReuse];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update:) name:AccountCellUpdateNotification object:nil];
 }
