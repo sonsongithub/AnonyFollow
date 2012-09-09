@@ -119,9 +119,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.section == 0 && indexPath.row == 1) {
 		// sekikawa
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://twitter.com/YusukeSekikawa"]];
 	}
 	if (indexPath.section == 1 && indexPath.row == 1) {
 		// sonson
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://twitter.com/sonson_twit"]];
 	}
 	if (indexPath.section == 2 && indexPath.row == 0) {
 		// send report
