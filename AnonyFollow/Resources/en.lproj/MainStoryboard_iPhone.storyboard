@@ -111,7 +111,6 @@
                             <segments>
                                 <segment title="OFF"/>
                                 <segment title="ON"/>
-                                <segment title="Background"/>
                             </segments>
                             <connections>
                                 <action selector="select:" destination="B8J-gi-8rA" eventType="valueChanged" id="xsr-lU-p0j"/>

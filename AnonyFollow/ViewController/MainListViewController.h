@@ -19,7 +19,7 @@ extern NSString *kNotificationUserInfoUserNameKey;
 @class CBAdvertizer;
 @class MessageBarButtonItem;
 
-@interface MainListViewController : UITableViewController <CBScannerDelegate, CBAdvertizerDelegate>
+@interface MainListViewController : UITableViewController <CBScannerDelegate, CBAdvertizerDelegate, UIActionSheetDelegate>
 
 - (IBAction)trash:(id)sender;
 - (IBAction)select:(id)sender;

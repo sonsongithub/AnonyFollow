@@ -214,6 +214,15 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
     }
 }
 
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex {
+	if (buttonIndex == 0) {
+		[self.accounts removeAllObjects];
+		[self.tableView reloadData];
+	}
+}
+
 #pragma mark - UIViewController life cycle
 
 - (void)viewDidLoad {
@@ -402,8 +411,12 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 }
 
 - (IBAction)trash:(id)sender {
-	[self.accounts removeAllObjects];
-	[self.tableView reloadData];
+	UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Find List", nil)
+													   delegate:self
+											  cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+										 destructiveButtonTitle:NSLocalizedString(@"Delete", nil)
+											  otherButtonTitles:nil];
+	[sheet showFromToolbar:self.navigationController.toolbar];
 }
 
 #pragma mark - CBAdvertizerDelegate
