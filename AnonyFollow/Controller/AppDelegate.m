@@ -10,8 +10,8 @@
 
 #import "SNStatusBarView.h"
 #import "SNReachablityChecker.h"
-
 #import "NSString+AnonyFollow.h"
+#import "NSUserDefaults+AnonyFollow.h"
 
 @implementation AppDelegate
 
@@ -25,6 +25,13 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+								[NSNumber numberWithBool:NO],	kAnonyFollowBackgroundScanEnabled,
+								[NSNumber numberWithBool:NO],	kAnonyFollowDebugShowFollowingUsers,
+								@"",							kAnonyFollowCurrentTwitterUserName,
+								nil];
+	[[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
+	[[NSUserDefaults standardUserDefaults] synchronize];
     return YES;
 }
 
