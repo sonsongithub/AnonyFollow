@@ -26,6 +26,7 @@
 		147A1F8C15FE140600F30BAD /* on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 147A1F8A15FE140600F30BAD /* on@2x.png */; };
 		147A1F8F15FE226A00F30BAD /* sekikawa.png in Resources */ = {isa = PBXBuildFile; fileRef = 147A1F8D15FE226A00F30BAD /* sekikawa.png */; };
 		147A1F9015FE226A00F30BAD /* sonson.png in Resources */ = {isa = PBXBuildFile; fileRef = 147A1F8E15FE226A00F30BAD /* sonson.png */; };
+		147A1F9315FE271200F30BAD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 147A1F9115FE271200F30BAD /* Localizable.strings */; };
 		1481962B15FC4F34004B0BCB /* CopyrightContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1481962A15FC4F34004B0BCB /* CopyrightContactViewController.m */; };
 		1481963315FC5D1A004B0BCB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1481963215FC5D1A004B0BCB /* MessageUI.framework */; };
 		14A2833815FA486D00880424 /* ACAccountStore+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A282F815FA486D00880424 /* ACAccountStore+AnonyFollow.m */; };
@@ -103,6 +104,10 @@
 		147A1F8A15FE140600F30BAD /* on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "on@2x.png"; sourceTree = "<group>"; };
 		147A1F8D15FE226A00F30BAD /* sekikawa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sekikawa.png; sourceTree = "<group>"; };
 		147A1F8E15FE226A00F30BAD /* sonson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sonson.png; sourceTree = "<group>"; };
+		147A1F9215FE271200F30BAD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		147A1F9415FE271800F30BAD /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		147A1F9515FE276100F30BAD /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/LoadingView.xib; sourceTree = "<group>"; };
+		147A1F9615FE276100F30BAD /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/LockScreenView.xib; sourceTree = "<group>"; };
 		1481962915FC4F34004B0BCB /* CopyrightContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyrightContactViewController.h; sourceTree = "<group>"; };
 		1481962A15FC4F34004B0BCB /* CopyrightContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyrightContactViewController.m; sourceTree = "<group>"; };
 		1481963215FC5D1A004B0BCB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -381,6 +386,7 @@
 		14BE1B6215EA282700F7547E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				147A1F9115FE271200F30BAD /* Localizable.strings */,
 				147A1F8115FE13E600F30BAD /* MainStoryboard_iPhone.storyboard */,
 				14F5320715F9D58A0080444A /* image */,
 				14B5F05515F383D000630C06 /* LoadingView.xib */,
@@ -513,6 +519,7 @@
 				147A1F8C15FE140600F30BAD /* on@2x.png in Resources */,
 				147A1F8F15FE226A00F30BAD /* sekikawa.png in Resources */,
 				147A1F9015FE226A00F30BAD /* sonson.png in Resources */,
+				147A1F9315FE271200F30BAD /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +619,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1455709015EBC00D003DD49F /* en */,
+				147A1F9615FE276100F30BAD /* ja */,
 			);
 			name = LockScreenView.xib;
 			sourceTree = "<group>";
@@ -625,10 +633,20 @@
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
+		147A1F9115FE271200F30BAD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				147A1F9215FE271200F30BAD /* en */,
+				147A1F9415FE271800F30BAD /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		14B5F05515F383D000630C06 /* LoadingView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				14B5F05615F383D000630C06 /* en */,
+				147A1F9515FE276100F30BAD /* ja */,
 			);
 			name = LoadingView.xib;
 			sourceTree = "<group>";
