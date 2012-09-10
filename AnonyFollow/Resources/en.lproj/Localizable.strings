@@ -14,7 +14,7 @@
 "Cancel" = "Cancel";
 
 /* No comment provided by engineer. */
-"Delete" = "Delete";
+"Delete" = "Clear";
 
 /* No comment provided by engineer. */
 "Error" = "Error";
@@ -53,8 +53,11 @@
 "Exhange" = "Exhange";
 
 /* No comment provided by engineer. */
-"%@ is using %@." = "%1$@ is using %2$@.";
+"App needs a mail account in order to send your report." = "App needs a mail account in order to send your report.";
 
 /* No comment provided by engineer. */
-"App needs a mail account in order to send your report." = "App needs a mail account in order to send your report.";
+"Found %@" = "Found %@";
+
+/* No comment provided by engineer. */
+"%@ is boardcasting" = "%@ is boardcasting";
 

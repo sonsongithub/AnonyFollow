@@ -14,7 +14,7 @@
 "Cancel" = "キャンセル";
 
 /* No comment provided by engineer. */
-"Delete" = "削除";
+"Delete" = "クリア";
 
 /* No comment provided by engineer. */
 "Error" = "エラー";
@@ -50,11 +50,14 @@
 "Your account is" = "あなたのアカウント";
 
 /* No comment provided by engineer. */
-"Exhange" = "交換";
-
-/* No comment provided by engineer. */
-"%@ is using %@." = "%1$@さんが%2$@を使っているようです．";
+"Exhange" = "交換する";
 
 /* No comment provided by engineer. */
 "App needs a mail account in order to send your report." = "レポートを送るにはメールアドレスを設定する必要があります．";
+
+/* No comment provided by engineer. */
+"Found %@" = "%@さんを見つけました";
+
+/* No comment provided by engineer. */
+"%@ is boardcasting" = "%@さんが公開中です";
 

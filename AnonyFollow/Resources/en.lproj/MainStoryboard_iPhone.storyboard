@@ -555,7 +555,8 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="Receiving notification to look for using this application near yourself on &quot;Background&quot; affects your battery life." id="O0e-CL-FB5">
+                            <tableViewSection id="O0e-CL-FB5">
+                                <string key="footerTitle">Only receiving(not exchanging) notification to look for using this application near yourself on "Background" affects your battery life.</string>
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gKE-xC-mZ4">
                                         <rect key="frame" x="0.0" y="244" width="320" height="46"/>
@@ -593,7 +594,7 @@
                             <tableViewSection headerTitle="Debug" footerTitle="" id="Au7-C0-ztQ">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="u05-Ij-zrB">
-                                        <rect key="frame" x="0.0" y="405" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="424" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>

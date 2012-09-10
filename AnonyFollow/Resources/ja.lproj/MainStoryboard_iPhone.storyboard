@@ -555,7 +555,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="周囲で交換している人の通知を&quot;バックグラウンド&quot;で受け取ることができますが，バッテリの減りが速くなる可能性があります．" id="O0e-CL-FB5">
+                            <tableViewSection footerTitle="周囲で交換している人の通知を&quot;バックグラウンド&quot;で受け取ることができますが(交換はしません)，バッテリの減りが速くなる可能性があります．" id="O0e-CL-FB5">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gKE-xC-mZ4">
                                         <rect key="frame" x="0.0" y="244" width="320" height="46"/>

@@ -116,7 +116,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 
 - (void)notifyRecevingOnBackgroundWithUserName:(NSString*)username {
 	UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-	NSString *message = [NSString stringWithFormat:NSLocalizedString(@"%@ is using %@.", nil), username, [NSBundle infoValueFromMainBundleForKey:@"CFBundleDisplayName"]];
+	NSString *message = [NSString stringWithFormat:NSLocalizedString(@"%@ is boardcasting", nil), username];
 	localNotif.alertBody = message;
 	localNotif.alertAction = NSLocalizedString(@"Exhange", nil);
 	localNotif.soundName = UILocalNotificationDefaultSoundName;
@@ -364,7 +364,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 		[self.accounts addObject:info];
 		[self.tableView reloadData];
 		AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-		[del.barView pushTemporaryMessage:[NSString stringWithFormat:@"Found %@", userName]];
+		[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), userName]];
 	}
 	else {
 		ACAccountStore *accountStore = [[ACAccountStore alloc] init];
@@ -397,7 +397,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 								[self.accounts addObject:info];
 								[self.tableView reloadData];
 								AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-								[del.barView pushTemporaryMessage:[NSString stringWithFormat:@"Found %@", userName]];
+								[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), userName]];
 							});
 						}
 						else {
