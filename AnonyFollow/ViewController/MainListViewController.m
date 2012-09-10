@@ -30,6 +30,7 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 #import "ACAccountStore+AnonyFollow.h"
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
+#import "NSBundle+AnonyFollow.h"
 
 typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 
@@ -113,10 +114,11 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
     }];
 }
 
-- (void)notifyRecevingOnBackground {
+- (void)notifyRecevingOnBackgroundWithUserName:(NSString*)username {
 	UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-	localNotif.alertBody = NSLocalizedString(@"Someone is using AnonyFollow.", nil);
-	localNotif.alertAction = NSLocalizedString(@"Find it.", nil);
+	NSString *message = [NSString stringWithFormat:NSLocalizedString(@"%@ is using %@.", nil), username, [NSBundle infoValueFromMainBundleForKey:@"CFBundleDisplayName"]];
+	localNotif.alertBody = message;
+	localNotif.alertAction = NSLocalizedString(@"Exhange", nil);
 	localNotif.soundName = UILocalNotificationDefaultSoundName;
 	[[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
 }
@@ -417,7 +419,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	
 	if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
 		// post local notification
-		[self notifyRecevingOnBackground];
+		[self notifyRecevingOnBackgroundWithUserName:username];
 	}
 	else {
 		[self addUserNameOnForeground:username];

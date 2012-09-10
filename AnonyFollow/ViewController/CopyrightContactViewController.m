@@ -102,7 +102,7 @@
 	}
 	else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Mail error", nil)
-														 message:NSLocalizedString(@"AnonyFollow needs a mail account in order to send your report.", nil)
+														 message:NSLocalizedString(@"App needs a mail account in order to send your report.", nil)
 														delegate:nil
 											   cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
 											   otherButtonTitles:NSLocalizedString(@"OK", nil), nil];

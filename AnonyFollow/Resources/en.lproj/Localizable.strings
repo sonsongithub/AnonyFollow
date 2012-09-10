@@ -8,9 +8,6 @@
 "@%@" = "@%@";
 
 /* No comment provided by engineer. */
-"AnonyFollow needs a mail account in order to send your report." = "AnonyFollow needs a mail account in order to send your report.";
-
-/* No comment provided by engineer. */
 "Broadcasting..." = "Broadcasting...";
 
 /* No comment provided by engineer. */
@@ -21,9 +18,6 @@
 
 /* No comment provided by engineer. */
 "Error" = "Error";
-
-/* No comment provided by engineer. */
-"Find it." = "Find it.";
 
 /* No comment provided by engineer. */
 "Find List" = "Find List";
@@ -50,11 +44,20 @@
 "Someone is using AnonyFollow." = "Someone is using AnonyFollow.";
 
 /* No comment provided by engineer. */
-"SupportMailAddress" = "SupportMailAddress";
+"SupportMailAddress" = "yoshida.yuichi@gmail.com";
 
 /* No comment provided by engineer. */
 "Warning" = "Warning";
 
 /* No comment provided by engineer. */
 "Your account is" = "Your account is";
+
+/* No comment provided by engineer. */
+"Exhange" = "Exhange";
+
+/* No comment provided by engineer. */
+"%@ is using %@." = "%1$@ is using %2$@.";
+
+/* No comment provided by engineer. */
+"App needs a mail account in order to send your report." = "App needs a mail account in order to send your report.";
 

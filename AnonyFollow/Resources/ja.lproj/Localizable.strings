@@ -1,0 +1,60 @@
+/* No comment provided by engineer. */
+"\n\nYour system's information ----------\nAnonyFollow %@\niOS %@\n Device %@" = "\n\nあなたのデバイス ----------\nAnonyFollow %1$@\niOS %2$@\n デバイス %3$@";
+
+/* No comment provided by engineer. */
+"[AnonyFollow contact] " = "[AnonyFollow contact] ";
+
+/* No comment provided by engineer. */
+"@%@" = "@%@";
+
+/* No comment provided by engineer. */
+"Broadcasting..." = "公開中・・・";
+
+/* No comment provided by engineer. */
+"Cancel" = "キャンセル";
+
+/* No comment provided by engineer. */
+"Delete" = "削除";
+
+/* No comment provided by engineer. */
+"Error" = "エラー";
+
+/* No comment provided by engineer. */
+"Find List" = "リスト";
+
+/* No comment provided by engineer. */
+"Mail error" = "メールエラー";
+
+/* No comment provided by engineer. */
+"No account" = "アカウントがありません";
+
+/* No comment provided by engineer. */
+"Not authorized" = "未認証";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Plesase setup or authorize twitter account via Setting.app." = "Twitterのアカウントにアクセスできるように設定アプリから設定してください．";
+
+/* No comment provided by engineer. */
+"Recent tweets" = "最近のツイート";
+
+/* No comment provided by engineer. */
+"SupportMailAddress" = "yoshida.yuichi@gmail.com";
+
+/* No comment provided by engineer. */
+"Warning" = "警告";
+
+/* No comment provided by engineer. */
+"Your account is" = "あなたのアカウント";
+
+/* No comment provided by engineer. */
+"Exhange" = "交換";
+
+/* No comment provided by engineer. */
+"%@ is using %@." = "%1$@さんが%2$@を使っているようです．";
+
+/* No comment provided by engineer. */
+"App needs a mail account in order to send your report." = "レポートを送るにはメールアドレスを設定する必要があります．";
+
