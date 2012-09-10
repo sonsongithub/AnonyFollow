@@ -77,6 +77,10 @@
 		[formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
 		[formatter setDateFormat:@"ccc MMM dd HH:mm:ss z yyyy"];
 		
+		NSDateFormatter *output_formatter = [[NSDateFormatter alloc] init];
+		[output_formatter setDateStyle:NSDateFormatterMediumStyle];
+		[output_formatter setTimeStyle:NSDateFormatterMediumStyle];
+		
 		if ([info isKindOfClass:[info class]]) {
 			for (NSDictionary *tweet in info) {
 				TwitterTweet *tweetaa = [[TwitterTweet alloc] init];
@@ -84,6 +88,8 @@
 				tweetaa.text = [tweet objectForKey:@"text"];
 				
 				tweetaa.created_at = [formatter dateFromString:[tweet objectForKey:@"created_at"]];
+				
+				tweetaa.created_at_string = [output_formatter stringFromDate:tweetaa.created_at];
 				
 				[self.tweets addObject:tweetaa];
 				

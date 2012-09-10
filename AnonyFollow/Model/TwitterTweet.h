@@ -15,6 +15,7 @@
 @property (nonatomic, strong) TwitterAccountInfo *accountInfo;
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSDate *created_at;
+@property (nonatomic, strong) NSString *created_at_string;
 @property (nonatomic, assign) CGSize contentSize;
 
 - (float)height;
