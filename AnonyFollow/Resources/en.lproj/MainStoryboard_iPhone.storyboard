@@ -105,12 +105,12 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="Jur-fM-IHy">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="PRI-Cf-RyL">
-                            <rect key="frame" x="31" y="6" width="257" height="33"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" id="PRI-Cf-RyL">
+                            <rect key="frame" x="31" y="7" width="257" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="OFF"/>
-                                <segment title="ON"/>
+                                <segment title="" image="off.png"/>
+                                <segment title="" image="on.png"/>
                             </segments>
                             <connections>
                                 <action selector="select:" destination="B8J-gi-8rA" eventType="valueChanged" id="xsr-lU-p0j"/>
@@ -660,90 +660,78 @@
                         <sections>
                             <tableViewSection headerTitle="Programming" id="qCV-5X-Pkb">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="R1R-5G-6eR" detailTextLabel="Iws-yZ-P90" style="IBUITableViewCellStyleValue1" id="Ehz-Fq-wdt">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="9Bi-zX-0sW">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Name" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="R1R-5G-6eR">
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                </label>
-                                                <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="YusukeSekikawa" textAlignment="right" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="Iws-yZ-P90">
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                <imageView translatesAutoresizingMaskIntoConstraints="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="sekikawa.png" id="q7T-R3-jgR">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="qn4-Uj-SeE"/>
+                                                        <constraint firstAttribute="height" constant="40" id="vP9-4z-1IV"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="YusukeSekikawa" textAlignment="right" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="N8a-Tk-rqw">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="185" id="ABZ-8x-CeO"/>
+                                                    </constraints>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="0.21960784310000001" green="0.32549019610000002" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="YlI-py-rV9" style="IBUITableViewCellStyleDefault" id="9Bi-zX-0sW">
-                                        <rect key="frame" x="0.0" y="91" width="320" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Twitter" textAlignment="center" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="YlI-py-rV9">
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="q7T-R3-jgR" firstAttribute="leading" secondItem="9Bi-zX-0sW" secondAttribute="leading" constant="15" id="TLr-2s-gSl"/>
+                                            <constraint firstItem="N8a-Tk-rqw" firstAttribute="centerY" secondItem="9Bi-zX-0sW" secondAttribute="centerY" type="default" id="akT-4g-J0T"/>
+                                            <constraint firstItem="q7T-R3-jgR" firstAttribute="top" secondItem="9Bi-zX-0sW" secondAttribute="top" constant="3" id="rao-Ge-PeW"/>
+                                            <constraint firstAttribute="trailing" secondItem="N8a-Tk-rqw" secondAttribute="trailing" constant="20" type="default" id="zS6-Pw-ohk"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Programming &amp; Design" id="cI7-A7-4ji">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="HWL-AD-CxB" detailTextLabel="bZ3-er-EQk" style="IBUITableViewCellStyleValue1" id="efZ-rx-ywx">
-                                        <rect key="frame" x="0.0" y="182" width="320" height="45"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="8vP-78-cf8">
+                                        <rect key="frame" x="0.0" y="138" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Name" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="HWL-AD-CxB">
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                </label>
-                                                <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="sonson" textAlignment="right" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="bZ3-er-EQk">
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                <imageView translatesAutoresizingMaskIntoConstraints="NO" userInteractionEnabled="NO" contentMode="scaleToFill" image="sonson.png" id="Tth-kG-3u2">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="XIc-1W-2aS"/>
+                                                        <constraint firstAttribute="height" constant="40" id="ZiN-z8-3vY"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="sonson" textAlignment="right" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="bTD-7E-Quw">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="185" id="B4s-Mt-jmO"/>
+                                                    </constraints>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="0.21960784310000001" green="0.32549019610000002" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="qks-0q-slU" style="IBUITableViewCellStyleDefault" id="rWP-bc-Eif">
-                                        <rect key="frame" x="0.0" y="227" width="320" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Twitter" textAlignment="center" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="qks-0q-slU">
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Tth-kG-3u2" firstAttribute="centerY" secondItem="8vP-78-cf8" secondAttribute="centerY" type="default" id="1AK-GY-Dzv"/>
+                                            <constraint firstItem="bTD-7E-Quw" firstAttribute="centerY" secondItem="8vP-78-cf8" secondAttribute="centerY" type="default" id="CLS-H8-LpP"/>
+                                            <constraint firstAttribute="trailing" secondItem="bTD-7E-Quw" secondAttribute="trailing" constant="20" type="default" id="Vsl-wH-UTo"/>
+                                            <constraint firstItem="Tth-kG-3u2" firstAttribute="leading" secondItem="8vP-78-cf8" secondAttribute="leading" constant="15" id="u4z-W6-FBp"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="HAj-Jf-p5p">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="AON-hZ-Bwf" style="IBUITableViewCellStyleDefault" id="G4z-8U-RCS">
-                                        <rect key="frame" x="0.0" y="292" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="204" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -818,7 +806,11 @@ See the License for the specific language governing permissions and limitations 
     <resources>
         <image name="new.png" width="100" height="100"/>
         <image name="none.png" width="50" height="50"/>
+        <image name="off.png" width="30" height="23"/>
+        <image name="on.png" width="30" height="23"/>
+        <image name="sekikawa.png" width="166" height="166"/>
         <image name="setting.png" width="24" height="24"/>
+        <image name="sonson.png" width="64" height="64"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
