@@ -79,9 +79,9 @@
 	[title setBackgroundColor:[UIColor clearColor]];
 	title.textColor = [UIColor whiteColor];
 	title.shadowColor = [UIColor blackColor];
-	title.shadowOffset = CGSizeMake(0, -1);
+	title.shadowOffset = CGSizeMake(0, -0.5);
 	title.text = NSLocalizedString(@"Your account is", nil);
-	title.font = [UIFont boldSystemFontOfSize:10];
+	title.font = [UIFont boldSystemFontOfSize:9];
 	title.textAlignment = NSTextAlignmentCenter;
 	title.userInteractionEnabled = YES;
 	
