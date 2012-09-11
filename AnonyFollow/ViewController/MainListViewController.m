@@ -52,6 +52,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 		[self.twitterAccountButton setTwitterAccountUserName:twitterUserName];
 		self.advertizer = [[CBAdvertizer alloc] initWithDelegate:self userName:twitterUserName serviceUUID:@"1802"];
 		self.scanner = [[CBScanner alloc] initWithDelegate:self serviceUUID:@"1802"];
+		self.lockScreenView.hidden = YES;
 	}];
 }
 
@@ -142,6 +143,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 - (void)willEnterForeground:(NSNotification*)notification {
 	DNSLogMethod
 	DNSLog(@"%@", notification);
+	self.lockScreenView.hidden = YES;
 	[self.scanner stopScan];
 	self.scanner = nil;
 	self.segmentedControl.selectedSegmentIndex = 0;
@@ -214,6 +216,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 			else {
 				DNSLog(@"No Twitter Account");
 				dispatch_async(dispatch_get_main_queue(), ^(void) {
+					self.lockScreenView.hidden = NO;
 					[self showAlertMessage:NSLocalizedString(@"Plesase setup or authorize twitter account via Setting.app.", nil)];
 					[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"No account", nil)];
 					self.segmentedControl.selectedSegmentIndex = 0;
@@ -223,6 +226,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 		else {
 			DNSLog(@"accountStore accesss denied");
 			dispatch_async(dispatch_get_main_queue(), ^(void) {
+				self.lockScreenView.hidden = NO;
 				[self showAlertMessage:NSLocalizedString(@"Plesase setup or authorize twitter account via Setting.app.", nil)];
 				[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"Not authorized", nil)];
 				self.segmentedControl.selectedSegmentIndex = 0;
@@ -254,6 +258,9 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 	AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
 	[appdelegate setupOriginalStatusBar];
+	
+	self.lockScreenView.hidden = YES;
+	[self.view addSubview:self.lockScreenView];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -282,6 +289,10 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	[UIView animateWithDuration:0.4 animations:^(void){
 		self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
 	}];
+	
+	NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+	if (path)
+		[self.tableView deselectRowAtIndexPath:path animated:YES];
 
 	[self updateAccountButtonMessage];
 }
@@ -427,16 +438,23 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 }
 
 - (void)scannerDidChangeStatus:(CBScanner*)scanner {
+	DNSLogMethod
 	if ([self.scanner isAvailable]) {
+		self.lockScreenView.hidden = YES;
 		AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
 		[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 		[del.barView setColor:[UIColor greenColor]];
 		[del.barView setMessage:NSLocalizedString(@"Broadcasting...", nil)];
 	}
 	else {
+		self.lockScreenView.hidden = NO;
 		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 		[self.scanner stopScan];
+		self.scanner.delegate = nil;
+		self.scanner = nil;
 		[self.advertizer stopAdvertize];
+		self.advertizer.delegate = nil;
+		self.advertizer = nil;
 	}
 }
 

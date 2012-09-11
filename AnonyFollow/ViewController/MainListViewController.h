@@ -19,7 +19,7 @@ extern NSString *kNotificationUserInfoUserNameKey;
 @class CBAdvertizer;
 @class MessageBarButtonItem;
 
-@interface MainListViewController : UITableViewController <CBScannerDelegate, CBAdvertizerDelegate, UIActionSheetDelegate>
+@interface MainListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CBScannerDelegate, CBAdvertizerDelegate, UIActionSheetDelegate>
 
 - (IBAction)trash:(id)sender;
 - (IBAction)select:(id)sender;
@@ -28,6 +28,7 @@ extern NSString *kNotificationUserInfoUserNameKey;
 @property (strong, nonatomic) IBOutlet LockScreenView *lockScreenView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, strong) IBOutlet MessageBarButtonItem *twitterAccountButton;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *accounts;
 @property (nonatomic, strong) NSMutableArray *accountsCollectedOnBackground;

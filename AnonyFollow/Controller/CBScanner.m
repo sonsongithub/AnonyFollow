@@ -69,8 +69,8 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
     NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:CBCentralManagerScanOptionAllowDuplicatesKey]; 
 #endif
 
-    if(self.UUIDStr!=nil)
-		[self.manager scanForPeripheralsWithServices:[NSArray arrayWithObjects:[CBUUID UUIDWithString:self.UUIDStr],nil] options:options];
+    if(self.UUIDStr != nil)
+		[self.manager scanForPeripheralsWithServices:[NSArray arrayWithObjects:[CBUUID UUIDWithString:self.UUIDStr], nil] options:options];
     else
 		[self.manager scanForPeripheralsWithServices:nil options:options];
 
@@ -111,8 +111,7 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
     /* first byte should be 0x1802 */
     [services removeObjectAtIndex:0];
     
-    for(CBUUID *uuid in services)
-    {
+    for (CBUUID *uuid in services) {
         uint8_t _data[2];
         [uuid.data getBytes:_data];
         [encodedData appendBytes:_data length:2];

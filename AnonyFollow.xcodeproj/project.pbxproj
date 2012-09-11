@@ -19,6 +19,8 @@
 		142770C515EE82DD0062271A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142770C415EE82DD0062271A /* SystemConfiguration.framework */; };
 		145194A215EA2BCC00E853CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1451949C15EA2BCC00E853CA /* InfoPlist.strings */; };
 		1455709115EBC00D003DD49F /* LockScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1455708F15EBC00D003DD49F /* LockScreenView.xib */; };
+		14634C6515FF1C0D00D94104 /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 14634C6415FF1C0D00D94104 /* warning.png */; };
+		14634C6715FF1C1300D94104 /* warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14634C6615FF1C1300D94104 /* warning@2x.png */; };
 		147A1F8315FE13E600F30BAD /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147A1F8115FE13E600F30BAD /* MainStoryboard_iPhone.storyboard */; };
 		147A1F8715FE13F900F30BAD /* off.png in Resources */ = {isa = PBXBuildFile; fileRef = 147A1F8515FE13F900F30BAD /* off.png */; };
 		147A1F8815FE13F900F30BAD /* on.png in Resources */ = {isa = PBXBuildFile; fileRef = 147A1F8615FE13F900F30BAD /* on.png */; };
@@ -96,6 +98,8 @@
 		145194A515EA2BE800E853CA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		145194AB15EA2BE800E853CA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/MainStoryboard_iPhone.storyboard.string; sourceTree = "<group>"; };
 		1455709015EBC00D003DD49F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LockScreenView.xib; sourceTree = "<group>"; };
+		14634C6415FF1C0D00D94104 /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
+		14634C6615FF1C1300D94104 /* warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warning@2x.png"; sourceTree = "<group>"; };
 		147A1F8215FE13E600F30BAD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		147A1F8415FE13EC00F30BAD /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ja; path = ja.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		147A1F8515FE13F900F30BAD /* off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = off.png; sourceTree = "<group>"; };
@@ -386,15 +390,15 @@
 		14BE1B6215EA282700F7547E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				147A1F9115FE271200F30BAD /* Localizable.strings */,
-				147A1F8115FE13E600F30BAD /* MainStoryboard_iPhone.storyboard */,
 				14F5320715F9D58A0080444A /* image */,
-				14B5F05515F383D000630C06 /* LoadingView.xib */,
-				1455708F15EBC00D003DD49F /* LockScreenView.xib */,
-				145194AA15EA2BE800E853CA /* MainStoryboard_iPhone.storyboard.string */,
-				1451949C15EA2BCC00E853CA /* InfoPlist.strings */,
 				14BE1B6315EA282700F7547E /* image@1x */,
 				14BE1B6815EA282700F7547E /* image@2x */,
+				147A1F9115FE271200F30BAD /* Localizable.strings */,
+				147A1F8115FE13E600F30BAD /* MainStoryboard_iPhone.storyboard */,
+				14B5F05515F383D000630C06 /* LoadingView.xib */,
+				1455708F15EBC00D003DD49F /* LockScreenView.xib */,
+				1451949C15EA2BCC00E853CA /* InfoPlist.strings */,
+				145194AA15EA2BE800E853CA /* MainStoryboard_iPhone.storyboard.string */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -402,6 +406,7 @@
 		14BE1B6315EA282700F7547E /* image@1x */ = {
 			isa = PBXGroup;
 			children = (
+				14634C6415FF1C0D00D94104 /* warning.png */,
 				147A1F8515FE13F900F30BAD /* off.png */,
 				147A1F8615FE13F900F30BAD /* on.png */,
 				14F5321615F9EF270080444A /* Default.png */,
@@ -416,6 +421,7 @@
 		14BE1B6815EA282700F7547E /* image@2x */ = {
 			isa = PBXGroup;
 			children = (
+				14634C6615FF1C1300D94104 /* warning@2x.png */,
 				147A1F8915FE140600F30BAD /* off@2x.png */,
 				147A1F8A15FE140600F30BAD /* on@2x.png */,
 				14F5321815F9EF2D0080444A /* Default@2x.png */,
@@ -520,6 +526,8 @@
 				147A1F8F15FE226A00F30BAD /* sekikawa.png in Resources */,
 				147A1F9015FE226A00F30BAD /* sonson.png in Resources */,
 				147A1F9315FE271200F30BAD /* Localizable.strings in Resources */,
+				14634C6515FF1C0D00D94104 /* warning.png in Resources */,
+				14634C6715FF1C1300D94104 /* warning@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
