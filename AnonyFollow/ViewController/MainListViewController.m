@@ -368,7 +368,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 		if ([existing.screenName isEqualToString:userName])
 			return;
 	}
-	
+#ifdef _DEBUG	
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowFollowingUsers]) {
 		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 		info.screenName = userName;
@@ -419,6 +419,48 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 			}
 		}];
 	}
+#else
+	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+		if(granted) {
+			ACAccount *account = [accountStore twitterCurrentAccount];
+			
+			if (account == nil)
+				return;
+			
+			NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
+			
+			SLRequest *postRequest;
+			[tempDict setValue:account.username forKey:@"screen_name_a"];
+			[tempDict setValue:userName forKey:@"screen_name_b"];
+			postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/exists.json"] parameters:tempDict];
+			
+			[postRequest setAccount:account];
+			[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+				if (error == nil) {
+					NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+					NSLog(@"%@", result);
+					if ([result isEqualToString:@"true"]) {
+					}
+					else if ([result isEqualToString:@"false"]) {
+						dispatch_async(dispatch_get_main_queue(), ^(void){
+							TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
+							info.screenName = userName;
+							[self.accounts addObject:info];
+							[self.tableView reloadData];
+							AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+							[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), userName]];
+						});
+					}
+					else {
+						// error
+					}
+				}
+			}];
+		}
+	}];
+#endif
 }
 
 #pragma mark - CBScannerDelegate

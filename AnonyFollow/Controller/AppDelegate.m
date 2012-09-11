@@ -26,11 +26,19 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+#ifdef _DEBUG
 	NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-								[NSNumber numberWithBool:NO],	kAnonyFollowBackgroundScanEnabled,
-								[NSNumber numberWithBool:NO],	kAnonyFollowDebugShowFollowingUsers,
+								[NSNumber numberWithBool:YES],	kAnonyFollowBackgroundScanEnabled,
+								[NSNumber numberWithBool:YES],	kAnonyFollowDebugShowFollowingUsers,
 								@"",							kAnonyFollowCurrentTwitterUserName,
 								nil];
+#else
+	NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+								[NSNumber numberWithBool:NO],	kAnonyFollowBackgroundScanEnabled,
+								[NSNumber numberWithBool:YES],	kAnonyFollowDebugShowFollowingUsers,
+								@"",							kAnonyFollowCurrentTwitterUserName,
+								nil];
+#endif
 	[[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
 	[[NSUserDefaults standardUserDefaults] synchronize];
     return YES;

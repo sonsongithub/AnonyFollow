@@ -55,7 +55,7 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                     <size key="titleShadowOffset" width="0.0" height="-1"/>
-                                                    <state key="normal" title="Follow">
+                                                    <state key="normal" title="フォロー">
                                                         <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="titleShadowColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     </state>
@@ -325,7 +325,7 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="A7f-HM-ESP"/>
-                        <barButtonItem title="Follow" width="150" id="lrh-as-wnS">
+                        <barButtonItem title="フォロー" width="150" id="lrh-as-wnS">
                             <connections>
                                 <action selector="follow:" destination="3fT-LL-GZo" id="QcK-L8-CTb"/>
                             </connections>
@@ -343,7 +343,7 @@
             </objects>
             <point key="canvasLocation" x="1320" y="330"/>
         </scene>
-        <!--Account Select View Controller - Select account-->
+        <!--Account Select View Controller - アカウントの選択-->
         <scene sceneID="MaW-LZ-Nb2">
             <objects>
                 <tableViewController id="6Oi-9U-Caj" customClass="AccountSelectViewController" sceneMemberID="viewController">
@@ -395,7 +395,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Select account" id="EtF-18-Kni">
+                    <navigationItem key="navigationItem" title="アカウントの選択" id="EtF-18-Kni">
                         <barButtonItem key="rightBarButtonItem" title="閉じる" style="done" id="M3H-6a-B5x">
                             <connections>
                                 <action selector="dismiss:" destination="6Oi-9U-Caj" id="3vI-Lc-aZv"/>
@@ -457,7 +457,7 @@
             </objects>
             <point key="canvasLocation" x="1320" y="-301"/>
         </scene>
-        <!--Setting View Controller - Settings-->
+        <!--Setting View Controller - 設定-->
         <scene sceneID="fXA-Oi-X9B">
             <objects>
                 <tableViewController autoresizesArchivedViewToFullSize="NO" id="nh6-bL-s6V" customClass="SettingViewController" sceneMemberID="viewController">
@@ -466,7 +466,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Information" id="32y-wj-shY">
+                            <tableViewSection headerTitle="情報" id="32y-wj-shY">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="OX0-8n-bGc" detailTextLabel="uEG-aa-wP7" style="IBUITableViewCellStyleValue1" id="esx-ck-V7u">
                                         <rect key="frame" x="0.0" y="46" width="320" height="45"/>
@@ -475,8 +475,8 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Name" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="OX0-8n-bGc">
-                                                    <rect key="frame" x="10" y="11" width="47" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="名前" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="OX0-8n-bGc">
+                                                    <rect key="frame" x="10" y="11" width="34" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -501,8 +501,8 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Version" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="3AO-Yd-D5E">
-                                                    <rect key="frame" x="10" y="11" width="63" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="バージョン" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="3AO-Yd-D5E">
+                                                    <rect key="frame" x="10" y="11" width="85" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -527,8 +527,8 @@
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Copyrights &amp; Contact" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="B4P-Bh-ZZn">
-                                                    <rect key="frame" x="10" y="11" width="175" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="著作権・連絡先" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="B4P-Bh-ZZn">
+                                                    <rect key="frame" x="10" y="11" width="119" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -556,7 +556,7 @@
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="License" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="mdn-Ek-c81">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="ライセンス" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="mdn-Ek-c81">
                                                     <rect key="frame" x="10" y="0.0" width="260" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -573,7 +573,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="周囲で交換している人の通知を&quot;バックグラウンド&quot;で受け取ることができますが(交換はしません)，バッテリの減りが速くなる可能性があります．" id="O0e-CL-FB5">
+                            <tableViewSection footerTitle="周囲で交換している人の通知を&quot;バックグラウンド&quot;で受け取ることができますが，バッテリの減りが速くなる可能性があります．" id="O0e-CL-FB5">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gKE-xC-mZ4">
                                         <rect key="frame" x="0.0" y="244" width="320" height="46"/>
@@ -582,7 +582,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" text="Background" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="F80-go-rmF">
+                                                <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" text="バックグラウンド" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="F80-go-rmF">
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -608,7 +608,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Debug" footerTitle="" id="Au7-C0-ztQ">
+                            <tableViewSection headerTitle="デバッグ" footerTitle="" id="Au7-C0-ztQ">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="u05-Ij-zrB">
                                         <rect key="frame" x="0.0" y="424" width="320" height="46"/>
@@ -617,7 +617,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" text="Show following" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="euC-wx-7fs">
+                                                <label translatesAutoresizingMaskIntoConstraints="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" text="フォロー中の人も表示" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="euC-wx-7fs">
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -649,7 +649,7 @@
                             <outlet property="delegate" destination="nh6-bL-s6V" id="atn-da-kdF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="PQO-Yu-CfO">
+                    <navigationItem key="navigationItem" title="設定" id="PQO-Yu-CfO">
                         <barButtonItem key="rightBarButtonItem" title="閉じる" style="done" id="p4z-3t-KK7">
                             <connections>
                                 <action selector="dismiss:" destination="nh6-bL-s6V" id="MAj-Pw-xrm"/>
@@ -667,7 +667,7 @@
             </objects>
             <point key="canvasLocation" x="1803" y="-301"/>
         </scene>
-        <!--Copyright Contact View Controller - Copyrights & Contact-->
+        <!--Copyright Contact View Controller - 著作権・連絡先-->
         <scene sceneID="uxU-Mg-DXX">
             <objects>
                 <tableViewController id="G0A-XD-HiR" customClass="CopyrightContactViewController" sceneMemberID="viewController">
@@ -755,7 +755,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Send report" textAlignment="center" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="AON-hZ-Bwf">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="レポートを送る" textAlignment="center" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="AON-hZ-Bwf">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -774,13 +774,13 @@
                             <outlet property="delegate" destination="G0A-XD-HiR" id="SyO-Yc-45F"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Copyrights &amp; Contact" id="f7T-Hg-nCd"/>
+                    <navigationItem key="navigationItem" title="著作権・連絡先" id="f7T-Hg-nCd"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hYO-RL-bdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2344" y="-923"/>
         </scene>
-        <!--View Controller - License-->
+        <!--View Controller - ライセンス-->
         <scene sceneID="MMB-0n-u5A">
             <objects>
                 <viewController id="wVm-lc-pgT" sceneMemberID="viewController">
@@ -814,7 +814,7 @@ See the License for the specific language governing permissions and limitations 
                             <constraint firstItem="9y9-ft-ko4" firstAttribute="trailing" secondItem="jMw-u2-wYR" secondAttribute="trailing" type="default" id="nhR-FG-dWu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="License" id="ZdC-dM-qoX"/>
+                    <navigationItem key="navigationItem" title="ライセンス" id="ZdC-dM-qoX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5KL-2Z-75t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -830,104 +830,6 @@ See the License for the specific language governing permissions and limitations 
         <image name="setting.png" width="24" height="24"/>
         <image name="sonson.png" width="64" height="64"/>
     </resources>
-    <classes>
-        <class className="AccountCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="screenNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="AccountSelectViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountSelectViewController.h"/>
-        </class>
-        <class className="CopyrightContactViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CopyrightContactViewController.h"/>
-        </class>
-        <class className="LoadingView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadingView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="indicator" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="LockScreenView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LockScreenView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="MainListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="follow:"/>
-                <relationship kind="action" name="select:"/>
-                <relationship kind="action" name="trash:"/>
-                <relationship kind="outlet" name="lockScreenView" candidateClass="LockScreenView"/>
-                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="twitterAccountButton" candidateClass="MessageBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="MessageBarButtonItem" superclassName="UIBarButtonItem">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MessageBarButtonItem.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SettingViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="didChangeBackgroundSwitch:"/>
-                <relationship kind="action" name="didChangeShowFollowingSwitch:"/>
-                <relationship kind="outlet" name="applicationNameCell" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="backgroundSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="showFollowingSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="versionCell" candidateClass="UITableViewCell"/>
-            </relationships>
-        </class>
-        <class className="TimeLineViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeLineViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="follow:"/>
-                <relationship kind="outlet" name="loadingView" candidateClass="LoadingView"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="TweetCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tweetContentView" candidateClass="TweetContentView"/>
-                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="TweetContentView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetContentView.h"/>
-        </class>
-        <class className="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="dismiss:"/>
-            </relationships>
-        </class>
-        <class className="UserInfoCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserInfoCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="line1" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="line2" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tweetContentView" candidateClass="TweetContentView"/>
-                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
