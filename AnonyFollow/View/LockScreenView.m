@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     [[NSBundle mainBundle] loadNibNamed:@"LockScreenView" owner:self options:nil];
 	[self addSubview:self.contentView];
+	[self setBackgroundColor:[UIColor redColor]];
+	[self.contentView setBackgroundColor:[UIColor redColor]];
 }
 
 @end

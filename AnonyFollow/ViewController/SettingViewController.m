@@ -34,7 +34,11 @@
 	[super viewDidAppear:animated];
 	if ([UIApplication sharedApplication].statusBarHidden) {
 		[UIView animateWithDuration:0.4 animations:^(void){
-			self.navigationController.view.frame = CGRectMake(0, 20, 320, 460);
+			UIScreen *screen = [UIScreen mainScreen];
+			CGSize size = screen.bounds.size;
+			size.height -= 20;
+			CGRect frame = CGRectMake(0, 20, size.width, size.height);
+			self.navigationController.view.frame = frame;
 		}];
 	}
 }

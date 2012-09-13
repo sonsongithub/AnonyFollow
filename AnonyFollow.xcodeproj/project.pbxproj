@@ -16,6 +16,7 @@
 		02B9542D15E67A06005026B1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542C15E67A06005026B1 /* Social.framework */; };
 		02B9542F15E67A18005026B1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542E15E67A18005026B1 /* Accounts.framework */; };
 		141755A215FB1646006B10F7 /* NSUserDefaults+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 141755A115FB1646006B10F7 /* NSUserDefaults+AnonyFollow.m */; };
+		1425251A1602328E0093A325 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 142525191602328E0093A325 /* Default-568h@2x.png */; };
 		142770C515EE82DD0062271A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142770C415EE82DD0062271A /* SystemConfiguration.framework */; };
 		145194A215EA2BCC00E853CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1451949C15EA2BCC00E853CA /* InfoPlist.strings */; };
 		1455709115EBC00D003DD49F /* LockScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1455708F15EBC00D003DD49F /* LockScreenView.xib */; };
@@ -93,6 +94,7 @@
 		02B9542E15E67A18005026B1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		141755A015FB1646006B10F7 /* NSUserDefaults+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+AnonyFollow.h"; sourceTree = "<group>"; };
 		141755A115FB1646006B10F7 /* NSUserDefaults+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+AnonyFollow.m"; sourceTree = "<group>"; };
+		142525191602328E0093A325 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		142770C415EE82DD0062271A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1451949D15EA2BCC00E853CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		145194A515EA2BE800E853CA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 		14F5320715F9D58A0080444A /* image */ = {
 			isa = PBXGroup;
 			children = (
+				142525191602328E0093A325 /* Default-568h@2x.png */,
 				147A1F8D15FE226A00F30BAD /* sekikawa.png */,
 				147A1F8E15FE226A00F30BAD /* sonson.png */,
 				14F5321215F9E9D50080444A /* icon_ipad.png */,
@@ -528,6 +531,7 @@
 				147A1F9315FE271200F30BAD /* Localizable.strings in Resources */,
 				14634C6515FF1C0D00D94104 /* warning.png in Resources */,
 				14634C6715FF1C1300D94104 /* warning@2x.png in Resources */,
+				1425251A1602328E0093A325 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

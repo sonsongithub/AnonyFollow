@@ -17,7 +17,12 @@
 
 - (void)setupOriginalStatusBar {
 	if (self.barView == nil) {
-		self.barView = [[SNStatusBarView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+		UIScreen *screen = [UIScreen mainScreen];
+		CGSize size = screen.bounds.size;
+		size.height = [UIApplication sharedApplication].statusBarFrame.size.height;
+		CGRect frame = CGRectMake(0, 0, size.width, size.height);
+		
+		self.barView = [[SNStatusBarView alloc] initWithFrame:frame];
 		self.checker = [SNReachablityChecker reachabilityForInternetConnection];
 		[self.checker start];
 		[self.window addSubview:self.barView];

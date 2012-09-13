@@ -14,7 +14,10 @@
 	if ([UIApplication sharedApplication].statusBarHidden) {
 		[UIView animateWithDuration:0.4
 						 animations:^(void) {
-							 self.navigationController.view.frame = CGRectMake(0, 0, 320, 480);
+							 UIScreen *screen = [UIScreen mainScreen];
+							 CGSize size = screen.bounds.size;
+							 CGRect frame = CGRectMake(0, 0, size.width, size.height);
+							 self.navigationController.view.frame = frame;
 						 }
 						 completion:^(BOOL success) {
 							 [self dismissViewControllerAnimated:YES completion:^(void){}];
