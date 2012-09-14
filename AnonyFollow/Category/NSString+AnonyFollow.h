@@ -12,10 +12,21 @@
 
 @interface NSString(AnonyFollow)
 
+// test code
 + (void)test_AnonyFollow;
-- (NSData*)dataAnonyFollowEncoded;
-- (NSString*)stringAnonyFollowEncoded;
-+ (NSString*)stringWithAnonyFollowEncodedData:(NSData*)data;
-+ (NSString*)stringWithAnonyFollowEncodedString:(NSString*)string;
+
+// encoder
+//- (NSData*)dataAnonyFollowEncoded;
+//- (NSString*)stringAnonyFollowEncoded;
+
+- (NSData*)dataAnonyFollowEncodedWithKey:(NSString*)key;
+- (NSString*)stringAnonyFollowEncodedWithKey:(NSString*)key;
+
+// decoder
+//+ (NSString*)stringWithAnonyFollowEncodedData:(NSData*)data;
+//+ (NSString*)stringWithAnonyFollowEncodedString:(NSString*)string;
+
++ (NSString*)stringWithAnonyFollowEncodedData:(NSData*)data key:(NSString*)key;
++ (NSString*)stringWithAnonyFollowEncodedString:(NSString*)string key:(NSString*)key;
 
 @end

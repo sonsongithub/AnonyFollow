@@ -59,11 +59,11 @@
 			NSString *string = [[NSString alloc] initWithBytes:p length:length encoding:NSASCIIStringEncoding];
 			
 			
-			NSData *encodedData = [string dataAnonyFollowEncoded];
-			NSString *encodedString = [string stringAnonyFollowEncoded];
+			NSData *encodedData = [string dataAnonyFollowEncodedWithKey:@"test"];
+			NSString *encodedString = [string stringAnonyFollowEncodedWithKey:@"test"];
 			
-			NSString *string_from_encodedData = [NSString stringWithAnonyFollowEncodedData:encodedData];
-			NSString *string_from_encodedString = [NSString stringWithAnonyFollowEncodedString:encodedString];
+			NSString *string_from_encodedData = [NSString stringWithAnonyFollowEncodedData:encodedData key:@"test"];
+			NSString *string_from_encodedString = [NSString stringWithAnonyFollowEncodedString:encodedString key:@"test"];
 			
 			assert([string isEqualToString:string_from_encodedData]);
 			assert([string isEqualToString:string_from_encodedString]);
@@ -75,13 +75,13 @@
 #endif
 }
 
-- (NSData*)dataAnonyFollowEncoded {
+- (NSData*)dataAnonyFollowEncodedWithKey:(NSString*)key {
 	NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-	return [data dataEncryptedWithKey:KEY_ANONYFOLLOW];
+	return [data dataEncryptedWithKey:key];
 }
 
-- (NSString*)stringAnonyFollowEncoded {
-	NSData *data = [self dataAnonyFollowEncoded];
+- (NSString*)stringAnonyFollowEncodedWithKey:(NSString*)key {
+	NSData *data = [self dataAnonyFollowEncodedWithKey:key];
 	NSMutableString *buf = [NSMutableString string];
 	unsigned char *p = (unsigned char*)[data bytes];
 	for (int i = 0; i < [data length]; i++)
@@ -89,19 +89,19 @@
 	return [NSString stringWithString:buf];
 }
 
-+ (NSString*)stringWithAnonyFollowEncodedData:(NSData*)data {
-	NSData *decrypted = [data dataDecryptedWithKey:KEY_ANONYFOLLOW];
++ (NSString*)stringWithAnonyFollowEncodedData:(NSData*)data key:(NSString*)key {
+	NSData *decrypted = [data dataDecryptedWithKey:key];
 	return [[NSString alloc] initWithBytes:[decrypted bytes] length:[decrypted length] encoding:NSUTF8StringEncoding];
 }
 
-+ (NSString*)stringWithAnonyFollowEncodedString:(NSString*)string {
++ (NSString*)stringWithAnonyFollowEncodedString:(NSString*)string key:(NSString*)key {
 	NSMutableData *data = [NSMutableData data];
 	for (int i = 0; i < [string length]; i+=2) {
 		NSString *sub = [string substringWithRange:NSMakeRange(i, 2)];
 		unsigned char c = [sub hexIntValue];
 		[data appendBytes:&c length:sizeof(c)];
 	}
-	return [NSString stringWithAnonyFollowEncodedData:data];
+	return [NSString stringWithAnonyFollowEncodedData:data key:key];
 }
 
 @end

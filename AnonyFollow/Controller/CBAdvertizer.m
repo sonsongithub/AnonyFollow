@@ -76,7 +76,7 @@
 
         // maximun twitter user name length seems to be 15 characters
         uint8_t encodedCData[ENCODED_UNAME_LEN];
-        NSData *encodedData = [self.userName dataAnonyFollowEncoded];
+        NSData *encodedData = [self.userName dataAnonyFollowEncodedWithKey:KEY_ANONYFOLLOW];
         [encodedData getBytes:encodedCData];
         assert([encodedData length]==ENCODED_UNAME_LEN);
         NSMutableArray *UUIDsArray=[NSMutableArray arrayWithObjects:primaly_service_UUID,nil];

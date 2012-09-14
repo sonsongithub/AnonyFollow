@@ -116,7 +116,7 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
         [uuid.data getBytes:_data];
         [encodedData appendBytes:_data length:2];
     }
-    NSString *userName = [NSString stringWithAnonyFollowEncodedData:encodedData];
+    NSString *userName = [NSString stringWithAnonyFollowEncodedData:encodedData key:KEY_ANONYFOLLOW	];
     userName = [userName stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     NSLog(@"Peripheral discovered RSSI:%@ UUID:%@,userName:%@",RSSI, aPeripheral.UUID, userName);
