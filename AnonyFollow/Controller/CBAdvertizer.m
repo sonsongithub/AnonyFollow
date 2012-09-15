@@ -74,7 +74,6 @@
 		CBMutableService *services=[[CBMutableService alloc] initWithType:primaly_service_UUID primary:YES];        
 		[self.manager addService:services];
 
-        // maximun twitter user name length seems to be 15 characters
         uint8_t encodedCData[ENCODED_UNAME_LEN];
         NSData *encodedData = [self.userName dataAnonyFollowEncodedWithKey:KEY_ANONYFOLLOW];
         [encodedData getBytes:encodedCData];
@@ -86,11 +85,11 @@
             [UUIDsArray addObject:tmp];
         }
         NSDictionary *adDict=[NSDictionary dictionaryWithObjectsAndKeys:
-							  UUIDsArray,			@"kCBAdvDataServiceUUIDs",
-                              @"",                  @"kCBAdvDataLocalName",
+							  UUIDsArray,			CBAdvertisementDataServiceUUIDsKey,
+                              @"",                  CBAdvertisementDataLocalNameKey,
 							  nil];
 		[self.manager startAdvertising:adDict];
-        NSLog(@"startAdvertize %d,%d,%@,%s",[encodedData length],[self.userName length],self.userName,encodedCData);
+        DNSLog(@"startAdvertize %d,%d,%@,%s",[encodedData length],[self.userName length],self.userName,encodedCData);
     }
 	else{
     }

@@ -18,25 +18,25 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
 
 - (void)logState {
 	if (self.manager.state == CBCentralManagerStateUnsupported) {
-		NSLog(@"The platform/hardware doesn't support Bluetooth Low Energy.");
+		DNSLog(@"The platform/hardware doesn't support Bluetooth Low Energy.");
 	}
 	else if (self.manager.state == CBCentralManagerStateUnauthorized) {
-		NSLog(@"The app is not authorized to use Bluetooth Low Energy.");
+		DNSLog(@"The app is not authorized to use Bluetooth Low Energy.");
 	}
 	else if (self.manager.state == CBCentralManagerStatePoweredOff) {
-		NSLog(@"Bluetooth is currently powered off.");
+		DNSLog(@"Bluetooth is currently powered off.");
 	}
 	else if (self.manager.state == CBCentralManagerStateResetting) {
-		NSLog(@"Bluetooth is currently resetting.");
+		DNSLog(@"Bluetooth is currently resetting.");
 	}
 	else if (self.manager.state == CBCentralManagerStatePoweredOn) {
-		NSLog(@"Bluetooth is currently powered on.");
+		DNSLog(@"Bluetooth is currently powered on.");
 	}
 	else if (self.manager.state == CBCentralManagerStateUnknown) {
-		NSLog(@"Bluetooth is an unknown status.");
+		DNSLog(@"Bluetooth is an unknown status.");
 	}
 	else {
-		NSLog(@"Unknown status code.");
+		DNSLog(@"Unknown status code.");
 	}
 	
 }
@@ -44,17 +44,21 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
 - (id)initWithDelegate:(id<CBScannerDelegate>)delegate serviceUUID:(NSString*)UUIDStr {
 	self = [super init];
 	if (self) {
-		self.UUIDStr = UUIDStr;
-		self.delegate = delegate;
-		self.manager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackgroundNotification:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+		self.UUIDStr    = UUIDStr;
+		self.delegate   = delegate;
+		self.manager    = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self
+                                              selector:@selector(didEnterBackgroundNotification:)
+                                              name:UIApplicationDidEnterBackgroundNotification
+                                              object:nil];
 	}
     return self;
 }
 
 - (void)didEnterBackgroundNotification:(NSNotification*)notification {
-	DNSLogMethod
+    //We will continue scanning while in background.
     //[self stopScan];
+	DNSLogMethod
 }
 
 - (BOOL)isAvailable {
@@ -103,12 +107,12 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
 	  advertisementData:(NSDictionary *)advertisementData
 				   RSSI:(NSNumber *)RSSI {
 	DNSLogMethod
-    NSMutableArray *services = [advertisementData objectForKey:@"kCBAdvDataServiceUUIDs"];
+    NSMutableArray *services = [advertisementData objectForKey:CBAdvertisementDataServiceUUIDsKey];
     NSMutableData *encodedData=[NSMutableData dataWithCapacity:ENCODED_UNAME_LEN];
     if([services count]!=(ENCODED_UNAME_LEN/2)+1){
         return;
     }
-    /* first byte should be 0x1802 */
+    /* first byte should be self.UUIDStr */
     [services removeObjectAtIndex:0];
     
     for (CBUUID *uuid in services) {
@@ -119,8 +123,8 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
     NSString *userName = [NSString stringWithAnonyFollowEncodedData:encodedData key:KEY_ANONYFOLLOW	];
     userName = [userName stringByReplacingOccurrencesOfString:@" " withString:@""];
     
-    NSLog(@"Peripheral discovered RSSI:%@ UUID:%@,userName:%@",RSSI, aPeripheral.UUID, userName);
 	if ([userName length]) {
+        DNSLog(@"Peer discovered RSSI:%@ UUID:%@,userName:%@",RSSI, aPeripheral.UUID, userName);
 		NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
 								  userName, kCBScannerInfoUserNameKey,
                                   RSSI,     kCBScannerInfoUserRSSIKey,

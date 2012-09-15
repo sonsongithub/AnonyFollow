@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 
-//#define CBScannerAllowDuplicates
+// NOTE:make shure ENCODED_UNAME_LEN can be devided by 2 and smaller than 28
 #define ENCODED_UNAME_LEN (16)
 #define UNAME_MAX_LEN     (15)
 
