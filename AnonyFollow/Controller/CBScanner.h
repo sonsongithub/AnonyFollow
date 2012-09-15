@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import <CoreBluetooth/CoreBluetooth.h>
+
 #import "CBAdvertizer.h"
+
+// #define CBScannerAllowDuplicates
+/* Commnet out <code>CBScannerAllowDuplicates<\code> to call <code>- (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo;<\code> eveytime scanner found the service.May have an adverse effect on battery life */
+
 extern NSString *kCBScannerInfoUserNameKey;
 
 @class CBScanner;
