@@ -42,7 +42,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-//	[self.view bringSubviewToFront:self.loadingView];
+	[self.view bringSubviewToFront:self.loadingView];
 	self.title = [NSString stringWithFormat:NSLocalizedString(@"@%@", nil), self.accountInfo.screenName];
 }
 

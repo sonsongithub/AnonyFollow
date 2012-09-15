@@ -19,7 +19,6 @@
 		1425251A1602328E0093A325 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 142525191602328E0093A325 /* Default-568h@2x.png */; };
 		142770C515EE82DD0062271A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142770C415EE82DD0062271A /* SystemConfiguration.framework */; };
 		145194A215EA2BCC00E853CA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1451949C15EA2BCC00E853CA /* InfoPlist.strings */; };
-		1455709115EBC00D003DD49F /* LockScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1455708F15EBC00D003DD49F /* LockScreenView.xib */; };
 		14634C6515FF1C0D00D94104 /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 14634C6415FF1C0D00D94104 /* warning.png */; };
 		14634C6715FF1C1300D94104 /* warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14634C6615FF1C1300D94104 /* warning@2x.png */; };
 		147A1F8315FE13E600F30BAD /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 147A1F8115FE13E600F30BAD /* MainStoryboard_iPhone.storyboard */; };
@@ -50,7 +49,6 @@
 		14A2834815FA486D00880424 /* TwitterAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831D15FA486D00880424 /* TwitterAccountInfo.m */; };
 		14A2834915FA486D00880424 /* TwitterTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831F15FA486D00880424 /* TwitterTweet.m */; };
 		14A2834A15FA486D00880424 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832215FA486D00880424 /* LoadingView.m */; };
-		14A2834B15FA486D00880424 /* LockScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832415FA486D00880424 /* LockScreenView.m */; };
 		14A2834C15FA486D00880424 /* MessageBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832615FA486D00880424 /* MessageBarButtonItem.m */; };
 		14A2834D15FA486D00880424 /* SNStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832815FA486D00880424 /* SNStatusBarView.m */; };
 		14A2834E15FA486D00880424 /* TweetContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832A15FA486D00880424 /* TweetContentView.m */; };
@@ -99,7 +97,6 @@
 		1451949D15EA2BCC00E853CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		145194A515EA2BE800E853CA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		145194AB15EA2BE800E853CA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text; name = ja; path = ja.lproj/MainStoryboard_iPhone.storyboard.string; sourceTree = "<group>"; };
-		1455709015EBC00D003DD49F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LockScreenView.xib; sourceTree = "<group>"; };
 		14634C6415FF1C0D00D94104 /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
 		14634C6615FF1C1300D94104 /* warning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warning@2x.png"; sourceTree = "<group>"; };
 		147A1F8215FE13E600F30BAD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
@@ -113,7 +110,6 @@
 		147A1F9215FE271200F30BAD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		147A1F9415FE271800F30BAD /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		147A1F9515FE276100F30BAD /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/LoadingView.xib; sourceTree = "<group>"; };
-		147A1F9615FE276100F30BAD /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/LockScreenView.xib; sourceTree = "<group>"; };
 		1481962915FC4F34004B0BCB /* CopyrightContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyrightContactViewController.h; sourceTree = "<group>"; };
 		1481962A15FC4F34004B0BCB /* CopyrightContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyrightContactViewController.m; sourceTree = "<group>"; };
 		1481963215FC5D1A004B0BCB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -154,8 +150,6 @@
 		14A2831F15FA486D00880424 /* TwitterTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterTweet.m; sourceTree = "<group>"; };
 		14A2832115FA486D00880424 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		14A2832215FA486D00880424 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
-		14A2832315FA486D00880424 /* LockScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockScreenView.h; sourceTree = "<group>"; };
-		14A2832415FA486D00880424 /* LockScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockScreenView.m; sourceTree = "<group>"; };
 		14A2832515FA486D00880424 /* MessageBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBarButtonItem.h; sourceTree = "<group>"; };
 		14A2832615FA486D00880424 /* MessageBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBarButtonItem.m; sourceTree = "<group>"; };
 		14A2832715FA486D00880424 /* SNStatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNStatusBarView.h; sourceTree = "<group>"; };
@@ -360,8 +354,6 @@
 			children = (
 				14A2832115FA486D00880424 /* LoadingView.h */,
 				14A2832215FA486D00880424 /* LoadingView.m */,
-				14A2832315FA486D00880424 /* LockScreenView.h */,
-				14A2832415FA486D00880424 /* LockScreenView.m */,
 				14A2832515FA486D00880424 /* MessageBarButtonItem.h */,
 				14A2832615FA486D00880424 /* MessageBarButtonItem.m */,
 				14A2832715FA486D00880424 /* SNStatusBarView.h */,
@@ -398,7 +390,6 @@
 				147A1F9115FE271200F30BAD /* Localizable.strings */,
 				147A1F8115FE13E600F30BAD /* MainStoryboard_iPhone.storyboard */,
 				14B5F05515F383D000630C06 /* LoadingView.xib */,
-				1455708F15EBC00D003DD49F /* LockScreenView.xib */,
 				1451949C15EA2BCC00E853CA /* InfoPlist.strings */,
 				145194AA15EA2BE800E853CA /* MainStoryboard_iPhone.storyboard.string */,
 			);
@@ -513,7 +504,6 @@
 				14BE1B7315EA282700F7547E /* PurchasePlusButton@2x.png in Resources */,
 				14BE1B7415EA282700F7547E /* setting@2x.png in Resources */,
 				145194A215EA2BCC00E853CA /* InfoPlist.strings in Resources */,
-				1455709115EBC00D003DD49F /* LockScreenView.xib in Resources */,
 				14B5F05715F383D000630C06 /* LoadingView.xib in Resources */,
 				14F5320A15F9D58A0080444A /* icon.png in Resources */,
 				14F5320B15F9D58A0080444A /* icon_retina.png in Resources */,
@@ -592,7 +582,6 @@
 				14A2834815FA486D00880424 /* TwitterAccountInfo.m in Sources */,
 				14A2834915FA486D00880424 /* TwitterTweet.m in Sources */,
 				14A2834A15FA486D00880424 /* LoadingView.m in Sources */,
-				14A2834B15FA486D00880424 /* LockScreenView.m in Sources */,
 				14A2834C15FA486D00880424 /* MessageBarButtonItem.m in Sources */,
 				14A2834D15FA486D00880424 /* SNStatusBarView.m in Sources */,
 				14A2834E15FA486D00880424 /* TweetContentView.m in Sources */,
@@ -625,15 +614,6 @@
 				145194AB15EA2BE800E853CA /* ja */,
 			);
 			name = MainStoryboard_iPhone.storyboard.string;
-			sourceTree = "<group>";
-		};
-		1455708F15EBC00D003DD49F /* LockScreenView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1455709015EBC00D003DD49F /* en */,
-				147A1F9615FE276100F30BAD /* ja */,
-			);
-			name = LockScreenView.xib;
 			sourceTree = "<group>";
 		};
 		147A1F8115FE13E600F30BAD /* MainStoryboard_iPhone.storyboard */ = {

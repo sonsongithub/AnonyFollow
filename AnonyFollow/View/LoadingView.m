@@ -13,10 +13,16 @@
 - (void)awakeFromNib {
 	[super awakeFromNib];
     [[NSBundle mainBundle] loadNibNamed:@"LoadingView" owner:self options:nil];
-	[self setBackgroundColor:[UIColor clearColor]];
+	[self setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.5]];
 	[self.indicator startAnimating];
 	
 	[self addSubview:self.contentView];
+}
+
+- (void)layoutSubviews {
+	self.contentView.center = self.center;
+	self.frame = self.superview.frame;
+	[super layoutSubviews];
 }
 
 @end

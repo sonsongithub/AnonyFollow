@@ -14,7 +14,6 @@
 extern NSString *kNotificationDidFollowUser;
 extern NSString *kNotificationUserInfoUserNameKey;
 
-@class LockScreenView;
 @class CBScanner;
 @class CBAdvertizer;
 @class MessageBarButtonItem;
@@ -25,7 +24,7 @@ extern NSString *kNotificationUserInfoUserNameKey;
 - (IBAction)select:(id)sender;
 - (IBAction)follow:(id)sender;
 
-@property (strong, nonatomic) IBOutlet LockScreenView *lockScreenView;
+@property (strong, nonatomic) IBOutlet UIView *lockScreenView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, strong) IBOutlet MessageBarButtonItem *twitterAccountButton;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;

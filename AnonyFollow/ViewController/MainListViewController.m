@@ -19,7 +19,6 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 #import "AccountCell.h"
 #import "TimeLineViewController.h"
 #import "DownloadQueue.h"
-#import "LockScreenView.h"
 #import "MessageBarButtonItem.h"
 #import "SNStatusBarView.h"
 #import "SNReachablityChecker.h"
@@ -260,8 +259,6 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	[appdelegate setupOriginalStatusBar];
 	
 	self.lockScreenView.hidden = YES;
-	self.lockScreenView.frame = self.tableView.frame;
-	[self.view addSubview:self.lockScreenView];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
