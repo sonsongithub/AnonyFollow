@@ -57,7 +57,6 @@
 		14A2835215FA486D00880424 /* TimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2833315FA486D00880424 /* TimeLineViewController.m */; };
 		14A2835715FA4CEF00880424 /* UIViewController+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2835615FA4CEF00880424 /* UIViewController+AnonyFollow.m */; };
 		14A2835A15FA4D1000880424 /* NSBundle+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2835915FA4D1000880424 /* NSBundle+AnonyFollow.m */; };
-		14B5F05715F383D000630C06 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14B5F05515F383D000630C06 /* LoadingView.xib */; };
 		14B7A5E715F4F90A00D6BF0B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B7A5E615F4F90A00D6BF0B /* libz.dylib */; };
 		14B7A5EC15F5005F00D6BF0B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B7A5EB15F5005F00D6BF0B /* Security.framework */; };
 		14BE1B6D15EA282700F7547E /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6415EA282700F7547E /* new.png */; };
@@ -108,7 +107,6 @@
 		147A1F8E15FE226A00F30BAD /* sonson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sonson.png; sourceTree = "<group>"; };
 		147A1F9215FE271200F30BAD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		147A1F9415FE271800F30BAD /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		147A1F9515FE276100F30BAD /* ja */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ja; path = ja.lproj/LoadingView.xib; sourceTree = "<group>"; };
 		1481962915FC4F34004B0BCB /* CopyrightContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyrightContactViewController.h; sourceTree = "<group>"; };
 		1481962A15FC4F34004B0BCB /* CopyrightContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyrightContactViewController.m; sourceTree = "<group>"; };
 		1481963215FC5D1A004B0BCB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -165,7 +163,6 @@
 		14A2835615FA4CEF00880424 /* UIViewController+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AnonyFollow.m"; sourceTree = "<group>"; };
 		14A2835815FA4D1000880424 /* NSBundle+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+AnonyFollow.h"; sourceTree = "<group>"; };
 		14A2835915FA4D1000880424 /* NSBundle+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+AnonyFollow.m"; sourceTree = "<group>"; };
-		14B5F05615F383D000630C06 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LoadingView.xib; sourceTree = "<group>"; };
 		14B7A5E615F4F90A00D6BF0B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		14B7A5EB15F5005F00D6BF0B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		14BE1B6415EA282700F7547E /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
@@ -384,7 +381,6 @@
 				14BE1B6815EA282700F7547E /* image@2x */,
 				147A1F9115FE271200F30BAD /* Localizable.strings */,
 				147A1F8115FE13E600F30BAD /* MainStoryboard_iPhone.storyboard */,
-				14B5F05515F383D000630C06 /* LoadingView.xib */,
 				1451949C15EA2BCC00E853CA /* InfoPlist.strings */,
 				145194AA15EA2BE800E853CA /* MainStoryboard_iPhone.storyboard.string */,
 			);
@@ -499,7 +495,6 @@
 				14BE1B7315EA282700F7547E /* PurchasePlusButton@2x.png in Resources */,
 				14BE1B7415EA282700F7547E /* setting@2x.png in Resources */,
 				145194A215EA2BCC00E853CA /* InfoPlist.strings in Resources */,
-				14B5F05715F383D000630C06 /* LoadingView.xib in Resources */,
 				14F5320A15F9D58A0080444A /* icon.png in Resources */,
 				14F5320B15F9D58A0080444A /* icon_retina.png in Resources */,
 				14F5321415F9E9D50080444A /* icon_ipad.png in Resources */,
@@ -626,15 +621,6 @@
 				147A1F9415FE271800F30BAD /* ja */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		14B5F05515F383D000630C06 /* LoadingView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				14B5F05615F383D000630C06 /* en */,
-				147A1F9515FE276100F30BAD /* ja */,
-			);
-			name = LoadingView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
