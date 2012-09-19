@@ -14,7 +14,6 @@
 #import "TwitterTweet.h"
 #import "TweetCell.h"
 #import "ACAccountStore+AnonyFollow.h"
-#import "LoadingView.h"
 #import "UserInfoCell.h"
 
 #import <Social/Social.h>
@@ -42,7 +41,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	[self.view bringSubviewToFront:self.loadingView];
 	self.title = [NSString stringWithFormat:NSLocalizedString(@"@%@", nil), self.accountInfo.screenName];
 }
 

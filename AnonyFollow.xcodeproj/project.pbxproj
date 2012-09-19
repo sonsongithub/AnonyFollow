@@ -48,7 +48,6 @@
 		14A2834715FA486D00880424 /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831A15FA486D00880424 /* GTMNSData+zlib.m */; };
 		14A2834815FA486D00880424 /* TwitterAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831D15FA486D00880424 /* TwitterAccountInfo.m */; };
 		14A2834915FA486D00880424 /* TwitterTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831F15FA486D00880424 /* TwitterTweet.m */; };
-		14A2834A15FA486D00880424 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832215FA486D00880424 /* LoadingView.m */; };
 		14A2834C15FA486D00880424 /* MessageBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832615FA486D00880424 /* MessageBarButtonItem.m */; };
 		14A2834D15FA486D00880424 /* SNStatusBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832815FA486D00880424 /* SNStatusBarView.m */; };
 		14A2834E15FA486D00880424 /* TweetContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2832A15FA486D00880424 /* TweetContentView.m */; };
@@ -148,8 +147,6 @@
 		14A2831D15FA486D00880424 /* TwitterAccountInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAccountInfo.m; sourceTree = "<group>"; };
 		14A2831E15FA486D00880424 /* TwitterTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterTweet.h; sourceTree = "<group>"; };
 		14A2831F15FA486D00880424 /* TwitterTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterTweet.m; sourceTree = "<group>"; };
-		14A2832115FA486D00880424 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
-		14A2832215FA486D00880424 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		14A2832515FA486D00880424 /* MessageBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBarButtonItem.h; sourceTree = "<group>"; };
 		14A2832615FA486D00880424 /* MessageBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBarButtonItem.m; sourceTree = "<group>"; };
 		14A2832715FA486D00880424 /* SNStatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNStatusBarView.h; sourceTree = "<group>"; };
@@ -352,8 +349,6 @@
 		14A2832015FA486D00880424 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				14A2832115FA486D00880424 /* LoadingView.h */,
-				14A2832215FA486D00880424 /* LoadingView.m */,
 				14A2832515FA486D00880424 /* MessageBarButtonItem.h */,
 				14A2832615FA486D00880424 /* MessageBarButtonItem.m */,
 				14A2832715FA486D00880424 /* SNStatusBarView.h */,
@@ -581,7 +576,6 @@
 				14A2834715FA486D00880424 /* GTMNSData+zlib.m in Sources */,
 				14A2834815FA486D00880424 /* TwitterAccountInfo.m in Sources */,
 				14A2834915FA486D00880424 /* TwitterTweet.m in Sources */,
-				14A2834A15FA486D00880424 /* LoadingView.m in Sources */,
 				14A2834C15FA486D00880424 /* MessageBarButtonItem.m in Sources */,
 				14A2834D15FA486D00880424 /* SNStatusBarView.m in Sources */,
 				14A2834E15FA486D00880424 /* TweetContentView.m in Sources */,

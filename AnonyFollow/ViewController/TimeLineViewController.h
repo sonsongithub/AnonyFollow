@@ -16,7 +16,6 @@
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tweets;
 @property (nonatomic, strong) TwitterAccountInfo *accountInfo;
-@property (nonatomic, strong) IBOutlet LoadingView *loadingView;
 
 - (IBAction)follow:(id)sender;
 
