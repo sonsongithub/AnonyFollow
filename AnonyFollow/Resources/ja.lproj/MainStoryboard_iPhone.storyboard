@@ -55,7 +55,7 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                     <size key="titleShadowOffset" width="0.0" height="-1"/>
-                                                    <state key="normal" title="Follow">
+                                                    <state key="normal" title="フォロー">
                                                         <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="titleShadowColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     </state>
@@ -390,7 +390,7 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="A7f-HM-ESP"/>
-                        <barButtonItem title="Follow" width="150" id="lrh-as-wnS">
+                        <barButtonItem title="フォロー" width="150" id="lrh-as-wnS">
                             <connections>
                                 <action selector="follow:" destination="3fT-LL-GZo" id="QcK-L8-CTb"/>
                             </connections>
@@ -407,7 +407,7 @@
             </objects>
             <point key="canvasLocation" x="1320" y="330"/>
         </scene>
-        <!--Account Select View Controller - Select account-->
+        <!--Account Select View Controller - アカウントの選択-->
         <scene sceneID="MaW-LZ-Nb2">
             <objects>
                 <tableViewController id="6Oi-9U-Caj" customClass="AccountSelectViewController" sceneMemberID="viewController">
@@ -459,7 +459,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Select account" id="EtF-18-Kni">
+                    <navigationItem key="navigationItem" title="アカウントの選択" id="EtF-18-Kni">
                         <barButtonItem key="rightBarButtonItem" title="閉じる" style="done" id="M3H-6a-B5x">
                             <connections>
                                 <action selector="dismiss:" destination="6Oi-9U-Caj" id="3vI-Lc-aZv"/>
@@ -521,7 +521,7 @@
             </objects>
             <point key="canvasLocation" x="1320" y="-301"/>
         </scene>
-        <!--Setting View Controller - Settings-->
+        <!--Setting View Controller - 設定-->
         <scene sceneID="fXA-Oi-X9B">
             <objects>
                 <tableViewController autoresizesArchivedViewToFullSize="NO" id="nh6-bL-s6V" customClass="SettingViewController" sceneMemberID="viewController">
@@ -530,7 +530,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Information" id="32y-wj-shY">
+                            <tableViewSection headerTitle="情報" id="32y-wj-shY">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="OX0-8n-bGc" detailTextLabel="uEG-aa-wP7" style="IBUITableViewCellStyleValue1" id="esx-ck-V7u">
                                         <rect key="frame" x="0.0" y="46" width="320" height="45"/>
@@ -539,8 +539,8 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OX0-8n-bGc">
-                                                    <rect key="frame" x="10" y="11" width="47" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="名前" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OX0-8n-bGc">
+                                                    <rect key="frame" x="10" y="11" width="34" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -565,8 +565,8 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Version" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3AO-Yd-D5E">
-                                                    <rect key="frame" x="10" y="11" width="63" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="バージョン" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3AO-Yd-D5E">
+                                                    <rect key="frame" x="10" y="11" width="85" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -591,8 +591,8 @@
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Copyrights &amp; Contact" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B4P-Bh-ZZn">
-                                                    <rect key="frame" x="10" y="11" width="175" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="著作権と連絡先" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B4P-Bh-ZZn">
+                                                    <rect key="frame" x="10" y="11" width="119" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -620,7 +620,7 @@
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="License" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mdn-Ek-c81">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="ライセンス" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mdn-Ek-c81">
                                                     <rect key="frame" x="10" y="0.0" width="260" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -681,7 +681,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Show following" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euC-wx-7fs">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="フォロー中の人も表示" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euC-wx-7fs">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -713,7 +713,7 @@
                             <outlet property="delegate" destination="nh6-bL-s6V" id="atn-da-kdF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="PQO-Yu-CfO">
+                    <navigationItem key="navigationItem" title="設定" id="PQO-Yu-CfO">
                         <barButtonItem key="rightBarButtonItem" title="閉じる" style="done" id="p4z-3t-KK7">
                             <connections>
                                 <action selector="dismiss:" destination="nh6-bL-s6V" id="MAj-Pw-xrm"/>
@@ -819,7 +819,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Send report" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AON-hZ-Bwf">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="レポートを送る" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AON-hZ-Bwf">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
