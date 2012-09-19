@@ -12,6 +12,8 @@
 #import "AccountCell.h"
 #import "NSUserDefaults+AnonyFollow.h"
 
+#define DEFAULT_ACCOUNT_SELECT_VIEW_CELL_HEIGHT		58
+
 @interface AccountSelectViewController ()
 
 @end
@@ -36,7 +38,7 @@
 #pragma mark - Table view data source
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 58;
+	return DEFAULT_ACCOUNT_SELECT_VIEW_CELL_HEIGHT;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

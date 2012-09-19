@@ -15,8 +15,21 @@
 #import "TweetCell.h"
 #import "ACAccountStore+AnonyFollow.h"
 #import "UserInfoCell.h"
+#import "TweetContentView.h"
 
 #import <Social/Social.h>
+
+// parameters for rendering
+#define OFFSET_ACCOUNT_INFO_CELL_HEIGHT		66
+#define DEFAULT_ACCOUNT_INFO_CELL_HEIGHT	68
+#define DEFAULT_LOADING_TWEET_CELL_HEIGHT	44
+
+#define WIDTH_FOR_ACCOUNT_DESCRIPTION		288
+#define WIDTH_FOR_TWEET_DESCRIPTION			227
+
+// download identifier
+NSString *kTaskForUserTimeline = @"taskForUserTimeline";
+NSString *kTaskForUserInfo = @"taskForUserInfo";
 
 @interface TimeLineViewController ()
 
@@ -28,12 +41,12 @@
 	[self followOnTwitter:self.accountInfo.screenName];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	
 	self.tweets = [NSMutableArray array];
 }
+
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 	[[DownloadQueue sharedInstance] clearQueue];
@@ -52,13 +65,13 @@
 	{
 		DownloadTask *task = [self.accountInfo taskForUserInfo];
 		task.delegate = self;
-		task.identifier = @"taskForUserInfo";
+		task.identifier = kTaskForUserInfo;
 		[[DownloadQueue sharedInstance] addTask:task];
 	}
 	{
 		DownloadTask *task = [self.accountInfo taskForUserTimeline];
 		task.delegate = self;
-		task.identifier = @"taskForUserTimeline";
+		task.identifier = kTaskForUserTimeline;
 		[[DownloadQueue sharedInstance] addTask:task];
 	}
 }
@@ -66,7 +79,7 @@
 #pragma mark - DownloadTask
 
 - (void)didDownloadTask:(DownloadTask*)task {
-	if ([task.identifier isEqualToString:@"taskForUserTimeline"]) {
+	if ([task.identifier isEqualToString:kTaskForUserTimeline]) {
 		self.didFinishDownloadingRecentTweet = YES;
 		NSError *error = nil;
 		NSArray *info = [NSJSONSerialization JSONObjectWithData:task.data options:0 error:&error];
@@ -92,13 +105,13 @@
 				
 				[self.tweets addObject:tweetaa];
 				
-				tweetaa.contentSize = [TwitterTweet sizeOfText:tweetaa.text withWidth:227 font:[UIFont systemFontOfSize:12]];
+				tweetaa.contentSize = [TwitterTweet sizeOfText:tweetaa.text withWidth:WIDTH_FOR_TWEET_DESCRIPTION font:[UIFont systemFontOfSize:TIMELINE_VIEW_FONT_SIZE]];
 				
 			}
 		}
 		[self.tableView reloadData];
 	}
-	else if ([task.identifier isEqualToString:@"taskForUserInfo"]) {
+	else if ([task.identifier isEqualToString:kTaskForUserInfo]) {
 		self.didFinishDownloadingAccountInfo = YES;
 		NSError *error = nil;
 		NSDictionary *info = [NSJSONSerialization JSONObjectWithData:task.data options:0 error:&error];
@@ -118,9 +131,9 @@
 
 - (void)didFailedDownloadTask:(DownloadTask*)task {
 	DNSLogMethod
-	if ([task.identifier isEqualToString:@"taskForUserTimeline"])
+	if ([task.identifier isEqualToString:kTaskForUserTimeline])
 		self.didFinishDownloadingRecentTweet = YES;
-	else if ([task.identifier isEqualToString:@"taskForUserInfo"])
+	else if ([task.identifier isEqualToString:kTaskForUserInfo])
 		self.didFinishDownloadingAccountInfo = YES;
 	
 	dispatch_async(dispatch_get_main_queue(), ^(void) {
@@ -156,11 +169,11 @@
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.section == 0) {
 		if ([self.accountInfo.description length]) {
-			CGSize size = [TwitterTweet sizeOfText:self.accountInfo.description withWidth:288 font:[UIFont systemFontOfSize:12]];
-			return size.height + 66;
+			CGSize size = [TwitterTweet sizeOfText:self.accountInfo.description withWidth:WIDTH_FOR_ACCOUNT_DESCRIPTION font:[UIFont systemFontOfSize:TIMELINE_VIEW_FONT_SIZE]];
+			return size.height + OFFSET_ACCOUNT_INFO_CELL_HEIGHT;
 		}
 		else
-			return 68;
+			return DEFAULT_ACCOUNT_INFO_CELL_HEIGHT;
 	}
 	if (indexPath.section == 1) {
 		if (self.didFinishDownloadingRecentTweet) {
@@ -168,7 +181,7 @@
 			return [tweet height];
 		}
 		else
-			return 90;
+			return DEFAULT_LOADING_TWEET_CELL_HEIGHT;
 	}
 	return 0;
 }

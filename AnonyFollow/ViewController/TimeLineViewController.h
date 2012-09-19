@@ -11,6 +11,9 @@
 @class TwitterAccountInfo;
 @class LoadingView;
 
+extern NSString *kTaskForUserTimeline;
+extern NSString *kTaskForUserInfo;
+
 @interface TimeLineViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;

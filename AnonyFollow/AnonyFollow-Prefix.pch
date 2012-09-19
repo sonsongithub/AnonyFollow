@@ -28,7 +28,7 @@
 
 #pragma mark - Pramaeters
 
-#define MARU_2TCH_USERAGENT @"(3tch/1.0)"
+#define STATUS_BAR_HEIGHT 20
 
 #pragma mark - for Debug
 

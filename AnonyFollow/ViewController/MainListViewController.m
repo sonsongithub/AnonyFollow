@@ -11,6 +11,8 @@
 NSString *kNotificationDidFollowUser = @"kNotificationDidFollowUser";
 NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey";
 
+#define DEFAULT_MAIN_VIEW_CELL_HEIGHT		58
+
 @interface MainListViewController ()
 @end
 
@@ -287,8 +289,8 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	[UIView animateWithDuration:0.4 animations:^(void){
 		UIScreen *screen = [UIScreen mainScreen];
 		CGSize size = screen.bounds.size;
-		size.height -= 20;
-		CGRect frame = CGRectMake(0, 20, size.width, size.height);
+		size.height -= STATUS_BAR_HEIGHT;
+		CGRect frame = CGRectMake(0, STATUS_BAR_HEIGHT, size.width, size.height);
 		self.navigationController.view.frame = frame;
 	}];
 	
@@ -505,7 +507,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 #pragma mark - Table view data source
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 58;
+	return DEFAULT_MAIN_VIEW_CELL_HEIGHT;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

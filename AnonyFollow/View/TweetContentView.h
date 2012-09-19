@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
+#define TIMELINE_VIEW_FONT_SIZE		12
+
 @class TwitterTweet;
 
 @interface TweetContentView : UIView

@@ -36,8 +36,8 @@
 		[UIView animateWithDuration:0.4 animations:^(void){
 			UIScreen *screen = [UIScreen mainScreen];
 			CGSize size = screen.bounds.size;
-			size.height -= 20;
-			CGRect frame = CGRectMake(0, 20, size.width, size.height);
+			size.height -= STATUS_BAR_HEIGHT;
+			CGRect frame = CGRectMake(0, STATUS_BAR_HEIGHT, size.width, size.height);
 			self.navigationController.view.frame = frame;
 		}];
 	}

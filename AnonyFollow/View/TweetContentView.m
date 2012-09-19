@@ -23,7 +23,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-	[self.text drawInRect:rect withFont:[UIFont systemFontOfSize:12] lineBreakMode:NSLineBreakByCharWrapping];
+	[self.text drawInRect:rect withFont:[UIFont systemFontOfSize:TIMELINE_VIEW_FONT_SIZE] lineBreakMode:NSLineBreakByCharWrapping];
 }
 
 @end

@@ -131,7 +131,7 @@
 	alphaAnimation.repeatCount = HUGE_VALF;
 	
 	// commit animation
-	[self.lightingView.layer addAnimation:alphaAnimation forKey:@"hoge"];
+	[self.lightingView.layer addAnimation:alphaAnimation forKey:@"BlinkingAnimation"];
 }
 
 - (UILabel*)makeMessageLabel {
