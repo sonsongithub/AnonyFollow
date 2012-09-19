@@ -67,6 +67,7 @@
 
 - (void)didDownloadTask:(DownloadTask*)task {
 	if ([task.identifier isEqualToString:@"taskForUserTimeline"]) {
+		self.didFinishDownloadingRecentTweet = YES;
 		NSError *error = nil;
 		NSArray *info = [NSJSONSerialization JSONObjectWithData:task.data options:0 error:&error];
 		DNSLog(@"%@", [error localizedDescription]);
@@ -98,6 +99,7 @@
 		[self.tableView reloadData];
 	}
 	else if ([task.identifier isEqualToString:@"taskForUserInfo"]) {
+		self.didFinishDownloadingAccountInfo = YES;
 		NSError *error = nil;
 		NSDictionary *info = [NSJSONSerialization JSONObjectWithData:task.data options:0 error:&error];
 		DNSLog(@"%@", info);
@@ -116,6 +118,11 @@
 
 - (void)didFailedDownloadTask:(DownloadTask*)task {
 	DNSLogMethod
+	if ([task.identifier isEqualToString:@"taskForUserTimeline"])
+		self.didFinishDownloadingRecentTweet = YES;
+	else if ([task.identifier isEqualToString:@"taskForUserInfo"])
+		self.didFinishDownloadingAccountInfo = YES;
+	
 	dispatch_async(dispatch_get_main_queue(), ^(void) {
 		if ([[DownloadQueue sharedInstance].queue count] == 0)
 			[self.view bringSubviewToFront:self.tableView];
@@ -130,7 +137,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.tweets count] > 0 ? 2 : 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -138,7 +145,10 @@
 		return 1;
 	}
 	if (section == 1) {
-		return [self.tweets count];
+		if (self.didFinishDownloadingRecentTweet)
+			return [self.tweets count];
+		else
+			return 1;
 	}
 	return 0;
 }
@@ -153,8 +163,12 @@
 			return 68;
 	}
 	if (indexPath.section == 1) {
-		TwitterTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
-		return [tweet height];
+		if (self.didFinishDownloadingRecentTweet) {
+			TwitterTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
+			return [tweet height];
+		}
+		else
+			return 90;
 	}
 	return 0;
 }
@@ -162,20 +176,38 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	if (section == 0)
 		return nil;
-	return NSLocalizedString(@"Recent tweets", nil);
+	if (section == 1) {
+		if (self.didFinishDownloadingRecentTweet) {
+			if ([self.tweets count] > 0)
+				return NSLocalizedString(@"Recent tweets", nil);
+			else
+				return NSLocalizedString(@"No recent tweets", nil);
+		}
+		else {
+			return NSLocalizedString(@"Recent tweets", nil);
+		}
+	}
+	return nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.section == 0) {
 		UserInfoCell *cell = (UserInfoCell*)[tableView dequeueReusableCellWithIdentifier:@"InfoCell" forIndexPath:indexPath];
 		cell.accountInfo = self.accountInfo;
+		cell.activityIndicatorView.hidden = self.didFinishDownloadingAccountInfo;
 		return cell;
 	}
 	if (indexPath.section == 1) {
-		TweetCell *cell = (TweetCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-		TwitterTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
-		cell.tweet = tweet;
-		return cell;
+		if (self.didFinishDownloadingRecentTweet) {
+			TweetCell *cell = (TweetCell*)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+			TwitterTweet *tweet = [self.tweets objectAtIndex:indexPath.row];
+			cell.tweet = tweet;
+			return cell;
+		}
+		else {
+			UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"LoadingCell" forIndexPath:indexPath];
+			return cell;
+		}
 	}
 	return nil;
 }

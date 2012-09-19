@@ -17,6 +17,9 @@
 @property (nonatomic, strong) NSMutableArray *tweets;
 @property (nonatomic, strong) TwitterAccountInfo *accountInfo;
 
+@property (nonatomic, assign) BOOL didFinishDownloadingAccountInfo;
+@property (nonatomic, assign) BOOL didFinishDownloadingRecentTweet;
+
 - (IBAction)follow:(id)sender;
 
 @end

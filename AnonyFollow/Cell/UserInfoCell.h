@@ -23,4 +23,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *line1;
 @property (nonatomic, strong) IBOutlet UILabel *line2;
 
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+
 @end

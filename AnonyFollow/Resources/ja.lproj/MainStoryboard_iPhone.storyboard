@@ -258,6 +258,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cH-MP-0iE" customClass="TweetContentView">
                                                     <color key="backgroundColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
                                                 </view>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0cv-cz-EoY"/>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -269,6 +270,7 @@
                                             <constraint firstAttribute="bottom" secondItem="6cH-MP-0iE" secondAttribute="bottom" constant="7" id="PFj-6w-dQp"/>
                                             <constraint firstItem="Uvq-xh-RGW" firstAttribute="leading" secondItem="4sO-li-qm0" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="RE3-rT-Kxk"/>
                                             <constraint firstItem="6cH-MP-0iE" firstAttribute="leading" secondItem="TJq-go-emK" secondAttribute="leading" type="default" id="bwn-ns-qEg"/>
+                                            <constraint firstItem="0cv-cz-EoY" firstAttribute="centerX" secondItem="6cH-MP-0iE" secondAttribute="centerX" type="default" id="dp7-hf-91n"/>
                                             <constraint firstItem="6cH-MP-0iE" firstAttribute="centerX" secondItem="Rdf-uA-KYa" secondAttribute="centerX" type="default" id="fLt-As-asj"/>
                                             <constraint firstItem="TJq-go-emK" firstAttribute="top" secondItem="yzS-RQ-dss" secondAttribute="top" type="default" id="inF-f8-b9t"/>
                                             <constraint firstItem="Uwi-RK-tFG" firstAttribute="leading" secondItem="4sO-li-qm0" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="ntI-u5-rsv"/>
@@ -280,8 +282,10 @@
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6cH-MP-0iE" secondAttribute="bottom" constant="4" type="user" id="uvI-88-4GL"/>
                                             <constraint firstItem="6cH-MP-0iE" firstAttribute="top" secondItem="Rdf-uA-KYa" secondAttribute="top" constant="62" type="user" id="wfg-0c-EAt"/>
                                             <constraint firstItem="Uvq-xh-RGW" firstAttribute="trailing" secondItem="Uwi-RK-tFG" secondAttribute="trailing" type="default" id="yoN-jO-VAd"/>
+                                            <constraint firstItem="0cv-cz-EoY" firstAttribute="centerY" secondItem="Rdf-uA-KYa" secondAttribute="centerY" type="default" id="yxz-Xl-oAj"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="activityIndicatorView" destination="0cv-cz-EoY" id="srj-ib-6Ig"/>
                                             <outlet property="iconImageView" destination="TJq-go-emK" id="AOs-vi-gIt"/>
                                             <outlet property="line1" destination="Uwi-RK-tFG" id="uGE-wz-3TN"/>
                                             <outlet property="line2" destination="Uvq-xh-RGW" id="GYx-PV-CWZ"/>
@@ -291,7 +295,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="90" id="qDw-5L-miC" customClass="TweetCell">
-                                        <rect key="frame" x="0.0" y="155" width="320" height="91"/>
+                                        <rect key="frame" x="0.0" y="155" width="320" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="89"/>
@@ -332,11 +336,11 @@
                                             <constraint firstItem="ouu-oa-gAH" firstAttribute="leading" secondItem="UoB-uw-gCQ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Bpl-cA-W47"/>
                                             <constraint firstAttribute="trailing" secondItem="zfh-oH-fgJ" secondAttribute="trailing" constant="20" type="default" id="L2P-Qb-euR"/>
                                             <constraint firstAttribute="trailing" secondItem="ouu-oa-gAH" secondAttribute="trailing" constant="20" type="default" id="XNd-6i-TrS"/>
+                                            <constraint firstAttribute="bottom" secondItem="zfh-oH-fgJ" secondAttribute="bottom" constant="11" id="Xn6-eg-AkX"/>
                                             <constraint firstItem="ouu-oa-gAH" firstAttribute="leading" secondItem="5UT-7A-YZV" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="bGo-n2-pIh"/>
                                             <constraint firstItem="ouu-oa-gAH" firstAttribute="top" secondItem="qDw-5L-miC" secondAttribute="top" type="default" id="iyr-6G-D0E"/>
                                             <constraint firstItem="zfh-oH-fgJ" firstAttribute="leading" secondItem="UoB-uw-gCQ" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="krR-OP-4Uh"/>
                                             <constraint firstItem="UoB-uw-gCQ" firstAttribute="top" secondItem="jwv-1I-7Tc" secondAttribute="top" type="default" id="pTt-K7-2T3"/>
-                                            <constraint firstAttribute="bottom" secondItem="zfh-oH-fgJ" secondAttribute="bottom" constant="12" id="pu4-DE-UFx"/>
                                             <constraint firstItem="UoB-uw-gCQ" firstAttribute="bottom" secondItem="5UT-7A-YZV" secondAttribute="bottom" type="default" id="qNQ-RQ-E4I"/>
                                             <constraint firstItem="UoB-uw-gCQ" firstAttribute="centerX" secondItem="jwv-1I-7Tc" secondAttribute="centerX" type="default" id="rdu-1J-gv9"/>
                                             <constraint firstItem="UoB-uw-gCQ" firstAttribute="leading" secondItem="5UT-7A-YZV" secondAttribute="leading" type="default" id="w0x-NM-rGP"/>
@@ -348,6 +352,22 @@
                                             <outlet property="tweetContentView" destination="zfh-oH-fgJ" id="Eyr-JV-B5J"/>
                                             <outlet property="vacantImageView" destination="UoB-uw-gCQ" id="g0K-Br-c7u"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoadingCell" rowHeight="90" id="0Kv-1y-GeX">
+                                        <rect key="frame" x="0.0" y="245" width="320" height="91"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="89"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rSs-iz-tq8"/>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="rSs-iz-tq8" firstAttribute="centerY" secondItem="0Kv-1y-GeX" secondAttribute="centerY" type="default" id="T8W-al-HuJ"/>
+                                            <constraint firstItem="rSs-iz-tq8" firstAttribute="centerX" secondItem="0Kv-1y-GeX" secondAttribute="centerX" type="default" id="voO-t6-ony"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -950,6 +970,7 @@ See the License for the specific language governing permissions and limitations 
         <class className="UserInfoCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UserInfoCell.h"/>
             <relationships>
+                <relationship kind="outlet" name="activityIndicatorView" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="line1" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="line2" candidateClass="UILabel"/>
