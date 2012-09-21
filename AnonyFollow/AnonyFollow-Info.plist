@@ -9,9 +9,9 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGithubRevision</key>
-	<string>416bc5876188b800e9368238a4444a55997aeceb</string>
+	<string>3a38df580e422df106ab2af786f61cfcbfc84117</string>
 	<key>CFBundleGithubShortRevision</key>
-	<string>416bc58</string>
+	<string>3a38df5</string>
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>icon.png</string>
@@ -32,7 +32,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1580</string>
+	<string>1582</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIBackgroundModes</key>
