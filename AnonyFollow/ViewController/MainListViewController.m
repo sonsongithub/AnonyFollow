@@ -261,6 +261,16 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	[appdelegate setupOriginalStatusBar];
 	
 	self.lockScreenView.hidden = YES;
+	
+#if 0
+	// for debugging, dummy data
+	for (int i = 0; i < 40; i++) {
+		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
+		info.screenName = @"sonson_twit";
+		[self.accounts addObject:info];
+	}
+	[self.tableView reloadData];
+#endif
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
