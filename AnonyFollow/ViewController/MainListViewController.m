@@ -366,13 +366,13 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 - (void)advertizerDidChangeStatus:(CBAdvertizer*)advertizer {
 }
 
-- (void)addUserNameOnForeground:(NSString*)userName {
-	
-	for (TwitterAccountInfo *existing in self.accounts) {
-		if ([existing.screenName isEqualToString:userName])
-			return;
+- (void)debugAddUserNameOnForeground:(NSString*)userName {
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowRedundantUsers]) {
+		for (TwitterAccountInfo *existing in self.accounts) {
+			if ([existing.screenName isEqualToString:userName])
+				return;
+		}
 	}
-#ifdef _DEBUG	
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowFollowingUsers]) {
 		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 		info.screenName = userName;
@@ -423,7 +423,13 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 			}
 		}];
 	}
-#else
+}
+
+- (void)addUserNameOnForeground:(NSString*)userName {
+	for (TwitterAccountInfo *existing in self.accounts) {
+		if ([existing.screenName isEqualToString:userName])
+			return;
+	}
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
 	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
@@ -464,7 +470,6 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 			}];
 		}
 	}];
-#endif
 }
 
 #pragma mark - CBScannerDelegate
@@ -479,7 +484,11 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 		[self notifyRecevingOnBackgroundWithUserName:username];
 	}
 	else {
+#ifdef _DEBUG
+		[self debugAddUserNameOnForeground:username];
+#else
 		[self addUserNameOnForeground:username];
+#endif
 	}
 }
 

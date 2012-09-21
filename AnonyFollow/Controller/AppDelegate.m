@@ -35,12 +35,14 @@
 	NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
 								[NSNumber numberWithBool:YES],	kAnonyFollowBackgroundScanEnabled,
 								[NSNumber numberWithBool:YES],	kAnonyFollowDebugShowFollowingUsers,
+								[NSNumber numberWithBool:YES],	kAnonyFollowDebugShowRedundantUsers,
 								@"",							kAnonyFollowCurrentTwitterUserName,
 								nil];
 #else
 	NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
 								[NSNumber numberWithBool:NO],	kAnonyFollowBackgroundScanEnabled,
-								[NSNumber numberWithBool:YES],	kAnonyFollowDebugShowFollowingUsers,
+								[NSNumber numberWithBool:NO],	kAnonyFollowDebugShowFollowingUsers,
+								[NSNumber numberWithBool:NO],	kAnonyFollowDebugShowRedundantUsers,
 								@"",							kAnonyFollowCurrentTwitterUserName,
 								nil];
 #endif

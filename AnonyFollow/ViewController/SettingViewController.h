@@ -12,11 +12,13 @@
 
 @property (nonatomic, strong) IBOutlet UITableViewCell *applicationNameCell;
 @property (nonatomic, strong) IBOutlet UITableViewCell *versionCell;
-
 @property (nonatomic, strong) IBOutlet UISwitch *backgroundSwitch;
-@property (nonatomic, strong) IBOutlet UISwitch *showFollowingSwitch;
-
 - (IBAction)didChangeBackgroundSwitch:(id)sender;
+
+// for debug
+@property (nonatomic, strong) IBOutlet UISwitch *showFollowingSwitch;
+@property (nonatomic, strong) IBOutlet UISwitch *showRedundantSwitch;
 - (IBAction)didChangeShowFollowingSwitch:(id)sender;
+- (IBAction)didChangeShowRedundantSwitch:(id)sender;
 
 @end

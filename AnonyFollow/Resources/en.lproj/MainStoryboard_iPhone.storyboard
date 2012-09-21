@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mcc-oR-7rA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Mcc-oR-7rA">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
@@ -677,7 +677,7 @@
                             <tableViewSection headerTitle="Debug" footerTitle="" id="Au7-C0-ztQ">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="u05-Ij-zrB">
-                                        <rect key="frame" x="0.0" y="424" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="424" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -707,6 +707,38 @@
                                             <constraint firstItem="Byz-m6-YJO" firstAttribute="leading" secondItem="euC-wx-7fs" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="sWl-7j-On7"/>
                                         </constraints>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wa4-JX-6QA">
+                                        <rect key="frame" x="0.0" y="469" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Show redundant" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B15-Bf-LC8">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brw-8Y-Ip7">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="77" id="oZf-yw-AEX"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="didChangeShowFollowingSwitch:" destination="nh6-bL-s6V" eventType="valueChanged" id="OKY-iz-pQW"/>
+                                                        <action selector="didChangeShowRedundantSwitch:" destination="nh6-bL-s6V" eventType="valueChanged" id="aGI-yh-N5J"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="B15-Bf-LC8" firstAttribute="leading" secondItem="wa4-JX-6QA" secondAttribute="leading" constant="20" type="default" id="5UC-A9-gUV"/>
+                                            <constraint firstItem="brw-8Y-Ip7" firstAttribute="centerY" secondItem="B15-Bf-LC8" secondAttribute="centerY" type="default" id="Qji-rv-Mtt"/>
+                                            <constraint firstItem="brw-8Y-Ip7" firstAttribute="top" secondItem="wa4-JX-6QA" secondAttribute="top" constant="8" id="WvA-sI-7vX"/>
+                                            <constraint firstItem="brw-8Y-Ip7" firstAttribute="leading" secondItem="B15-Bf-LC8" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="cfp-uB-IBA"/>
+                                            <constraint firstAttribute="trailing" secondItem="brw-8Y-Ip7" secondAttribute="trailing" constant="20" type="default" id="tGz-GO-SlR"/>
+                                        </constraints>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -726,6 +758,7 @@
                         <outlet property="applicationNameCell" destination="esx-ck-V7u" id="eqE-BY-neE"/>
                         <outlet property="backgroundSwitch" destination="dvH-7R-HDL" id="eqc-87-4db"/>
                         <outlet property="showFollowingSwitch" destination="Byz-m6-YJO" id="zum-l1-3Hd"/>
+                        <outlet property="showRedundantSwitch" destination="brw-8Y-Ip7" id="t80-gC-Rhm"/>
                         <outlet property="versionCell" destination="3Rf-QN-UVZ" id="7e6-NL-2um"/>
                     </connections>
                 </tableViewController>
@@ -937,9 +970,11 @@ See the License for the specific language governing permissions and limitations 
             <relationships>
                 <relationship kind="action" name="didChangeBackgroundSwitch:"/>
                 <relationship kind="action" name="didChangeShowFollowingSwitch:"/>
+                <relationship kind="action" name="didChangeShowRedundantSwitch:"/>
                 <relationship kind="outlet" name="applicationNameCell" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="backgroundSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="showFollowingSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="showRedundantSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="versionCell" candidateClass="UITableViewCell"/>
             </relationships>
         </class>

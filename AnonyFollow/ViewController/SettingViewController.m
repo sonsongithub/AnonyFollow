@@ -30,6 +30,13 @@
 	}
 }
 
+- (IBAction)didChangeShowRedundantSwitch:(id)sender {
+	if (sender == self.showRedundantSwitch) {
+		[[NSUserDefaults standardUserDefaults] setBool:self.showRedundantSwitch.on forKey:kAnonyFollowDebugShowRedundantUsers];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
+}
+
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	if ([UIApplication sharedApplication].statusBarHidden) {
@@ -47,6 +54,7 @@
     [super viewDidLoad];
 	self.backgroundSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowBackgroundScanEnabled];
 	self.showFollowingSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowFollowingUsers];
+	self.showRedundantSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowRedundantUsers];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
