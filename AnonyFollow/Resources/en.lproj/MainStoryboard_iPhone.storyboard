@@ -97,7 +97,7 @@
                                     <outlet property="delegate" destination="gU2-CF-QLv" id="UwN-aB-0H8"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7q-91-v5e" customClass="LockScreenView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7q-91-v5e">
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBH-eh-NIs">
                                         <subviews>
