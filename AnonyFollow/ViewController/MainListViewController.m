@@ -109,7 +109,16 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 				}
 				else {
 					// Error?
+					DNSLog(@"%@", [error localizedDescription]);
 					DNSLog(@"Error?");
+					dispatch_async(dispatch_get_main_queue(), ^(void){
+						UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
+																			message:[error localizedDescription]
+																		   delegate:nil
+																  cancelButtonTitle:nil
+																  otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+						[alertView show];
+					});
 				}
 			}];
         }
@@ -414,9 +423,19 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 						NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 						NSLog(@"%@", result);
 						if ([result isEqualToString:@"true"]) {
+							dispatch_async(dispatch_get_main_queue(), ^(void){
+								AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+								[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), userName]];
+							});
 						}
 						else if ([result isEqualToString:@"false"]) {
 							dispatch_async(dispatch_get_main_queue(), ^(void){
+								
+								for (TwitterAccountInfo *existing in self.accounts) {
+									if ([existing.screenName isEqualToString:userName])
+										return;
+								}
+								
 								TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 								info.screenName = userName;
 								[self.accounts addObject:info];
@@ -462,9 +481,19 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 					NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 					NSLog(@"%@", result);
 					if ([result isEqualToString:@"true"]) {
+						dispatch_async(dispatch_get_main_queue(), ^(void){
+							AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+							[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), userName]];
+						});
 					}
 					else if ([result isEqualToString:@"false"]) {
 						dispatch_async(dispatch_get_main_queue(), ^(void){
+							
+							for (TwitterAccountInfo *existing in self.accounts) {
+								if ([existing.screenName isEqualToString:userName])
+									return;
+							}
+							
 							TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 							info.screenName = userName;
 							[self.accounts addObject:info];

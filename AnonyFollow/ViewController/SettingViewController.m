@@ -63,9 +63,11 @@
 	NSString *CFBundleShortVersionString = [NSBundle infoValueFromMainBundleForKey:@"CFBundleShortVersionString"];
 	NSString *CFBundleVersion = [NSBundle infoValueFromMainBundleForKey:@"CFBundleVersion"];
 	NSString *CFBundleGitRevision = [NSBundle infoValueFromMainBundleForKey:@"CFBundleGithubShortRevision"];
-	
+#ifdef _DEBUG
+	self.versionCell.detailTextLabel.text = [NSString stringWithFormat:@"%@D.%@.%@", CFBundleShortVersionString, CFBundleVersion,  CFBundleGitRevision];
+#else
 	self.versionCell.detailTextLabel.text = [NSString stringWithFormat:@"%@.%@.%@", CFBundleShortVersionString, CFBundleVersion,  CFBundleGitRevision];
-		
+#endif
 	self.applicationNameCell.detailTextLabel.text = [NSBundle infoValueFromMainBundleForKey:@"CFBundleDisplayName"];
 }
 
