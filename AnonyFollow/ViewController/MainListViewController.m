@@ -204,6 +204,10 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	if (buttonIndex == 0) {
 		[self.accounts removeAllObjects];
 		[self.tableView reloadData];
+		
+		dispatch_async(dispatch_get_main_queue(), ^(void){
+			[self updateTrashButton];
+		});
 	}
 }
 
