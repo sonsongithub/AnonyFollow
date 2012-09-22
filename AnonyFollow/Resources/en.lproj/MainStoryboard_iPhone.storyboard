@@ -191,6 +191,7 @@
                         <outlet property="lockScreenView" destination="W7q-91-v5e" id="r8k-bf-yJo"/>
                         <outlet property="segmentedControl" destination="vz6-FW-GN0" id="ezq-S2-DLE"/>
                         <outlet property="tableView" destination="dAM-Le-jLa" id="mwV-WX-bwA"/>
+                        <outlet property="trashButton" destination="Bf5-Xd-w42" id="6lO-kO-Y0S"/>
                         <outlet property="twitterAccountButton" destination="Lco-WK-tk5" id="IUd-2m-Dw4"/>
                         <segue destination="hOG-Jn-GmV" kind="modal" identifier="ToSelectAccountViewController" id="HL0-Da-4AH"/>
                         <segue destination="3fT-LL-GZo" kind="push" identifier="OpenTimeLine" id="KAJ-BE-JWp"/>
@@ -957,6 +958,7 @@ See the License for the specific language governing permissions and limitations 
                 <relationship kind="outlet" name="lockScreenView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="trashButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="twitterAccountButton" candidateClass="MessageBarButtonItem"/>
             </relationships>
         </class>

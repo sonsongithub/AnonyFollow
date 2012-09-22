@@ -28,6 +28,7 @@ extern NSString *kNotificationUserInfoUserNameKey;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, strong) IBOutlet MessageBarButtonItem *twitterAccountButton;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *trashButton;
 
 @property (nonatomic, strong) NSMutableArray *accounts;
 @property (nonatomic, strong) NSMutableArray *accountsCollectedOnBackground;

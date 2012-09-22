@@ -80,6 +80,8 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 			cell.followButton.tag = path.row;
 		}
 	}
+	
+	[self updateTrashButton];
 }
 
 - (void)followOnTwitter:(NSString*)userName {
@@ -141,6 +143,11 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 											  cancelButtonTitle:nil
 											  otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
 	[alertView show];
+}
+
+- (void)updateTrashButton {
+	self.trashButton.enabled = ([self.accounts count] > 0);
+	[self.navigationController setToolbarItems:self.navigationController.toolbarItems];
 }
 
 #pragma mark - NSNotification
@@ -271,6 +278,8 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	
 	self.lockScreenView.hidden = YES;
 	
+	self.trashButton.enabled = ([self.accounts count] > 0);
+	
 #if 0
 	// for debugging, dummy data
 	for (int i = 0; i < 40; i++) {
@@ -396,6 +405,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 		info.screenName = userName;
 		[self.accounts addObject:info];
+		[self updateTrashButton];
 		[self.tableView reloadData];
 		AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
 		[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), userName]];
@@ -439,6 +449,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 								TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 								info.screenName = userName;
 								[self.accounts addObject:info];
+								[self updateTrashButton];
 								[self.tableView reloadData];
 								AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
 								[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), userName]];
@@ -497,6 +508,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 							TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 							info.screenName = userName;
 							[self.accounts addObject:info];
+							[self updateTrashButton];
 							[self.tableView reloadData];
 							AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
 							[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), userName]];
@@ -606,6 +618,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
     if (editingStyle == UITableViewCellEditingStyleDelete) {
 		[self.accounts removeObjectAtIndex:indexPath.row];
 		[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+		[self updateTrashButton];
     }
 }
 
