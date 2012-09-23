@@ -12,7 +12,7 @@
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
 	#ifdef _TESTFLIGHT
-		#import "TestFlight.h"
+		//#import "TestFlight.h"
 	#endif
 #endif
 

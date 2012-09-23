@@ -60,15 +60,21 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
+	// version string
 	NSString *CFBundleShortVersionString = [NSBundle infoValueFromMainBundleForKey:@"CFBundleShortVersionString"];
 	NSString *CFBundleVersion = [NSBundle infoValueFromMainBundleForKey:@"CFBundleVersion"];
 	NSString *CFBundleGitRevision = [NSBundle infoValueFromMainBundleForKey:@"CFBundleGithubShortRevision"];
-#ifdef _DEBUG
-	self.versionCell.detailTextLabel.text = [NSString stringWithFormat:@"%@D.%@.%@", CFBundleShortVersionString, CFBundleVersion,  CFBundleGitRevision];
-#else
+	
 	self.versionCell.detailTextLabel.text = [NSString stringWithFormat:@"%@.%@.%@", CFBundleShortVersionString, CFBundleVersion,  CFBundleGitRevision];
-#endif
+	
+	// application name
+#if defined(_TESTFLIGHT)
+	self.applicationNameCell.detailTextLabel.text = [NSString stringWithFormat:@"%@(TestFlight)", [NSBundle infoValueFromMainBundleForKey:@"CFBundleDisplayName"]];
+#elif defined(_DEBUG)
+	self.applicationNameCell.detailTextLabel.text = [NSString stringWithFormat:@"%@(Debug)", [NSBundle infoValueFromMainBundleForKey:@"CFBundleDisplayName"]];
+#else
 	self.applicationNameCell.detailTextLabel.text = [NSBundle infoValueFromMainBundleForKey:@"CFBundleDisplayName"];
+#endif
 }
 
 #ifdef _DEBUG
