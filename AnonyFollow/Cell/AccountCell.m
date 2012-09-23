@@ -68,4 +68,16 @@ NSString *AccountCellUpdateNotification = @"AccountCellUpdateNotification";
     // Configure the view for the selected state
 }
 
+
+- (void)setEditing:(BOOL)editing {
+	[super setEditing:editing];
+	self.followButton.hidden = editing;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+	[super setEditing:editing animated:animated];
+	
+	self.followButton.hidden = editing;
+}
+
 @end
