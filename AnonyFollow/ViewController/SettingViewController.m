@@ -10,6 +10,8 @@
 #import "NSBundle+AnonyFollow.h"
 #import "UIViewController+AnonyFollow.h"
 #import "NSUserDefaults+AnonyFollow.h"
+#import "UIDevice+AnonyFollow.h"
+#import "UIApplication+AnonyFollow.h"
 
 @interface SettingViewController ()
 @end
@@ -61,20 +63,10 @@
 	[super viewWillAppear:animated];
 	
 	// version string
-	NSString *CFBundleShortVersionString = [NSBundle infoValueFromMainBundleForKey:@"CFBundleShortVersionString"];
-	NSString *CFBundleVersion = [NSBundle infoValueFromMainBundleForKey:@"CFBundleVersion"];
-	NSString *CFBundleGitRevision = [NSBundle infoValueFromMainBundleForKey:@"CFBundleGithubShortRevision"];
-	
-	self.versionCell.detailTextLabel.text = [NSString stringWithFormat:@"%@.%@.%@", CFBundleShortVersionString, CFBundleVersion,  CFBundleGitRevision];
+	self.versionCell.detailTextLabel.text = [[UIApplication sharedApplication] versionString];
 	
 	// application name
-#if defined(_TESTFLIGHT)
-	self.applicationNameCell.detailTextLabel.text = [NSString stringWithFormat:@"%@(TestFlight)", [NSBundle infoValueFromMainBundleForKey:@"CFBundleDisplayName"]];
-#elif defined(_DEBUG)
-	self.applicationNameCell.detailTextLabel.text = [NSString stringWithFormat:@"%@(Debug)", [NSBundle infoValueFromMainBundleForKey:@"CFBundleDisplayName"]];
-#else
-	self.applicationNameCell.detailTextLabel.text = [NSBundle infoValueFromMainBundleForKey:@"CFBundleDisplayName"];
-#endif
+	self.applicationNameCell.detailTextLabel.text = [[UIApplication sharedApplication] applicationNameForDisplay];
 }
 
 #ifdef _DEBUG
