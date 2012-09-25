@@ -20,7 +20,11 @@ extern NSString *AccountCellUpdateNotification;
 
 @property (nonatomic, strong) IBOutlet UIButton *followButton;
 @property (nonatomic, strong) IBOutlet UILabel *screenNameLabel;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *indicatorView;
 
 @property (nonatomic, strong) TwitterAccountInfo *accountInfo;
+
+- (void)startLoading;
+- (void)stopLoading;
 
 @end

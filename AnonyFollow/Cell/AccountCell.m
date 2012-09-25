@@ -40,8 +40,22 @@ NSString *AccountCellUpdateNotification = @"AccountCellUpdateNotification";
     return self;
 }
 
+- (void)startLoading {
+	self.followButton.hidden = YES;
+	self.indicatorView.hidden = NO;
+	[self.indicatorView startAnimating];
+}
+
+- (void)stopLoading {
+	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	self.followButton.hidden = !(del.checker.status == SNReachablityCheckerReachableViaWiFi || del.checker.status == SNReachablityCheckerReachableViaWWAN);
+	[self.indicatorView stopAnimating];
+	self.indicatorView.hidden = YES;
+}
+
 - (void)awakeFromNib {
 	[super awakeFromNib];
+	self.indicatorView.hidden = YES;
 	self.ribbonImageView.hidden = YES;
 	[self prepareForReuse];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update:) name:AccountCellUpdateNotification object:nil];

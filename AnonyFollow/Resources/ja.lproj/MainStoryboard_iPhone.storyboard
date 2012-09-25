@@ -71,7 +71,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="none.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qo1-vp-eP3"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="none.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qo1-vp-eP3">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="fHg-Lw-gZv"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ExX-Xc-Tqa">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="2T4-F7-IaO"/>
@@ -80,7 +84,6 @@
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="new.png" translatesAutoresizingMaskIntoConstraints="NO" id="sg5-qh-2df">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="PZp-J1-YEA"/>
                                                         <constraint firstAttribute="height" constant="50" id="QZW-EJ-ExQ"/>
                                                     </constraints>
                                                 </imageView>
@@ -112,26 +115,31 @@
                                                         <action selector="follow:" destination="gU2-CF-QLv" eventType="touchUpInside" id="FfZ-Wz-PwI"/>
                                                     </connections>
                                                 </button>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="vhE-54-aWe"/>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.90000000000000002"/>
                                         <constraints>
-                                            <constraint firstItem="ExX-Xc-Tqa" firstAttribute="centerY" secondItem="sg5-qh-2df" secondAttribute="centerY" type="default" id="3lu-x2-63s"/>
                                             <constraint firstItem="iL1-Dj-PYX" firstAttribute="leading" secondItem="ExX-Xc-Tqa" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="76J-TT-4cX"/>
+                                            <constraint firstItem="ExX-Xc-Tqa" firstAttribute="centerY" secondItem="Qo1-vp-eP3" secondAttribute="centerY" type="default" id="964-Rb-zAd"/>
+                                            <constraint firstItem="sg5-qh-2df" firstAttribute="leading" secondItem="V88-7B-Ac2" secondAttribute="leading" constant="4" id="97o-nl-lwZ"/>
+                                            <constraint firstItem="vhE-54-aWe" firstAttribute="top" secondItem="V88-7B-Ac2" secondAttribute="top" constant="20" type="default" id="9as-EI-Dub"/>
                                             <constraint firstItem="Qo1-vp-eP3" firstAttribute="top" secondItem="sg5-qh-2df" secondAttribute="top" type="default" id="C2S-Gy-mBF"/>
-                                            <constraint firstItem="Qo1-vp-eP3" firstAttribute="leading" secondItem="V88-7B-Ac2" secondAttribute="leading" constant="4" id="Cs0-C2-fVt"/>
+                                            <constraint firstItem="sg5-qh-2df" firstAttribute="centerY" secondItem="V88-7B-Ac2" secondAttribute="centerY" type="default" id="C2V-Rg-JFQ"/>
+                                            <constraint firstItem="Qo1-vp-eP3" firstAttribute="trailing" secondItem="sg5-qh-2df" secondAttribute="trailing" type="default" id="EEH-8I-m6v"/>
                                             <constraint firstItem="sg5-qh-2df" firstAttribute="leading" secondItem="Qo1-vp-eP3" secondAttribute="leading" type="default" id="SWP-ak-EdJ"/>
-                                            <constraint firstItem="V9C-Qa-ehh" firstAttribute="top" secondItem="V88-7B-Ac2" secondAttribute="top" constant="16" id="USg-c6-Ibf"/>
-                                            <constraint firstItem="ExX-Xc-Tqa" firstAttribute="centerY" secondItem="V88-7B-Ac2" secondAttribute="centerY" type="default" id="VCc-EC-FTd"/>
+                                            <constraint firstItem="vhE-54-aWe" firstAttribute="centerY" secondItem="V9C-Qa-ehh" secondAttribute="centerY" type="default" id="VJq-6R-7qD"/>
                                             <constraint firstItem="V9C-Qa-ehh" firstAttribute="leading" secondItem="iL1-Dj-PYX" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Z5Y-uH-1y0"/>
                                             <constraint firstItem="iL1-Dj-PYX" firstAttribute="top" secondItem="V88-7B-Ac2" secondAttribute="top" constant="17" id="btf-6g-Njf"/>
                                             <constraint firstItem="Qo1-vp-eP3" firstAttribute="centerX" secondItem="ExX-Xc-Tqa" secondAttribute="centerX" type="default" id="jeU-Kl-mzO"/>
+                                            <constraint firstItem="V9C-Qa-ehh" firstAttribute="centerX" secondItem="vhE-54-aWe" secondAttribute="centerX" type="default" id="mSs-mg-PKq"/>
                                             <constraint firstItem="iL1-Dj-PYX" firstAttribute="baseline" secondItem="V9C-Qa-ehh" secondAttribute="baseline" type="default" id="rN0-Ty-UrB"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="followButton" destination="V9C-Qa-ehh" id="8zg-tZ-Nd8"/>
                                             <outlet property="iconImageView" destination="ExX-Xc-Tqa" id="i6U-rm-n15"/>
+                                            <outlet property="indicatorView" destination="vhE-54-aWe" id="znT-08-qj3"/>
                                             <outlet property="ribbonImageView" destination="sg5-qh-2df" id="N5o-NG-p83"/>
                                             <outlet property="screenNameLabel" destination="iL1-Dj-PYX" id="hba-4k-e9n"/>
                                             <outlet property="vacantImageView" destination="Qo1-vp-eP3" id="fwc-gV-OFX"/>
@@ -930,6 +938,95 @@ See the License for the specific language governing permissions and limitations 
         <image name="sonson.png" width="64" height="64"/>
         <image name="warning.png" width="201" height="202"/>
     </resources>
+    <classes>
+        <class className="AccountCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="indicatorView" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="screenNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="AccountSelectViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountSelectViewController.h"/>
+        </class>
+        <class className="CopyrightContactViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CopyrightContactViewController.h"/>
+        </class>
+        <class className="MainListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="follow:"/>
+                <relationship kind="action" name="select:"/>
+                <relationship kind="action" name="trash:"/>
+                <relationship kind="outlet" name="lockScreenView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="trashButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="twitterAccountButton" candidateClass="MessageBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MessageBarButtonItem" superclassName="UIBarButtonItem">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MessageBarButtonItem.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SettingViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didChangeBackgroundSwitch:"/>
+                <relationship kind="action" name="didChangeShowFollowingSwitch:"/>
+                <relationship kind="action" name="didChangeShowRedundantSwitch:"/>
+                <relationship kind="outlet" name="applicationNameCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="backgroundSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="showFollowingSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="showRedundantSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="versionCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="TimeLineViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeLineViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="follow:"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="TweetCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tweetContentView" candidateClass="TweetContentView"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="TweetContentView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetContentView.h"/>
+        </class>
+        <class className="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismiss:"/>
+            </relationships>
+        </class>
+        <class className="UserInfoCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserInfoCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndicatorView" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="line1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="line2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tweetContentView" candidateClass="TweetContentView"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
