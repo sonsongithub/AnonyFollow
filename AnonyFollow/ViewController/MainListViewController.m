@@ -92,8 +92,10 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
         if(granted) {
 			ACAccount *account = [accountStore twitterCurrentAccount];
 			
-			if (account == nil)
+			if (account == nil) {
+				// can't access twitter account
 				return;
+			}
 			
 			NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
 			[tempDict setValue:userName forKey:@"screen_name"];
@@ -124,6 +126,9 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 				}
 			}];
         }
+		else {
+			// unknown error
+		}
     }];
 }
 
@@ -519,8 +524,26 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 						});
 					}
 					else {
-						// error
+						// exception
 					}
+				}
+				else {
+					// can't access?
+					dispatch_async(dispatch_get_main_queue(), ^(void){
+						
+						for (TwitterAccountInfo *existing in self.accounts) {
+							if ([existing.screenName isEqualToString:userName])
+								return;
+						}
+						
+						TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
+						info.screenName = userName;
+						[self.accounts addObject:info];
+						[self updateTrashButton];
+						[self.tableView reloadData];
+						AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+						[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), userName]];
+					});
 				}
 			}];
 		}

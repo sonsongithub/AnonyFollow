@@ -71,13 +71,24 @@ NSString *AccountCellUpdateNotification = @"AccountCellUpdateNotification";
 
 - (void)setEditing:(BOOL)editing {
 	[super setEditing:editing];
-	self.followButton.hidden = editing;
+	
+	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	if (del.checker.status == SNReachablityCheckerReachableViaWiFi || del.checker.status == SNReachablityCheckerReachableViaWWAN) {
+		self.followButton.hidden = editing;
+	}
+	else
+		self.followButton.hidden = YES;
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
 	[super setEditing:editing animated:animated];
 	
-	self.followButton.hidden = editing;
+	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	if (del.checker.status == SNReachablityCheckerReachableViaWiFi || del.checker.status == SNReachablityCheckerReachableViaWWAN) {
+		self.followButton.hidden = editing;
+	}
+	else
+		self.followButton.hidden = YES;
 }
 
 @end

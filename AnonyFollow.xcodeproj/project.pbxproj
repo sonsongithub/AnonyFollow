@@ -46,7 +46,6 @@
 		14A2834215FA486D00880424 /* CBScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2830E15FA486D00880424 /* CBScanner.m */; };
 		14A2834315FA486D00880424 /* DownloadQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831015FA486D00880424 /* DownloadQueue.m */; };
 		14A2834415FA486D00880424 /* DownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831215FA486D00880424 /* DownloadTask.m */; };
-		14A2834615FA486D00880424 /* SNReachablityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831615FA486D00880424 /* SNReachablityChecker.m */; };
 		14A2834715FA486D00880424 /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831A15FA486D00880424 /* GTMNSData+zlib.m */; };
 		14A2834815FA486D00880424 /* TwitterAccountInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831D15FA486D00880424 /* TwitterAccountInfo.m */; };
 		14A2834915FA486D00880424 /* TwitterTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A2831F15FA486D00880424 /* TwitterTweet.m */; };
@@ -70,6 +69,7 @@
 		14BE1B7315EA282700F7547E /* PurchasePlusButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6B15EA282700F7547E /* PurchasePlusButton@2x.png */; };
 		14BE1B7415EA282700F7547E /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6C15EA282700F7547E /* setting@2x.png */; };
 		14BE1B9715EA28BF00F7547E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BE1B9615EA28BF00F7547E /* QuartzCore.framework */; };
+		14D5D3841611EB0C003CDAA2 /* SNReachablityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D5D3831611EB0C003CDAA2 /* SNReachablityChecker.m */; };
 		14F5320A15F9D58A0080444A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5320815F9D58A0080444A /* icon.png */; };
 		14F5320B15F9D58A0080444A /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5320915F9D58A0080444A /* icon_retina.png */; };
 		14F5321415F9E9D50080444A /* icon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5321215F9E9D50080444A /* icon_ipad.png */; };
@@ -142,8 +142,6 @@
 		14A2831015FA486D00880424 /* DownloadQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadQueue.m; sourceTree = "<group>"; };
 		14A2831115FA486D00880424 /* DownloadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTask.h; sourceTree = "<group>"; };
 		14A2831215FA486D00880424 /* DownloadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTask.m; sourceTree = "<group>"; };
-		14A2831515FA486D00880424 /* SNReachablityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNReachablityChecker.h; sourceTree = "<group>"; };
-		14A2831615FA486D00880424 /* SNReachablityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNReachablityChecker.m; sourceTree = "<group>"; };
 		14A2831815FA486D00880424 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		14A2831915FA486D00880424 /* GTMNSData+zlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSData+zlib.h"; sourceTree = "<group>"; };
 		14A2831A15FA486D00880424 /* GTMNSData+zlib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSData+zlib.m"; sourceTree = "<group>"; };
@@ -180,6 +178,8 @@
 		14BE1B6B15EA282700F7547E /* PurchasePlusButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PurchasePlusButton@2x.png"; sourceTree = "<group>"; };
 		14BE1B6C15EA282700F7547E /* setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting@2x.png"; sourceTree = "<group>"; };
 		14BE1B9615EA28BF00F7547E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		14D5D3821611EB0C003CDAA2 /* SNReachablityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNReachablityChecker.h; sourceTree = "<group>"; };
+		14D5D3831611EB0C003CDAA2 /* SNReachablityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNReachablityChecker.m; sourceTree = "<group>"; };
 		14F5320815F9D58A0080444A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		14F5320915F9D58A0080444A /* icon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_retina.png; sourceTree = "<group>"; };
 		14F5321215F9E9D50080444A /* icon_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_ipad.png; sourceTree = "<group>"; };
@@ -314,6 +314,8 @@
 		14A2830615FA486D00880424 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				14D5D3821611EB0C003CDAA2 /* SNReachablityChecker.h */,
+				14D5D3831611EB0C003CDAA2 /* SNReachablityChecker.m */,
 				14A2830715FA486D00880424 /* AppDelegate.h */,
 				14A2830815FA486D00880424 /* AppDelegate.m */,
 				14A2830915FA486D00880424 /* BinarySearcher.h */,
@@ -326,8 +328,6 @@
 				14A2831015FA486D00880424 /* DownloadQueue.m */,
 				14A2831115FA486D00880424 /* DownloadTask.h */,
 				14A2831215FA486D00880424 /* DownloadTask.m */,
-				14A2831515FA486D00880424 /* SNReachablityChecker.h */,
-				14A2831615FA486D00880424 /* SNReachablityChecker.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -577,7 +577,6 @@
 				14A2834215FA486D00880424 /* CBScanner.m in Sources */,
 				14A2834315FA486D00880424 /* DownloadQueue.m in Sources */,
 				14A2834415FA486D00880424 /* DownloadTask.m in Sources */,
-				14A2834615FA486D00880424 /* SNReachablityChecker.m in Sources */,
 				14A2834715FA486D00880424 /* GTMNSData+zlib.m in Sources */,
 				14A2834815FA486D00880424 /* TwitterAccountInfo.m in Sources */,
 				14A2834915FA486D00880424 /* TwitterTweet.m in Sources */,
@@ -594,6 +593,7 @@
 				1481962B15FC4F34004B0BCB /* CopyrightContactViewController.m in Sources */,
 				141BA9881610C9A10002C7C2 /* UIApplication+AnonyFollow.m in Sources */,
 				141BA98C1610CA780002C7C2 /* UIDevice+AnonyFollow.m in Sources */,
+				14D5D3841611EB0C003CDAA2 /* SNReachablityChecker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
