@@ -184,24 +184,36 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	DNSLogMethod
 	DNSLog(@"%@", notification);
 	self.lockScreenView.hidden = YES;
-	//[self.scanner stopScan];
-	//self.scanner = nil;
-	//self.segmentedControl.selectedSegmentIndex = 0;
-	//[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+	
+	[self resetBadge];
+	
+	if (self.scanner != nil && [[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowBackgroundScanEnabled]) {
+		// go back from background process
+		for (NSString *screenName in [self.screenNamesCollectedOnBackground reverseObjectEnumerator]) {
+			
+#ifdef _DEBUG
+			[self debugAddUserNameOnForeground:screenName];
+#else
+			[self addUserNameOnForeground:screenName];
+#endif
+			
+			[self.screenNamesCollectedOnBackground removeObject:screenName];
+		}
+	}
 }
 
 - (void)didEnterBackground:(NSNotification*)notification {
 	DNSLogMethod
-	
-	//[self.advertizer stopAdvertize];
-	//self.advertizer = nil;
-	//[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-	
+		
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowBackgroundScanEnabled]) {
 	}
 	else {
+		[self.advertizer stopAdvertize];
+		self.advertizer = nil;
 		[self.scanner stopScan];
 		self.scanner = nil;
+		self.segmentedControl.selectedSegmentIndex = 0;
+		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 	}
 	[[DownloadQueue sharedInstance] clearQueue];
 }
@@ -282,6 +294,8 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	[self resetBadge];
+	
 	// setup notification
 	// background and foreground
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
@@ -295,7 +309,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	
 	// set up buffer
 	self.accounts = [NSMutableArray array];
-	self.accountsCollectedOnBackground = [NSMutableArray array];
+	self.screenNamesCollectedOnBackground = [NSMutableArray array];
 	self.twitterAccountButton.delegate = self;
 	
 	// setup status bar
@@ -323,6 +337,14 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 		TimeLineViewController *vc = (TimeLineViewController*)segue.destinationViewController;
 		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 		vc.accountInfo = [self.accounts objectAtIndex:indexPath.row];
+	}
+	if ([segue.identifier isEqualToString:@"ToSettingViewController"]) {
+		[self.scanner stopScan];
+		self.scanner = nil;
+		[self.advertizer stopAdvertize];
+		self.advertizer = nil;
+		self.segmentedControl.selectedSegmentIndex = 0;
+		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 	}
 }
 
@@ -581,19 +603,20 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 #pragma mark - CBScannerDelegate
 
 - (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
-	NSString *username = [userInfo objectForKey:kCBScannerInfoUserNameKey];
-	
-	DNSLog(@"%d", [NSThread isMainThread]);
-	
+	NSString *screenName = [userInfo objectForKey:kCBScannerInfoUserNameKey];
 	if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+		[self.screenNamesCollectedOnBackground addObject:screenName];
+		
 		// post local notification
-		[self notifyRecevingOnBackgroundWithUserName:username];
+		[self notifyRecevingOnBackgroundWithUserName:screenName];
+		
+		[self incrementBadge];
 	}
 	else {
 #ifdef _DEBUG
-		[self debugAddUserNameOnForeground:username];
+		[self debugAddUserNameOnForeground:screenName];
 #else
-		[self addUserNameOnForeground:username];
+		[self addUserNameOnForeground:screenName];
 #endif
 	}
 }
@@ -601,11 +624,20 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 - (void)scannerDidChangeStatus:(CBScanner*)scanner {
 	DNSLogMethod
 	if ([self.scanner isAvailable]) {
-		self.lockScreenView.hidden = YES;
-		AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-		[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
-		[del.barView setColor:[UIColor greenColor]];
-		[del.barView setMessage:NSLocalizedString(@"Broadcasting...", nil)];
+		if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowBackgroundScanEnabled]) {
+			self.lockScreenView.hidden = YES;
+			AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+			[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+			[del.barView setColor:[UIColor redColor]];
+			[del.barView setMessage:NSLocalizedString(@"Background broadcasting...", nil)];
+		}
+		else {
+			self.lockScreenView.hidden = YES;
+			AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+			[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+			[del.barView setColor:[UIColor greenColor]];
+			[del.barView setMessage:NSLocalizedString(@"Broadcasting...", nil)];
+		}
 	}
 	else {
 		self.lockScreenView.hidden = NO;

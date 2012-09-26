@@ -175,7 +175,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="ghG-yG-7nJ"/>
                         <barButtonItem image="setting.png" style="plain" id="zmL-Dn-Xeh">
                             <connections>
-                                <segue destination="S4C-sh-H4c" kind="modal" id="J9H-yd-62q"/>
+                                <segue destination="S4C-sh-H4c" kind="modal" identifier="ToSettingViewController" id="J9H-yd-62q"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
