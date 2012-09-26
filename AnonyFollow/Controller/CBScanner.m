@@ -117,14 +117,13 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
 
     }
     if([services count]!=(ENCODED_UNAME_LEN/2)+1){
+        /* Peripheral may be in foreground */
         if(hashedPrimalyServiceUUID && [hashedPrimalyServiceUUID isEqual:[CBUUID UUIDWithString:self.UUIDStr]]){
             DNSLog(@"Peer discovered but maybe in Backgroud:%@,aPeripheral.UUID:%@",advertisementData,aPeripheral.UUID);
             self.peripheral=aPeripheral;
-            //[self.manager retrievePeripherals:[NSArray arrayWithObject:(__bridge id)aPeripheral.UUID]];
-            [self.manager connectPeripheral:self.peripheral options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
+            [self.manager retrievePeripherals:[NSArray arrayWithObject:(__bridge id)aPeripheral.UUID]];
         }
     }else{
-        /* Peripheral may be in foreground */
         /* first byte should be self.UUIDStr */
         [services removeObjectAtIndex:0];
         
@@ -226,6 +225,7 @@ didFailToConnectPeripheral:(CBPeripheral *)aPeripheral
 - (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
 {
     DNSLogMethod
+    BOOL hasPreferredCharacteristic=NO;
     if ( [service.UUID isEqual:[CBUUID UUIDWithString:self.UUIDStr]] )
     {
         for (CBCharacteristic *aChar in service.characteristics)
@@ -234,15 +234,22 @@ didFailToConnectPeripheral:(CBPeripheral *)aPeripheral
             if ([aChar.UUID isEqual:[CBUUID UUIDWithString:USER_NAME_CHARACTRISTIC_UUID]])
             {
                 [aPeripheral readValueForCharacteristic:aChar];
+                hasPreferredCharacteristic=TRUE;
                 DNSLog(@"Found AnonyFollow username characteristic");
             }
         }
+    }
+    if(!hasPreferredCharacteristic){
+        DNSLog(@"Connected Periphel does NOT has preferred Serivices %@",USER_NAME_CHARACTRISTIC_UUID);
+        [self.manager cancelPeripheralConnection:self.peripheral];
     }
 }
 
 - (void) peripheral:(CBPeripheral *)aPeripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
-    /* Anony Follow */
+    DNSLogMethod
+    [self.manager cancelPeripheralConnection:self.peripheral];
+    /* USER_NAME_CHARACTRISTIC_UUID */
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:USER_NAME_CHARACTRISTIC_UUID]])
     {
         NSData * updatedValue = characteristic.value;
@@ -251,7 +258,6 @@ didFailToConnectPeripheral:(CBPeripheral *)aPeripheral
             NSString *userName = [NSString stringWithAnonyFollowEncodedData:updatedValue key:KEY_ANONYFOLLOW	];
             userName = [userName stringByReplacingOccurrencesOfString:@" " withString:@""];
             
-            [self.manager cancelPeripheralConnection:self.peripheral];
             if ([userName length]) {
                 DNSLog(@"Peer discovered (with connection) UUID:%@,userName:%@", aPeripheral.UUID, userName);
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
