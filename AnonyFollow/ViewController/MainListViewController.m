@@ -94,15 +94,6 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 			
 			if (account == nil) {
 				// can't access twitter account
-				
-				
-				NSArray *visibleCells = [self.tableView visibleCells];
-				for (AccountCell *cell in visibleCells) {
-					if ([cell.accountInfo.screenName isEqualToString:userName]) {
-						[cell stopLoading];
-					}
-				}
-				
 				return;
 			}
 			
@@ -117,14 +108,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 			[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
 				if ([urlResponse statusCode] == 403 ||  [urlResponse statusCode] == 200) {
 					dispatch_async(dispatch_get_main_queue(), ^(void){
-						
-						NSArray *visibleCells = [self.tableView visibleCells];
-						for (AccountCell *cell in visibleCells) {
-							if ([cell.accountInfo.screenName isEqualToString:userName]) {
-								[cell stopLoading];
-							}
-						}
-//						[self removeUserNameFromListWithUserName:userName];
+						[self removeUserNameFromListWithUserName:userName];
 					});
 				}
 				else {
@@ -132,13 +116,6 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 					DNSLog(@"%@", [error localizedDescription]);
 					DNSLog(@"Error?");
 					dispatch_async(dispatch_get_main_queue(), ^(void){
-						
-						NSArray *visibleCells = [self.tableView visibleCells];
-						for (AccountCell *cell in visibleCells) {
-							if ([cell.accountInfo.screenName isEqualToString:userName]) {
-								[cell stopLoading];
-							}
-						}
 						UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
 																			message:[error localizedDescription]
 																		   delegate:nil
@@ -151,15 +128,6 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
         }
 		else {
 			// unknown error
-			dispatch_async(dispatch_get_main_queue(), ^(void){
-				
-				NSArray *visibleCells = [self.tableView visibleCells];
-				for (AccountCell *cell in visibleCells) {
-					if ([cell.accountInfo.screenName isEqualToString:userName]) {
-						[cell stopLoading];
-					}
-				}
-			});
 		}
     }];
 }
@@ -198,18 +166,18 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	DNSLogMethod
 	DNSLog(@"%@", notification);
 	self.lockScreenView.hidden = YES;
-	[self.scanner stopScan];
-	self.scanner = nil;
-	self.segmentedControl.selectedSegmentIndex = 0;
-	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+	//[self.scanner stopScan];
+	//self.scanner = nil;
+	//self.segmentedControl.selectedSegmentIndex = 0;
+	//[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 }
 
 - (void)didEnterBackground:(NSNotification*)notification {
 	DNSLogMethod
 	
-	[self.advertizer stopAdvertize];
-	self.advertizer = nil;
-	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+	//[self.advertizer stopAdvertize];
+	//self.advertizer = nil;
+	//[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 	
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowBackgroundScanEnabled]) {
 	}
@@ -402,18 +370,8 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 
 - (IBAction)follow:(id)sender {
 	DNSLogMethod
-	
-	NSArray *visibleCells = [self.tableView visibleCells];
-	
 	UIButton *button = sender;
 	TwitterAccountInfo *info = [self.accounts objectAtIndex:button.tag];
-	
-	for (AccountCell *cell in visibleCells) {
-		if (cell.accountInfo == info) {
-			[cell startLoading];
-		}
-	}
-	
 	[self followOnTwitter:info.screenName];
 }
 

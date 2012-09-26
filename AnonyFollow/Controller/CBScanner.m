@@ -73,7 +73,8 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
     NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:CBCentralManagerScanOptionAllowDuplicatesKey]; 
 #endif
 
-    if(self.UUIDStr != nil)
+    if(1)
+    //if(self.UUIDStr != nil)
 		[self.manager scanForPeripheralsWithServices:[NSArray arrayWithObjects:[CBUUID UUIDWithString:self.UUIDStr], nil] options:options];
     else
 		[self.manager scanForPeripheralsWithServices:nil options:options];
@@ -108,30 +109,160 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
 				   RSSI:(NSNumber *)RSSI {
 	DNSLogMethod
     NSMutableArray *services = [advertisementData objectForKey:CBAdvertisementDataServiceUUIDsKey];
+    NSMutableArray *hashedServices = [advertisementData objectForKey:CBAdvertisementDataOverflowServiceUUIDsKey];
     NSMutableData *encodedData=[NSMutableData dataWithCapacity:ENCODED_UNAME_LEN];
+    CBUUID *hashedPrimalyServiceUUID=[hashedServices objectAtIndex:0];
+    if(aPeripheral.UUID!=nil){
+        DNSLog(@"Break");
+
+    }
     if([services count]!=(ENCODED_UNAME_LEN/2)+1){
-        return;
+        if(hashedPrimalyServiceUUID && [hashedPrimalyServiceUUID isEqual:[CBUUID UUIDWithString:self.UUIDStr]]){
+            DNSLog(@"Peer discovered but maybe in Backgroud:%@,aPeripheral.UUID:%@",advertisementData,aPeripheral.UUID);
+            self.peripheral=aPeripheral;
+            //[self.manager retrievePeripherals:[NSArray arrayWithObject:(__bridge id)aPeripheral.UUID]];
+            [self.manager connectPeripheral:self.peripheral options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
+        }
+    }else{
+        /* Peripheral may be in foreground */
+        /* first byte should be self.UUIDStr */
+        [services removeObjectAtIndex:0];
+        
+        for (CBUUID *uuid in services) {
+            uint8_t _data[2];
+            [uuid.data getBytes:_data];
+            [encodedData appendBytes:_data length:2];
+        }
+        NSString *userName = [NSString stringWithAnonyFollowEncodedData:encodedData key:KEY_ANONYFOLLOW	];
+        userName = [userName stringByReplacingOccurrencesOfString:@" " withString:@""];
+        
+        if ([userName length]) {
+            DNSLog(@"Peer discovered RSSI:%@ UUID:%@,userName:%@",RSSI, aPeripheral.UUID, userName);
+            NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                      userName, kCBScannerInfoUserNameKey,
+                                      RSSI,     kCBScannerInfoUserRSSIKey,
+                                      nil];
+            
+            if ([self.delegate respondsToSelector:@selector(scanner:didDiscoverUser:)])
+                [self.delegate scanner:self didDiscoverUser:userInfo];
+        }
     }
-    /* first byte should be self.UUIDStr */
-    [services removeObjectAtIndex:0];
-    
-    for (CBUUID *uuid in services) {
-        uint8_t _data[2];
-        [uuid.data getBytes:_data];
-        [encodedData appendBytes:_data length:2];
+}
+/*
+ Invoked when the central manager retrieves the list of known peripherals.
+ Automatically connect to first known peripheral
+ */
+- (void) centralManager:(CBCentralManager *)central
+ didRetrievePeripherals:(NSArray *)peripherals
+{
+    DNSLogMethod
+    CBPeripheral *firstPeripheral=[peripherals objectAtIndex:0];
+    DNSLog(@"Retrieved peripheral: %u,%@,%@,%@", [peripherals count], peripherals,firstPeripheral.description,firstPeripheral.UUID);
+    /* If there are any known devices, automatically connect to it.*/
+    if(firstPeripheral){
+        self.peripheral = [peripherals objectAtIndex:0];
+        [self.manager connectPeripheral:self.peripheral options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
     }
-    NSString *userName = [NSString stringWithAnonyFollowEncodedData:encodedData key:KEY_ANONYFOLLOW	];
-    userName = [userName stringByReplacingOccurrencesOfString:@" " withString:@""];
+}
+/*
+ Invoked whenever a connection is succesfully created with the peripheral.
+ Discover available services on the peripheral
+ */
+- (void) centralManager:(CBCentralManager *)central
+   didConnectPeripheral:(CBPeripheral *)aPeripheral
+{
+    DNSLogMethod
+    [aPeripheral setDelegate:self];
+    [aPeripheral discoverServices:[NSArray arrayWithObject:[CBUUID UUIDWithString:self.UUIDStr]]];
     
-	if ([userName length]) {
-        DNSLog(@"Peer discovered RSSI:%@ UUID:%@,userName:%@",RSSI, aPeripheral.UUID, userName);
-		NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-								  userName, kCBScannerInfoUserNameKey,
-                                  RSSI,     kCBScannerInfoUserRSSIKey,
-								  nil];
-		
-		if ([self.delegate respondsToSelector:@selector(scanner:didDiscoverUser:)])
-			[self.delegate scanner:self didDiscoverUser:userInfo];
-	}
+}
+
+
+/*
+ Invoked whenever an existing connection with the peripheral is torn down.
+ Reset local variables
+ */
+- (void) centralManager:(CBCentralManager *)central
+didDisconnectPeripheral:(CBPeripheral *)aPeripheral
+                  error:(NSError *)error
+{
+    DNSLogMethod
+}
+
+/*
+ Invoked whenever the central manager fails to create a connection with the peripheral.
+ */
+- (void) centralManager:(CBCentralManager *)central
+didFailToConnectPeripheral:(CBPeripheral *)aPeripheral
+                  error:(NSError *)error
+{
+    DNSLog(@"Fail to connect to peripheral: %@ with error = %@", aPeripheral, [error localizedDescription]);
+}
+
+#pragma mark - CBPeripheral delegate methods
+/*
+ Invoked upon completion of a -[discoverServices:] request.
+ Discover available characteristics on interested services
+ */
+- (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverServices:(NSError *)error
+{
+    DNSLogMethod
+    for (CBService *aService in aPeripheral.services)
+    {
+        DNSLog(@"Service found with UUID: %@", aService.UUID);
+        
+        if ([aService.UUID isEqual:[CBUUID UUIDWithString:self.UUIDStr]])
+        {
+            [aPeripheral discoverCharacteristics:[NSArray arrayWithObject:[CBUUID UUIDWithString:USER_NAME_CHARACTRISTIC_UUID]] forService:aService];
+            DNSLog(@"found PRIMALY_SERVICE_UUID");
+        }
+    }
+}
+
+/*
+ Invoked upon completion of a -[discoverCharacteristics:forService:] request.
+ Perform appropriate operations on interested characteristics
+ */
+- (void) peripheral:(CBPeripheral *)aPeripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
+{
+    DNSLogMethod
+    if ( [service.UUID isEqual:[CBUUID UUIDWithString:self.UUIDStr]] )
+    {
+        for (CBCharacteristic *aChar in service.characteristics)
+        {
+            /* Read device name */
+            if ([aChar.UUID isEqual:[CBUUID UUIDWithString:USER_NAME_CHARACTRISTIC_UUID]])
+            {
+                [aPeripheral readValueForCharacteristic:aChar];
+                DNSLog(@"Found AnonyFollow username characteristic");
+            }
+        }
+    }
+}
+
+- (void) peripheral:(CBPeripheral *)aPeripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
+{
+    /* Anony Follow */
+    if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:USER_NAME_CHARACTRISTIC_UUID]])
+    {
+        NSData * updatedValue = characteristic.value;
+        if([updatedValue length]==ENCODED_UNAME_LEN)
+        {
+            NSString *userName = [NSString stringWithAnonyFollowEncodedData:updatedValue key:KEY_ANONYFOLLOW	];
+            userName = [userName stringByReplacingOccurrencesOfString:@" " withString:@""];
+            
+            [self.manager cancelPeripheralConnection:self.peripheral];
+            if ([userName length]) {
+                DNSLog(@"Peer discovered (with connection) UUID:%@,userName:%@", aPeripheral.UUID, userName);
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                          userName, kCBScannerInfoUserNameKey,
+                                          nil];
+                
+                if ([self.delegate respondsToSelector:@selector(scanner:didDiscoverUser:)])
+                    [self.delegate scanner:self didDiscoverUser:userInfo];
+            }
+        }
+        
+    }
 }
 @end

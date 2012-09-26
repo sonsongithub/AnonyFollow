@@ -64,7 +64,7 @@
 }
 
 - (void)didEnterBackgroundNotification:(NSNotification*)notification {
-	[self stopAdvertize];
+	//[self stopAdvertize];
     DNSLogMethod
 }
 
@@ -72,7 +72,6 @@
     if ([self isAvailable]) {
 		CBUUID* primaly_service_UUID=[CBUUID UUIDWithString:self.UUIDStr];
 		CBMutableService *services=[[CBMutableService alloc] initWithType:primaly_service_UUID primary:YES];        
-		[self.manager addService:services];
 
         uint8_t encodedCData[ENCODED_UNAME_LEN];
         NSData *encodedData = [self.userName dataAnonyFollowEncodedWithKey:KEY_ANONYFOLLOW];
@@ -88,6 +87,19 @@
 							  UUIDsArray,			CBAdvertisementDataServiceUUIDsKey,
                               @"",                  CBAdvertisementDataLocalNameKey,
 							  nil];
+        
+        
+        
+        CBMutableCharacteristic *user_name_characteristics=
+        [[CBMutableCharacteristic alloc]initWithType:[CBUUID UUIDWithString:USER_NAME_CHARACTRISTIC_UUID]
+                                          properties:CBCharacteristicPropertyRead value:encodedData
+                                         permissions:CBAttributePermissionsReadable];
+
+        
+        NSArray *c_a=[NSArray arrayWithObjects:user_name_characteristics,nil];
+        [services setCharacteristics:c_a];
+        [self.manager addService:services];
+
 		[self.manager startAdvertising:adDict];
         DNSLog(@"startAdvertize %d,%d,%@,%s",[encodedData length],[self.userName length],self.userName,encodedCData);
     }

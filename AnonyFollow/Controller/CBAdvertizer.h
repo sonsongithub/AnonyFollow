@@ -12,6 +12,8 @@
 // NOTE:make shure ENCODED_UNAME_LEN can be devided by 2 and smaller than 28
 #define ENCODED_UNAME_LEN (16)
 #define UNAME_MAX_LEN     (15)
+#define USER_NAME_CHARACTRISTIC_UUID     @"fff1"
+
 
 typedef NS_ENUM(NSInteger, CBAdvertizerState) {
 	CBAdvertizerStateUnknown = 0,
