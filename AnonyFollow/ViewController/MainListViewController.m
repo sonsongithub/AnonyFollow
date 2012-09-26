@@ -84,7 +84,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	[self updateTrashButton];
 }
 
-- (void)followOnTwitter:(NSString*)userName {
+- (void)followOnTwitter:(NSString*)screenName {
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     
@@ -94,11 +94,14 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 			
 			if (account == nil) {
 				// can't access twitter account
+				dispatch_async(dispatch_get_main_queue(), ^(void){
+					[self stopLoadingAnimationWithScreenName:screenName];
+				});
 				return;
 			}
 			
 			NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
-			[tempDict setValue:userName forKey:@"screen_name"];
+			[tempDict setValue:screenName forKey:@"screen_name"];
 			
 			SLRequest *postRequest;
 			[tempDict setValue:@"true" forKey:@"follow"];
@@ -108,7 +111,8 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 			[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
 				if ([urlResponse statusCode] == 403 ||  [urlResponse statusCode] == 200) {
 					dispatch_async(dispatch_get_main_queue(), ^(void){
-						[self removeUserNameFromListWithUserName:userName];
+						[self removeUserNameFromListWithUserName:screenName];
+						[self stopLoadingAnimationWithScreenName:screenName];
 					});
 				}
 				else {
@@ -116,6 +120,8 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 					DNSLog(@"%@", [error localizedDescription]);
 					DNSLog(@"Error?");
 					dispatch_async(dispatch_get_main_queue(), ^(void){
+						
+						[self stopLoadingAnimationWithScreenName:screenName];
 						UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
 																			message:[error localizedDescription]
 																		   delegate:nil
@@ -128,6 +134,9 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
         }
 		else {
 			// unknown error
+			dispatch_async(dispatch_get_main_queue(), ^(void){
+				[self stopLoadingAnimationWithScreenName:screenName];
+			});
 		}
     }];
 }
@@ -153,6 +162,15 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 - (void)updateTrashButton {
 	self.trashButton.enabled = ([self.accounts count] > 0);
 	[self.navigationController setToolbarItems:self.navigationController.toolbarItems];
+}
+
+- (void)stopLoadingAnimationWithScreenName:(NSString*)screenName {
+	NSArray *visibleCells = [self.tableView visibleCells];
+	for (AccountCell *cell in visibleCells) {
+		if ([cell.accountInfo.screenName isEqualToString:screenName]) {
+			[cell stopLoading];
+		}
+	}
 }
 
 #pragma mark - NSNotification
@@ -372,6 +390,16 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	DNSLogMethod
 	UIButton *button = sender;
 	TwitterAccountInfo *info = [self.accounts objectAtIndex:button.tag];
+	
+	// try to start loading
+	NSArray *visibleCells = [self.tableView visibleCells];
+	for (AccountCell *cell in visibleCells) {
+		if ([cell.accountInfo.screenName isEqualToString:info.screenName]) {
+			[cell startLoading];
+		}
+	}
+	
+	// try to follow him
 	[self followOnTwitter:info.screenName];
 }
 

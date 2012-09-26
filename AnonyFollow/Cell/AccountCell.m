@@ -55,14 +55,15 @@ NSString *AccountCellUpdateNotification = @"AccountCellUpdateNotification";
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
-	self.indicatorView.hidden = YES;
-	self.ribbonImageView.hidden = YES;
 	[self prepareForReuse];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(update:) name:AccountCellUpdateNotification object:nil];
 }
 
 - (void)prepareForReuse {
 	[super prepareForReuse];
+	
+	self.indicatorView.hidden = YES;
+	self.ribbonImageView.hidden = YES;
 	
 	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
 	self.followButton.hidden = !(del.checker.status == SNReachablityCheckerReachableViaWiFi || del.checker.status == SNReachablityCheckerReachableViaWWAN);
@@ -82,10 +83,7 @@ NSString *AccountCellUpdateNotification = @"AccountCellUpdateNotification";
     // Configure the view for the selected state
 }
 
-
-- (void)setEditing:(BOOL)editing {
-	[super setEditing:editing];
-	
+- (void)controlFollowButtonApperanceWithEditing:(BOOL)editing {
 	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
 	if (del.checker.status == SNReachablityCheckerReachableViaWiFi || del.checker.status == SNReachablityCheckerReachableViaWWAN) {
 		self.followButton.hidden = editing;
@@ -94,15 +92,31 @@ NSString *AccountCellUpdateNotification = @"AccountCellUpdateNotification";
 		self.followButton.hidden = YES;
 }
 
+- (void)setEditing:(BOOL)editing {
+	// always can't set edit mode while following
+	if (!self.indicatorView.hidden) {
+		[super setEditing:NO];
+		return;
+	}
+	
+	// set mode
+	[super setEditing:editing];
+	
+	[self controlFollowButtonApperanceWithEditing:editing];
+}
+
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+	
+	// always can't set edit mode while following
+	if (!self.indicatorView.hidden) {
+		[super setEditing:NO animated:animated];
+		return;
+	}
+	
+	// set mode
 	[super setEditing:editing animated:animated];
 	
-	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-	if (del.checker.status == SNReachablityCheckerReachableViaWiFi || del.checker.status == SNReachablityCheckerReachableViaWWAN) {
-		self.followButton.hidden = editing;
-	}
-	else
-		self.followButton.hidden = YES;
+	[self controlFollowButtonApperanceWithEditing:editing];
 }
 
 @end
