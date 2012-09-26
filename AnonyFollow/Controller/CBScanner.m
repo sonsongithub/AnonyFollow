@@ -121,7 +121,8 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
         if(hashedPrimalyServiceUUID && [hashedPrimalyServiceUUID isEqual:[CBUUID UUIDWithString:self.UUIDStr]]){
             DNSLog(@"Peer discovered but maybe in Backgroud:%@,aPeripheral.UUID:%@",advertisementData,aPeripheral.UUID);
             self.peripheral=aPeripheral;
-            [self.manager retrievePeripherals:[NSArray arrayWithObject:(__bridge id)aPeripheral.UUID]];
+            [self.manager connectPeripheral:self.peripheral options:nil];
+            //[self.manager retrievePeripherals:[NSArray arrayWithObject:(__bridge id)aPeripheral.UUID]];
         }
     }else{
         /* first byte should be self.UUIDStr */
