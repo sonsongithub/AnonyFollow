@@ -17,7 +17,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBH-eh-NIs">
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="warning.png" translatesAutoresizingMaskIntoConstraints="NO" id="bHy-ag-yRi"/>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="設定アプリで，Bluetoothをオンにし，Twitterのアカウントにアクセスできるようにしてください。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="H0k-rX-Xb7">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="設定アプリで，Bluetoothをオンにし、Twitterのアカウントにアクセスできるようにしてください。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="H0k-rX-Xb7">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="68" id="kpn-rH-37T"/>
                                                 </constraints>
@@ -647,7 +647,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="周囲で交換している人の通知を&quot;バックグラウンド&quot;で受け取ることができますが，バッテリの減りが速くなる可能性があります．" id="O0e-CL-FB5">
+                            <tableViewSection footerTitle="&quot;バックグラウンド&quot;をオンにすると「すれちがい通信」のように常にアカウントを交換するようになります。不用意に自分のアカウントを公開しないように注意してください。" id="O0e-CL-FB5">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gKE-xC-mZ4">
                                         <rect key="frame" x="0.0" y="244" width="320" height="46"/>
@@ -685,7 +685,7 @@
                             <tableViewSection headerTitle="デバッグ" footerTitle="" id="Au7-C0-ztQ">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="u05-Ij-zrB">
-                                        <rect key="frame" x="0.0" y="424" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="443" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -716,7 +716,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wa4-JX-6QA">
-                                        <rect key="frame" x="0.0" y="469" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="488" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
