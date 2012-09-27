@@ -43,8 +43,8 @@
 			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
 																message:NSLocalizedString(@"Confirm anonymous communication", nil)
 															   delegate:self
-													  cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-													  otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+													  cancelButtonTitle:NSLocalizedString(@"Disable", nil)
+													  otherButtonTitles:NSLocalizedString(@"Enable", nil), nil];
 			[alertView show];
 		}
 	}
