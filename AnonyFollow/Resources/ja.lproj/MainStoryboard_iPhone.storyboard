@@ -647,7 +647,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="&quot;バックグラウンド&quot;モード（すれちがい通信）は、バックグラウンド時にBluetoothデバイスにアクセスします。設定アプリの「プライバシー」の「Bluetooth共有」をオンにしてください。" id="O0e-CL-FB5">
+                            <tableViewSection footerTitle="&quot;バックグラウンド&quot;モード（すれちがい通信）は、Bluetoothデバイスにアクセスします。設定アプリの「プライバシー」の「Bluetooth共有」をオンにしてください。" id="O0e-CL-FB5">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gKE-xC-mZ4">
                                         <rect key="frame" x="0.0" y="244" width="320" height="46"/>
