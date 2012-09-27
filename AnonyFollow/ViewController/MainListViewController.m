@@ -39,6 +39,8 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 
 #pragma mark - Instance method
 
+#pragma mark - Applicatoin badge control
+
 - (void)incrementBadge {
     UIApplication* app = [UIApplication sharedApplication];
     [UIApplication sharedApplication].applicationIconBadgeNumber = app.applicationIconBadgeNumber+1;
@@ -47,6 +49,8 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 - (void)resetBadge {
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
+
+#pragma mark - Bluetooth controller management
 
 - (void)enableBroadcasting {
 	[self performBlockAfterRequestingTwitterAccout:^(NSString *twitterUserName, ACAccountStore *accountStore) {		
@@ -57,31 +61,59 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	}];
 }
 
-- (void)removeUserNameFromListWithUserName:(NSString*)userName {
-	//
-	NSMutableArray *indexPathToDeDeleted = [NSMutableArray array];
+- (void)stopBoardcasting {
+	// stop and release advertiser
+	[self.advertizer stopAdvertize];
+	self.advertizer.delegate = nil;
+	self.advertizer = nil;
 	
-	DNSLog(@"Maybe, OK");
-	for (int i = [self.accounts count] - 1; i >= 0 ; i--) {
-		if (i < [self.accounts count]) {
-			TwitterAccountInfo *info = [self.accounts objectAtIndex:i];
-			if ([info.screenName isEqualToString:userName]) {
-				[indexPathToDeDeleted addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-				[self.accounts removeObjectAtIndex:i];
-				
+	// stop and release scanner
+	[self.scanner stopScan];
+	self.scanner.delegate = nil;
+	self.scanner = nil;
+	
+	// recover UI
+	self.segmentedControl.selectedSegmentIndex = 0;
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+}
+
+#pragma mark - Twitter controller
+
+- (void)performBlockAfterRequestingTwitterAccout:(AfterBlocks)blocks {
+	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+	
+	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+		if (error) {
+			NSLog(@"%@", [error localizedDescription]);
+		}
+		if (granted) {
+			NSString *twitterUserName = [accountStore twitterAvailableUserName];
+			if ([twitterUserName length]) {
+				dispatch_async(dispatch_get_main_queue(), ^(void) {
+					blocks(twitterUserName, accountStore);
+				});
+			}
+			else {
+				DNSLog(@"No Twitter Account");
+				dispatch_async(dispatch_get_main_queue(), ^(void) {
+					self.lockScreenView.hidden = NO;
+					[self showAlertTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Plesase setup or authorize twitter account via Setting.app.", nil)];
+					[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"No account", nil)];
+					self.segmentedControl.selectedSegmentIndex = 0;
+				});
 			}
 		}
-	}
-	
-	if ([indexPathToDeDeleted count]) {
-		[self.tableView deleteRowsAtIndexPaths:indexPathToDeDeleted withRowAnimation:UITableViewRowAnimationLeft];
-		for (AccountCell *cell in [self.tableView visibleCells]) {
-			NSIndexPath *path = [self.tableView indexPathForCell:cell];
-			cell.followButton.tag = path.row;
+		else {
+			DNSLog(@"accountStore accesss denied");
+			dispatch_async(dispatch_get_main_queue(), ^(void) {
+				self.lockScreenView.hidden = NO;
+				[self showAlertTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Plesase setup or authorize twitter account via Setting.app.", nil)];
+				[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"Not authorized", nil)];
+				self.segmentedControl.selectedSegmentIndex = 0;
+			});
 		}
-	}
-	
-	[self updateTrashButton];
+	}];
 }
 
 - (void)followOnTwitter:(NSString*)screenName {
@@ -122,12 +154,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 					dispatch_async(dispatch_get_main_queue(), ^(void){
 						
 						[self stopLoadingAnimationWithScreenName:screenName];
-						UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
-																			message:[error localizedDescription]
-																		   delegate:nil
-																  cancelButtonTitle:nil
-																  otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
-						[alertView show];
+						[self showAlertTitle:NSLocalizedString(@"Error", nil) message:[error localizedDescription]];
 					});
 				}
 			}];
@@ -141,23 +168,29 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
     }];
 }
 
+#pragma mark - Post local notification on Background
+
 - (void)notifyRecevingOnBackgroundWithUserName:(NSString*)username {
 	UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-	NSString *message = [NSString stringWithFormat:NSLocalizedString(@"%@ is boardcasting", nil), username];
+	NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), username];
 	localNotif.alertBody = message;
-	localNotif.alertAction = NSLocalizedString(@"Exhange", nil);
+	localNotif.alertAction = NSLocalizedString(@"Open", nil);
 	localNotif.soundName = UILocalNotificationDefaultSoundName;
 	[[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
 }
 
-- (void)showAlertMessage:(NSString*)message {
-	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+#pragma mark - Simple messaging with UIAlertView
+
+- (void)showAlertTitle:(NSString*)title message:(NSString*)message {
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
 														message:message
 													   delegate:nil
 											  cancelButtonTitle:nil
 											  otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
 	[alertView show];
 }
+
+#pragma mark - UI management
 
 - (void)updateTrashButton {
 	self.trashButton.enabled = ([self.accounts count] > 0);
@@ -173,6 +206,40 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	}
 }
 
+- (void)removeUserNameFromListWithUserName:(NSString*)userName {
+	// remove twitter account from list
+	// and create list of cells to be removed
+	NSMutableArray *indexPathToDeDeleted = [NSMutableArray array];
+	for (int i = [self.accounts count] - 1; i >= 0 ; i--) {
+		if (i < [self.accounts count]) {
+			TwitterAccountInfo *info = [self.accounts objectAtIndex:i];
+			if ([info.screenName isEqualToString:userName]) {
+				[indexPathToDeDeleted addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+				[self.accounts removeObjectAtIndex:i];
+				
+			}
+		}
+	}
+	
+	// remove cells
+	if ([indexPathToDeDeleted count]) {
+		[self.tableView deleteRowsAtIndexPaths:indexPathToDeDeleted withRowAnimation:UITableViewRowAnimationLeft];
+		for (AccountCell *cell in [self.tableView visibleCells]) {
+			NSIndexPath *path = [self.tableView indexPathForCell:cell];
+			cell.followButton.tag = path.row;
+		}
+	}
+	
+	// update trash button
+	[self updateTrashButton];
+}
+
+- (void)updateAccountButtonMessage {
+	[self performBlockAfterRequestingTwitterAccout:^(NSString *twitterUserName, ACAccountStore *accountStore) {
+		[self.twitterAccountButton setTwitterAccountUserName:twitterUserName];
+	}];
+}
+
 #pragma mark - NSNotification
 
 - (void)didFollowUser:(NSNotification*)notification {
@@ -182,21 +249,20 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 
 - (void)willEnterForeground:(NSNotification*)notification {
 	DNSLogMethod
-	DNSLog(@"%@", notification);
 	self.lockScreenView.hidden = YES;
 	
+	// Reset application badge whicn means how many times you exchanged accounts.
 	[self resetBadge];
 	
+	// Add account information to the main list
 	if (self.scanner != nil && [[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowBackgroundScanEnabled]) {
 		// go back from background process
 		for (NSString *screenName in [self.screenNamesCollectedOnBackground reverseObjectEnumerator]) {
-			
 #ifdef _DEBUG
 			[self debugAddUserNameOnForeground:screenName];
 #else
 			[self addUserNameOnForeground:screenName];
 #endif
-			
 			[self.screenNamesCollectedOnBackground removeObject:screenName];
 		}
 	}
@@ -206,15 +272,14 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	DNSLogMethod
 		
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowBackgroundScanEnabled]) {
+		// background mode
 	}
 	else {
-		[self.advertizer stopAdvertize];
-		self.advertizer = nil;
-		[self.scanner stopScan];
-		self.scanner = nil;
-		self.segmentedControl.selectedSegmentIndex = 0;
-		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+		// stop all controllers when no background mode
+		[self stopBoardcasting];
 	}
+	
+	// clear download queue
 	[[DownloadQueue sharedInstance] clearQueue];
 }
 
@@ -247,49 +312,6 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 }
 
 #pragma mark - UIViewController life cycle
-
-- (void)updateAccountButtonMessage {
-	[self performBlockAfterRequestingTwitterAccout:^(NSString *twitterUserName, ACAccountStore *accountStore) {
-		[self.twitterAccountButton setTwitterAccountUserName:twitterUserName];
-	}];
-}
-
-- (void)performBlockAfterRequestingTwitterAccout:(AfterBlocks)blocks {
-	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-	
-	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-		if (error) {
-			NSLog(@"%@", [error localizedDescription]);
-		}
-		if (granted) {
-			NSString *twitterUserName = [accountStore twitterAvailableUserName];
-			if ([twitterUserName length]) {
-				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					blocks(twitterUserName, accountStore);
-				});
-			}
-			else {
-				DNSLog(@"No Twitter Account");
-				dispatch_async(dispatch_get_main_queue(), ^(void) {
-					self.lockScreenView.hidden = NO;
-					[self showAlertMessage:NSLocalizedString(@"Plesase setup or authorize twitter account via Setting.app.", nil)];
-					[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"No account", nil)];
-					self.segmentedControl.selectedSegmentIndex = 0;
-				});
-			}
-		}
-		else {
-			DNSLog(@"accountStore accesss denied");
-			dispatch_async(dispatch_get_main_queue(), ^(void) {
-				self.lockScreenView.hidden = NO;
-				[self showAlertMessage:NSLocalizedString(@"Plesase setup or authorize twitter account via Setting.app.", nil)];
-				[self.twitterAccountButton setTwitterAccountUserName:NSLocalizedString(@"Not authorized", nil)];
-				self.segmentedControl.selectedSegmentIndex = 0;
-			});
-		}
-	}];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -339,12 +361,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 		vc.accountInfo = [self.accounts objectAtIndex:indexPath.row];
 	}
 	if ([segue.identifier isEqualToString:@"ToSettingViewController"]) {
-		[self.scanner stopScan];
-		self.scanner = nil;
-		[self.advertizer stopAdvertize];
-		self.advertizer = nil;
-		self.segmentedControl.selectedSegmentIndex = 0;
-		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+		[self stopBoardcasting];
 	}
 }
 
@@ -384,12 +401,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	DNSLogMethod
 	
 	[self performBlockAfterRequestingTwitterAccout:^(NSString *twitterUserName, ACAccountStore *accountStore) {
-		[self.scanner stopScan];
-		self.scanner = nil;
-		[self.advertizer stopAdvertize];
-		self.advertizer = nil;
-		self.segmentedControl.selectedSegmentIndex = 0;
-		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+		[self stopBoardcasting];
 
 		UINavigationController *nv = [self.storyboard instantiateViewControllerWithIdentifier:@"SelectAccountNavigationController"];
 		AccountSelectViewController *vc = (AccountSelectViewController*)nv.topViewController;
@@ -411,6 +423,8 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 - (IBAction)follow:(id)sender {
 	DNSLogMethod
 	UIButton *button = sender;
+	
+	// get selected account information
 	TwitterAccountInfo *info = [self.accounts objectAtIndex:button.tag];
 	
 	// try to start loading
@@ -428,11 +442,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 - (IBAction)select:(id)sender {
 	UISegmentedControl *control = self.segmentedControl;
 	if (control.selectedSegmentIndex == 0) {
-		[self.scanner stopScan];
-		self.scanner = nil;
-		[self.advertizer stopAdvertize];
-		self.advertizer = nil;
-		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+		[self stopBoardcasting];
 	}
 	if (control.selectedSegmentIndex == 1) {
 		[self enableBroadcasting];
@@ -605,11 +615,19 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 - (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
 	NSString *screenName = [userInfo objectForKey:kCBScannerInfoUserNameKey];
 	if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+		// check already added it into cache list
+		for (NSString* savedScreenName in self.screenNamesCollectedOnBackground) {
+			if ([screenName isEqualToString:savedScreenName])
+				return;
+		}
+		
+		// add screen name cache
 		[self.screenNamesCollectedOnBackground addObject:screenName];
 		
 		// post local notification
 		[self notifyRecevingOnBackgroundWithUserName:screenName];
 		
+		// increment number of badge
 		[self incrementBadge];
 	}
 	else {
@@ -624,7 +642,9 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 - (void)scannerDidChangeStatus:(CBScanner*)scanner {
 	DNSLogMethod
 	if ([self.scanner isAvailable]) {
+		// start scanning and advertising via Bluetooth
 		if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowBackgroundScanEnabled]) {
+			// background mode
 			self.lockScreenView.hidden = YES;
 			AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
 			[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
@@ -632,6 +652,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 			[del.barView setMessage:NSLocalizedString(@"Background broadcasting...", nil)];
 		}
 		else {
+			// normal mode
 			self.lockScreenView.hidden = YES;
 			AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
 			[[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
@@ -640,14 +661,9 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 		}
 	}
 	else {
+		// stop scanning and advertising via Bluetooth
 		self.lockScreenView.hidden = NO;
-		[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-		[self.scanner stopScan];
-		self.scanner.delegate = nil;
-		self.scanner = nil;
-		[self.advertizer stopAdvertize];
-		self.advertizer.delegate = nil;
-		self.advertizer = nil;
+		[self stopBoardcasting];
 	}
 }
 
