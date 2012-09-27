@@ -33,7 +33,7 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 #import <Social/Social.h>
 #import "NSBundle+AnonyFollow.h"
 
-typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
+typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 
 @implementation MainListViewController
 
@@ -471,21 +471,34 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 - (void)advertizerDidChangeStatus:(CBAdvertizer*)advertizer {
 }
 
+- (void)addScreenName:(NSString*)screenName {
+	if ([self doesMainListAlreadyInclude:screenName])
+		return;
+	
+	TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
+	info.screenName = screenName;
+	[self.accounts addObject:info];
+	[self updateTrashButton];
+	[self.tableView reloadData];
+	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
+}
+
 - (void)debugAddScreenNameOnForeground:(NSString*)screenName {
+	// for debugging
+	
+	// avoid redundancy?
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowRedundantUsers]) {
 		if ([self doesMainListAlreadyInclude:screenName])
 			return;
 	}
+	
+	// avoid already followed users?
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowFollowingUsers]) {
-		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
-		info.screenName = screenName;
-		[self.accounts addObject:info];
-		[self updateTrashButton];
-		[self.tableView reloadData];
-		AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-		[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
+		[self addScreenName:screenName];
 	}
 	else {
+		// normal
 		ACAccountStore *accountStore = [[ACAccountStore alloc] init];
 		ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 		[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
@@ -506,32 +519,18 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 				[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
 					if (error == nil) {
 						NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-						NSLog(@"%@", result);
 						if ([result isEqualToString:@"true"]) {
 							dispatch_async(dispatch_get_main_queue(), ^(void){
 								AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
 								[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), screenName]];
 							});
-						}
-						else if ([result isEqualToString:@"false"]) {
-							dispatch_async(dispatch_get_main_queue(), ^(void){
-								
-								if ([self doesMainListAlreadyInclude:screenName])
-									return;
-								
-								TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
-								info.screenName = screenName;
-								[self.accounts addObject:info];
-								[self updateTrashButton];
-								[self.tableView reloadData];
-								AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-								[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
-							});
-						}
-						else {
-							// error
+							return;
 						}
 					}
+					// when error happens or the acccount is not followed
+					dispatch_async(dispatch_get_main_queue(), ^(void){
+						[self addScreenName:screenName];
+					});
 				}];
 			}
 		}];
@@ -539,10 +538,10 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 }
 
 - (void)addScreenNameOnForeground:(NSString*)screenName {
-	for (TwitterAccountInfo *existing in self.accounts) {
-		if ([existing.screenName isEqualToString:screenName])
-			return;
-	}
+	// check already received?
+	if ([self doesMainListAlreadyInclude:screenName])
+		return;
+	
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
 	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
@@ -569,42 +568,13 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 							AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
 							[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), screenName]];
 						});
-					}
-					else if ([result isEqualToString:@"false"]) {
-						dispatch_async(dispatch_get_main_queue(), ^(void){
-							
-							if ([self doesMainListAlreadyInclude:screenName])
-								return;
-							
-							TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
-							info.screenName = screenName;
-							[self.accounts addObject:info];
-							[self updateTrashButton];
-							[self.tableView reloadData];
-							AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-							[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
-						});
-					}
-					else {
-						// exception
+						return;
 					}
 				}
-				else {
-					// can't access?
-					dispatch_async(dispatch_get_main_queue(), ^(void){
-						
-						if ([self doesMainListAlreadyInclude:screenName])
-							return;
-						
-						TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
-						info.screenName = screenName;
-						[self.accounts addObject:info];
-						[self updateTrashButton];
-						[self.tableView reloadData];
-						AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-						[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
-					});
-				}
+				// when error happens or the acccount is not followed
+				dispatch_async(dispatch_get_main_queue(), ^(void){
+					[self addScreenName:screenName];
+				});
 			}];
 		}
 	}];
@@ -615,6 +585,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 - (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
 	NSString *screenName = [userInfo objectForKey:kCBScannerInfoUserNameKey];
 	if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+		
 		// check already added it into cache list
 		for (NSString* savedScreenName in self.screenNamesCollectedOnBackground) {
 			if ([screenName isEqualToString:savedScreenName])
