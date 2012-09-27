@@ -259,7 +259,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 		// go back from background process
 		for (NSString *screenName in [self.screenNamesCollectedOnBackground reverseObjectEnumerator]) {
 #ifdef _DEBUG
-			[self debugAddUserNameOnForeground:screenName];
+			[self debugAddScreenNameOnForeground:screenName];
 #else
 			[self addUserNameOnForeground:screenName];
 #endif
@@ -463,21 +463,21 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 - (void)advertizerDidChangeStatus:(CBAdvertizer*)advertizer {
 }
 
-- (void)debugAddUserNameOnForeground:(NSString*)userName {
+- (void)debugAddScreenNameOnForeground:(NSString*)screenName {
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowRedundantUsers]) {
 		for (TwitterAccountInfo *existing in self.accounts) {
-			if ([existing.screenName isEqualToString:userName])
+			if ([existing.screenName isEqualToString:screenName])
 				return;
 		}
 	}
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowFollowingUsers]) {
 		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
-		info.screenName = userName;
+		info.screenName = screenName;
 		[self.accounts addObject:info];
 		[self updateTrashButton];
 		[self.tableView reloadData];
 		AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-		[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), userName]];
+		[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
 	}
 	else {
 		ACAccountStore *accountStore = [[ACAccountStore alloc] init];
@@ -493,7 +493,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 				
 				SLRequest *postRequest;
 				[tempDict setValue:account.username forKey:@"screen_name_a"];
-				[tempDict setValue:userName forKey:@"screen_name_b"];
+				[tempDict setValue:screenName forKey:@"screen_name_b"];
 				postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/exists.json"] parameters:tempDict];
 				
 				[postRequest setAccount:account];
@@ -504,24 +504,24 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 						if ([result isEqualToString:@"true"]) {
 							dispatch_async(dispatch_get_main_queue(), ^(void){
 								AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-								[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), userName]];
+								[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), screenName]];
 							});
 						}
 						else if ([result isEqualToString:@"false"]) {
 							dispatch_async(dispatch_get_main_queue(), ^(void){
 								
 								for (TwitterAccountInfo *existing in self.accounts) {
-									if ([existing.screenName isEqualToString:userName])
+									if ([existing.screenName isEqualToString:screenName])
 										return;
 								}
 								
 								TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
-								info.screenName = userName;
+								info.screenName = screenName;
 								[self.accounts addObject:info];
 								[self updateTrashButton];
 								[self.tableView reloadData];
 								AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-								[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), userName]];
+								[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
 							});
 						}
 						else {
@@ -534,9 +534,9 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	}
 }
 
-- (void)addUserNameOnForeground:(NSString*)userName {
+- (void)addScreenNameOnForeground:(NSString*)screenName {
 	for (TwitterAccountInfo *existing in self.accounts) {
-		if ([existing.screenName isEqualToString:userName])
+		if ([existing.screenName isEqualToString:screenName])
 			return;
 	}
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
@@ -552,7 +552,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 			
 			SLRequest *postRequest;
 			[tempDict setValue:account.username forKey:@"screen_name_a"];
-			[tempDict setValue:userName forKey:@"screen_name_b"];
+			[tempDict setValue:screenName forKey:@"screen_name_b"];
 			postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/exists.json"] parameters:tempDict];
 			
 			[postRequest setAccount:account];
@@ -563,24 +563,24 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 					if ([result isEqualToString:@"true"]) {
 						dispatch_async(dispatch_get_main_queue(), ^(void){
 							AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-							[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), userName]];
+							[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), screenName]];
 						});
 					}
 					else if ([result isEqualToString:@"false"]) {
 						dispatch_async(dispatch_get_main_queue(), ^(void){
 							
 							for (TwitterAccountInfo *existing in self.accounts) {
-								if ([existing.screenName isEqualToString:userName])
+								if ([existing.screenName isEqualToString:screenName])
 									return;
 							}
 							
 							TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
-							info.screenName = userName;
+							info.screenName = screenName;
 							[self.accounts addObject:info];
 							[self updateTrashButton];
 							[self.tableView reloadData];
 							AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-							[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), userName]];
+							[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
 						});
 					}
 					else {
@@ -592,17 +592,17 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 					dispatch_async(dispatch_get_main_queue(), ^(void){
 						
 						for (TwitterAccountInfo *existing in self.accounts) {
-							if ([existing.screenName isEqualToString:userName])
+							if ([existing.screenName isEqualToString:screenName])
 								return;
 						}
 						
 						TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
-						info.screenName = userName;
+						info.screenName = screenName;
 						[self.accounts addObject:info];
 						[self updateTrashButton];
 						[self.tableView reloadData];
 						AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-						[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), userName]];
+						[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
 					});
 				}
 			}];
@@ -632,7 +632,7 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 	}
 	else {
 #ifdef _DEBUG
-		[self debugAddUserNameOnForeground:screenName];
+		[self debugAddScreenNameOnForeground:screenName];
 #else
 		[self addUserNameOnForeground:screenName];
 #endif
