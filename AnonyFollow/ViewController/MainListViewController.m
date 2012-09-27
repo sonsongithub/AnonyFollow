@@ -269,7 +269,7 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 #ifdef _DEBUG
 			[self debugAddScreenNameOnForeground:screenName];
 #else
-			[self addUserNameOnForeground:screenName];
+			[self addScreenNameOnForeground:screenName];
 #endif
 			[self.screenNamesCollectedOnBackground removeObject:screenName];
 		}
@@ -608,7 +608,7 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 #ifdef _DEBUG
 		[self debugAddScreenNameOnForeground:screenName];
 #else
-		[self addUserNameOnForeground:screenName];
+		[self addScreenNameOnForeground:screenName];
 #endif
 	}
 }
