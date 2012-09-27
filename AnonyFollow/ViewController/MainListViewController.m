@@ -79,6 +79,14 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 
 #pragma mark - Twitter controller
 
+- (BOOL)doesMainListAlreadyInclude:(NSString*)screenName {
+	for (TwitterAccountInfo *existing in self.accounts) {
+		if ([existing.screenName isEqualToString:screenName])
+			return YES;
+	}
+	return NO;
+}
+
 - (void)performBlockAfterRequestingTwitterAccout:(AfterBlocks)blocks {
 	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
 	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
@@ -465,10 +473,8 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 
 - (void)debugAddScreenNameOnForeground:(NSString*)screenName {
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowRedundantUsers]) {
-		for (TwitterAccountInfo *existing in self.accounts) {
-			if ([existing.screenName isEqualToString:screenName])
-				return;
-		}
+		if ([self doesMainListAlreadyInclude:screenName])
+			return;
 	}
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowFollowingUsers]) {
 		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
@@ -510,10 +516,8 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 						else if ([result isEqualToString:@"false"]) {
 							dispatch_async(dispatch_get_main_queue(), ^(void){
 								
-								for (TwitterAccountInfo *existing in self.accounts) {
-									if ([existing.screenName isEqualToString:screenName])
-										return;
-								}
+								if ([self doesMainListAlreadyInclude:screenName])
+									return;
 								
 								TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 								info.screenName = screenName;
@@ -569,10 +573,8 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 					else if ([result isEqualToString:@"false"]) {
 						dispatch_async(dispatch_get_main_queue(), ^(void){
 							
-							for (TwitterAccountInfo *existing in self.accounts) {
-								if ([existing.screenName isEqualToString:screenName])
-									return;
-							}
+							if ([self doesMainListAlreadyInclude:screenName])
+								return;
 							
 							TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 							info.screenName = screenName;
@@ -591,10 +593,8 @@ typedef void (^AfterBlocks)(NSString *userName, ACAccountStore *accountStore);
 					// can't access?
 					dispatch_async(dispatch_get_main_queue(), ^(void){
 						
-						for (TwitterAccountInfo *existing in self.accounts) {
-							if ([existing.screenName isEqualToString:screenName])
-								return;
-						}
+						if ([self doesMainListAlreadyInclude:screenName])
+							return;
 						
 						TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 						info.screenName = screenName;
