@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingViewController : UITableViewController
+@interface SettingViewController : UITableViewController <UIAlertViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableViewCell *applicationNameCell;
 @property (nonatomic, strong) IBOutlet UITableViewCell *versionCell;

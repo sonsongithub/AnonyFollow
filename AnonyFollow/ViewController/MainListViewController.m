@@ -326,6 +326,9 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	
 	[self resetBadge];
 	
+	// forcely, bring lockview to front
+	[self.view bringSubviewToFront:self.lockScreenView];
+	
 	// setup notification
 	// background and foreground
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];

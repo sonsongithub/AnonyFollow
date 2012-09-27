@@ -18,10 +18,35 @@
 
 @implementation SettingViewController
 
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	BOOL flag = NO;
+	if (buttonIndex == 0)
+		flag = NO;
+	if (buttonIndex == 1)
+		flag = YES;
+	[[NSUserDefaults standardUserDefaults] setBool:flag forKey:kAnonyFollowBackgroundScanEnabled];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	self.backgroundSwitch.on = flag;
+}
+
+#pragma mark - IBOutlet
+
 - (IBAction)didChangeBackgroundSwitch:(id)sender {
 	if (sender == self.backgroundSwitch) {
 		[[NSUserDefaults standardUserDefaults] setBool:self.backgroundSwitch.on forKey:kAnonyFollowBackgroundScanEnabled];
 		[[NSUserDefaults standardUserDefaults] synchronize];
+		
+		
+		if (self.backgroundSwitch.on) {
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
+																message:NSLocalizedString(@"Confirm anonymous communication", nil)
+															   delegate:self
+													  cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+													  otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+			[alertView show];
+		}
 	}
 }
 
@@ -38,6 +63,8 @@
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 }
+
+#pragma mark - ViewController lifecycle
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
@@ -68,6 +95,8 @@
 	// application name
 	self.applicationNameCell.detailTextLabel.text = [[UIApplication sharedApplication] applicationNameForDisplay];
 }
+
+#pragma mark - UITableViewDelegate/DataSource
 
 #ifdef _DEBUG
 #else
