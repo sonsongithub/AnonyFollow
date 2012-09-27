@@ -33,12 +33,15 @@ typedef NS_ENUM(NSInteger, CBScannerState) {
 - (void)scannerDidChangeStatus:(CBScanner*)scanner;
 @end
 
-@interface CBScanner : NSObject<CBCentralManagerDelegate,CBPeripheralDelegate>
+@interface CBScanner : NSObject<CBCentralManagerDelegate,CBPeripheralDelegate>{
+}
 
 @property (nonatomic, strong) id<CBScannerDelegate> delegate;
 @property (nonatomic, strong) CBCentralManager *manager;
 @property (nonatomic, copy) NSString *UUIDStr;
-@property (nonatomic, retain) CBPeripheral *peripheral;
+//@property (nonatomic, strong) CBPeripheral *peripheral;
+@property (nonatomic, strong) NSMutableArray *peripherals;
+
 
 - (id)initWithDelegate:(id<CBScannerDelegate>)delegate serviceUUID:(NSString*)UUIDStr;
 - (void)startScan;

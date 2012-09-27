@@ -44,9 +44,11 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
 - (id)initWithDelegate:(id<CBScannerDelegate>)delegate serviceUUID:(NSString*)UUIDStr {
 	self = [super init];
 	if (self) {
+        
 		self.UUIDStr    = UUIDStr;
 		self.delegate   = delegate;
 		self.manager    = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
+        self.peripherals= [[NSMutableArray alloc] initWithCapacity:0];
 		[[NSNotificationCenter defaultCenter] addObserver:self
                                               selector:@selector(didEnterBackgroundNotification:)
                                               name:UIApplicationDidEnterBackgroundNotification
@@ -73,8 +75,7 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
     NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:CBCentralManagerScanOptionAllowDuplicatesKey]; 
 #endif
 
-    if(1)
-    //if(self.UUIDStr != nil)
+    if(self.UUIDStr != nil)
 		[self.manager scanForPeripheralsWithServices:[NSArray arrayWithObjects:[CBUUID UUIDWithString:self.UUIDStr], nil] options:options];
     else
 		[self.manager scanForPeripheralsWithServices:nil options:options];
@@ -112,17 +113,13 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
     NSMutableArray *hashedServices = [advertisementData objectForKey:CBAdvertisementDataOverflowServiceUUIDsKey];
     NSMutableData *encodedData=[NSMutableData dataWithCapacity:ENCODED_UNAME_LEN];
     CBUUID *hashedPrimalyServiceUUID=[hashedServices objectAtIndex:0];
-    if(aPeripheral.UUID!=nil){
-        DNSLog(@"Break");
 
-    }
     if([services count]!=(ENCODED_UNAME_LEN/2)+1){
         /* Peripheral may be in foreground */
         if(hashedPrimalyServiceUUID && [hashedPrimalyServiceUUID isEqual:[CBUUID UUIDWithString:self.UUIDStr]]){
             DNSLog(@"Peer discovered but maybe in Backgroud:%@,aPeripheral.UUID:%@",advertisementData,aPeripheral.UUID);
-            self.peripheral=aPeripheral;
-            [self.manager connectPeripheral:self.peripheral options:nil];
-            //[self.manager retrievePeripherals:[NSArray arrayWithObject:(__bridge id)aPeripheral.UUID]];
+            [self.peripherals addObject:aPeripheral];
+            [self.manager connectPeripheral:aPeripheral options:nil];
         }
     }else{
         /* first byte should be self.UUIDStr */
@@ -152,18 +149,20 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
  Invoked when the central manager retrieves the list of known peripherals.
  Automatically connect to first known peripheral
  */
+#if 0
 - (void) centralManager:(CBCentralManager *)central
- didRetrievePeripherals:(NSArray *)peripherals
+ didRetrievePeripherals:(NSArray *)retrievedPeripherals
 {
     DNSLogMethod
-    CBPeripheral *firstPeripheral=[peripherals objectAtIndex:0];
-    DNSLog(@"Retrieved peripheral: %u,%@,%@,%@", [peripherals count], peripherals,firstPeripheral.description,firstPeripheral.UUID);
+    CBPeripheral *firstPeripheral=[retrievedPeripherals objectAtIndex:0];
+    DNSLog(@"Retrieved peripheral: %u,%@,%@,%@", [retrievedPeripherals count], retrievedPeripherals,firstPeripheral.description,firstPeripheral.UUID);
     /* If there are any known devices, automatically connect to it.*/
     if(firstPeripheral){
-        self.peripheral = [peripherals objectAtIndex:0];
-        [self.manager connectPeripheral:self.peripheral options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
+        [self.peripherals addObject:[retrievedPeripherals objectAtIndex:0]];
+        [self.manager connectPeripheral:firstPeripheral options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
     }
 }
+#endif
 /*
  Invoked whenever a connection is succesfully created with the peripheral.
  Discover available services on the peripheral
@@ -242,14 +241,15 @@ didFailToConnectPeripheral:(CBPeripheral *)aPeripheral
     }
     if(!hasPreferredCharacteristic){
         DNSLog(@"Connected Periphel does NOT has preferred Serivices %@",USER_NAME_CHARACTRISTIC_UUID);
-        [self.manager cancelPeripheralConnection:self.peripheral];
+        [self.manager cancelPeripheralConnection:aPeripheral];
     }
 }
 
 - (void) peripheral:(CBPeripheral *)aPeripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic error:(NSError *)error
 {
     DNSLogMethod
-    [self.manager cancelPeripheralConnection:self.peripheral];
+    [self.manager cancelPeripheralConnection:aPeripheral];
+    [self.peripherals removeObject:aPeripheral];
     /* USER_NAME_CHARACTRISTIC_UUID */
     if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:USER_NAME_CHARACTRISTIC_UUID]])
     {
