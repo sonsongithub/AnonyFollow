@@ -794,7 +794,7 @@
             </objects>
             <point key="canvasLocation" x="1803" y="-301"/>
         </scene>
-        <!--Copyright Contact View Controller - Copyrights & Contact-->
+        <!--Copyright Contact View Controller - Copyrights-->
         <scene sceneID="uxU-Mg-DXX">
             <objects>
                 <tableViewController id="G0A-XD-HiR" customClass="CopyrightContactViewController" sceneMemberID="viewController">
@@ -947,7 +947,7 @@
                             <outlet property="delegate" destination="G0A-XD-HiR" id="SyO-Yc-45F"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Copyrights &amp; Contact" id="f7T-Hg-nCd"/>
+                    <navigationItem key="navigationItem" title="Copyrights" id="f7T-Hg-nCd"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hYO-RL-bdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
