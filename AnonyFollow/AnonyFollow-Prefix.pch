@@ -30,6 +30,8 @@
 
 #define STATUS_BAR_HEIGHT 20
 
+#define BLE_SERVICE_UUID @"FF00"
+
 #pragma mark - for Debug
 
 #ifdef	_DEBUG

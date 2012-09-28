@@ -44,6 +44,10 @@
 	return [data writeToFile:cacheFilePath atomically:NO];
 }
 
+- (void)dealloc {
+	[[DownloadQueue sharedInstance] removeTasksOfDelegate:self];
+}
+
 - (DownloadTask*)taskForUserTimeline {
 	NSString *URLString = [NSString stringWithFormat:@"https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name=%@", self.screenName];
 	DownloadTask *task = [[DownloadTask alloc] init];

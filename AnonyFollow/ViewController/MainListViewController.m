@@ -55,8 +55,8 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 - (void)enableBroadcasting {
 	[self performBlockAfterRequestingTwitterAccout:^(NSString *twitterUserName, ACAccountStore *accountStore) {		
 		[self.twitterAccountButton setTwitterAccountUserName:twitterUserName];
-		self.advertizer = [[CBAdvertizer alloc] initWithDelegate:self userName:twitterUserName serviceUUID:@"1802"];
-		self.scanner = [[CBScanner alloc] initWithDelegate:self serviceUUID:@"1802"];
+		self.advertizer = [[CBAdvertizer alloc] initWithDelegate:self userName:twitterUserName serviceUUID:BLE_SERVICE_UUID];
+		self.scanner = [[CBScanner alloc] initWithDelegate:self serviceUUID:BLE_SERVICE_UUID];
 		self.lockScreenView.hidden = YES;
 	}];
 }
