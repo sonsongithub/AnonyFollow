@@ -18,6 +18,34 @@
 
 @implementation SettingViewController
 
+#pragma mark - Instance method
+
+- (void)sendFeedbackMail {
+	if ([MFMailComposeViewController canSendMail]) {
+		MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+		picker.mailComposeDelegate = self;
+		
+		[picker setSubject:NSLocalizedString(@"[AnonyFollow contact] ", nil)];
+		[picker setToRecipients:[NSArray arrayWithObject:NSLocalizedString(@"SupportMailAddress", nil)]];
+		
+		NSString *body = [NSString stringWithFormat:NSLocalizedString(@"\n\nYour system's information ----------\nAnonyFollow %@\niOS %@\n Device %@", nil), [[UIApplication sharedApplication] versionString], [UIDevice currentDevice].systemVersion, [[UIDevice currentDevice] _platformString]];
+		
+		[picker setMessageBody:body isHTML:NO];
+		
+		if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
+			picker.modalPresentationStyle = UIModalPresentationFormSheet;
+		[self presentViewController:picker animated:YES completion:^(void){}];
+	}
+	else {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Mail error", nil)
+														message:NSLocalizedString(@"App needs a mail account in order to send your report.", nil)
+													   delegate:nil
+											  cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+											  otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+		[alert show];
+	}
+}
+
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -96,7 +124,22 @@
 	self.applicationNameCell.detailTextLabel.text = [[UIApplication sharedApplication] applicationNameForDisplay];
 }
 
+#pragma mark - MFMailComposeViewController
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+	[self dismissViewControllerAnimated:YES completion:^{
+		DNSLog(@"dismissModalViewControllerAnimated completed!")
+	}];
+}
+
 #pragma mark - UITableViewDelegate/DataSource
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (indexPath.section == 0 && indexPath.row == 4) {
+		[self sendFeedbackMail];
+	}
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 #ifdef _DEBUG
 #else

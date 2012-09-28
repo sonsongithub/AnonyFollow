@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingViewController : UITableViewController <UIAlertViewDelegate>
+#import <MessageUI/MessageUI.h>
+
+@interface SettingViewController : UITableViewController <MFMailComposeViewControllerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableViewCell *applicationNameCell;
 @property (nonatomic, strong) IBOutlet UITableViewCell *versionCell;

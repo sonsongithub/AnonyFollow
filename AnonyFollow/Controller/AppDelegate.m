@@ -33,9 +33,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 #ifdef _DEBUG
 	NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-								[NSNumber numberWithBool:YES],	kAnonyFollowBackgroundScanEnabled,
-								[NSNumber numberWithBool:YES],	kAnonyFollowDebugShowFollowingUsers,
-								[NSNumber numberWithBool:YES],	kAnonyFollowDebugShowRedundantUsers,
+								[NSNumber numberWithBool:NO],	kAnonyFollowBackgroundScanEnabled,
+								[NSNumber numberWithBool:NO],	kAnonyFollowDebugShowFollowingUsers,
+								[NSNumber numberWithBool:NO],	kAnonyFollowDebugShowRedundantUsers,
 								@"",							kAnonyFollowCurrentTwitterUserName,
 								nil];
 #else

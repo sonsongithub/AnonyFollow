@@ -8,11 +8,6 @@
 
 #import "CopyrightContactViewController.h"
 
-#import <MessageUI/MessageUI.h>
-#import "NSBundle+AnonyFollow.h"
-#import "UIDevice+AnonyFollow.h"
-#import "UIApplication+AnonyFollow.h"
-
 @interface CopyrightContactViewController ()
 
 @end
@@ -21,30 +16,42 @@
 
 #pragma mark - Instance method
 
-- (void)sendFeedbackMail {
-	if ([MFMailComposeViewController canSendMail]) {
-		MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
-		picker.mailComposeDelegate = self;
-		
-		[picker setSubject:NSLocalizedString(@"[AnonyFollow contact] ", nil)];
-		[picker setToRecipients:[NSArray arrayWithObject:NSLocalizedString(@"SupportMailAddress", nil)]];
-		
-		NSString *body = [NSString stringWithFormat:NSLocalizedString(@"\n\nYour system's information ----------\nAnonyFollow %@\niOS %@\n Device %@", nil), [[UIApplication sharedApplication] versionString], [UIDevice currentDevice].systemVersion, [[UIDevice currentDevice] _platformString]];
-		
-		[picker setMessageBody:body isHTML:NO];
-		
-		if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
-			picker.modalPresentationStyle = UIModalPresentationFormSheet;
-		[self presentViewController:picker animated:YES completion:^(void){}];
-	}
-	else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Mail error", nil)
-														 message:NSLocalizedString(@"App needs a mail account in order to send your report.", nil)
-														delegate:nil
-											   cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
-											   otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
-		[alert show];
-	}
+- (void)openAppStoreWithID:(int)contentID {
+	
+	SKStoreProductViewController* vc = [[SKStoreProductViewController alloc] init];
+	vc.delegate = self;
+	NSNumber* itemId = [NSNumber numberWithInt:contentID];
+	NSDictionary* parametersDict = [NSDictionary dictionaryWithObject:itemId
+															   forKey:SKStoreProductParameterITunesItemIdentifier];
+	
+	// Request the product details from the Store.
+	// When it completes and if it passes, show the viewcontroller to the user.
+	[vc loadProductWithParameters:parametersDict completionBlock:^(BOOL result, NSError *error)
+	 {
+		 DNSLog(@"[SKStoreProductViewController loadProductWithParameters:] completed. result=%u, error=%@", result, error);
+		 if(result)
+		 {
+			 [self presentViewController:vc animated:YES completion:^
+			  {
+				  DNSLog(@"presentViewController completed!");
+			  }];
+		 } else {
+			 UIAlertView* alertFailed = [[UIAlertView alloc] initWithTitle:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]
+																   message:@"Error: Can't display the SKStoreProductViewController."
+																  delegate:nil
+														 cancelButtonTitle:@"Ok"
+														 otherButtonTitles:nil, nil];
+			 [alertFailed show];
+		 }
+	 }];
+}
+
+#pragma mark - SKStoreProductViewControllerDelegate
+
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:^{
+		 DNSLog(@"dismissModalViewControllerAnimated completed!")
+	}];
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate
@@ -54,17 +61,19 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (indexPath.section == 0 && indexPath.row == 0) {
+	if (indexPath.section == 0 && indexPath.row == 1) {
 		// sekikawa
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://twitter.com/YusukeSekikawa"]];
 	}
-	if (indexPath.section == 1 && indexPath.row == 0) {
+	if (indexPath.section == 0 && indexPath.row == 2) {
+		[self openAppStoreWithID:297925776];
+	}
+	if (indexPath.section == 1 && indexPath.row == 1) {
 		// sonson
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://twitter.com/sonson_twit"]];
 	}
-	if (indexPath.section == 2 && indexPath.row == 0) {
-		// send report
-		[self sendFeedbackMail];
+	if (indexPath.section == 1 && indexPath.row == 2) {
+		[self openAppStoreWithID:286074067];
 	}
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

@@ -16,6 +16,7 @@
 		02B9542D15E67A06005026B1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542C15E67A06005026B1 /* Social.framework */; };
 		02B9542F15E67A18005026B1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B9542E15E67A18005026B1 /* Accounts.framework */; };
 		141755A215FB1646006B10F7 /* NSUserDefaults+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 141755A115FB1646006B10F7 /* NSUserDefaults+AnonyFollow.m */; };
+		14192DA416153067002E3B73 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14192DA316153067002E3B73 /* StoreKit.framework */; };
 		141BA9881610C9A10002C7C2 /* UIApplication+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 141BA9871610C9A10002C7C2 /* UIApplication+AnonyFollow.m */; };
 		141BA98C1610CA780002C7C2 /* UIDevice+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 141BA98B1610CA780002C7C2 /* UIDevice+AnonyFollow.m */; };
 		1425251A1602328E0093A325 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 142525191602328E0093A325 /* Default-568h@2x.png */; };
@@ -92,6 +93,7 @@
 		02B9542E15E67A18005026B1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		141755A015FB1646006B10F7 /* NSUserDefaults+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+AnonyFollow.h"; sourceTree = "<group>"; };
 		141755A115FB1646006B10F7 /* NSUserDefaults+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+AnonyFollow.m"; sourceTree = "<group>"; };
+		14192DA316153067002E3B73 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		141BA9861610C9A10002C7C2 /* UIApplication+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+AnonyFollow.h"; sourceTree = "<group>"; };
 		141BA9871610C9A10002C7C2 /* UIApplication+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+AnonyFollow.m"; sourceTree = "<group>"; };
 		141BA98A1610CA780002C7C2 /* UIDevice+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+AnonyFollow.h"; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14192DA416153067002E3B73 /* StoreKit.framework in Frameworks */,
 				1481963315FC5D1A004B0BCB /* MessageUI.framework in Frameworks */,
 				14B7A5EC15F5005F00D6BF0B /* Security.framework in Frameworks */,
 				14B7A5E715F4F90A00D6BF0B /* libz.dylib in Frameworks */,
@@ -232,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				14B7A5E615F4F90A00D6BF0B /* libz.dylib */,
+				14192DA316153067002E3B73 /* StoreKit.framework */,
 				1481963215FC5D1A004B0BCB /* MessageUI.framework */,
 				14B7A5EB15F5005F00D6BF0B /* Security.framework */,
 				142770C415EE82DD0062271A /* SystemConfiguration.framework */,
@@ -449,7 +453,8 @@
 			buildConfigurationList = 0201DC0D15E672AC00A212DC /* Build configuration list for PBXNativeTarget "AnonyFollow" */;
 			buildPhases = (
 				1451949B15EA2B8500E853CA /* Make Japanese Storyboard files automatically */,
-				145194B315EA2D9300E853CA /* Update git revision and build number */,
+				145194B315EA2D9300E853CA /* Update git revision */,
+				14192D9E16152A61002E3B73 /* Update build number */,
 				0201DBE815E672AC00A212DC /* Sources */,
 				0201DBE915E672AC00A212DC /* Frameworks */,
 				0201DBEA15E672AC00A212DC /* Resources */,
@@ -528,33 +533,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		14192D9E16152A61002E3B73 /* Update build number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Update build number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# update build number\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
 		1451949B15EA2B8500E853CA /* Make Japanese Storyboard files automatically */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				$SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPhone.storyboard.string,
+				$SRCROOT/AnonyFollow/Resources/en.lproj/MainStoryboard_iPhone.storyboard,
 			);
 			name = "Make Japanese Storyboard files automatically";
 			outputPaths = (
+				$SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPhone.storyboard,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# make iPhone's storyboard file for ja\nibtool --generate-stringsfile $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPhone.storyboard.string --import-strings-file $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPhone.storyboard.string $SRCROOT/AnonyFollow/Resources/en.lproj/MainStoryboard_iPhone.storyboard\nibtool --write $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPhone.storyboard -d $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPhone.storyboard.string $SRCROOT/AnonyFollow/Resources/en.lproj/MainStoryboard_iPhone.storyboard\n\n# make iPad's storyboard file for ja\n#ibtool --generate-stringsfile $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPad.storyboard.string --import-strings-file $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPad.storyboard.string $SRCROOT/AnonyFollow/Resources/en.lproj/MainStoryboard_iPad.storyboard\n#ibtool --write $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPad.storyboard -d $SRCROOT/AnonyFollow/Resources/ja.lproj/MainStoryboard_iPad.storyboard.string $SRCROOT/AnonyFollow/Resources/en.lproj/MainStoryboard_iPad.storyboard";
 		};
-		145194B315EA2D9300E853CA /* Update git revision and build number */ = {
+		145194B315EA2D9300E853CA /* Update git revision */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Update git revision and build number";
+			name = "Update git revision";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# update github revision\nhash=$(git rev-parse HEAD)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleGithubRevision $hash\" \"$INFOPLIST_FILE\"\nshorthash=$(git rev-parse --short HEAD)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleGithubShortRevision $shorthash\" \"$INFOPLIST_FILE\"\n\n# update build number\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+			shellScript = "# update github revision\nhash=$(git rev-parse HEAD)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleGithubRevision $hash\" \"$INFOPLIST_FILE\"\nshorthash=$(git rev-parse --short HEAD)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleGithubShortRevision $shorthash\" \"$INFOPLIST_FILE\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <StoreKit/StoreKit.h>
 #import <MessageUI/MessageUI.h>
 
-@interface CopyrightContactViewController : UITableViewController <MFMailComposeViewControllerDelegate>
+@interface CopyrightContactViewController : UITableViewController <SKStoreProductViewControllerDelegate>
 
 @end
