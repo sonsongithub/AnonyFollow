@@ -12,52 +12,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7q-91-v5e">
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBH-eh-NIs">
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="warning.png" translatesAutoresizingMaskIntoConstraints="NO" id="bHy-ag-yRi"/>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="設定アプリで，Bluetoothをオンに、Twitterのアカウントにアクセスできるようにしてください。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="H0k-rX-Xb7">
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="68" id="kpn-rH-37T"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" red="0.42419299449999998" green="0.42419299449999998" blue="0.42419299449999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <size key="shadowOffset" width="0.0" height="1"/>
-                                            </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bluetooth・Twitterアカウントにアクセスできません" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="MgT-3o-slW">
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="68" id="SeH-yW-bsW"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <color key="textColor" red="0.42419299449999998" green="0.42419299449999998" blue="0.42419299449999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <size key="shadowOffset" width="0.0" height="1"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.30289119525547448" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="332" type="user" id="08z-2u-qyX"/>
-                                            <constraint firstItem="bHy-ag-yRi" firstAttribute="top" secondItem="jBH-eh-NIs" secondAttribute="top" type="default" id="0YM-cT-SDp"/>
-                                            <constraint firstItem="H0k-rX-Xb7" firstAttribute="leading" secondItem="jBH-eh-NIs" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="C8f-Eg-u2V"/>
-                                            <constraint firstAttribute="bottom" secondItem="MgT-3o-slW" secondAttribute="bottom" constant="57" id="ETg-lH-B6M"/>
-                                            <constraint firstAttribute="trailing" secondItem="MgT-3o-slW" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Eyp-R3-1cg"/>
-                                            <constraint firstItem="bHy-ag-yRi" firstAttribute="centerX" secondItem="MgT-3o-slW" secondAttribute="centerX" type="default" id="H4n-qI-2tH"/>
-                                            <constraint firstItem="H0k-rX-Xb7" firstAttribute="bottom" secondItem="jBH-eh-NIs" secondAttribute="bottom" type="default" id="eSf-5Q-0W0"/>
-                                            <constraint firstItem="MgT-3o-slW" firstAttribute="leading" secondItem="jBH-eh-NIs" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="piO-CG-Rp4"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="jBH-eh-NIs" firstAttribute="leading" secondItem="W7q-91-v5e" secondAttribute="leading" type="default" id="7bC-lH-D0p"/>
-                                    <constraint firstAttribute="centerY" secondItem="jBH-eh-NIs" secondAttribute="centerY" type="user" id="F2x-K6-un9"/>
-                                    <constraint firstItem="jBH-eh-NIs" firstAttribute="trailing" secondItem="W7q-91-v5e" secondAttribute="trailing" type="default" id="hto-ws-Fdu"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="58" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dAM-Le-jLa">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -151,6 +105,52 @@
                                     <outlet property="delegate" destination="gU2-CF-QLv" id="s1P-I3-wdN"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7q-91-v5e">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBH-eh-NIs">
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="warning.png" translatesAutoresizingMaskIntoConstraints="NO" id="bHy-ag-yRi"/>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="設定アプリで，Bluetoothをオンに、Twitterのアカウントにアクセスできるようにしてください。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="H0k-rX-Xb7">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="68" id="kpn-rH-37T"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.42419299449999998" green="0.42419299449999998" blue="0.42419299449999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <size key="shadowOffset" width="0.0" height="1"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bluetooth・Twitterアカウントにアクセスできません" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="MgT-3o-slW">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="68" id="SeH-yW-bsW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" red="0.42419299449999998" green="0.42419299449999998" blue="0.42419299449999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <size key="shadowOffset" width="0.0" height="1"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.30289119525547448" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="332" type="user" id="08z-2u-qyX"/>
+                                            <constraint firstItem="bHy-ag-yRi" firstAttribute="top" secondItem="jBH-eh-NIs" secondAttribute="top" type="default" id="0YM-cT-SDp"/>
+                                            <constraint firstItem="H0k-rX-Xb7" firstAttribute="leading" secondItem="jBH-eh-NIs" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="C8f-Eg-u2V"/>
+                                            <constraint firstAttribute="bottom" secondItem="MgT-3o-slW" secondAttribute="bottom" constant="57" id="ETg-lH-B6M"/>
+                                            <constraint firstAttribute="trailing" secondItem="MgT-3o-slW" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Eyp-R3-1cg"/>
+                                            <constraint firstItem="bHy-ag-yRi" firstAttribute="centerX" secondItem="MgT-3o-slW" secondAttribute="centerX" type="default" id="H4n-qI-2tH"/>
+                                            <constraint firstItem="H0k-rX-Xb7" firstAttribute="bottom" secondItem="jBH-eh-NIs" secondAttribute="bottom" type="default" id="eSf-5Q-0W0"/>
+                                            <constraint firstItem="MgT-3o-slW" firstAttribute="leading" secondItem="jBH-eh-NIs" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="piO-CG-Rp4"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="jBH-eh-NIs" firstAttribute="leading" secondItem="W7q-91-v5e" secondAttribute="leading" type="default" id="7bC-lH-D0p"/>
+                                    <constraint firstAttribute="centerY" secondItem="jBH-eh-NIs" secondAttribute="centerY" type="user" id="F2x-K6-un9"/>
+                                    <constraint firstItem="jBH-eh-NIs" firstAttribute="trailing" secondItem="W7q-91-v5e" secondAttribute="trailing" type="default" id="hto-ws-Fdu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -665,7 +665,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="&quot;バックグラウンド&quot;モード（すれちがい通信）は、Bluetoothデバイスにアクセスします。設定アプリの「プライバシー」の「Bluetooth共有」をオンにしてください。" id="O0e-CL-FB5">
+                            <tableViewSection footerTitle="&quot;バックグラウンド&quot;をONにすると（ステータスバーが赤色に点滅します）、公開中にAnonyFollowを終了した後も、バックグラウンドでアカウントを公開しつづけます。" id="O0e-CL-FB5">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gKE-xC-mZ4">
                                         <rect key="frame" x="0.0" y="288" width="320" height="46"/>

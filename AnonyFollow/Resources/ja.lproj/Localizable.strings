@@ -68,7 +68,7 @@
 "%@ is already followed" = "%@さんはフォロー済です";
 
 /* No comment provided by engineer. */
-"Background broadcasting..." = "バックグラウンドモードで公開中・・・";
+"Background broadcasting..." = "公開中・・・(バックグラウンド)";
 
 /* No comment provided by engineer. */
 "Confirm anonymous communication" = "\"バックグラウンド\"をオンにすると「すれちがい通信」のように常にアカウントを交換するようになります。不用意に自分のアカウントを公開しないように注意してください。";
