@@ -31,7 +31,6 @@ extern NSString *kNotificationUserInfoUserNameKey;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *trashButton;
 
 @property (nonatomic, strong) NSMutableArray *accounts;
-@property (nonatomic, strong) NSMutableArray *screenNamesCollectedOnBackground;
 
 @property (strong, nonatomic) CBScanner *scanner;
 @property (strong, nonatomic) CBAdvertizer *advertizer;

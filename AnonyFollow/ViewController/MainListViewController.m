@@ -330,7 +330,6 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	
 	// set up buffer
 	self.accounts = [NSMutableArray array];
-	self.screenNamesCollectedOnBackground = [NSMutableArray array];
 	self.twitterAccountButton.delegate = self;
 	
 	// setup status bar
