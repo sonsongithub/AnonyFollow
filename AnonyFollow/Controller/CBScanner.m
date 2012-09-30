@@ -79,37 +79,8 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
 		[self.manager scanForPeripheralsWithServices:[NSArray arrayWithObjects:[CBUUID UUIDWithString:self.UUIDStr], nil] options:options];
     else
 		[self.manager scanForPeripheralsWithServices:nil options:options];
-
-    
-    
-    [self testDiscover:@"sonson_twit"];
-    [self testDiscover:@"AnonyFollow"];
-    
-    //return;
-    [self testDiscover:@"ev"];
-    [self testDiscover:@"landau"];
-    [self testDiscover:@"ThisGuy"];
-    [self testDiscover:@"couch"];
-    [self testDiscover:@"finkd"];
-    [self testDiscover:@"goldman"];
-    [self testDiscover:@"biz"];
-    [self testDiscover:@"jack"];
-
     
     DNSLogMethod
-}
-
-- (void)testDiscover:(NSString*)userName{
-    
-    if ([userName length]) {
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                                  userName, kCBScannerInfoUserNameKey,
-                                  nil];
-        
-        if ([self.delegate respondsToSelector:@selector(scanner:didDiscoverUser:)])
-            [self.delegate scanner:self didDiscoverUser:userInfo];
-    }
-    
 }
 
 - (void)stopScan {
