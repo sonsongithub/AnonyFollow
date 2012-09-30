@@ -178,9 +178,8 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 
 #pragma mark - Post local notification on Background
 
-- (void)notifyRecevingOnBackgroundWithUserName:(NSString*)username {
+- (void)notifyRecevingOnBackgroundWithMessage:(NSString*)message {
 	UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-	NSString *message = [NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), username];
 	localNotif.alertBody = message;
 	localNotif.alertAction = NSLocalizedString(@"Open", nil);
 	localNotif.soundName = UILocalNotificationDefaultSoundName;
@@ -262,18 +261,7 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	// Reset application badge whicn means how many times you exchanged accounts.
 	[self resetBadge];
 	
-	// Add account information to the main list
-	if (self.scanner != nil && [[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowBackgroundScanEnabled]) {
-		// go back from background process
-		for (NSString *screenName in [self.screenNamesCollectedOnBackground reverseObjectEnumerator]) {
-#ifdef _DEBUG
-			[self debugAddScreenNameOnForeground:screenName];
-#else
-			[self addScreenNameOnForeground:screenName];
-#endif
-			[self.screenNamesCollectedOnBackground removeObject:screenName];
-		}
-	}
+	[self.tableView reloadData];
 }
 
 - (void)didEnterBackground:(NSNotification*)notification {
@@ -483,8 +471,52 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	[self.accounts addObject:info];
 	[self updateTrashButton];
 	[self.tableView reloadData];
-	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-	[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
+	
+	
+	if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+		AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+		[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
+	}
+	else if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+		// post local notification
+		[self notifyRecevingOnBackgroundWithMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
+		// increment number of badge
+		[self incrementBadge];
+	}
+}
+
+- (void)checkFollowingAndAddListWithScreenName:(NSString*)screenName account:(ACAccount*)account {
+	NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
+	
+	SLRequest *postRequest;
+	[tempDict setValue:account.username forKey:@"screen_name_a"];
+	[tempDict setValue:screenName forKey:@"screen_name_b"];
+	postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/exists.json"] parameters:tempDict];
+	
+	[postRequest setAccount:account];
+	[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+		if (error == nil) {
+			NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+			NSLog(@"%@", result);
+			if ([result isEqualToString:@"true"]) {
+				dispatch_async(dispatch_get_main_queue(), ^(void){
+					if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+						AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+						[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), screenName]];
+					}
+					else if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+						// post local notification
+						[self notifyRecevingOnBackgroundWithMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), screenName]];
+					}
+				});
+				return;
+			}
+		}
+		// when error happens or the acccount is not followed
+		dispatch_async(dispatch_get_main_queue(), ^(void){
+			[self addScreenName:screenName];
+		});
+	}];
 }
 
 - (void)debugAddScreenNameOnForeground:(NSString*)screenName {
@@ -507,35 +539,15 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 		[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
 			if(granted) {
 				ACAccount *account = [accountStore twitterCurrentAccount];
-				
-				if (account == nil)
+				if (account) {
+					[self checkFollowingAndAddListWithScreenName:screenName account:account];
 					return;
-				
-				NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
-				
-				SLRequest *postRequest;
-				[tempDict setValue:account.username forKey:@"screen_name_a"];
-				[tempDict setValue:screenName forKey:@"screen_name_b"];
-				postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/exists.json"] parameters:tempDict];
-				
-				[postRequest setAccount:account];
-				[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-					if (error == nil) {
-						NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-						if ([result isEqualToString:@"true"]) {
-							dispatch_async(dispatch_get_main_queue(), ^(void){
-								AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-								[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), screenName]];
-							});
-							return;
-						}
-					}
-					// when error happens or the acccount is not followed
-					dispatch_async(dispatch_get_main_queue(), ^(void){
-						[self addScreenName:screenName];
-					});
-				}];
+				}
 			}
+			// when error happens, forcely added screen name into the main list
+			dispatch_async(dispatch_get_main_queue(), ^(void){
+				[self addScreenName:screenName];
+			});
 		}];
 	}
 }
@@ -550,36 +562,15 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
 		if(granted) {
 			ACAccount *account = [accountStore twitterCurrentAccount];
-			
-			if (account == nil)
+			if (account) {
+				[self checkFollowingAndAddListWithScreenName:screenName account:account];
 				return;
-			
-			NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
-			
-			SLRequest *postRequest;
-			[tempDict setValue:account.username forKey:@"screen_name_a"];
-			[tempDict setValue:screenName forKey:@"screen_name_b"];
-			postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/exists.json"] parameters:tempDict];
-			
-			[postRequest setAccount:account];
-			[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-				if (error == nil) {
-					NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-					NSLog(@"%@", result);
-					if ([result isEqualToString:@"true"]) {
-						dispatch_async(dispatch_get_main_queue(), ^(void){
-							AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-							[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), screenName]];
-						});
-						return;
-					}
-				}
-				// when error happens or the acccount is not followed
-				dispatch_async(dispatch_get_main_queue(), ^(void){
-					[self addScreenName:screenName];
-				});
-			}];
+			}
 		}
+		// when error happens, forcely added screen name into the main list
+		dispatch_async(dispatch_get_main_queue(), ^(void){
+			[self addScreenName:screenName];
+		});
 	}];
 }
 
@@ -587,30 +578,11 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 
 - (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
 	NSString *screenName = [userInfo objectForKey:kCBScannerInfoUserNameKey];
-	if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
-		
-		// check already added it into cache list
-		for (NSString* savedScreenName in self.screenNamesCollectedOnBackground) {
-			if ([screenName isEqualToString:savedScreenName])
-				return;
-		}
-		
-		// add screen name cache
-		[self.screenNamesCollectedOnBackground addObject:screenName];
-		
-		// post local notification
-		[self notifyRecevingOnBackgroundWithUserName:screenName];
-		
-		// increment number of badge
-		[self incrementBadge];
-	}
-	else {
 #ifdef _DEBUG
-		[self debugAddScreenNameOnForeground:screenName];
+	[self debugAddScreenNameOnForeground:screenName];
 #else
-		[self addScreenNameOnForeground:screenName];
+	[self addScreenNameOnForeground:screenName];
 #endif
-	}
 }
 
 - (void)scannerDidChangeStatus:(CBScanner*)scanner {

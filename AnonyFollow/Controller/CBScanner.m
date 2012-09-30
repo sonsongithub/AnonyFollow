@@ -68,7 +68,7 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
 }
 
 - (void)startScan {
-
+    DNSLogMethod
 #ifdef CBScannerAllowDuplicates
     NSDictionary *options = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:CBCentralManagerScanOptionAllowDuplicatesKey];
 #else
@@ -79,13 +79,11 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
 		[self.manager scanForPeripheralsWithServices:[NSArray arrayWithObjects:[CBUUID UUIDWithString:self.UUIDStr], nil] options:options];
     else
 		[self.manager scanForPeripheralsWithServices:nil options:options];
-
-    
-    
+#if 0
     [self testDiscover:@"sonson_twit"];
     [self testDiscover:@"AnonyFollow"];
     
-    //return;
+    //
     [self testDiscover:@"ev"];
     [self testDiscover:@"landau"];
     [self testDiscover:@"ThisGuy"];
@@ -94,9 +92,7 @@ NSString *kCBScannerInfoUserRSSIKey = @"kCBScannerInfoUserRSSIKey";
     [self testDiscover:@"goldman"];
     [self testDiscover:@"biz"];
     [self testDiscover:@"jack"];
-
-    
-    DNSLogMethod
+#endif
 }
 
 - (void)testDiscover:(NSString*)userName{
