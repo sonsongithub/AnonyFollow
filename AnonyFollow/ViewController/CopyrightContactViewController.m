@@ -61,20 +61,24 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	// sonson
 	if (indexPath.section == 0 && indexPath.row == 1) {
-		// sekikawa
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://twitter.com/YusukeSekikawa"]];
-	}
-	if (indexPath.section == 0 && indexPath.row == 2) {
-		[self openAppStoreWithID:297925776];
-	}
-	if (indexPath.section == 1 && indexPath.row == 1) {
 		// sonson
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://twitter.com/sonson_twit"]];
 	}
-	if (indexPath.section == 1 && indexPath.row == 2) {
+	if (indexPath.section == 0 && indexPath.row == 2) {
 		[self openAppStoreWithID:286074067];
 	}
+	
+	// Sekikawa
+	if (indexPath.section == 1 && indexPath.row == 1) {
+		// sekikawa
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://twitter.com/YusukeSekikawa"]];
+	}
+	if (indexPath.section == 1 && indexPath.row == 2) {
+		[self openAppStoreWithID:297925776];
+	}
+	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
