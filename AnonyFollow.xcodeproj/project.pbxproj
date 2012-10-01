@@ -34,6 +34,15 @@
 		147A1F9315FE271200F30BAD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 147A1F9115FE271200F30BAD /* Localizable.strings */; };
 		1481962B15FC4F34004B0BCB /* CopyrightContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1481962A15FC4F34004B0BCB /* CopyrightContactViewController.m */; };
 		1481963315FC5D1A004B0BCB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1481963215FC5D1A004B0BCB /* MessageUI.framework */; };
+		1488F3381619DE4B0065F8D6 /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1488F3371619DE4B0065F8D6 /* HelpViewController.m */; };
+		1488F33B1619F9FC0065F8D6 /* help01.png in Resources */ = {isa = PBXBuildFile; fileRef = 1488F33A1619F9FC0065F8D6 /* help01.png */; };
+		1488F33D1619FA020065F8D6 /* help01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1488F33C1619FA020065F8D6 /* help01@2x.png */; };
+		1488F341161A004C0065F8D6 /* help02.png in Resources */ = {isa = PBXBuildFile; fileRef = 1488F33E161A004C0065F8D6 /* help02.png */; };
+		1488F342161A004C0065F8D6 /* help03.png in Resources */ = {isa = PBXBuildFile; fileRef = 1488F33F161A004C0065F8D6 /* help03.png */; };
+		1488F343161A004C0065F8D6 /* helpIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1488F340161A004C0065F8D6 /* helpIcon.png */; };
+		1488F347161A00560065F8D6 /* help02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1488F344161A00560065F8D6 /* help02@2x.png */; };
+		1488F348161A00560065F8D6 /* help03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1488F345161A00560065F8D6 /* help03@2x.png */; };
+		1488F349161A00560065F8D6 /* helpIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1488F346161A00560065F8D6 /* helpIcon@2x.png */; };
 		14A2833815FA486D00880424 /* ACAccountStore+AnonyFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A282F815FA486D00880424 /* ACAccountStore+AnonyFollow.m */; };
 		14A2833915FA486D00880424 /* NSData+AES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A282FA15FA486D00880424 /* NSData+AES256.m */; };
 		14A2833A15FA486D00880424 /* NSData+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 14A282FC15FA486D00880424 /* NSData+MD5.m */; };
@@ -118,6 +127,16 @@
 		1481962915FC4F34004B0BCB /* CopyrightContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyrightContactViewController.h; sourceTree = "<group>"; };
 		1481962A15FC4F34004B0BCB /* CopyrightContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyrightContactViewController.m; sourceTree = "<group>"; };
 		1481963215FC5D1A004B0BCB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		1488F3361619DE4B0065F8D6 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
+		1488F3371619DE4B0065F8D6 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
+		1488F33A1619F9FC0065F8D6 /* help01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help01.png; sourceTree = "<group>"; };
+		1488F33C1619FA020065F8D6 /* help01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help01@2x.png"; sourceTree = "<group>"; };
+		1488F33E161A004C0065F8D6 /* help02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help02.png; sourceTree = "<group>"; };
+		1488F33F161A004C0065F8D6 /* help03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help03.png; sourceTree = "<group>"; };
+		1488F340161A004C0065F8D6 /* helpIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helpIcon.png; sourceTree = "<group>"; };
+		1488F344161A00560065F8D6 /* help02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help02@2x.png"; sourceTree = "<group>"; };
+		1488F345161A00560065F8D6 /* help03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help03@2x.png"; sourceTree = "<group>"; };
+		1488F346161A00560065F8D6 /* helpIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "helpIcon@2x.png"; sourceTree = "<group>"; };
 		14A282F715FA486D00880424 /* ACAccountStore+AnonyFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ACAccountStore+AnonyFollow.h"; sourceTree = "<group>"; };
 		14A282F815FA486D00880424 /* ACAccountStore+AnonyFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ACAccountStore+AnonyFollow.m"; sourceTree = "<group>"; };
 		14A282F915FA486D00880424 /* NSData+AES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+AES256.h"; sourceTree = "<group>"; };
@@ -383,6 +402,8 @@
 				14A2833315FA486D00880424 /* TimeLineViewController.m */,
 				1481962915FC4F34004B0BCB /* CopyrightContactViewController.h */,
 				1481962A15FC4F34004B0BCB /* CopyrightContactViewController.m */,
+				1488F3361619DE4B0065F8D6 /* HelpViewController.h */,
+				1488F3371619DE4B0065F8D6 /* HelpViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -404,6 +425,10 @@
 		14BE1B6315EA282700F7547E /* image@1x */ = {
 			isa = PBXGroup;
 			children = (
+				1488F33E161A004C0065F8D6 /* help02.png */,
+				1488F33F161A004C0065F8D6 /* help03.png */,
+				1488F340161A004C0065F8D6 /* helpIcon.png */,
+				1488F33A1619F9FC0065F8D6 /* help01.png */,
 				14634C6415FF1C0D00D94104 /* warning.png */,
 				147A1F8515FE13F900F30BAD /* off.png */,
 				147A1F8615FE13F900F30BAD /* on.png */,
@@ -419,6 +444,10 @@
 		14BE1B6815EA282700F7547E /* image@2x */ = {
 			isa = PBXGroup;
 			children = (
+				1488F344161A00560065F8D6 /* help02@2x.png */,
+				1488F345161A00560065F8D6 /* help03@2x.png */,
+				1488F346161A00560065F8D6 /* helpIcon@2x.png */,
+				1488F33C1619FA020065F8D6 /* help01@2x.png */,
 				14634C6615FF1C1300D94104 /* warning@2x.png */,
 				147A1F8915FE140600F30BAD /* off@2x.png */,
 				147A1F8A15FE140600F30BAD /* on@2x.png */,
@@ -527,6 +556,14 @@
 				14634C6515FF1C0D00D94104 /* warning.png in Resources */,
 				14634C6715FF1C1300D94104 /* warning@2x.png in Resources */,
 				1425251A1602328E0093A325 /* Default-568h@2x.png in Resources */,
+				1488F33B1619F9FC0065F8D6 /* help01.png in Resources */,
+				1488F33D1619FA020065F8D6 /* help01@2x.png in Resources */,
+				1488F341161A004C0065F8D6 /* help02.png in Resources */,
+				1488F342161A004C0065F8D6 /* help03.png in Resources */,
+				1488F343161A004C0065F8D6 /* helpIcon.png in Resources */,
+				1488F347161A00560065F8D6 /* help02@2x.png in Resources */,
+				1488F348161A00560065F8D6 /* help03@2x.png in Resources */,
+				1488F349161A00560065F8D6 /* helpIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +653,7 @@
 				141BA9881610C9A10002C7C2 /* UIApplication+AnonyFollow.m in Sources */,
 				141BA98C1610CA780002C7C2 /* UIDevice+AnonyFollow.m in Sources */,
 				14D5D3841611EB0C003CDAA2 /* SNReachablityChecker.m in Sources */,
+				1488F3381619DE4B0065F8D6 /* HelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
