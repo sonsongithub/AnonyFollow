@@ -504,7 +504,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="aX5-PK-uWf"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="aX5-PK-uWf"/>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHy-Xc-nl6">
                                 <subviews>
                                     <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dx-ZQ-fCq">
@@ -540,12 +540,22 @@
                                             <segue destination="RY6-sF-aHH" kind="embed" id="8xF-bn-Dco"/>
                                         </connections>
                                     </containerView>
+                                    <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BB3-kZ-tLn">
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="320" id="rTY-Qd-N5p"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="iKR-UW-lDx" kind="embed" id="FF4-sd-b1h"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="BB3-kZ-tLn" firstAttribute="bottom" secondItem="YHy-Xc-nl6" secondAttribute="bottom" type="default" id="1Ud-gG-I3R"/>
+                                    <constraint firstItem="BB3-kZ-tLn" firstAttribute="top" secondItem="YHy-Xc-nl6" secondAttribute="top" type="default" id="1Ux-hJ-e2A"/>
                                     <constraint firstItem="ox3-V0-J1G" firstAttribute="top" secondItem="YHy-Xc-nl6" secondAttribute="top" type="default" id="4sS-1i-j8K"/>
                                     <constraint firstItem="9dx-ZQ-fCq" firstAttribute="leading" secondItem="YHy-Xc-nl6" secondAttribute="leading" type="default" id="8yL-mN-FtB"/>
                                     <constraint firstItem="9dx-ZQ-fCq" firstAttribute="trailing" secondItem="YHy-Xc-nl6" secondAttribute="trailing" type="default" id="CJv-S2-I21"/>
-                                    <constraint firstItem="9dx-ZQ-fCq" firstAttribute="centerX" secondItem="YHy-Xc-nl6" secondAttribute="centerX" type="default" id="CO5-Sa-njp"/>
                                     <constraint firstItem="ox3-V0-J1G" firstAttribute="leading" secondItem="YHy-Xc-nl6" secondAttribute="leading" constant="960" id="CRp-Ph-p0B"/>
                                     <constraint firstItem="9dx-ZQ-fCq" firstAttribute="bottom" secondItem="YHy-Xc-nl6" secondAttribute="bottom" type="default" id="CSt-nv-UbU"/>
                                     <constraint firstItem="W0l-qS-Rm2" firstAttribute="leading" secondItem="YHy-Xc-nl6" secondAttribute="leading" constant="640" id="P8c-Uw-vpX"/>
@@ -553,10 +563,12 @@
                                     <constraint firstItem="W0l-qS-Rm2" firstAttribute="top" secondItem="YHy-Xc-nl6" secondAttribute="top" type="default" id="Rsl-l1-0Vq"/>
                                     <constraint firstItem="va9-b1-5Tb" firstAttribute="bottom" secondItem="YHy-Xc-nl6" secondAttribute="bottom" type="default" id="XC6-Xs-bCs"/>
                                     <constraint firstItem="va9-b1-5Tb" firstAttribute="leading" secondItem="YHy-Xc-nl6" secondAttribute="leading" constant="320" id="faP-hF-95M"/>
+                                    <constraint firstItem="9dx-ZQ-fCq" firstAttribute="centerY" secondItem="YHy-Xc-nl6" secondAttribute="centerY" type="default" id="l0y-Ao-bBG"/>
+                                    <constraint firstItem="BB3-kZ-tLn" firstAttribute="leading" secondItem="YHy-Xc-nl6" secondAttribute="leading" constant="1280" id="n6x-eT-Ze7"/>
                                     <constraint firstItem="va9-b1-5Tb" firstAttribute="top" secondItem="YHy-Xc-nl6" secondAttribute="top" type="default" id="oKd-2r-3HD"/>
                                     <constraint firstItem="ox3-V0-J1G" firstAttribute="bottom" secondItem="YHy-Xc-nl6" secondAttribute="bottom" type="default" id="u9C-5c-C5W"/>
                                     <constraint firstItem="W0l-qS-Rm2" firstAttribute="bottom" secondItem="YHy-Xc-nl6" secondAttribute="bottom" type="default" id="uiG-RF-9WC"/>
-                                    <constraint firstItem="9dx-ZQ-fCq" firstAttribute="centerY" secondItem="YHy-Xc-nl6" secondAttribute="centerY" type="default" id="usF-63-xSV"/>
+                                    <constraint firstAttribute="trailing" secondItem="BB3-kZ-tLn" secondAttribute="trailing" constant="-1280" id="uvk-gG-7UJ"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
@@ -1241,7 +1253,7 @@ See the License for the specific language governing permissions and limitations 
                                 <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="center" image="helpIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="T8Q-99-zlm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="help00.png" translatesAutoresizingMaskIntoConstraints="NO" id="T8Q-99-zlm">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="6Cf-5U-HBw"/>
                                 </constraints>
@@ -1263,8 +1275,47 @@ See the License for the specific language governing permissions and limitations 
             </objects>
             <point key="canvasLocation" x="3365" y="362"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="OyY-Rc-vNJ">
+            <objects>
+                <viewController id="iKR-UW-lDx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b3r-hP-N6v">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Thank you for downloading. Have fun!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="6Me-Oy-CfD">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" type="user" id="V3l-Go-3ut"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" image="helpIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="7rr-x2-QYS">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="260" id="1x6-rO-DKI"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7rr-x2-QYS" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="CWq-Ks-N7h"/>
+                            <constraint firstItem="7rr-x2-QYS" firstAttribute="top" secondItem="b3r-hP-N6v" secondAttribute="top" constant="20" type="user" id="QS3-K6-w7f"/>
+                            <constraint firstItem="6Me-Oy-CfD" firstAttribute="leading" secondItem="b3r-hP-N6v" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Rnc-7c-TuM"/>
+                            <constraint firstItem="7rr-x2-QYS" firstAttribute="leading" secondItem="b3r-hP-N6v" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="grl-f1-J90"/>
+                            <constraint firstItem="6Me-Oy-CfD" firstAttribute="top" secondItem="b3r-hP-N6v" secondAttribute="top" constant="229" type="user" id="hxW-fv-l0V"/>
+                            <constraint firstAttribute="trailing" secondItem="6Me-Oy-CfD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="zxj-5J-MKo"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6mW-C2-8ZH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3365" y="2616"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="help00.png" width="320" height="320"/>
         <image name="help01.png" width="320" height="320"/>
         <image name="help02.png" width="320" height="320"/>
         <image name="help03.png" width="320" height="320"/>

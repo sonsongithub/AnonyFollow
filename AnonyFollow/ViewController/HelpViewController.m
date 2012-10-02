@@ -34,7 +34,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	[self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width * 4, self.view.frame.size.height)];
+	[self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width * 5, self.view.frame.size.height)];
 }
 
 - (void)didReceiveMemoryWarning
