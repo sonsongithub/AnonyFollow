@@ -496,7 +496,7 @@
             </objects>
             <point key="canvasLocation" x="1803" y="988"/>
         </scene>
-        <!--Help View Controller - How to use-->
+        <!--Help View Controller - 簡単な使い方-->
         <scene sceneID="nI6-IP-v49">
             <objects>
                 <viewController id="FjM-Tv-h9k" customClass="HelpViewController" sceneMemberID="viewController">
@@ -591,8 +591,8 @@
                             <constraint firstItem="YHy-Xc-nl6" firstAttribute="trailing" secondItem="GJ1-ji-ayT" secondAttribute="trailing" type="default" id="uVR-zc-YoW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="How to use" id="ou4-fm-XEn">
-                        <barButtonItem key="rightBarButtonItem" title="Close" style="done" id="z20-52-lld">
+                    <navigationItem key="navigationItem" title="簡単な使い方" id="ou4-fm-XEn">
+                        <barButtonItem key="rightBarButtonItem" title="閉じる" style="done" id="z20-52-lld">
                             <connections>
                                 <action selector="dismiss:" destination="FjM-Tv-h9k" id="Kp8-x3-86x"/>
                             </connections>
@@ -1125,7 +1125,7 @@ See the License for the specific language governing permissions and limitations 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If you change &quot;Background is enabled&quot;, please open Setting view via the right-bottom toolbar button." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Zex-xJ-Zjx">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="「バックグラウンドがオン」になっている状態を変更したい場合は、ツールバーの右下のボタンをタップして、設定画面を開いてください。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="271" translatesAutoresizingMaskIntoConstraints="NO" id="Zex-xJ-Zjx">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" type="user" id="q6c-eX-Mue"/>
@@ -1163,12 +1163,11 @@ See the License for the specific language governing permissions and limitations 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="38e-B5-gju">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ステータスバーが赤色に点滅している間は、アプリケーションをバックグラウンドに移行してもアカウントの公開は止まりません。このときは、「すれ違い通信」のような「バックグラウンドがオン」の状態になります。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="38e-B5-gju">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" type="user" id="0Pf-UA-18H"/>
                                 </constraints>
-                                <string key="text">While the status bar is blinking in red, broadcasting DOES NOT turn off after AnonyFollow enters background automatically. That is "Background is enabled" like anonymous communication.</string>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1203,12 +1202,11 @@ See the License for the specific language governing permissions and limitations 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="S2k-dT-yn3">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="上部の「無線ボタン」をタップすると、アカウントの公開が始まります。ステータスバーが緑色に点滅しているときは、AnonyFollowを終了させると、自動的に公開も止まります。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="S2k-dT-yn3">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" type="user" id="2NV-Vl-QJZ"/>
                                 </constraints>
-                                <string key="text">Tap upper "wave icon", and then start broadcasting your account. While the status bar is blinking in green, broadcasting turns off automatically after AnonyFollow enters background.</string>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1243,12 +1241,11 @@ See the License for the specific language governing permissions and limitations 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="TPg-w0-mnl">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="AnonyFollowは、TwitterアカウントをBluetoothを使って交換できるアプリです。さらに、すれ違い通信のようにアカウントを交換することもできます。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="TPg-w0-mnl">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" type="user" id="qrw-em-vfa"/>
                                 </constraints>
-                                <string key="text">AnonyFollow allows you to exchange Twitter accounts each other with Bluetooth LE. In addition, you can enjoy anoymous communication by AnonyFollow.</string>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1283,7 +1280,7 @@ See the License for the specific language governing permissions and limitations 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Thank you for downloading. Have fun!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="6Me-Oy-CfD">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="最後にダウンロードしていただき、ありがとうございました！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="6Me-Oy-CfD">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" type="user" id="V3l-Go-3ut"/>
