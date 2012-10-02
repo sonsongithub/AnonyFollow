@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HelpViewController : UIViewController
+@interface HelpViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, strong) IBOutlet UIView *container1;
-@property (nonatomic, strong) IBOutlet UIView *container2;
+@property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
 
 @end

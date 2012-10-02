@@ -48,12 +48,19 @@
 
 #pragma mark - UIAlertViewDelegate
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	BOOL flag = NO;
-	if (buttonIndex == 0)
-		flag = NO;
-	if (buttonIndex == 1)
+	if (buttonIndex == 1) {
 		flag = YES;
+	}
+	if (buttonIndex == 2) {
+		flag = NO;
+	}
+	if (buttonIndex == 0) {
+		flag = NO;
+		UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HelpViewController"];
+		[self presentViewController:vc animated:YES completion:^(void){}];
+	}
 	[[NSUserDefaults standardUserDefaults] setBool:flag forKey:kAnonyFollowBackgroundScanEnabled];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	self.backgroundSwitch.on = flag;
@@ -71,8 +78,8 @@
 			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Warning", nil)
 																message:NSLocalizedString(@"Confirm anonymous communication", nil)
 															   delegate:self
-													  cancelButtonTitle:NSLocalizedString(@"Disable", nil)
-													  otherButtonTitles:NSLocalizedString(@"Enable", nil), nil];
+													  cancelButtonTitle:NSLocalizedString(@"Help", nil)
+													  otherButtonTitles:NSLocalizedString(@"Enable", nil), NSLocalizedString(@"Disable", nil), nil];
 			[alertView show];
 		}
 	}
