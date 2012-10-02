@@ -58,7 +58,7 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                     <size key="titleShadowOffset" width="0.0" height="-1"/>
-                                                    <state key="normal" title="Follow">
+                                                    <state key="normal" title="フォロー">
                                                         <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="titleShadowColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     </state>
@@ -110,7 +110,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBH-eh-NIs">
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="warning.png" translatesAutoresizingMaskIntoConstraints="NO" id="bHy-ag-yRi"/>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Turn on Bluetooth and setup Twitter privacy via Setting.app in order to use AnonyFollow." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="H0k-rX-Xb7">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="設定アプリで，Bluetoothをオンに、Twitterのアカウントにアクセスできるようにしてください。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="H0k-rX-Xb7">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="68" id="kpn-rH-37T"/>
                                                 </constraints>
@@ -120,7 +120,7 @@
                                                 <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <size key="shadowOffset" width="0.0" height="1"/>
                                             </label>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Can't access Bluetooth or Twitter account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="MgT-3o-slW">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bluetooth・Twitterアカウントにアクセスできません" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="MgT-3o-slW">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="68" id="SeH-yW-bsW"/>
                                                 </constraints>
@@ -139,7 +139,6 @@
                                             <constraint firstAttribute="bottom" secondItem="MgT-3o-slW" secondAttribute="bottom" constant="57" id="ETg-lH-B6M"/>
                                             <constraint firstAttribute="trailing" secondItem="MgT-3o-slW" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Eyp-R3-1cg"/>
                                             <constraint firstItem="bHy-ag-yRi" firstAttribute="centerX" secondItem="MgT-3o-slW" secondAttribute="centerX" type="default" id="H4n-qI-2tH"/>
-                                            <constraint firstAttribute="trailing" secondItem="H0k-rX-Xb7" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="XNr-5f-1KT"/>
                                             <constraint firstItem="H0k-rX-Xb7" firstAttribute="bottom" secondItem="jBH-eh-NIs" secondAttribute="bottom" type="default" id="eSf-5Q-0W0"/>
                                             <constraint firstItem="MgT-3o-slW" firstAttribute="leading" secondItem="jBH-eh-NIs" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="piO-CG-Rp4"/>
                                         </constraints>
@@ -177,11 +176,6 @@
                         <barButtonItem image="setting.png" style="plain" id="zmL-Dn-Xeh">
                             <connections>
                                 <segue destination="S4C-sh-H4c" kind="modal" identifier="ToSettingViewController" id="J9H-yd-62q"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem title="Item" id="T7M-mv-m8y">
-                            <connections>
-                                <segue destination="c0f-fm-7ol" kind="modal" id="miL-wm-as6"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -406,7 +400,7 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="A7f-HM-ESP"/>
-                        <barButtonItem title="Follow" width="150" id="lrh-as-wnS">
+                        <barButtonItem title="フォロー" width="150" id="lrh-as-wnS">
                             <connections>
                                 <action selector="follow:" destination="3fT-LL-GZo" id="QcK-L8-CTb"/>
                             </connections>
@@ -438,7 +432,7 @@
             </objects>
             <point key="canvasLocation" x="2344" y="330"/>
         </scene>
-        <!--Account Select View Controller - Select account-->
+        <!--Account Select View Controller - アカウント選択-->
         <scene sceneID="MaW-LZ-Nb2">
             <objects>
                 <tableViewController id="6Oi-9U-Caj" customClass="AccountSelectViewController" sceneMemberID="viewController">
@@ -490,7 +484,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Select account" id="EtF-18-Kni">
+                    <navigationItem key="navigationItem" title="アカウント選択" id="EtF-18-Kni">
                         <barButtonItem key="rightBarButtonItem" title="閉じる" style="done" id="M3H-6a-B5x">
                             <connections>
                                 <action selector="dismiss:" destination="6Oi-9U-Caj" id="3vI-Lc-aZv"/>
@@ -651,7 +645,7 @@
             </objects>
             <point key="canvasLocation" x="1320" y="-301"/>
         </scene>
-        <!--Setting View Controller - Settings-->
+        <!--Setting View Controller - 設定-->
         <scene sceneID="fXA-Oi-X9B">
             <objects>
                 <tableViewController autoresizesArchivedViewToFullSize="NO" id="nh6-bL-s6V" customClass="SettingViewController" sceneMemberID="viewController">
@@ -660,7 +654,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Information" id="32y-wj-shY">
+                            <tableViewSection headerTitle="情報" id="32y-wj-shY">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="OX0-8n-bGc" detailTextLabel="uEG-aa-wP7" style="IBUITableViewCellStyleValue1" id="esx-ck-V7u">
                                         <rect key="frame" x="0.0" y="46" width="320" height="45"/>
@@ -669,8 +663,8 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OX0-8n-bGc">
-                                                    <rect key="frame" x="10" y="11" width="47" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="名前" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OX0-8n-bGc">
+                                                    <rect key="frame" x="10" y="11" width="34" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -695,8 +689,8 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Version" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3AO-Yd-D5E">
-                                                    <rect key="frame" x="10" y="11" width="63" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="バージョン" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3AO-Yd-D5E">
+                                                    <rect key="frame" x="10" y="11" width="85" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -721,8 +715,8 @@
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Copyrights" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B4P-Bh-ZZn">
-                                                    <rect key="frame" x="10" y="11" width="90" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="著作権" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B4P-Bh-ZZn">
+                                                    <rect key="frame" x="10" y="11" width="51" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -750,7 +744,7 @@
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="License" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mdn-Ek-c81">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="ライセンス" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mdn-Ek-c81">
                                                     <rect key="frame" x="10" y="0.0" width="260" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -794,7 +788,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Background" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F80-go-rmF">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="バックグラウンド" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F80-go-rmF">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -820,7 +814,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Debug" footerTitle="" id="Au7-C0-ztQ">
+                            <tableViewSection headerTitle="デバッグ" footerTitle="" id="Au7-C0-ztQ">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="u05-Ij-zrB">
                                         <rect key="frame" x="0.0" y="487" width="320" height="45"/>
@@ -829,7 +823,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Show following" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euC-wx-7fs">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="フォローしてる人も表示" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euC-wx-7fs">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -860,7 +854,7 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Show redundant" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B15-Bf-LC8">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="重複ユーザを表示" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B15-Bf-LC8">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -893,7 +887,7 @@
                             <outlet property="delegate" destination="nh6-bL-s6V" id="atn-da-kdF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="PQO-Yu-CfO">
+                    <navigationItem key="navigationItem" title="設定" id="PQO-Yu-CfO">
                         <barButtonItem key="rightBarButtonItem" title="閉じる" style="done" id="p4z-3t-KK7">
                             <connections>
                                 <action selector="dismiss:" destination="nh6-bL-s6V" id="MAj-Pw-xrm"/>
@@ -912,7 +906,7 @@
             </objects>
             <point key="canvasLocation" x="1803" y="-301"/>
         </scene>
-        <!--Copyright Contact View Controller - Copyrights-->
+        <!--Copyright Contact View Controller - 著作権-->
         <scene sceneID="uxU-Mg-DXX">
             <objects>
                 <tableViewController id="G0A-XD-HiR" customClass="CopyrightContactViewController" sceneMemberID="viewController">
@@ -961,7 +955,7 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Open Twitter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PA1-8E-rgu">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Twitterを開く" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PA1-8E-rgu">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -977,7 +971,7 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="More by sonson" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YTH-fX-fcE">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="sonsonの他のApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YTH-fX-fcE">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1030,7 +1024,7 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Open Twitter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSi-zt-X3n">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Twitterを開く" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSi-zt-X3n">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1046,7 +1040,7 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="More by YusukeSekikawa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0fd-Me-oHE">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="YusukeSekikawaの他のApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0fd-Me-oHE">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1065,13 +1059,13 @@
                             <outlet property="delegate" destination="G0A-XD-HiR" id="SyO-Yc-45F"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Copyrights" id="f7T-Hg-nCd"/>
+                    <navigationItem key="navigationItem" title="著作権" id="f7T-Hg-nCd"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hYO-RL-bdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2344" y="-923"/>
         </scene>
-        <!--View Controller - License-->
+        <!--View Controller - ライセンス-->
         <scene sceneID="MMB-0n-u5A">
             <objects>
                 <viewController id="wVm-lc-pgT" sceneMemberID="viewController">
@@ -1105,7 +1099,7 @@ See the License for the specific language governing permissions and limitations 
                             <constraint firstItem="9y9-ft-ko4" firstAttribute="trailing" secondItem="jMw-u2-wYR" secondAttribute="trailing" type="default" id="nhR-FG-dWu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="License" id="ZdC-dM-qoX"/>
+                    <navigationItem key="navigationItem" title="ライセンス" id="ZdC-dM-qoX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5KL-2Z-75t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1119,12 +1113,12 @@ See the License for the specific language governing permissions and limitations 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="AnonyFollowは、Bluetoothの電波を使って、Twitterのアカウントをお互いにフォローできるアプリです。すれ違い通信も可能です。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Zex-xJ-Zjx">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If you change &quot;Background is enabled&quot;, please open Setting view via the right-bottom toolbar button." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Zex-xJ-Zjx">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="q6c-eX-Mue"/>
+                                    <constraint firstAttribute="height" constant="170" type="user" id="q6c-eX-Mue"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
@@ -1136,9 +1130,9 @@ See the License for the specific language governing permissions and limitations 
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Zex-xJ-Zjx" firstAttribute="top" secondItem="lHl-7l-gll" secondAttribute="top" constant="229" type="user" id="6dg-nK-Qau"/>
                             <constraint firstItem="cvB-YD-orO" firstAttribute="leading" secondItem="lHl-7l-gll" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="8BV-bn-ERC"/>
-                            <constraint firstAttribute="bottom" secondItem="Zex-xJ-Zjx" secondAttribute="bottom" constant="17" id="GWN-7G-Ytc"/>
-                            <constraint firstAttribute="trailing" secondItem="Zex-xJ-Zjx" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="PQH-Yr-Xxk"/>
+                            <constraint firstAttribute="bottom" secondItem="Zex-xJ-Zjx" secondAttribute="bottom" constant="17" type="user" id="GWN-7G-Ytc"/>
                             <constraint firstItem="Zex-xJ-Zjx" firstAttribute="leading" secondItem="lHl-7l-gll" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="R3h-98-Ioy"/>
                             <constraint firstAttribute="trailing" secondItem="cvB-YD-orO" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="iIK-Ze-JfN"/>
                             <constraint firstItem="cvB-YD-orO" firstAttribute="top" secondItem="lHl-7l-gll" secondAttribute="top" constant="20" type="user" id="j87-p4-cNG"/>
@@ -1157,12 +1151,13 @@ See the License for the specific language governing permissions and limitations 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="AnonyFollowは、Bluetoothの電波を使って、Twitterのアカウントをお互いにフォローできるアプリです。すれ違い通信も可能です。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="38e-B5-gju">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="38e-B5-gju">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="0Pf-UA-18H"/>
+                                    <constraint firstAttribute="height" constant="170" type="user" id="0Pf-UA-18H"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <string key="text">While the status bar is blinking in red, broadcasting DOES NOT turn off after AnonyFollow enters background automatically. That is "Background is enabled" like anonymous communication.</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
@@ -1175,8 +1170,9 @@ See the License for the specific language governing permissions and limitations 
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="STB-mV-vMf" firstAttribute="top" secondItem="K3A-TA-2W5" secondAttribute="top" constant="20" type="user" id="Izk-RG-pds"/>
-                            <constraint firstAttribute="trailing" secondItem="38e-B5-gju" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="T1z-pe-bfY"/>
-                            <constraint firstAttribute="bottom" secondItem="38e-B5-gju" secondAttribute="bottom" constant="17" id="Ux7-dX-1aP"/>
+                            <constraint firstAttribute="trailing" secondItem="38e-B5-gju" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Jve-qj-sim"/>
+                            <constraint firstItem="38e-B5-gju" firstAttribute="top" secondItem="K3A-TA-2W5" secondAttribute="top" constant="229" type="user" id="MCj-EC-ht1"/>
+                            <constraint firstAttribute="bottom" secondItem="38e-B5-gju" secondAttribute="bottom" constant="17" type="user" id="Ux7-dX-1aP"/>
                             <constraint firstItem="38e-B5-gju" firstAttribute="leading" secondItem="K3A-TA-2W5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ZTy-E2-TDD"/>
                             <constraint firstAttribute="trailing" secondItem="STB-mV-vMf" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="eB0-Ou-Pxq"/>
                             <constraint firstItem="STB-mV-vMf" firstAttribute="leading" secondItem="K3A-TA-2W5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="k8Z-ns-WPe"/>
@@ -1185,7 +1181,7 @@ See the License for the specific language governing permissions and limitations 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qtO-bq-0Ji" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3365" y="1440"/>
+            <point key="canvasLocation" x="3365" y="1514"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="uTz-ol-gGA">
@@ -1195,12 +1191,13 @@ See the License for the specific language governing permissions and limitations 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="AnonyFollowは、Bluetoothの電波を使って、Twitterのアカウントをお互いにフォローできるアプリです。すれ違い通信も可能です。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="S2k-dT-yn3">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="S2k-dT-yn3">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="2NV-Vl-QJZ"/>
+                                    <constraint firstAttribute="height" constant="170" type="user" id="2NV-Vl-QJZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <string key="text">Tap upper "wave icon", and then start broadcasting your account. While the status bar is blinking in green, broadcasting turns off automatically after AnonyFollow enters background.</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
@@ -1214,7 +1211,8 @@ See the License for the specific language governing permissions and limitations 
                         <constraints>
                             <constraint firstItem="1C7-Yr-z6g" firstAttribute="top" secondItem="J3f-eB-vVT" secondAttribute="top" constant="20" type="user" id="0Qi-MV-7ak"/>
                             <constraint firstItem="S2k-dT-yn3" firstAttribute="leading" secondItem="J3f-eB-vVT" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="3ao-HY-DJa"/>
-                            <constraint firstAttribute="bottom" secondItem="S2k-dT-yn3" secondAttribute="bottom" constant="17" id="CpB-v7-pnC"/>
+                            <constraint firstAttribute="bottom" secondItem="S2k-dT-yn3" secondAttribute="bottom" constant="17" type="user" id="CpB-v7-pnC"/>
+                            <constraint firstItem="S2k-dT-yn3" firstAttribute="top" secondItem="J3f-eB-vVT" secondAttribute="top" constant="229" type="user" id="VMk-xZ-wcM"/>
                             <constraint firstAttribute="trailing" secondItem="S2k-dT-yn3" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="aUK-a0-JIU"/>
                             <constraint firstItem="1C7-Yr-z6g" firstAttribute="leading" secondItem="J3f-eB-vVT" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="l3a-RJ-y5c"/>
                             <constraint firstAttribute="trailing" secondItem="1C7-Yr-z6g" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ntA-LZ-cKq"/>
@@ -1223,7 +1221,7 @@ See the License for the specific language governing permissions and limitations 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FPo-OX-dZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3365" y="868"/>
+            <point key="canvasLocation" x="3365" y="920"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="NbU-Sh-jQT">
@@ -1233,12 +1231,13 @@ See the License for the specific language governing permissions and limitations 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="AnonyFollowは、Bluetoothの電波を使って、Twitterのアカウントをお互いにフォローできるアプリです。すれ違い通信も可能です。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="TPg-w0-mnl">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="TPg-w0-mnl">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="qrw-em-vfa"/>
+                                    <constraint firstAttribute="height" constant="170" type="user" id="qrw-em-vfa"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <string key="text">AnonyFollow allows you to exchange Twitter accounts each other with Bluetooth LE. In addition, you can enjoy anoymous communication by AnonyFollow.</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
@@ -1252,16 +1251,17 @@ See the License for the specific language governing permissions and limitations 
                         <constraints>
                             <constraint firstItem="T8Q-99-zlm" firstAttribute="top" secondItem="9dm-4G-NEF" secondAttribute="top" constant="20" type="user" id="78o-iq-KJN"/>
                             <constraint firstAttribute="trailing" secondItem="T8Q-99-zlm" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="A1x-OE-ywh"/>
+                            <constraint firstItem="TPg-w0-mnl" firstAttribute="top" secondItem="9dm-4G-NEF" secondAttribute="top" constant="229" type="user" id="Kcg-N8-H98"/>
                             <constraint firstItem="T8Q-99-zlm" firstAttribute="leading" secondItem="9dm-4G-NEF" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ZcC-du-NTp"/>
-                            <constraint firstAttribute="trailing" secondItem="TPg-w0-mnl" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="dGp-MF-5TW"/>
-                            <constraint firstAttribute="bottom" secondItem="TPg-w0-mnl" secondAttribute="bottom" constant="17" id="ryc-5u-B8v"/>
+                            <constraint firstAttribute="trailing" secondItem="TPg-w0-mnl" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nbe-xd-YXc"/>
+                            <constraint firstAttribute="bottom" secondItem="TPg-w0-mnl" secondAttribute="bottom" constant="17" type="user" id="ryc-5u-B8v"/>
                             <constraint firstItem="TPg-w0-mnl" firstAttribute="leading" secondItem="9dm-4G-NEF" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="s3E-NK-7AW"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TXp-LY-MdL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3365" y="330"/>
+            <point key="canvasLocation" x="3365" y="362"/>
         </scene>
     </scenes>
     <resources>

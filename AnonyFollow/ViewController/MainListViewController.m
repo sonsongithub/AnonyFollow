@@ -378,13 +378,24 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	[self loadImagesForOnscreenRows];
     [self resetBadge];
 
-	[UIView animateWithDuration:0.4 animations:^(void){
-		UIScreen *screen = [UIScreen mainScreen];
-		CGSize size = screen.bounds.size;
-		size.height -= STATUS_BAR_HEIGHT;
-		CGRect frame = CGRectMake(0, STATUS_BAR_HEIGHT, size.width, size.height);
-		self.navigationController.view.frame = frame;
-	}];
+	[UIView animateWithDuration:0.4
+					 animations:^(void) {
+						 UIScreen *screen = [UIScreen mainScreen];
+						 CGSize size = screen.bounds.size;
+						 size.height -= STATUS_BAR_HEIGHT;
+						 CGRect frame = CGRectMake(0, STATUS_BAR_HEIGHT, size.width, size.height);
+						 self.navigationController.view.frame = frame;
+					 }
+					 completion:^(BOOL completion) {
+						 if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowShownHelpVer100]) {
+						 }
+						 else {
+							 UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HelpViewController"];
+							 [self presentViewController:vc animated:YES completion:^(void){}];
+							 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kAnonyFollowShownHelpVer100];
+							 [[NSUserDefaults standardUserDefaults] synchronize];
+						 }
+					 }];
 	
 	NSIndexPath *path = [self.tableView indexPathForSelectedRow];
 	if (path)

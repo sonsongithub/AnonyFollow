@@ -12,6 +12,7 @@ NSString *kAnonyFollowBackgroundScanEnabled = @"kAnonyFollowBackgroundScanEnable
 NSString *kAnonyFollowDebugShowFollowingUsers = @"kAnonyFollowDebugShowFollowingUsers";
 NSString *kAnonyFollowDebugShowRedundantUsers = @"kAnonyFollowDebugShowRedundantUsers";
 NSString *kAnonyFollowCurrentTwitterUserName = @"kAnonyFollowCurrentTwitterUserName";
+NSString *kAnonyFollowShownHelpVer100 = @"kAnonyFollowShownHelpVer100";
 
 @implementation NSUserDefaults(AnonyFollow)
 

@@ -12,6 +12,7 @@ extern NSString *kAnonyFollowBackgroundScanEnabled;
 extern NSString *kAnonyFollowDebugShowFollowingUsers;
 extern NSString *kAnonyFollowDebugShowRedundantUsers;
 extern NSString *kAnonyFollowCurrentTwitterUserName;
+extern NSString *kAnonyFollowShownHelpVer100;
 
 @interface NSUserDefaults(AnonyFollow)
 
