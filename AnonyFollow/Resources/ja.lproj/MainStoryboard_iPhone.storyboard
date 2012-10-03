@@ -1283,7 +1283,7 @@ See the License for the specific language governing permissions and limitations 
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="最後にダウンロードしていただき、ありがとうございました！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="6Me-Oy-CfD">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="170" type="user" id="V3l-Go-3ut"/>
+                                    <constraint firstAttribute="height" constant="111" id="nP2-2d-Kc1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1301,7 +1301,7 @@ See the License for the specific language governing permissions and limitations 
                             <constraint firstItem="7rr-x2-QYS" firstAttribute="top" secondItem="b3r-hP-N6v" secondAttribute="top" constant="20" type="user" id="QS3-K6-w7f"/>
                             <constraint firstItem="6Me-Oy-CfD" firstAttribute="leading" secondItem="b3r-hP-N6v" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Rnc-7c-TuM"/>
                             <constraint firstItem="7rr-x2-QYS" firstAttribute="leading" secondItem="b3r-hP-N6v" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="grl-f1-J90"/>
-                            <constraint firstItem="6Me-Oy-CfD" firstAttribute="top" secondItem="b3r-hP-N6v" secondAttribute="top" constant="229" type="user" id="hxW-fv-l0V"/>
+                            <constraint firstItem="6Me-Oy-CfD" firstAttribute="top" secondItem="7rr-x2-QYS" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="yyR-M1-lDW"/>
                             <constraint firstAttribute="trailing" secondItem="6Me-Oy-CfD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="zxj-5J-MKo"/>
                         </constraints>
                     </view>
