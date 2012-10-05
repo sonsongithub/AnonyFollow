@@ -20,6 +20,24 @@
 
 #pragma mark - Instance method
 
+- (void)updateVersionCell {
+	if (self.versionClickCount == 0) {
+		// version
+		self.versionCell.textLabel.text = NSLocalizedString(@"Version", nil);
+		self.versionCell.detailTextLabel.text = [[UIApplication sharedApplication] versionString];
+	}
+	if (self.versionClickCount == 1) {
+		// revision
+		self.versionCell.textLabel.text = NSLocalizedString(@"Revision", nil);
+		self.versionCell.detailTextLabel.text = [[UIApplication sharedApplication] revisionString];
+	}
+	if (self.versionClickCount == 2) {
+		// build
+		self.versionCell.textLabel.text = NSLocalizedString(@"Build", nil);
+		self.versionCell.detailTextLabel.text = [[UIApplication sharedApplication] buildNumberString];
+	}
+}
+
 - (void)sendFeedbackMail {
 	if ([MFMailComposeViewController canSendMail]) {
 		MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
@@ -28,7 +46,7 @@
 		[picker setSubject:NSLocalizedString(@"[AnonyFollow contact] ", nil)];
 		[picker setToRecipients:[NSArray arrayWithObject:NSLocalizedString(@"SupportMailAddress", nil)]];
 		
-		NSString *body = [NSString stringWithFormat:NSLocalizedString(@"\n\nYour system's information ----------\nAnonyFollow %@\niOS %@\n Device %@", nil), [[UIApplication sharedApplication] versionString], [UIDevice currentDevice].systemVersion, [[UIDevice currentDevice] _platformString]];
+		NSString *body = [NSString stringWithFormat:NSLocalizedString(@"\n\nYour system's information ----------\nAnonyFollow %@\niOS %@\n Device %@", nil), [[UIApplication sharedApplication] applicationInformationString], [UIDevice currentDevice].systemVersion, [[UIDevice currentDevice] _platformString]];
 		
 		[picker setMessageBody:body isHTML:NO];
 		
@@ -125,7 +143,7 @@
 	[super viewWillAppear:animated];
 	
 	// version string
-	self.versionCell.detailTextLabel.text = [[UIApplication sharedApplication] versionString];
+	[self updateVersionCell];
 	
 	// application name
 	self.applicationNameCell.detailTextLabel.text = [[UIApplication sharedApplication] applicationNameForDisplay];
@@ -144,6 +162,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.section == 0 && indexPath.row == 4) {
 		[self sendFeedbackMail];
+	}
+	if (indexPath.section == 0 && indexPath.row == 1) {
+		self.versionClickCount = (self.versionClickCount == 2) ? 0 : self.versionClickCount + 1;
+		[self updateVersionCell];
 	}
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

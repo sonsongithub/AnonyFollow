@@ -13,22 +13,30 @@
 @implementation UIApplication(AnonyFollow)
 
 - (NSString*)versionString {
-	// version string
-	NSString *CFBundleShortVersionString = [NSBundle infoValueFromMainBundleForKey:@"CFBundleShortVersionString"];
-	NSString *CFBundleVersion = [NSBundle infoValueFromMainBundleForKey:@"CFBundleVersion"];
-	NSString *CFBundleGitRevision = [NSBundle infoValueFromMainBundleForKey:@"CFBundleGithubShortRevision"];
-	return [NSString stringWithFormat:@"%@.%@.%@", CFBundleShortVersionString, CFBundleVersion,  CFBundleGitRevision];
+	// application name
+#if defined(_TESTFLIGHT)
+	return [NSString stringWithFormat:@"%@(TestFlight)", [NSBundle infoValueFromMainBundleForKey:@"CFBundleShortVersionString"]];
+#elif defined(_DEBUG)
+	return [NSString stringWithFormat:@"%@(Debug)", [NSBundle infoValueFromMainBundleForKey:@"CFBundleShortVersionString"]];
+#else
+	return [NSBundle infoValueFromMainBundleForKey:@"CFBundleShortVersionString"];
+#endif
+}
+
+- (NSString*)buildNumberString {
+	return [NSBundle infoValueFromMainBundleForKey:@"CFBundleVersion"];
+}
+
+- (NSString*)revisionString {
+	return [NSBundle infoValueFromMainBundleForKey:@"CFBundleGithubShortRevision"];
+}
+
+- (NSString*)applicationInformationString {
+	return [NSString stringWithFormat:@"%@.%@.%@", [self versionString], [self buildNumberString],  [self revisionString]];
 }
 
 - (NSString*)applicationNameForDisplay {
-	// application name
-#if defined(_TESTFLIGHT)
-	return [NSString stringWithFormat:@"%@(TestFlight)", [NSBundle infoValueFromMainBundleForKey:@"CFBundleDisplayName"]];
-#elif defined(_DEBUG)
-	return [NSString stringWithFormat:@"%@(Debug)", [NSBundle infoValueFromMainBundleForKey:@"CFBundleDisplayName"]];
-#else
 	return [NSBundle infoValueFromMainBundleForKey:@"CFBundleDisplayName"];
-#endif
 }
 
 @end

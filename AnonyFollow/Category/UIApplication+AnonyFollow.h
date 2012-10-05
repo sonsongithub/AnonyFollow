@@ -10,7 +10,10 @@
 
 @interface UIApplication(AnonyFollow)
 
+- (NSString*)applicationInformationString;
 - (NSString*)versionString;
+- (NSString*)buildNumberString;
+- (NSString*)revisionString;
 - (NSString*)applicationNameForDisplay;
 
 

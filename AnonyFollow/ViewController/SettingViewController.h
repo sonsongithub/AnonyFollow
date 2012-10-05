@@ -12,6 +12,7 @@
 
 @interface SettingViewController : UITableViewController <MFMailComposeViewControllerDelegate, UIAlertViewDelegate>
 
+@property (nonatomic, assign) int versionClickCount;
 @property (nonatomic, strong) IBOutlet UITableViewCell *applicationNameCell;
 @property (nonatomic, strong) IBOutlet UITableViewCell *versionCell;
 @property (nonatomic, strong) IBOutlet UISwitch *backgroundSwitch;
