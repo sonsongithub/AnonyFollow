@@ -33,13 +33,11 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 #import <Social/Social.h>
 #import "NSBundle+AnonyFollow.h"
 
-typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
-
 @implementation MainListViewController
 
-#pragma mark - Instance method
+typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 
-#pragma mark - Serialize
+#pragma mark - Follow list management
 
 - (void)serializeAccounts {
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -57,10 +55,9 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	self.accounts = [NSMutableArray array];
 	NSData *data  = [NSData dataWithContentsOfFile:plistPath];
 	[self.accounts addObjectsFromArray:[TwitterAccountInfo arrayOfTwitterAccountInfoWithSerializedData:data]];
-	
-	// remove saved file
-	[[NSFileManager defaultManager] removeItemAtPath:plistPath error:nil];
 }
+
+#pragma mark - History list management
 
 #pragma mark - Applicatoin badge control
 
@@ -298,6 +295,9 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 		[self stopBoardcasting];
 	}
 	
+	// serialize current follow list
+	[self serializeAccounts];
+	
 	// clear download queue
 	[[DownloadQueue sharedInstance] clearQueue];
 }
@@ -534,7 +534,6 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	[self.accounts addObject:info];
 	[self updateTrashButton];
 	[self.tableView reloadData];
-	
 	
 	if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
 		AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
