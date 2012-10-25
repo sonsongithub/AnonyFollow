@@ -337,8 +337,8 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
 	[appdelegate setupOriginalStatusBar];
 	
+	// Manage UI
 	self.lockScreenView.hidden = YES;
-	
 	self.trashButton.enabled = ([self.accounts count] > 0);
 	
 #if 0

@@ -82,6 +82,8 @@
 		14BE1B7415EA282700F7547E /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 14BE1B6C15EA282700F7547E /* setting@2x.png */; };
 		14BE1B9715EA28BF00F7547E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BE1B9615EA28BF00F7547E /* QuartzCore.framework */; };
 		14D5D3841611EB0C003CDAA2 /* SNReachablityChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 14D5D3831611EB0C003CDAA2 /* SNReachablityChecker.m */; };
+		14EC7C7E16391B3400E34B5C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EC7C7D16391B3400E34B5C /* MapKit.framework */; };
+		14EC7C8116391B3A00E34B5C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EC7C8016391B3A00E34B5C /* CoreLocation.framework */; };
 		14F5320A15F9D58A0080444A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5320815F9D58A0080444A /* icon.png */; };
 		14F5320B15F9D58A0080444A /* icon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5320915F9D58A0080444A /* icon_retina.png */; };
 		14F5321415F9E9D50080444A /* icon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F5321215F9E9D50080444A /* icon_ipad.png */; };
@@ -205,6 +207,8 @@
 		14BE1B9615EA28BF00F7547E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		14D5D3821611EB0C003CDAA2 /* SNReachablityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNReachablityChecker.h; sourceTree = "<group>"; };
 		14D5D3831611EB0C003CDAA2 /* SNReachablityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNReachablityChecker.m; sourceTree = "<group>"; };
+		14EC7C7D16391B3400E34B5C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		14EC7C8016391B3A00E34B5C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		14F5320815F9D58A0080444A /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		14F5320915F9D58A0080444A /* icon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_retina.png; sourceTree = "<group>"; };
 		14F5321215F9E9D50080444A /* icon_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_ipad.png; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14EC7C8116391B3A00E34B5C /* CoreLocation.framework in Frameworks */,
+				14EC7C7E16391B3400E34B5C /* MapKit.framework in Frameworks */,
 				14192DA416153067002E3B73 /* StoreKit.framework in Frameworks */,
 				1481963315FC5D1A004B0BCB /* MessageUI.framework in Frameworks */,
 				14B7A5EC15F5005F00D6BF0B /* Security.framework in Frameworks */,
@@ -258,6 +264,8 @@
 			isa = PBXGroup;
 			children = (
 				14B7A5E615F4F90A00D6BF0B /* libz.dylib */,
+				14EC7C8016391B3A00E34B5C /* CoreLocation.framework */,
+				14EC7C7D16391B3400E34B5C /* MapKit.framework */,
 				14192DA316153067002E3B73 /* StoreKit.framework */,
 				1481963215FC5D1A004B0BCB /* MessageUI.framework */,
 				14B7A5EB15F5005F00D6BF0B /* Security.framework */,

@@ -14,9 +14,19 @@
 
 #import "NSData+MD5.h"
 
+NSString *TwitterAccountInfoCoderScreenNameKey = @"TwitterAccountInfoCoderScreenNameKey";
+NSString *TwitterAccountInfoCoderUserIDKey = @"TwitterAccountInfoCoderUserIDKey";
+NSString *TwitterAccountInfoCoderFoundTimeKey = @"TwitterAccountInfoCoderFoundTimeKey";
+NSString *TwitterAccountInfoCoderFoundPlaceLatitudeKey = @"TwitterAccountInfoCoderFoundPlaceLatitudeKey";
+NSString *TwitterAccountInfoCoderFoundPlaceLongitudeKey = @"TwitterAccountInfoCoderFoundPlaceLongitudeKey";
+
 @implementation TwitterAccountInfo
 
 #pragma mark - Manages cache of thumbnails and sssp images.
+
++ (void)deleteExpiredCacheImages {
+	// to be done
+}
 
 + (UIImage*)cacheImageWithURLString:(NSString*)URLString {
 	
@@ -44,9 +54,35 @@
 	return [data writeToFile:cacheFilePath atomically:NO];
 }
 
+#pragma mark - Coder
+
+- (id)initWithCoder:(NSCoder *)coder {
+	self = [super init];
+	self.screenName = [coder decodeObjectForKey:TwitterAccountInfoCoderScreenNameKey];
+	self.userID = [coder decodeObjectForKey:TwitterAccountInfoCoderUserIDKey];
+	self.foundTime = [coder decodeDoubleForKey:TwitterAccountInfoCoderFoundTimeKey];
+	self.foundCoordinate = CLLocationCoordinate2DMake(
+									[coder decodeFloatForKey:TwitterAccountInfoCoderFoundPlaceLatitudeKey],
+									[coder decodeFloatForKey:TwitterAccountInfoCoderFoundPlaceLongitudeKey]
+													  );
+	return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+	[encoder encodeObject:self.screenName forKey:TwitterAccountInfoCoderScreenNameKey];
+	[encoder encodeObject:self.userID forKey:TwitterAccountInfoCoderUserIDKey];
+	[encoder encodeDouble:self.foundTime forKey:TwitterAccountInfoCoderFoundTimeKey];
+	[encoder encodeFloat:self.foundCoordinate.latitude forKey:TwitterAccountInfoCoderFoundPlaceLatitudeKey];
+	[encoder encodeFloat:self.foundCoordinate.longitude forKey:TwitterAccountInfoCoderFoundPlaceLongitudeKey];
+}
+
+#pragma mark - dealloc
+
 - (void)dealloc {
 	[[DownloadQueue sharedInstance] removeTasksOfDelegate:self];
 }
+
+#pragma mark - Creating new task for account
 
 - (DownloadTask*)taskForUserTimeline {
 	NSString *URLString = [NSString stringWithFormat:@"https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name=%@", self.screenName];
@@ -62,7 +98,7 @@
 	return task;
 }
 
-//https://api.twitter.com/1/users/show.json?screen_name=TwitterAPI&include_entities=true
+#pragma mark - Starting to download icon image
 
 - (BOOL)tryToDownloadIconImage {
 	NSString *URLString = [NSString stringWithFormat:@"https://api.twitter.com/1/users/profile_image?screen_name=%@&size=bigger", self.screenName];
@@ -88,6 +124,8 @@
 	
 	return YES;
 }
+
+#pragma mark - DownloadTaskDelegate
 
 - (void)didDownloadTask:(DownloadTask*)task {
 	UIImage *image = [UIImage imageWithData:task.data];
