@@ -57,7 +57,159 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	[self.accounts addObjectsFromArray:[TwitterAccountInfo arrayOfTwitterAccountInfoWithSerializedData:data]];
 }
 
+- (void)addScreenName:(NSString*)screenName {
+	if ([self doesMainListAlreadyInclude:screenName])
+		return;
+	
+	TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
+	info.screenName = screenName;
+	[self.accounts addObject:info];
+	[self updateTrashButton];
+	[self.tableView reloadData];
+	
+	if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+		AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+		[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
+	}
+	else if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+		// post local notification
+		[self notifyRecevingOnBackgroundWithMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
+		// increment number of badge
+		[self incrementBadge];
+		[self serializeAccounts];
+	}
+}
+
+- (void)checkFollowingAndAddListWithScreenName:(NSString*)screenName account:(ACAccount*)account {
+	NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
+	
+	SLRequest *postRequest;
+	[tempDict setValue:account.username forKey:@"screen_name_a"];
+	[tempDict setValue:screenName forKey:@"screen_name_b"];
+	postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/exists.json"] parameters:tempDict];
+	
+	[postRequest setAccount:account];
+	[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+		if (error == nil) {
+			NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+			NSLog(@"%@", result);
+			if ([result isEqualToString:@"true"]) {
+				dispatch_async(dispatch_get_main_queue(), ^(void){
+					if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+						AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+						[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), screenName]];
+					}
+					else if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+						// post local notification
+						[self notifyRecevingOnBackgroundWithMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), screenName]];
+					}
+				});
+				return;
+			}
+		}
+		// when error happens or the acccount is not followed
+		dispatch_async(dispatch_get_main_queue(), ^(void){
+			[self addScreenName:screenName];
+		});
+	}];
+}
+
+- (void)debugAddScreenNameOnForeground:(NSString*)screenName {
+	// for debugging
+	
+	// avoid redundancy?
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowRedundantUsers]) {
+		if ([self doesMainListAlreadyInclude:screenName])
+			return;
+	}
+	
+	// avoid already followed users?
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowFollowingUsers]) {
+		[self addScreenName:screenName];
+	}
+	else {
+		// normal
+		ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+		ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+		[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+			if(granted) {
+				ACAccount *account = [accountStore twitterCurrentAccount];
+				if (account) {
+					[self checkFollowingAndAddListWithScreenName:screenName account:account];
+					return;
+				}
+			}
+			// when error happens, forcely added screen name into the main list
+			dispatch_async(dispatch_get_main_queue(), ^(void){
+				[self addScreenName:screenName];
+			});
+		}];
+	}
+}
+
+- (void)addScreenNameOnForeground:(NSString*)screenName {
+	// check already received?
+	if ([self doesMainListAlreadyInclude:screenName])
+		return;
+	
+	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+		if(granted) {
+			ACAccount *account = [accountStore twitterCurrentAccount];
+			if (account) {
+				[self checkFollowingAndAddListWithScreenName:screenName account:account];
+				return;
+			}
+		}
+		// when error happens, forcely added screen name into the main list
+		dispatch_async(dispatch_get_main_queue(), ^(void){
+			[self addScreenName:screenName];
+		});
+	}];
+}
+
 #pragma mark - History list management
+
+- (float)distanceAsMetersBetweenLocationA:(CLLocationCoordinate2D)locationA locationB:(CLLocationCoordinate2D)locationB {
+	return 0;
+}
+
+- (void)addScreenNameToHistory:(NSString*)screenName {
+	
+	NSTimeInterval currentTime = CFAbsoluteTimeGetCurrent();
+	CLLocationCoordinate2D currentLocation = self.currentLocation;
+	
+	if (currentLocation.latitude && currentLocation.longitude) {
+		for (TwitterAccountInfo *existing in [self.history reverseObjectEnumerator]) {
+			if ([existing.screenName isEqualToString:screenName]) {
+				// last encounting data
+				
+				if (currentTime - existing.foundTime > 24 * 3600) {
+					// OK, after 1 day.
+				}
+				else if (currentTime - existing.foundTime > 3600 && [self distanceAsMetersBetweenLocationA:currentLocation locationB:existing.foundCoordinate] > 10) {
+					// OK, after 1 hour and 
+				}
+				
+				return;
+			}
+		}
+		
+		// add screen name without location information
+		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
+		info.screenName = screenName;
+		info.foundTime = currentTime;
+		[self.history addObject:info];
+	}
+	else {
+		// add screen name without location information
+		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
+		info.screenName = screenName;
+		info.foundTime = currentTime;
+		[self.history addObject:info];
+	}
+}
 
 #pragma mark - Applicatoin badge control
 
@@ -523,118 +675,6 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 #pragma mark - CBAdvertizerDelegate
 
 - (void)advertizerDidChangeStatus:(CBAdvertizer*)advertizer {
-}
-
-- (void)addScreenName:(NSString*)screenName {
-	if ([self doesMainListAlreadyInclude:screenName])
-		return;
-	
-	TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
-	info.screenName = screenName;
-	[self.accounts addObject:info];
-	[self updateTrashButton];
-	[self.tableView reloadData];
-	
-	if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-		AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-		[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
-	}
-	else if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
-		// post local notification
-		[self notifyRecevingOnBackgroundWithMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
-		// increment number of badge
-		[self incrementBadge];
-		[self serializeAccounts];
-	}
-}
-
-- (void)checkFollowingAndAddListWithScreenName:(NSString*)screenName account:(ACAccount*)account {
-	NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
-	
-	SLRequest *postRequest;
-	[tempDict setValue:account.username forKey:@"screen_name_a"];
-	[tempDict setValue:screenName forKey:@"screen_name_b"];
-	postRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:[NSURL URLWithString:@"https://api.twitter.com/1/friendships/exists.json"] parameters:tempDict];
-	
-	[postRequest setAccount:account];
-	[postRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-		if (error == nil) {
-			NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-			NSLog(@"%@", result);
-			if ([result isEqualToString:@"true"]) {
-				dispatch_async(dispatch_get_main_queue(), ^(void){
-					if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-						AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
-						[del.barView pushTemporaryMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), screenName]];
-					}
-					else if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
-						// post local notification
-						[self notifyRecevingOnBackgroundWithMessage:[NSString stringWithFormat:NSLocalizedString(@"%@ is already followed", nil), screenName]];
-					}
-				});
-				return;
-			}
-		}
-		// when error happens or the acccount is not followed
-		dispatch_async(dispatch_get_main_queue(), ^(void){
-			[self addScreenName:screenName];
-		});
-	}];
-}
-
-- (void)debugAddScreenNameOnForeground:(NSString*)screenName {
-	// for debugging
-	
-	// avoid redundancy?
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowRedundantUsers]) {
-		if ([self doesMainListAlreadyInclude:screenName])
-			return;
-	}
-	
-	// avoid already followed users?
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowFollowingUsers]) {
-		[self addScreenName:screenName];
-	}
-	else {
-		// normal
-		ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-		ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-		[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-			if(granted) {
-				ACAccount *account = [accountStore twitterCurrentAccount];
-				if (account) {
-					[self checkFollowingAndAddListWithScreenName:screenName account:account];
-					return;
-				}
-			}
-			// when error happens, forcely added screen name into the main list
-			dispatch_async(dispatch_get_main_queue(), ^(void){
-				[self addScreenName:screenName];
-			});
-		}];
-	}
-}
-
-- (void)addScreenNameOnForeground:(NSString*)screenName {
-	// check already received?
-	if ([self doesMainListAlreadyInclude:screenName])
-		return;
-	
-	ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-	ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-	[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-		if(granted) {
-			ACAccount *account = [accountStore twitterCurrentAccount];
-			if (account) {
-				[self checkFollowingAndAddListWithScreenName:screenName account:account];
-				return;
-			}
-		}
-		// when error happens, forcely added screen name into the main list
-		dispatch_async(dispatch_get_main_queue(), ^(void){
-			[self addScreenName:screenName];
-		});
-	}];
 }
 
 #pragma mark - CBScannerDelegate
