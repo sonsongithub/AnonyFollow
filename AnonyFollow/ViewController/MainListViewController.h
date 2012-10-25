@@ -11,6 +11,8 @@
 #import "CBAdvertizer.h"
 #import "CBScanner.h"
 
+#import <CoreLocation/CoreLocation.h>
+
 extern NSString *kNotificationDidFollowUser;
 extern NSString *kNotificationUserInfoUserNameKey;
 
@@ -18,7 +20,7 @@ extern NSString *kNotificationUserInfoUserNameKey;
 @class CBAdvertizer;
 @class MessageBarButtonItem;
 
-@interface MainListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CBScannerDelegate, CBAdvertizerDelegate, UIActionSheetDelegate>
+@interface MainListViewController : UIViewController <CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, CBScannerDelegate, CBAdvertizerDelegate, UIActionSheetDelegate>
 
 - (IBAction)trash:(id)sender;
 - (IBAction)select:(id)sender;
@@ -29,6 +31,9 @@ extern NSString *kNotificationUserInfoUserNameKey;
 @property (nonatomic, strong) IBOutlet MessageBarButtonItem *twitterAccountButton;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *trashButton;
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, assign) CLLocationCoordinate2D currentLocation;
 
 @property (nonatomic, strong) NSMutableArray *accounts;
 @property (nonatomic, strong) NSMutableArray *history;

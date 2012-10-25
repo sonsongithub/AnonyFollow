@@ -317,6 +317,25 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
     }
 }
 
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+	DNSLogMethod
+	CLLocation *location = [locations lastObject];
+	self.currentLocation = location.coordinate;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+	DNSLogMethod
+	if (status == kCLAuthorizationStatusAuthorized) {
+		[self.locationManager startUpdatingLocation];
+	}
+	else {
+		[self.locationManager stopUpdatingLocation];
+		self.currentLocation = CLLocationCoordinate2DMake(0, 0);
+	}
+}
+
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -334,6 +353,13 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	// start location scan
+	self.locationManager = [[CLLocationManager alloc] init];
+	self.locationManager.delegate = self;
+	self.locationManager.pausesLocationUpdatesAutomatically = YES;
+	self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+	[self.locationManager startUpdatingLocation];
 	
 	[self resetBadge];
 	
