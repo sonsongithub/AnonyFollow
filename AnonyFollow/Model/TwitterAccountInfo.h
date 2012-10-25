@@ -32,6 +32,10 @@
 @property (nonatomic, assign) NSTimeInterval foundTime;
 @property (nonatomic, assign) CLLocationCoordinate2D foundCoordinate;
 
+
++ (NSArray*)arrayOfTwitterAccountInfoWithSerializedData:(NSData*)data;
++ (NSData*)dataWithArrayOfTwitterAccountInfo:(NSArray*)array;
+
 - (DownloadTask*)taskForUserTimeline;
 - (DownloadTask*)taskForUserInfo;
 - (BOOL)tryToDownloadIconImage;

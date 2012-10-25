@@ -22,6 +22,21 @@ NSString *TwitterAccountInfoCoderFoundPlaceLongitudeKey = @"TwitterAccountInfoCo
 
 @implementation TwitterAccountInfo
 
+#pragma mark - Serialize array
+
++ (NSArray*)arrayOfTwitterAccountInfoWithSerializedData:(NSData*)data {
+	NSKeyedUnarchiver *decoder = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+	return [decoder decodeObjectForKey:@"TwitterAccountInfoArray"];
+}
+
++ (NSData*)dataWithArrayOfTwitterAccountInfo:(NSArray*)array {
+	NSMutableData *data = [[NSMutableData alloc] init];
+	NSKeyedArchiver *encoder = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+	[encoder encodeObject:array forKey:@"TwitterAccountInfoArray"];
+	[encoder finishEncoding];
+	return data;
+}
+
 #pragma mark - Manages cache of thumbnails and sssp images.
 
 + (void)deleteExpiredCacheImages {

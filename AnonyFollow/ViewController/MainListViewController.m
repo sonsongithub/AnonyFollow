@@ -39,6 +39,29 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 
 #pragma mark - Instance method
 
+#pragma mark - Serialize
+
+- (void)serializeAccounts {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *plistPath = [NSString stringWithFormat:@"%@/accounts.plist", documentsDirectory];
+	NSData *data = [TwitterAccountInfo dataWithArrayOfTwitterAccountInfo:self.accounts];
+	[data writeToFile:plistPath atomically:NO];
+}
+
+- (void)deserializeAccounts {
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *plistPath = [NSString stringWithFormat:@"%@/accounts.plist", documentsDirectory];
+	
+	self.accounts = [NSMutableArray array];
+	NSData *data  = [NSData dataWithContentsOfFile:plistPath];
+	[self.accounts addObjectsFromArray:[TwitterAccountInfo arrayOfTwitterAccountInfoWithSerializedData:data]];
+	
+	// remove saved file
+	[[NSFileManager defaultManager] removeItemAtPath:plistPath error:nil];
+}
+
 #pragma mark - Applicatoin badge control
 
 - (void)incrementBadge {
@@ -330,7 +353,11 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	
 	// set up buffer
 	self.accounts = [NSMutableArray array];
+	self.history = [NSMutableArray array];
 	self.twitterAccountButton.delegate = self;
+	
+	// load seralized data when application aborted in background task.
+	[self deserializeAccounts];
 	
 	// setup status bar
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
@@ -492,6 +519,7 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 		[self notifyRecevingOnBackgroundWithMessage:[NSString stringWithFormat:NSLocalizedString(@"Found %@", nil), screenName]];
 		// increment number of badge
 		[self incrementBadge];
+		[self serializeAccounts];
 	}
 }
 
