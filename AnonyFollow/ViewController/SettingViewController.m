@@ -103,6 +103,9 @@
 	}
 }
 
+- (IBAction)didChangeTweetOnBackgroundSwitch:(id)sender {
+}
+
 - (IBAction)didChangeShowFollowingSwitch:(id)sender {
 	if (sender == self.showFollowingSwitch) {
 		[[NSUserDefaults standardUserDefaults] setBool:self.showFollowingSwitch.on forKey:kAnonyFollowDebugShowFollowingUsers];

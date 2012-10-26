@@ -58,7 +58,7 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                     <size key="titleShadowOffset" width="0.0" height="-1"/>
-                                                    <state key="normal" title="フォロー">
+                                                    <state key="normal" title="Follow">
                                                         <color key="titleColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="titleShadowColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     </state>
@@ -181,8 +181,13 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="iwo-bx-flj">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="eGc-gU-fGv">
+                            <connections>
+                                <segue destination="zXa-ir-4ZJ" kind="modal" id="6TO-Xh-dH1"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="vz6-FW-GN0">
-                            <rect key="frame" x="35" y="7" width="250" height="31"/>
+                            <rect key="frame" x="61" y="7" width="250" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="" image="off.png"/>
@@ -206,7 +211,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sEw-Aa-3YB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="781" y="330"/>
+            <point key="canvasLocation" x="724" y="330"/>
         </scene>
         <!--Time Line View Controller-->
         <scene sceneID="AJz-sL-EDW">
@@ -415,7 +420,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qhc-8Y-IaO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320" y="330"/>
+            <point key="canvasLocation" x="1263" y="330"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9E9-Fw-aJJ">
@@ -432,7 +437,7 @@
             </objects>
             <point key="canvasLocation" x="2344" y="330"/>
         </scene>
-        <!--Account Select View Controller - アカウント選択-->
+        <!--Account Select View Controller - Select account-->
         <scene sceneID="MaW-LZ-Nb2">
             <objects>
                 <tableViewController id="6Oi-9U-Caj" customClass="AccountSelectViewController" sceneMemberID="viewController">
@@ -484,7 +489,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="アカウント選択" id="EtF-18-Kni">
+                    <navigationItem key="navigationItem" title="Select account" id="EtF-18-Kni">
                         <barButtonItem key="rightBarButtonItem" title="閉じる" style="done" id="M3H-6a-B5x">
                             <connections>
                                 <action selector="dismiss:" destination="6Oi-9U-Caj" id="3vI-Lc-aZv"/>
@@ -496,7 +501,7 @@
             </objects>
             <point key="canvasLocation" x="1803" y="988"/>
         </scene>
-        <!--Help View Controller - 簡単な使い方-->
+        <!--Help View Controller - How to use-->
         <scene sceneID="nI6-IP-v49">
             <objects>
                 <viewController id="FjM-Tv-h9k" customClass="HelpViewController" sceneMemberID="viewController">
@@ -591,7 +596,7 @@
                             <constraint firstItem="YHy-Xc-nl6" firstAttribute="trailing" secondItem="GJ1-ji-ayT" secondAttribute="trailing" type="default" id="uVR-zc-YoW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="簡単な使い方" id="ou4-fm-XEn">
+                    <navigationItem key="navigationItem" title="How to use" id="ou4-fm-XEn">
                         <barButtonItem key="rightBarButtonItem" title="閉じる" style="done" id="z20-52-lld">
                             <connections>
                                 <action selector="dismiss:" destination="FjM-Tv-h9k" id="Kp8-x3-86x"/>
@@ -620,7 +625,120 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iaa-9Q-DPD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320" y="988"/>
+            <point key="canvasLocation" x="1263" y="988"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="p8u-65-l9l">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="zXa-ir-4ZJ" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="2Nn-Cm-Hku">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="5To-Vg-K5O" kind="relationship" relationship="viewControllers" id="5qI-sA-71H"/>
+                        <segue destination="Tjc-vb-4XD" kind="relationship" relationship="viewControllers" id="s8H-g2-UpL"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RZs-qn-2SH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1263" y="1622"/>
+        </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="TfE-68-wzQ">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="5To-Vg-K5O" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="KVx-Ox-5Hg"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JpE-wy-W9N">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wv6-OD-11j" kind="relationship" relationship="rootViewController" id="Cx1-08-EWb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jA8-Oa-unR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1803" y="1622"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5zl-Im-IL6">
+            <objects>
+                <viewController id="wv6-OD-11j" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8H2-TH-Luz">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ObR-pv-H86">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ObR-pv-H86" firstAttribute="top" secondItem="8H2-TH-Luz" secondAttribute="top" type="default" id="OGo-Ip-8HY"/>
+                            <constraint firstItem="ObR-pv-H86" firstAttribute="trailing" secondItem="8H2-TH-Luz" secondAttribute="trailing" type="default" id="QlV-ce-tsg"/>
+                            <constraint firstItem="ObR-pv-H86" firstAttribute="bottom" secondItem="8H2-TH-Luz" secondAttribute="bottom" type="default" id="nyL-7L-YrD"/>
+                            <constraint firstItem="ObR-pv-H86" firstAttribute="leading" secondItem="8H2-TH-Luz" secondAttribute="leading" type="default" id="oPO-5e-BA5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HpF-mc-FYq">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="xtO-x4-Q6e">
+                            <connections>
+                                <action selector="dismiss:" destination="wv6-OD-11j" id="Siy-NV-EH6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JIp-E9-UEI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2344" y="1622"/>
+        </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="kDE-ew-lIy">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="Tjc-vb-4XD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="GaE-gW-CZA"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vfz-oF-MH1">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="D4H-bF-gu3" kind="relationship" relationship="rootViewController" id="uc2-5h-X3n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="adg-1h-07M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1803" y="2306"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wbw-Zy-7cO">
+            <objects>
+                <viewController id="D4H-bF-gu3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OMq-iS-pcC">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OyL-LN-34Q"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OyL-LN-34Q" firstAttribute="top" secondItem="OMq-iS-pcC" secondAttribute="top" type="default" id="FPX-PJ-sJ1"/>
+                            <constraint firstItem="OyL-LN-34Q" firstAttribute="trailing" secondItem="OMq-iS-pcC" secondAttribute="trailing" type="default" id="Sfr-Ov-7hS"/>
+                            <constraint firstItem="OyL-LN-34Q" firstAttribute="bottom" secondItem="OMq-iS-pcC" secondAttribute="bottom" type="default" id="tuc-NF-e6x"/>
+                            <constraint firstItem="OyL-LN-34Q" firstAttribute="leading" secondItem="OMq-iS-pcC" secondAttribute="leading" type="default" id="wEY-ge-ZYg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="IGj-CU-loV">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="e00-Q8-srP">
+                            <connections>
+                                <action selector="dismiss:" destination="D4H-bF-gu3" id="2Un-rL-0fF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IWh-FK-Kwh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2344" y="2306"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aBL-dj-U1E">
@@ -640,7 +758,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMJ-hE-dqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="296" y="330"/>
+            <point key="canvasLocation" x="239" y="330"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hy7-SE-q8h">
@@ -655,9 +773,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6A-6Z-Xv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320" y="-301"/>
+            <point key="canvasLocation" x="1263" y="-301"/>
         </scene>
-        <!--Setting View Controller - 設定-->
+        <!--Setting View Controller - Settings-->
         <scene sceneID="fXA-Oi-X9B">
             <objects>
                 <tableViewController autoresizesArchivedViewToFullSize="NO" id="nh6-bL-s6V" customClass="SettingViewController" sceneMemberID="viewController">
@@ -666,7 +784,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="情報" id="32y-wj-shY">
+                            <tableViewSection headerTitle="Information" id="32y-wj-shY">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="OX0-8n-bGc" detailTextLabel="uEG-aa-wP7" style="IBUITableViewCellStyleValue1" id="esx-ck-V7u">
                                         <rect key="frame" x="0.0" y="46" width="320" height="45"/>
@@ -675,8 +793,8 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="名前" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OX0-8n-bGc">
-                                                    <rect key="frame" x="10" y="11" width="34" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OX0-8n-bGc">
+                                                    <rect key="frame" x="10" y="11" width="47" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -727,8 +845,8 @@
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="著作権" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B4P-Bh-ZZn">
-                                                    <rect key="frame" x="10" y="11" width="51" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Copyrights" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B4P-Bh-ZZn">
+                                                    <rect key="frame" x="10" y="11" width="90" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -756,7 +874,7 @@
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="ライセンス" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mdn-Ek-c81">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="License" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mdn-Ek-c81">
                                                     <rect key="frame" x="10" y="0.0" width="260" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -794,7 +912,7 @@
                             <tableViewSection footerTitle="&quot;バックグラウンド&quot;をONにすると（ステータスバーが赤色に点滅します）、公開中にAnonyFollowを終了した後も、バックグラウンドでアカウントを公開しつづけます。" id="O0e-CL-FB5">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gKE-xC-mZ4">
-                                        <rect key="frame" x="0.0" y="288" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="288" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -824,18 +942,49 @@
                                             <constraint firstItem="dvH-7R-HDL" firstAttribute="centerY" secondItem="F80-go-rmF" secondAttribute="centerY" type="default" id="ovQ-Ig-NFl"/>
                                         </constraints>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="T9Z-O2-Gby">
+                                        <rect key="frame" x="0.0" y="333" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tweet on Background" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzV-nO-uNa">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28c-9B-423">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="77" id="L98-iE-AO2"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="didChangeTweetOnBackgroundSwitch:" destination="nh6-bL-s6V" eventType="valueChanged" id="ko3-aB-GhI"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="pzV-nO-uNa" firstAttribute="leading" secondItem="T9Z-O2-Gby" secondAttribute="leading" constant="20" type="default" id="CrQ-S0-APX"/>
+                                            <constraint firstItem="28c-9B-423" firstAttribute="top" secondItem="T9Z-O2-Gby" secondAttribute="top" constant="8" id="E7m-Yr-Xsm"/>
+                                            <constraint firstItem="28c-9B-423" firstAttribute="leading" secondItem="pzV-nO-uNa" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Fe5-o6-ZSD"/>
+                                            <constraint firstItem="28c-9B-423" firstAttribute="centerY" secondItem="pzV-nO-uNa" secondAttribute="centerY" type="default" id="tbi-9e-VWJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="28c-9B-423" secondAttribute="trailing" constant="20" type="default" id="wje-U8-NYK"/>
+                                        </constraints>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="デバッグ" footerTitle="" id="Au7-C0-ztQ">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="u05-Ij-zrB">
-                                        <rect key="frame" x="0.0" y="487" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="531" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="フォローしてる人も表示" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euC-wx-7fs">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Show following" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euC-wx-7fs">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -860,13 +1009,13 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wa4-JX-6QA">
-                                        <rect key="frame" x="0.0" y="532" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="576" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="重複ユーザを表示" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B15-Bf-LC8">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Show redundant" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B15-Bf-LC8">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -876,7 +1025,6 @@
                                                         <constraint firstAttribute="width" constant="77" id="oZf-yw-AEX"/>
                                                     </constraints>
                                                     <connections>
-                                                        <action selector="didChangeShowFollowingSwitch:" destination="nh6-bL-s6V" eventType="valueChanged" id="OKY-iz-pQW"/>
                                                         <action selector="didChangeShowRedundantSwitch:" destination="nh6-bL-s6V" eventType="valueChanged" id="aGI-yh-N5J"/>
                                                     </connections>
                                                 </switch>
@@ -899,7 +1047,7 @@
                             <outlet property="delegate" destination="nh6-bL-s6V" id="atn-da-kdF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="設定" id="PQO-Yu-CfO">
+                    <navigationItem key="navigationItem" title="Settings" id="PQO-Yu-CfO">
                         <barButtonItem key="rightBarButtonItem" title="閉じる" style="done" id="p4z-3t-KK7">
                             <connections>
                                 <action selector="dismiss:" destination="nh6-bL-s6V" id="MAj-Pw-xrm"/>
@@ -911,6 +1059,7 @@
                         <outlet property="backgroundSwitch" destination="dvH-7R-HDL" id="eqc-87-4db"/>
                         <outlet property="showFollowingSwitch" destination="Byz-m6-YJO" id="zum-l1-3Hd"/>
                         <outlet property="showRedundantSwitch" destination="brw-8Y-Ip7" id="t80-gC-Rhm"/>
+                        <outlet property="tweetOnBackgroundSwitch" destination="28c-9B-423" id="QT9-ve-Bre"/>
                         <outlet property="versionCell" destination="3Rf-QN-UVZ" id="7e6-NL-2um"/>
                     </connections>
                 </tableViewController>
@@ -983,7 +1132,7 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="sonsonの他のApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YTH-fX-fcE">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="More by sonson" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YTH-fX-fcE">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1052,7 +1201,7 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="YusukeSekikawaの他のApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0fd-Me-oHE">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="More by YusukeSekikawa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0fd-Me-oHE">
                                                     <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -1125,7 +1274,7 @@ See the License for the specific language governing permissions and limitations 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="「バックグラウンドがオン」になっている状態を変更したい場合は、ツールバーの右下のボタンをタップして、設定画面を開いてください。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="271" translatesAutoresizingMaskIntoConstraints="NO" id="Zex-xJ-Zjx">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="If you change &quot;Background is enabled&quot;, please open Setting view via the right-bottom toolbar button." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Zex-xJ-Zjx">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" type="user" id="q6c-eX-Mue"/>
@@ -1241,11 +1390,12 @@ See the License for the specific language governing permissions and limitations 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="AnonyFollowは、TwitterアカウントをBluetoothを使って交換できるアプリです。さらに、すれ違い通信のようにアカウントを交換することもできます。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="TPg-w0-mnl">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="TPg-w0-mnl">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" type="user" id="qrw-em-vfa"/>
                                 </constraints>
+                                <string key="text">AnonyFollow allows you to exchange Twitter accounts each other with Bluetooth LE. In addition, you can enjoy anoymous communication by AnonyFollow.</string>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1280,7 +1430,7 @@ See the License for the specific language governing permissions and limitations 
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="最後にダウンロードしていただき、ありがとうございました！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="6Me-Oy-CfD">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Thank you for downloading. Have fun!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="6Me-Oy-CfD">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="111" id="nP2-2d-Kc1"/>
@@ -1326,6 +1476,105 @@ See the License for the specific language governing permissions and limitations 
         <image name="sonson.png" width="256" height="256"/>
         <image name="warning.png" width="201" height="202"/>
     </resources>
+    <classes>
+        <class className="AccountCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="indicatorView" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="screenNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="AccountSelectViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountSelectViewController.h"/>
+        </class>
+        <class className="CopyrightContactViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CopyrightContactViewController.h"/>
+        </class>
+        <class className="HelpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HelpViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="MainListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="follow:"/>
+                <relationship kind="action" name="select:"/>
+                <relationship kind="action" name="trash:"/>
+                <relationship kind="outlet" name="lockScreenView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="trashButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="twitterAccountButton" candidateClass="MessageBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MessageBarButtonItem" superclassName="UIBarButtonItem">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MessageBarButtonItem.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SettingViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didChangeBackgroundSwitch:"/>
+                <relationship kind="action" name="didChangeShowFollowingSwitch:"/>
+                <relationship kind="action" name="didChangeShowRedundantSwitch:"/>
+                <relationship kind="action" name="didChangeTweetOnBackgroundSwitch:"/>
+                <relationship kind="action" name="didChangeTweetOnBackgroundTweetSwitch:"/>
+                <relationship kind="outlet" name="applicationNameCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="backgroundSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="showFollowingSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="showRedundantSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="tweetOnBackgroundSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="versionCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="TimeLineViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeLineViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="follow:"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="TweetCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tweetContentView" candidateClass="TweetContentView"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="TweetContentView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetContentView.h"/>
+        </class>
+        <class className="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismiss:"/>
+            </relationships>
+        </class>
+        <class className="UserInfoCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserInfoCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndicatorView" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="line1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="line2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tweetContentView" candidateClass="TweetContentView"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
