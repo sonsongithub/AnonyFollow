@@ -22,6 +22,20 @@ NSString *TwitterAccountInfoCoderFoundPlaceLongitudeKey = @"TwitterAccountInfoCo
 
 @implementation TwitterAccountInfo
 
+#pragma mark - MKAnnotation
+
+- (NSString*)title {
+	return self.screenName;
+}
+
+- (NSString*)subtitle {
+	return nil;
+}
+
+- (CLLocationCoordinate2D)coordinate {
+	return self.foundCoordinate;
+}
+
 #pragma mark - Serialize array
 
 + (NSArray*)arrayOfTwitterAccountInfoWithSerializedData:(NSData*)data {

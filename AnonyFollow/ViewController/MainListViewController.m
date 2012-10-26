@@ -546,11 +546,13 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	[self.tableView reloadData];
 #endif
 	
-#if 0
+#if 1
 	// for debugging, history
 	for (int i = 0; i < 10; i++) {
 		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 		info.screenName = @"sonson_twit";
+		info.foundCoordinate = CLLocationCoordinate2DMake(34.794951 + 2.0 * (rand()%1000) / 1000.0f, 136.015481 + 2 * (rand()%1000) / 1000.0f);
+		NSLog(@"%f, %f", info.foundCoordinate.latitude, info.foundCoordinate.longitude);
 		[self.history addObject:info];
 	}
 	[self.tableView reloadData];

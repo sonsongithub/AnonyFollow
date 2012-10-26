@@ -19,7 +19,7 @@
 
 @class DownloadTask;
 
-@interface TwitterAccountInfo : NSObject
+@interface TwitterAccountInfo : NSObject <MKAnnotation>
 
 @property (nonatomic, strong) NSString *screenName;
 @property (nonatomic, strong) NSString *userID;
@@ -32,6 +32,10 @@
 @property (nonatomic, assign) NSTimeInterval foundTime;
 @property (nonatomic, assign) CLLocationCoordinate2D foundCoordinate;
 
+// MKAnnotation
+@property (nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly) NSString *subtitle;
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
 + (NSArray*)arrayOfTwitterAccountInfoWithSerializedData:(NSData*)data;
 + (NSData*)dataWithArrayOfTwitterAccountInfo:(NSArray*)array;
