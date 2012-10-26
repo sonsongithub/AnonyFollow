@@ -48,6 +48,16 @@
     }
 }
 
+#pragma mark - Lifecylcle
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.destinationViewController isKindOfClass:[TimeLineViewController class]]) {
+		TimeLineViewController *vc = (TimeLineViewController*)segue.destinationViewController;
+		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+		vc.accountInfo = [self.accounts objectAtIndex:indexPath.row];
+	}
+}
+
 #pragma mark - Table view data source
 
 - (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

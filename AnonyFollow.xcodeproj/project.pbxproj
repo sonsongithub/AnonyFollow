@@ -169,6 +169,9 @@
 		14738B1B163A164900835930 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14192DA316153067002E3B73 /* StoreKit.framework */; };
 		14738B1E163A166B00835930 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 142770C415EE82DD0062271A /* SystemConfiguration.framework */; };
 		14738B1F163A167C00835930 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14738B18163A162000835930 /* iAd.framework */; };
+		14738B25163A31B200835930 /* AccountsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14738B24163A31B200835930 /* AccountsListViewController.m */; };
+		14738B2B163A43D700835930 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14738B2A163A43D700835930 /* MapViewController.m */; };
+		14738B2C163A43D700835930 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14738B2A163A43D700835930 /* MapViewController.m */; };
 		1481963315FC5D1A004B0BCB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1481963215FC5D1A004B0BCB /* MessageUI.framework */; };
 		14B7A5E715F4F90A00D6BF0B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B7A5E615F4F90A00D6BF0B /* libz.dylib */; };
 		14B7A5EC15F5005F00D6BF0B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B7A5EB15F5005F00D6BF0B /* Security.framework */; };
@@ -295,6 +298,10 @@
 		14738B0A163A146400835930 /* AnonyFollow-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AnonyFollow-Prefix.pch"; sourceTree = "<group>"; };
 		14738B0C163A147A00835930 /* AnonyFollowFree-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AnonyFollowFree-Info.plist"; path = "AnonyFollow/AnonyFollowFree-Info.plist"; sourceTree = SOURCE_ROOT; };
 		14738B18163A162000835930 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		14738B23163A31B200835930 /* AccountsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsListViewController.h; sourceTree = "<group>"; };
+		14738B24163A31B200835930 /* AccountsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsListViewController.m; sourceTree = "<group>"; };
+		14738B29163A43D700835930 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		14738B2A163A43D700835930 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		1481963215FC5D1A004B0BCB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		14B7A5E615F4F90A00D6BF0B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		14B7A5EB15F5005F00D6BF0B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -543,6 +550,10 @@
 				14738A64163A136500835930 /* SettingViewController.m */,
 				14738A65163A136500835930 /* TimeLineViewController.h */,
 				14738A66163A136500835930 /* TimeLineViewController.m */,
+				14738B23163A31B200835930 /* AccountsListViewController.h */,
+				14738B24163A31B200835930 /* AccountsListViewController.m */,
+				14738B29163A43D700835930 /* MapViewController.h */,
+				14738B2A163A43D700835930 /* MapViewController.m */,
 			);
 			name = ViewController;
 			path = AnonyFollow/ViewController;
@@ -907,6 +918,7 @@
 				14738A89163A136500835930 /* MainListViewController.m in Sources */,
 				14738A8B163A136500835930 /* SettingViewController.m in Sources */,
 				14738A8D163A136500835930 /* TimeLineViewController.m in Sources */,
+				14738B2B163A43D700835930 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -946,6 +958,8 @@
 				14738A8A163A136500835930 /* MainListViewController.m in Sources */,
 				14738A8C163A136500835930 /* SettingViewController.m in Sources */,
 				14738A8E163A136500835930 /* TimeLineViewController.m in Sources */,
+				14738B25163A31B200835930 /* AccountsListViewController.m in Sources */,
+				14738B2C163A43D700835930 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

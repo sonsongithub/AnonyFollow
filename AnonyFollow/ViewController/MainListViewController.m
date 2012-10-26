@@ -25,11 +25,16 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 #import "AccountSelectViewController.h"
 #import "NSUserDefaults+AnonyFollow.h"
 
+// For Twitter API
 #import <Accounts/Accounts.h>
 #import "ACAccountStore+AnonyFollow.h"
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 #import "NSBundle+AnonyFollow.h"
+
+// history
+#import "AccountsListViewController.h"
+#import "MapViewController.h"
 
 @implementation MainListViewController
 
@@ -61,6 +66,8 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	
 	TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 	info.screenName = screenName;
+	info.foundTime = CFAbsoluteTimeGetCurrent();
+	info.foundCoordinate = self.currentLocation;
 	[self.accounts addObject:info];
 	[self updateTrashButton];
 	[self.tableView reloadData];
@@ -530,11 +537,21 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	self.trashButton.enabled = ([self.accounts count] > 0);
 	
 #if 0
-	// for debugging, dummy data
-	for (int i = 0; i < 40; i++) {
+	// for debugging, accounts
+	for (int i = 0; i < 10; i++) {
 		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 		info.screenName = @"sonson_twit";
 		[self.accounts addObject:info];
+	}
+	[self.tableView reloadData];
+#endif
+	
+#if 0
+	// for debugging, history
+	for (int i = 0; i < 10; i++) {
+		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
+		info.screenName = @"sonson_twit";
+		[self.history addObject:info];
 	}
 	[self.tableView reloadData];
 #endif
@@ -548,6 +565,28 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	}
 	if ([segue.identifier isEqualToString:@"ToSettingViewController"]) {
 		[self stopBoardcasting];
+	}
+	if ([segue.identifier isEqualToString:@"OpenHistoryTabController"]) {
+		UITabBarController *tabCon = (UITabBarController*)segue.destinationViewController;
+		if ([tabCon.viewControllers count] == 2) {
+			AccountsListViewController *accountsListViewController = nil;
+			MapViewController *mapViewController = nil;
+			UINavigationController *nav = nil;
+			for (id obj in tabCon.viewControllers) {
+				if ([obj isKindOfClass:[UINavigationController class]]) {
+					nav = obj;
+					id con = nav.visibleViewController;
+					if ([con isKindOfClass:[AccountsListViewController class]]) {
+						accountsListViewController = con;
+						accountsListViewController.accounts = [NSMutableArray arrayWithArray:self.history];
+					}
+					if ([con isKindOfClass:[MapViewController class]]) {
+						mapViewController = con;
+						mapViewController.accounts = [NSMutableArray arrayWithArray:self.history];
+					}
+				}
+			}
+		}
 	}
 }
 
