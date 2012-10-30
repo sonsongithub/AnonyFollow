@@ -71,7 +71,7 @@
 #pragma mark - Thumbnail rendering and downloading
 
 - (void)loadImagesForOnscreenRows {
-	DNSLogMethod
+	//DNSLogMethod
     if ([self.accounts count] > 0) {
 		NSArray *visibleCells = [self.tableView visibleCells];
 		for (AccountCell *cell in visibleCells) {

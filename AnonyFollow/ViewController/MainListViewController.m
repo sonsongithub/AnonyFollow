@@ -462,7 +462,7 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-	DNSLogMethod
+	//DNSLogMethod
 	CLLocation *location = [locations lastObject];
 	self.currentLocation = location.coordinate;
 }
@@ -536,7 +536,7 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	self.lockScreenView.hidden = YES;
 	self.trashButton.enabled = ([self.accounts count] > 0);
 	
-#if 0
+#if 1
 	// for debugging, accounts
 	for (int i = 0; i < 10; i++) {
 		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];

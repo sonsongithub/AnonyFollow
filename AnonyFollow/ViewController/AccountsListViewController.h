@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 
-@interface AccountsListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface AccountsListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, ADBannerViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *accounts;
+
+@property (nonatomic, strong) IBOutlet ADBannerView *bannerView;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *constraint;
 
 - (void)loadImagesForOnscreenRows;
 

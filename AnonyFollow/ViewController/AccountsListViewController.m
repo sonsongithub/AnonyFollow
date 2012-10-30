@@ -33,10 +33,33 @@
 
 @implementation AccountsListViewController
 
+#pragma mark - iAd call back
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
+	DNSLogMethod
+	self.constraint.constant = 50;
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+}
+
 #pragma mark - Thumbnail rendering and downloading
 
+- (void)viewDidLoad {
+	[super viewDidLoad];
+#ifdef _FREE_EDITION
+	[self.view sendSubviewToBack:self.bannerView];
+	self.constraint.constant = 0;
+	[self.view setAutoresizesSubviews:YES];
+#else
+	self.constraint.constant = 0;
+	[self.bannerView removeFromSuperview];
+	self.bannerView = nil;
+#endif
+}
+
 - (void)loadImagesForOnscreenRows {
-	DNSLogMethod
+	//DNSLogMethod
     if ([self.accounts count] > 0) {
 		NSArray *visibleCells = [self.tableView visibleCells];
 		for (AccountCell *cell in visibleCells) {

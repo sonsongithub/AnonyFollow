@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @class TwitterAccountInfo;
-@class LoadingView;
 
 extern NSString *kTaskForUserTimeline;
 extern NSString *kTaskForUserInfo;
