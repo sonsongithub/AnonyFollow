@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+@class TwitterAccountInfo;
+
 @interface MapViewController : UIViewController <MKMapViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *accounts;
 @property (nonatomic, strong) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) TwitterAccountInfo *savedAccountInfo;
 
 @end

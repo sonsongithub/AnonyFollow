@@ -10,12 +10,25 @@
 
 #import "TwitterAccountInfo.h"
 #import "MyPinAnnotationView.h"
+#import "AppDelegate.h"
+#import "SNReachablityChecker.h"
+#import "TimeLineViewController.h"
 
 @interface MapViewController ()
 
 @end
 
 @implementation MapViewController
+
+#pragma mark - Lifecylcle
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.destinationViewController isKindOfClass:[TimeLineViewController class]]) {
+		TimeLineViewController *vc = (TimeLineViewController*)segue.destinationViewController;
+		vc.accountInfo = self.savedAccountInfo;
+		self.savedAccountInfo = nil;
+	}
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -65,6 +78,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+	DNSLogMethod
+	AppDelegate *del = (AppDelegate*)[UIApplication sharedApplication].delegate;
+	if (del.checker.status == SNReachablityCheckerReachableViaWiFi || del.checker.status == SNReachablityCheckerReachableViaWWAN) {
+		self.savedAccountInfo = view.annotation;
+		[self performSegueWithIdentifier:@"OpenTimeLine" sender:nil];
+	}
+}
+
 - (MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
 	MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"default"];
 	
@@ -84,6 +106,7 @@
 	annotationView.leftCalloutAccessoryView = img;
 	annotationView.canShowCallout = YES;
 	annotationView.animatesDrop = YES;
+	annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 	
 	return annotationView;
 }
