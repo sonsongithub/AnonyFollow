@@ -10,6 +10,8 @@
 
 #import <MapKit/MapKit.h>
 
+extern NSString *AccountCellUpdateNotification;
+
 // Private invariables
 //extern NSString *TwitterAccountInfoCoderScreenNameKey;
 //extern NSString *TwitterAccountInfoCoderUserIDKey;

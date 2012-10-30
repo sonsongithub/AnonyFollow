@@ -13,8 +13,6 @@
 #import "AppDelegate.h"
 #import "SNReachablityChecker.h"
 
-NSString *AccountCellUpdateNotification = @"AccountCellUpdateNotification";
-
 @implementation AccountCell
 
 - (void)update:(NSNotification*)notification {

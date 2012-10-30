@@ -9,6 +9,7 @@
 #import "MapViewController.h"
 
 #import "TwitterAccountInfo.h"
+#import "MyPinAnnotationView.h"
 
 @interface MapViewController ()
 
@@ -16,8 +17,7 @@
 
 @implementation MapViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -25,8 +25,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	
 	// Do any additional setup after loading the view.
@@ -61,8 +60,7 @@
 	[self.mapView addAnnotations:self.accounts];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -71,13 +69,15 @@
 	MKPinAnnotationView *annotationView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:@"default"];
 	
 	if (annotationView == nil) {
-		annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"default"];
+		annotationView = [[MyPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"default"];
 	}
 	else {
 		annotationView.annotation = annotation;
 	}
 	
 	TwitterAccountInfo *info = (TwitterAccountInfo*)annotation;
+	
+	[info tryToDownloadIconImage];
 
 	UIImageView *img = [[UIImageView alloc] initWithImage:info.iconImage];
 	img.frame = CGRectMake(0, 0, 22, 22);

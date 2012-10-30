@@ -14,6 +14,8 @@
 
 #import "NSData+MD5.h"
 
+NSString *AccountCellUpdateNotification = @"AccountCellUpdateNotification";
+
 NSString *TwitterAccountInfoCoderScreenNameKey = @"TwitterAccountInfoCoderScreenNameKey";
 NSString *TwitterAccountInfoCoderUserIDKey = @"TwitterAccountInfoCoderUserIDKey";
 NSString *TwitterAccountInfoCoderFoundTimeKey = @"TwitterAccountInfoCoderFoundTimeKey";
