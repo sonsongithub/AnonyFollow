@@ -15,8 +15,7 @@
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet MKMapView *mapView;
-@property (nonatomic, strong) IBOutlet UIView *mapBaseView;
-@property (nonatomic, strong) IBOutlet NSLayoutConstraint *mapHeightConstraint;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *baseViewHeightConstraint;
 @property (nonatomic, strong) TwitterAccountInfo *savedAccountInfo;
 @property (nonatomic, assign) BOOL isAlreadyLoadded;
 

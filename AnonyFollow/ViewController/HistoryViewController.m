@@ -118,7 +118,8 @@
 	[UIView animateWithDuration:0.4
 					 animations:^(void) {
 						 {
-							 self.mapHeightConstraint.constant = 240;
+							 NSLog(@"%f", self.tableView.frame.size.height);
+							 self.baseViewHeightConstraint.constant = 240;
 							 [self.view layoutIfNeeded];
 						 }
 					 }
@@ -130,7 +131,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[UIView animateWithDuration:0.4
 					 animations:^(void) {
-						 self.mapHeightConstraint.constant = self.view.frame.size.height;
+						 self.baseViewHeightConstraint.constant = self.view.frame.size.height;
 						 [self.view layoutIfNeeded];
 					 }
 					 completion:^(BOOL finished) {
