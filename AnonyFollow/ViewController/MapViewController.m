@@ -69,7 +69,6 @@
 													   MKCoordinateSpanMake(fabs(maxLatitude - minLatitude), fabs(maxLongitude - minLongitude))
 													   );
 	[self.mapView setRegion:region animated:YES];
-	
 	[self.mapView addAnnotations:self.accounts];
 }
 

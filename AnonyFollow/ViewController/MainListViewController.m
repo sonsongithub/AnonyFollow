@@ -35,6 +35,7 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 // history
 #import "AccountsListViewController.h"
 #import "MapViewController.h"
+#import "HistoryViewController.h"
 
 @implementation MainListViewController
 
@@ -568,6 +569,18 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	if ([segue.identifier isEqualToString:@"ToSettingViewController"]) {
 		[self stopBoardcasting];
 	}
+	if ([segue.identifier isEqualToString:@"OpenHistoryViewController"]) {
+		
+		HistoryViewController *historyViewController = nil;
+		UINavigationController *nav = segue.destinationViewController;;
+		if ([nav isKindOfClass:[UINavigationController class]]) {
+			id con = nav.visibleViewController;
+			if ([con isKindOfClass:[HistoryViewController class]]) {
+				historyViewController = con;
+				historyViewController.accounts = [NSMutableArray arrayWithArray:self.history];
+			}
+		}
+	}
 	if ([segue.identifier isEqualToString:@"OpenHistoryTabController"]) {
 		UITabBarController *tabCon = (UITabBarController*)segue.destinationViewController;
 		if ([tabCon.viewControllers count] == 2) {
@@ -590,6 +603,26 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 			}
 		}
 	}
+//		UITabBarController *tabCon = (UITabBarController*)segue.destinationViewController;
+//		if ([tabCon.viewControllers count] == 2) {
+//			AccountsListViewController *accountsListViewController = nil;
+//			MapViewController *mapViewController = nil;
+//			UINavigationController *nav = nil;
+//			for (id obj in tabCon.viewControllers) {
+//				if ([obj isKindOfClass:[UINavigationController class]]) {
+//					nav = obj;
+//					id con = nav.visibleViewController;
+//					if ([con isKindOfClass:[AccountsListViewController class]]) {
+//						accountsListViewController = con;
+//						accountsListViewController.accounts = [NSMutableArray arrayWithArray:self.history];
+//					}
+//					if ([con isKindOfClass:[MapViewController class]]) {
+//						mapViewController = con;
+//						mapViewController.accounts = [NSMutableArray arrayWithArray:self.history];
+//					}
+//				}
+//			}
+//		}
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

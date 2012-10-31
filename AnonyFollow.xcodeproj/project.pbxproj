@@ -171,6 +171,8 @@
 		14738B1F163A167C00835930 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14738B18163A162000835930 /* iAd.framework */; };
 		14738B2B163A43D700835930 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14738B2A163A43D700835930 /* MapViewController.m */; };
 		14738B2C163A43D700835930 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14738B2A163A43D700835930 /* MapViewController.m */; };
+		1476AA231640DA5A00B2FFB3 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1476AA221640DA5A00B2FFB3 /* HistoryViewController.m */; };
+		1476AA241640DA5A00B2FFB3 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1476AA221640DA5A00B2FFB3 /* HistoryViewController.m */; };
 		1481963315FC5D1A004B0BCB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1481963215FC5D1A004B0BCB /* MessageUI.framework */; };
 		14B7A5E715F4F90A00D6BF0B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B7A5E615F4F90A00D6BF0B /* libz.dylib */; };
 		14B7A5EC15F5005F00D6BF0B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B7A5EB15F5005F00D6BF0B /* Security.framework */; };
@@ -303,6 +305,8 @@
 		14738B18163A162000835930 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		14738B29163A43D700835930 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		14738B2A163A43D700835930 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		1476AA211640DA5A00B2FFB3 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		1476AA221640DA5A00B2FFB3 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		1481963215FC5D1A004B0BCB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		14B7A5E615F4F90A00D6BF0B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		14B7A5EB15F5005F00D6BF0B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -561,6 +565,8 @@
 				14738A66163A136500835930 /* TimeLineViewController.m */,
 				14738B29163A43D700835930 /* MapViewController.h */,
 				14738B2A163A43D700835930 /* MapViewController.m */,
+				1476AA211640DA5A00B2FFB3 /* HistoryViewController.h */,
+				1476AA221640DA5A00B2FFB3 /* HistoryViewController.m */,
 			);
 			name = ViewController;
 			path = AnonyFollow/ViewController;
@@ -928,6 +934,7 @@
 				14738B2B163A43D700835930 /* MapViewController.m in Sources */,
 				14EC7C8D163F971D00E34B5C /* AccountsListViewController.m in Sources */,
 				14EC7C91163F972300E34B5C /* MyPinAnnotationView.m in Sources */,
+				1476AA231640DA5A00B2FFB3 /* HistoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -970,6 +977,7 @@
 				14738B2C163A43D700835930 /* MapViewController.m in Sources */,
 				14EC7C8E163F971D00E34B5C /* AccountsListViewController.m in Sources */,
 				14EC7C92163F972300E34B5C /* MyPinAnnotationView.m in Sources */,
+				1476AA241640DA5A00B2FFB3 /* HistoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
