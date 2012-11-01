@@ -129,16 +129,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[UIView animateWithDuration:0.4
-					 animations:^(void) {
-						 self.baseViewHeightConstraint.constant = self.view.frame.size.height;
-						 [self.view layoutIfNeeded];
-					 }
-					 completion:^(BOOL finished) {
-						 self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil)
-																								  style:UIBarButtonItemStyleBordered
-																								 target:self action:@selector(back:)];
-					 }];
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
 	TwitterAccountInfo *annotation = [self.accounts objectAtIndex:indexPath.row];
 	
@@ -151,10 +142,21 @@
 	
 	int idx = [annotations indexOfObject:annotation];
 	
-	if (idx != NSNotFound) {
-		[self.mapView setCenterCoordinate:annotation.coordinate animated:YES];
-		[self.mapView selectAnnotation:annotation animated:YES];
-	}
+	[UIView animateWithDuration:0.4
+					 animations:^(void) {
+						 self.baseViewHeightConstraint.constant = self.view.frame.size.height;
+						 [self.view layoutIfNeeded];
+					 }
+					 completion:^(BOOL finished) {
+						 self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil)
+																								  style:UIBarButtonItemStyleBordered
+																								 target:self action:@selector(back:)];
+						 
+						 if (idx != NSNotFound) {
+							 [self.mapView setCenterCoordinate:annotation.coordinate animated:YES];
+							 [self.mapView selectAnnotation:annotation animated:YES];
+						 }
+					 }];
 }
 
 @end
