@@ -61,7 +61,7 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	[self.accounts addObjectsFromArray:[TwitterAccountInfo arrayOfTwitterAccountInfoWithSerializedData:data]];
 }
 
-- (void)addScreenName:(NSString*)screenName {
+- (void)addScreenNameToAccounts:(NSString*)screenName {
 	if ([self doesMainListAlreadyInclude:screenName])
 		return;
 	
@@ -86,7 +86,7 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	}
 }
 
-- (void)checkFollowingAndAddListWithScreenName:(NSString*)screenName account:(ACAccount*)account {
+- (void)checkFollowStatusWithScreenName:(NSString*)screenName account:(ACAccount*)account {
 	NSMutableDictionary *tempDict = [[NSMutableDictionary alloc] init];
 	
 	SLRequest *postRequest;
@@ -115,12 +115,12 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 		}
 		// when error happens or the acccount is not followed
 		dispatch_async(dispatch_get_main_queue(), ^(void){
-			[self addScreenName:screenName];
+			[self addScreenNameToAccounts:screenName];
 		});
 	}];
 }
 
-- (void)debugAddScreenNameOnForeground:(NSString*)screenName {
+- (void)didReceiveScreenNameForDebug:(NSString*)screenName {
 	// for debugging
 	
 	// avoid redundancy?
@@ -131,7 +131,7 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	
 	// avoid already followed users?
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowDebugShowFollowingUsers]) {
-		[self addScreenName:screenName];
+		[self addScreenNameToAccounts:screenName];
 	}
 	else {
 		// normal
@@ -141,19 +141,19 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 			if(granted) {
 				ACAccount *account = [accountStore twitterCurrentAccount];
 				if (account) {
-					[self checkFollowingAndAddListWithScreenName:screenName account:account];
+					[self checkFollowStatusWithScreenName:screenName account:account];
 					return;
 				}
 			}
 			// when error happens, forcely added screen name into the main list
 			dispatch_async(dispatch_get_main_queue(), ^(void){
-				[self addScreenName:screenName];
+				[self addScreenNameToAccounts:screenName];
 			});
 		}];
 	}
 }
 
-- (void)addScreenNameOnForeground:(NSString*)screenName {
+- (void)didReceiveScreenName:(NSString*)screenName {
 	// check already received?
 	if ([self doesMainListAlreadyInclude:screenName])
 		return;
@@ -164,13 +164,13 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 		if(granted) {
 			ACAccount *account = [accountStore twitterCurrentAccount];
 			if (account) {
-				[self checkFollowingAndAddListWithScreenName:screenName account:account];
+				[self checkFollowStatusWithScreenName:screenName account:account];
 				return;
 			}
 		}
 		// when error happens, forcely added screen name into the main list
 		dispatch_async(dispatch_get_main_queue(), ^(void){
-			[self addScreenName:screenName];
+			[self addScreenNameToAccounts:screenName];
 		});
 	}];
 }
@@ -739,9 +739,9 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 - (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
 	NSString *screenName = [userInfo objectForKey:kCBScannerInfoUserNameKey];
 #ifdef _DEBUG
-	[self debugAddScreenNameOnForeground:screenName];
+	[self didReceiveScreenNameForDebug:screenName];
 #else
-	[self addScreenNameOnForeground:screenName];
+	[self didReceiveScreenName:screenName];
 #endif
 }
 
