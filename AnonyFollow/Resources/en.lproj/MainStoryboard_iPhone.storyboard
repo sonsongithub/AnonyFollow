@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9Tt-f8-Y29">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="9Tt-f8-Y29">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -1157,23 +1157,25 @@ See the License for the specific language governing permissions and limitations 
                                             <outlet property="delegate" destination="E9c-Yg-zc2" id="rmp-hR-cml"/>
                                         </connections>
                                     </mapView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="mapShadow.png" translatesAutoresizingMaskIntoConstraints="NO" id="p5h-Lr-5u7">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmt-YE-XMd" customClass="BottomShadowView">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="10" type="user" id="DHG-Kr-r0m"/>
+                                            <constraint firstAttribute="height" constant="10" type="user" id="HWJ-99-rFh"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="gmt-YE-XMd" firstAttribute="leading" secondItem="qrO-Vp-x9J" secondAttribute="leading" type="default" id="5wh-FK-g5e"/>
                                     <constraint firstItem="rsU-GS-X0a" firstAttribute="centerY" secondItem="qrO-Vp-x9J" secondAttribute="centerY" type="default" id="8oD-K0-lFa"/>
                                     <constraint firstItem="rsU-GS-X0a" firstAttribute="top" secondItem="qrO-Vp-x9J" secondAttribute="top" constant="5" type="user" id="Evf-jw-QOC"/>
-                                    <constraint firstAttribute="bottom" secondItem="p5h-Lr-5u7" secondAttribute="bottom" constant="-10" type="user" id="G9U-XU-hGH"/>
                                     <constraint firstItem="rsU-GS-X0a" firstAttribute="centerX" secondItem="qrO-Vp-x9J" secondAttribute="centerX" type="user" id="JbX-Qf-vin"/>
+                                    <constraint firstItem="gmt-YE-XMd" firstAttribute="trailing" secondItem="qrO-Vp-x9J" secondAttribute="trailing" type="default" id="P83-hl-uGX"/>
                                     <constraint firstAttribute="trailing" secondItem="rsU-GS-X0a" secondAttribute="trailing" constant="5" type="user" id="Su8-QK-mq9"/>
                                     <constraint firstAttribute="height" constant="240" type="user" id="asb-5S-xH6"/>
-                                    <constraint firstItem="p5h-Lr-5u7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qrO-Vp-x9J" secondAttribute="top" constant="240" type="user" id="mCX-rf-CrM"/>
-                                    <constraint firstItem="p5h-Lr-5u7" firstAttribute="leading" secondItem="qrO-Vp-x9J" secondAttribute="leading" type="default" id="mbR-eF-xMW"/>
+                                    <constraint firstAttribute="bottom" secondItem="gmt-YE-XMd" secondAttribute="bottom" constant="-10" type="user" id="sCZ-oG-oVH"/>
                                     <constraint firstItem="rsU-GS-X0a" firstAttribute="leading" secondItem="qrO-Vp-x9J" secondAttribute="leading" constant="5" type="user" id="t2P-Io-m8F"/>
+                                    <constraint firstItem="gmt-YE-XMd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="qrO-Vp-x9J" secondAttribute="top" constant="240" type="user" id="uuc-uA-XLZ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1761,7 +1763,6 @@ See the License for the specific language governing permissions and limitations 
         <image name="help02.png" width="320" height="320"/>
         <image name="help03.png" width="320" height="320"/>
         <image name="helpIcon.png" width="133" height="134"/>
-        <image name="mapShadow.png" width="320" height="10"/>
         <image name="new.png" width="100" height="100"/>
         <image name="none.png" width="50" height="50"/>
         <image name="off.png" width="30" height="23"/>
