@@ -246,18 +246,25 @@
 }
 
 - (void)appplicationWillChangeStatusBarFrameNotification:(NSNotification*)notification {
+	// ステータスバーの変更後のサイズを取得
 	NSValue *newFrameValue = [[notification userInfo] objectForKey:UIApplicationStatusBarFrameUserInfoKey];
 	CGRect newFrame = [newFrameValue CGRectValue];
-	CGRect f = self.frame;
-	f.size.height = newFrame.size.height;
-	self.frame = f;
-	CGRect from = self.frame;
-	CGRect to = from;
-	from.origin.y = from.size.height;
-	self.messageLabel.frame = from;
-	[UIView animateWithDuration:0.4 animations:^(void){
-		self.messageLabel.frame = to;
-	}];
+	// 自分のサイズを変更
+	{
+		CGRect rect = self.frame;
+		rect.size.height = newFrame.size.height;
+		self.frame = rect;
+	}
+	// メッセージを表示するラベルのサイズを変更
+	{
+		CGRect from = self.frame;
+		CGRect to = from;
+		from.origin.y = from.size.height;
+		self.messageLabel.frame = from;
+		[UIView animateWithDuration:0.4 animations:^(void){
+			self.messageLabel.frame = to;
+		}];
+	}
 }
 
 - (id)initWithFrame:(CGRect)frame {

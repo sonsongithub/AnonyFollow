@@ -41,6 +41,39 @@ NSString *kNotificationUserInfoUserNameKey = @"kNotificationUserInfoUserNameKey"
 
 typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 
+#pragma mark - User interface
+
+- (void)showStatusBarRegionAndHelpViewControllerWhenInitialLaunch {
+	float statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+	[UIView animateWithDuration:0.4
+					 animations:^(void) {
+						 // adjust position of UINavigationController as not to hide status bar.
+						 UIScreen *screen = [UIScreen mainScreen];
+						 CGSize size = screen.bounds.size;
+						 size.height -= statusBarHeight;
+						 CGRect frame = CGRectMake(0, statusBarHeight, size.width, size.height);
+						 self.navigationController.view.frame = frame;
+					 }
+					 completion:^(BOOL completion) {
+						 // show a help view controller when an initial launch
+						 if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowShownHelpVer100]) {
+							 // it's not an initial launch
+						 }
+						 else {
+							 UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HelpViewController"];
+							 [self presentViewController:vc animated:YES completion:^(void){}];
+							 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kAnonyFollowShownHelpVer100];
+							 [[NSUserDefaults standardUserDefaults] synchronize];
+						 }
+					 }];
+}
+
+- (void)cancelSelectedCell {
+	NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+	if (path)
+		[self.tableView deselectRowAtIndexPath:path animated:YES];
+}
+
 #pragma mark - Follow list management
 
 - (void)serializeAccounts {
@@ -182,11 +215,16 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 }
 
 - (void)addScreenNameToHistory:(NSString*)screenName {
-	
+	// Twitterのスクリーン名を履歴に保存する
+	// 現在時刻と現在地を取得
 	NSTimeInterval currentTime = CFAbsoluteTimeGetCurrent();
 	CLLocationCoordinate2D currentLocation = self.currentLocation;
 	
+	// 履歴に保存すべきかをチェックする
 	if (currentLocation.latitude && currentLocation.longitude) {
+		// To Do
+		// ここの評価を実装する
+#if 0
 		for (TwitterAccountInfo *existing in [self.history reverseObjectEnumerator]) {
 			if ([existing.screenName isEqualToString:screenName]) {
 				// last encounting data
@@ -201,15 +239,17 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 				return;
 			}
 		}
-		
-		// add screen name without location information
+#endif
+		// 履歴に保存
 		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 		info.screenName = screenName;
 		info.foundTime = currentTime;
+		info.coordinate = currentLocation;
 		[self.history addObject:info];
 	}
 	else {
-		// add screen name without location information
+		// 現在地が得られない場合は，検出した結果をすべて履歴に保存する
+		// 当然，現在地は履歴には保存されない
 		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 		info.screenName = screenName;
 		info.foundTime = currentTime;
@@ -562,15 +602,18 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.destinationViewController isKindOfClass:[TimeLineViewController class]]) {
+		// リスト中のタップしたユーザのタイムラインを見る
 		TimeLineViewController *vc = (TimeLineViewController*)segue.destinationViewController;
 		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 		vc.accountInfo = [self.accounts objectAtIndex:indexPath.row];
 	}
-	if ([segue.identifier isEqualToString:@"ToSettingViewController"]) {
+	else if ([segue.identifier isEqualToString:@"ToSettingViewController"]) {
+		// 設定ビューを開く
+		// 設定ビューの前にbluetoothをとめる
 		[self stopBoardcasting];
 	}
-	if ([segue.identifier isEqualToString:@"OpenHistoryViewController"]) {
-		
+	else if ([segue.identifier isEqualToString:@"OpenHistoryViewController"]) {
+		// 履歴ビューを開く
 		HistoryViewController *historyViewController = nil;
 		UINavigationController *nav = segue.destinationViewController;;
 		if ([nav isKindOfClass:[UINavigationController class]]) {
@@ -578,28 +621,6 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 			if ([con isKindOfClass:[HistoryViewController class]]) {
 				historyViewController = con;
 				historyViewController.accounts = [NSMutableArray arrayWithArray:self.history];
-			}
-		}
-	}
-	if ([segue.identifier isEqualToString:@"OpenHistoryTabController"]) {
-		UITabBarController *tabCon = (UITabBarController*)segue.destinationViewController;
-		if ([tabCon.viewControllers count] == 2) {
-			AccountsListViewController *accountsListViewController = nil;
-			MapViewController *mapViewController = nil;
-			UINavigationController *nav = nil;
-			for (id obj in tabCon.viewControllers) {
-				if ([obj isKindOfClass:[UINavigationController class]]) {
-					nav = obj;
-					id con = nav.visibleViewController;
-					if ([con isKindOfClass:[AccountsListViewController class]]) {
-						accountsListViewController = con;
-						accountsListViewController.accounts = [NSMutableArray arrayWithArray:self.history];
-					}
-					if ([con isKindOfClass:[MapViewController class]]) {
-						mapViewController = con;
-						mapViewController.accounts = [NSMutableArray arrayWithArray:self.history];
-					}
-				}
 			}
 		}
 	}
@@ -617,37 +638,19 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	
+	// スクロールが停止していたらTwitterアカウントアイコンのダウンロードを開始する
 	[self loadImagesForOnscreenRows];
+	
+	// アプリケーションバッジをリセット
     [self resetBadge];
 	
-	float statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
-
-	[UIView animateWithDuration:0.4
-					 animations:^(void) {
-						 // adjust position of UINavigationController as not to hide status bar.
-						 UIScreen *screen = [UIScreen mainScreen];
-						 CGSize size = screen.bounds.size;
-						 size.height -= statusBarHeight;
-						 CGRect frame = CGRectMake(0, statusBarHeight, size.width, size.height);
-						 self.navigationController.view.frame = frame;
-					 }
-					 completion:^(BOOL completion) {
-						 // show a help view controller when an initial launch
-						 if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowShownHelpVer100]) {
-							 // it's not an initial launch
-						 }
-						 else {
-							 UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HelpViewController"];
-							 [self presentViewController:vc animated:YES completion:^(void){}];
-							 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kAnonyFollowShownHelpVer100];
-							 [[NSUserDefaults standardUserDefaults] synchronize];
-						 }
-					 }];
+	// 起動時にステータスバーを表示する用にUINavigationControllerのビューを調整
+	// 初回起動時にはこのタイミングでヘルプビューを表示する
+	[self showStatusBarRegionAndHelpViewControllerWhenInitialLaunch];
 	
-	NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-	if (path)
-		[self.tableView deselectRowAtIndexPath:path animated:YES];
-
+	[self cancelSelectedCell];
+	
+	// Twitterのアカウント設定アイコンの表示を変更
 	[self updateAccountButtonMessage];
 }
 
@@ -723,11 +726,16 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 
 - (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
 	NSString *screenName = [userInfo objectForKey:kCBScannerInfoUserNameKey];
+	
+	// メインビューのフォロー用のリストにスクリーン名を保存
 #ifdef _DEBUG
 	[self didReceiveScreenNameForDebug:screenName];
 #else
 	[self didReceiveScreenName:screenName];
 #endif
+	
+	// 履歴に保存
+	[self addScreenNameToHistory:screenName];
 }
 
 - (void)scannerDidChangeStatus:(CBScanner*)scanner {
