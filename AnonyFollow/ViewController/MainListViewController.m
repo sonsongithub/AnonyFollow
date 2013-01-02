@@ -215,13 +215,18 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
     //- (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
 
 }
+- (BOOL)isLocationSet:(CLLocationCoordinate2D)location{
+    return location.latitude!=0 && location.longitude!=0;
+}
 - (float)distanceAsMetersBetweenLocationA:(CLLocationCoordinate2D)locationA locationB:(CLLocationCoordinate2D)locationB {
-    
     CLLocation *CLLocationA=[[CLLocation alloc] initWithLatitude:locationA.latitude longitude:locationA.longitude];
     CLLocation *CLLocationB=[[CLLocation alloc] initWithLatitude:locationB.latitude longitude:locationB.longitude];
 
     NSLog(@"%f,%f,%f,%f",locationA.latitude,locationA.longitude,locationB.latitude,locationB.longitude);
-    
+
+    if(![self isLocationSet:locationA] || ![self isLocationSet:locationB]){
+        return 0;
+    }
     float distance=[CLLocationA distanceFromLocation:CLLocationB];
 	return distance;
 }
