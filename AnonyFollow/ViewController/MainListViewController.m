@@ -209,34 +209,48 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 }
 
 #pragma mark - History list management
+- (void)emulateScannerDidDiscoverUser{
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:@"sonson_twit" forKey:kCBScannerInfoUserNameKey];
+    [self scanner:nil didDiscoverUser:dict];
+    //- (void)scanner:(CBScanner*)scanner didDiscoverUser:(NSDictionary*)userInfo {
 
+}
 - (float)distanceAsMetersBetweenLocationA:(CLLocationCoordinate2D)locationA locationB:(CLLocationCoordinate2D)locationB {
-	return 0;
+    
+    CLLocation *CLLocationA=[[CLLocation alloc] initWithLatitude:locationA.latitude longitude:locationA.longitude];
+    CLLocation *CLLocationB=[[CLLocation alloc] initWithLatitude:locationB.latitude longitude:locationB.longitude];
+
+    NSLog(@"%f,%f,%f,%f",locationA.latitude,locationA.longitude,locationB.latitude,locationB.longitude);
+    
+    float distance=[CLLocationA distanceFromLocation:CLLocationB];
+	return distance;
 }
 
 - (void)addScreenNameToHistory:(NSString*)screenName {
+//#define AN_HOUR 3600
+#define AN_HOUR 1//for debug;
+
 	// Twitterのスクリーン名を履歴に保存する
 	// 現在時刻と現在地を取得
 	NSTimeInterval currentTime = CFAbsoluteTimeGetCurrent();
 	CLLocationCoordinate2D currentLocation = self.currentLocation;
 	
 	// 履歴に保存すべきかをチェックする
+    // １日以上経過した場合もしくは、１時間以上経過し且つ10m以上の移動があった場合にログに追加する。
 	if (currentLocation.latitude && currentLocation.longitude) {
-		// To Do
-		// ここの評価を実装する
-#if 0
+#if 1
 		for (TwitterAccountInfo *existing in [self.history reverseObjectEnumerator]) {
 			if ([existing.screenName isEqualToString:screenName]) {
 				// last encounting data
-				
-				if (currentTime - existing.foundTime > 24 * 3600) {
+				NSTimeInterval timePassed=currentTime - existing.foundTime;
+				if (timePassed > 24 * AN_HOUR) {
 					// OK, after 1 day.
 				}
-				else if (currentTime - existing.foundTime > 3600 && [self distanceAsMetersBetweenLocationA:currentLocation locationB:existing.foundCoordinate] > 10) {
-					// OK, after 1 hour and 
-				}
-				
-				return;
+				if (timePassed > AN_HOUR && [self distanceAsMetersBetweenLocationA:currentLocation locationB:existing.foundCoordinate] > 10) {
+					// OK, after 1 hour and distance from previous location is more than 10 meter.
+				}else{
+                    return;  
+                }
 			}
 		}
 #endif
@@ -244,7 +258,7 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 		info.screenName = screenName;
 		info.foundTime = currentTime;
-		info.coordinate = currentLocation;
+		info.foundCoordinate = currentLocation;
 		[self.history addObject:info];
 	}
 	else {
@@ -589,10 +603,12 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	
 #if 1
 	// for debugging, history
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(emulateScannerDidDiscoverUser) userInfo:nil repeats:YES];
 	for (int i = 0; i < 10; i++) {
 		TwitterAccountInfo *info = [[TwitterAccountInfo alloc] init];
 		info.screenName = @"sonson_twit";
 		info.foundCoordinate = CLLocationCoordinate2DMake(34.794951 + 2.0 * (rand()%1000) / 1000.0f, 136.015481 + 2 * (rand()%1000) / 1000.0f);
+        info.foundTime = CFAbsoluteTimeGetCurrent();
 		NSLog(@"%f, %f", info.foundCoordinate.latitude, info.foundCoordinate.longitude);
 		[self.history addObject:info];
 	}
