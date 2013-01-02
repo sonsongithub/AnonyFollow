@@ -603,26 +603,6 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 			}
 		}
 	}
-//		UITabBarController *tabCon = (UITabBarController*)segue.destinationViewController;
-//		if ([tabCon.viewControllers count] == 2) {
-//			AccountsListViewController *accountsListViewController = nil;
-//			MapViewController *mapViewController = nil;
-//			UINavigationController *nav = nil;
-//			for (id obj in tabCon.viewControllers) {
-//				if ([obj isKindOfClass:[UINavigationController class]]) {
-//					nav = obj;
-//					id con = nav.visibleViewController;
-//					if ([con isKindOfClass:[AccountsListViewController class]]) {
-//						accountsListViewController = con;
-//						accountsListViewController.accounts = [NSMutableArray arrayWithArray:self.history];
-//					}
-//					if ([con isKindOfClass:[MapViewController class]]) {
-//						mapViewController = con;
-//						mapViewController.accounts = [NSMutableArray arrayWithArray:self.history];
-//					}
-//				}
-//			}
-//		}
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -639,17 +619,22 @@ typedef void (^AfterBlocks)(NSString *screenName, ACAccountStore *accountStore);
 	
 	[self loadImagesForOnscreenRows];
     [self resetBadge];
+	
+	float statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
 
 	[UIView animateWithDuration:0.4
 					 animations:^(void) {
+						 // adjust position of UINavigationController as not to hide status bar.
 						 UIScreen *screen = [UIScreen mainScreen];
 						 CGSize size = screen.bounds.size;
-						 size.height -= STATUS_BAR_HEIGHT;
-						 CGRect frame = CGRectMake(0, STATUS_BAR_HEIGHT, size.width, size.height);
+						 size.height -= statusBarHeight;
+						 CGRect frame = CGRectMake(0, statusBarHeight, size.width, size.height);
 						 self.navigationController.view.frame = frame;
 					 }
 					 completion:^(BOOL completion) {
+						 // show a help view controller when an initial launch
 						 if ([[NSUserDefaults standardUserDefaults] boolForKey:kAnonyFollowShownHelpVer100]) {
+							 // it's not an initial launch
 						 }
 						 else {
 							 UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HelpViewController"];

@@ -210,7 +210,7 @@
 						 }];
 	}
 	
-	// frame in nexe label
+	// frame in next label
 	self.messageLabel = [self makeMessageLabel];
 	self.messageLabel.text = string;
 	[self addSubview:self.messageLabel];
@@ -245,6 +245,21 @@
 	[self startBlinkingAnimation];
 }
 
+- (void)appplicationWillChangeStatusBarFrameNotification:(NSNotification*)notification {
+	NSValue *newFrameValue = [[notification userInfo] objectForKey:UIApplicationStatusBarFrameUserInfoKey];
+	CGRect newFrame = [newFrameValue CGRectValue];
+	CGRect f = self.frame;
+	f.size.height = newFrame.size.height;
+	self.frame = f;
+	CGRect from = self.frame;
+	CGRect to = from;
+	from.origin.y = from.size.height;
+	self.messageLabel.frame = from;
+	[UIView animateWithDuration:0.4 animations:^(void){
+		self.messageLabel.frame = to;
+	}];
+}
+
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -252,6 +267,7 @@
 		self.queueingMessages = [NSMutableArray array];
 		self.clipsToBounds = YES;
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appplicationWillChangeStatusBarFrameNotification:) name:UIApplicationWillChangeStatusBarFrameNotification object:nil];
     }
     return self;
 }

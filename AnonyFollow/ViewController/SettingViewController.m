@@ -124,12 +124,15 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
+
+	float statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+	
 	if ([UIApplication sharedApplication].statusBarHidden) {
 		[UIView animateWithDuration:0.4 animations:^(void){
 			UIScreen *screen = [UIScreen mainScreen];
 			CGSize size = screen.bounds.size;
-			size.height -= STATUS_BAR_HEIGHT;
-			CGRect frame = CGRectMake(0, STATUS_BAR_HEIGHT, size.width, size.height);
+			size.height -= statusBarHeight;
+			CGRect frame = CGRectMake(0, statusBarHeight, size.width, size.height);
 			self.navigationController.view.frame = frame;
 		}];
 	}
