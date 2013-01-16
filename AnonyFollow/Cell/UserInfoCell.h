@@ -20,8 +20,8 @@
 @property (nonatomic, strong) IBOutlet UIImageView *ribbonImageView;
 
 @property (nonatomic, strong) IBOutlet TweetContentView *tweetContentView;
-@property (nonatomic, strong) IBOutlet UILabel *line1;
-@property (nonatomic, strong) IBOutlet UILabel *line2;
+@property (nonatomic, strong) IBOutlet UILabel *nameLabel;
+@property (nonatomic, strong) IBOutlet UILabel *screenNameLabel;
 
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 

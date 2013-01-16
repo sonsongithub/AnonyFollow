@@ -42,7 +42,7 @@
 "GsA-Qj-4pS.headerTitle" = "プログラミング";
 
 /* Class = "IBUILabel"; text = "@sonson_twit"; ObjectID = "H7z-gR-57t"; */
-"H7z-gR-57t.text" = "@sonson_twit";
+"H7z-gR-57t.text" = "スクリーン名";
 
 /* Class = "IBUILabel"; text = "AnonyFollow"; ObjectID = "HPQ-Ie-HaJ"; */
 "HPQ-Ie-HaJ.text" = "AnonyFollow";
@@ -99,7 +99,7 @@
 "bh7-ze-uvy.text" = "sonson";
 
 /* Class = "IBUILabel"; text = "@sonson_twit"; ObjectID = "bnj-l1-i5S"; */
-"bnj-l1-i5S.text" = "@sonson_twit";
+"bnj-l1-i5S.text" = "スクリーン名";
 
 /* Class = "IBUILabel"; text = "Open Twitter"; ObjectID = "diz-3E-tYZ"; */
 "diz-3E-tYZ.text" = "Twitterを開く";
@@ -132,7 +132,7 @@
 "rkD-YP-3Qf.text" = "Twitterを開く";
 
 /* Class = "IBUILabel"; text = "@sonson_twit"; ObjectID = "sAQ-a7-wdw"; */
-"sAQ-a7-wdw.text" = "@sonson_twit";
+"sAQ-a7-wdw.text" = "スクリーン名";
 
 /* Class = "IBUILabel"; text = "Copyrights"; ObjectID = "t9O-ni-Ddg"; */
 "t9O-ni-Ddg.text" = "著作権";

@@ -22,8 +22,8 @@
 - (void)setAccountInfo:(TwitterAccountInfo *)accountInfo {
 	_accountInfo = accountInfo;
 	self.tweetContentView.text = accountInfo.description;
-	self.line1.text = accountInfo.name;
-	self.line2.text = accountInfo.screenName;
+	self.nameLabel.text = accountInfo.name;
+	self.screenNameLabel.text = accountInfo.screenName;
 	
 	self.iconImageView.image = accountInfo.iconImage;
 }

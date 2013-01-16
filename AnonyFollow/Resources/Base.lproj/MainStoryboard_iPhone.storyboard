@@ -73,7 +73,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="9lV-bZ-R0p"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="@sonson_twit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAQ-a7-wdw">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Screen name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAQ-a7-wdw">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="YPS-eK-ykr"/>
                                                         <constraint firstAttribute="width" constant="181" id="svg-ZB-9wX"/>
@@ -336,9 +336,9 @@
                                         <connections>
                                             <outlet property="activityIndicatorView" destination="cCL-qZ-oOq" id="zhu-JL-R4N"/>
                                             <outlet property="iconImageView" destination="nvf-qp-nxB" id="EnT-NL-umZ"/>
-                                            <outlet property="line1" destination="9v3-fg-QGw" id="CTA-Ef-Enx"/>
-                                            <outlet property="line2" destination="DjM-cF-79o" id="Oxh-2h-Msn"/>
+                                            <outlet property="nameLabel" destination="9v3-fg-QGw" id="9UG-lZ-FOx"/>
                                             <outlet property="ribbonImageView" destination="GqF-AX-afg" id="day-ML-n0c"/>
+                                            <outlet property="screenNameLabel" destination="DjM-cF-79o" id="Xix-PJ-n76"/>
                                             <outlet property="tweetContentView" destination="Bj1-2t-jiD" id="EFT-BD-fMR"/>
                                             <outlet property="vacantImageView" destination="wW1-A3-w2z" id="Tym-3c-XR4"/>
                                         </connections>
@@ -1622,9 +1622,9 @@ See the License for the specific language governing permissions and limitations 
                                         <connections>
                                             <outlet property="activityIndicatorView" destination="LQB-Rv-9Gm" id="aT5-HQ-PxT"/>
                                             <outlet property="iconImageView" destination="cqm-af-DLo" id="RTW-uQ-3qM"/>
-                                            <outlet property="line1" destination="b7x-8B-GsY" id="d1e-3e-5hI"/>
-                                            <outlet property="line2" destination="xxL-91-0ZC" id="kOK-uO-D1l"/>
+                                            <outlet property="nameLabel" destination="b7x-8B-GsY" id="NQ6-dm-Rz3"/>
                                             <outlet property="ribbonImageView" destination="D6J-DZ-d2G" id="Vr0-4X-JIE"/>
+                                            <outlet property="screenNameLabel" destination="xxL-91-0ZC" id="mGu-dh-G8P"/>
                                             <outlet property="tweetContentView" destination="8cG-2m-6W1" id="na8-0J-fwt"/>
                                             <outlet property="vacantImageView" destination="K4K-k5-qrj" id="zTE-Ce-raV"/>
                                         </connections>
