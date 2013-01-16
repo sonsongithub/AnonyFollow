@@ -289,20 +289,16 @@
                                                         <constraint firstAttribute="height" constant="50" type="user" id="uEH-Ht-rcV"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Line1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v3-fg-QGw">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v3-fg-QGw">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="231" id="cJi-zE-4sN"/>
-                                                        <constraint firstAttribute="height" constant="21" id="mlu-kw-Emk"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="shadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Line2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjM-cF-79o">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" type="user" id="pM4-0r-rIw"/>
-                                                    </constraints>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Screen name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjM-cF-79o">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -331,10 +327,10 @@
                                             <constraint firstItem="Bj1-2t-jiD" firstAttribute="leading" secondItem="nvf-qp-nxB" secondAttribute="leading" type="default" id="UlZ-b7-o1k"/>
                                             <constraint firstAttribute="bottom" secondItem="Bj1-2t-jiD" secondAttribute="bottom" constant="7" id="Wcj-Rp-MoE"/>
                                             <constraint firstItem="Bj1-2t-jiD" firstAttribute="top" secondItem="dFw-bB-VSl" secondAttribute="top" constant="62" type="user" id="cBq-d7-8C4"/>
+                                            <constraint firstItem="DjM-cF-79o" firstAttribute="leading" secondItem="GqF-AX-afg" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="gbf-8X-lHh"/>
                                             <constraint firstItem="nvf-qp-nxB" firstAttribute="top" secondItem="wW1-A3-w2z" secondAttribute="top" type="default" id="jA9-bb-bw4"/>
                                             <constraint firstItem="cCL-qZ-oOq" firstAttribute="centerX" secondItem="Bj1-2t-jiD" secondAttribute="centerX" type="default" id="mCP-oD-SKx"/>
                                             <constraint firstItem="9v3-fg-QGw" firstAttribute="leading" secondItem="wW1-A3-w2z" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="oXU-5o-Ojd"/>
-                                            <constraint firstItem="DjM-cF-79o" firstAttribute="leading" secondItem="wW1-A3-w2z" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="uQo-eV-UGQ"/>
                                             <constraint firstItem="Bj1-2t-jiD" firstAttribute="trailing" secondItem="DjM-cF-79o" secondAttribute="trailing" type="default" id="yBm-b8-ayy"/>
                                         </constraints>
                                         <connections>
