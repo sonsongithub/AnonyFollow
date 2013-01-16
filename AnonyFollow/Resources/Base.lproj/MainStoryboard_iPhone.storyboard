@@ -992,7 +992,7 @@ See the License for the specific language governing permissions and limitations 
                                                 <constraint firstAttribute="height" constant="48" id="eGK-wJ-jZG"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="@sonson_twit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnj-l1-i5S">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Screen name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnj-l1-i5S">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="Rpi-nC-KRB"/>
                                                 <constraint firstAttribute="width" constant="181" id="TDl-j0-BNO"/>
@@ -1097,7 +1097,7 @@ See the License for the specific language governing permissions and limitations 
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="new.png" translatesAutoresizingMaskIntoConstraints="NO" id="iQf-UB-Gm3"/>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="@sonson_twit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7z-gR-57t">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Screen name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7z-gR-57t">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="NHw-7B-nwi"/>
                                                         <constraint firstAttribute="width" constant="219" id="fL2-LV-vpd"/>
@@ -1579,20 +1579,16 @@ See the License for the specific language governing permissions and limitations 
                                                         <constraint firstAttribute="height" constant="50" type="user" id="a3F-fx-zzK"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Line1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7x-8B-GsY">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7x-8B-GsY">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="231" id="RtR-Fn-i01"/>
-                                                        <constraint firstAttribute="height" constant="21" id="XzV-HE-4dV"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="shadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Line2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxL-91-0ZC">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" type="user" id="atd-j5-QWW"/>
-                                                    </constraints>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Screen name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxL-91-0ZC">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1614,11 +1610,11 @@ See the License for the specific language governing permissions and limitations 
                                             <constraint firstItem="LQB-Rv-9Gm" firstAttribute="centerX" secondItem="8cG-2m-6W1" secondAttribute="centerX" type="default" id="OV0-eb-W3C"/>
                                             <constraint firstItem="8cG-2m-6W1" firstAttribute="leading" secondItem="cqm-af-DLo" secondAttribute="leading" type="default" id="PxC-GN-LZm"/>
                                             <constraint firstItem="K4K-k5-qrj" firstAttribute="leading" secondItem="D6J-DZ-d2G" secondAttribute="leading" type="user" id="Qhv-Wd-MkS"/>
+                                            <constraint firstItem="xxL-91-0ZC" firstAttribute="leading" secondItem="D6J-DZ-d2G" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="RNw-g1-wFO"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="8cG-2m-6W1" secondAttribute="bottom" constant="4" type="user" id="SoR-0h-90g"/>
                                             <constraint firstItem="cqm-af-DLo" firstAttribute="top" secondItem="K4K-k5-qrj" secondAttribute="top" type="default" id="Uoi-zv-EHX"/>
                                             <constraint firstItem="LQB-Rv-9Gm" firstAttribute="centerY" secondItem="npW-U8-a9f" secondAttribute="centerY" type="default" id="XBu-Em-EZP"/>
                                             <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="8cG-2m-6W1" secondAttribute="bottom" constant="7" type="user" id="ZBe-Fa-91J"/>
-                                            <constraint firstItem="xxL-91-0ZC" firstAttribute="leading" secondItem="K4K-k5-qrj" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="aKs-Fo-de4"/>
                                             <constraint firstItem="8cG-2m-6W1" firstAttribute="centerX" secondItem="npW-U8-a9f" secondAttribute="centerX" type="default" id="bTF-7Z-A2Z"/>
                                             <constraint firstAttribute="bottom" secondItem="8cG-2m-6W1" secondAttribute="bottom" constant="7" id="cKb-dJ-PZJ"/>
                                             <constraint firstItem="K4K-k5-qrj" firstAttribute="centerX" secondItem="cqm-af-DLo" secondAttribute="centerX" type="default" id="fcV-XT-o94"/>
@@ -1772,6 +1768,122 @@ See the License for the specific language governing permissions and limitations 
         <image name="sonson.png" width="256" height="256"/>
         <image name="warning.png" width="201" height="202"/>
     </resources>
+    <classes>
+        <class className="AccountCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="followButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="indicatorView" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="screenNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="AccountSelectViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountSelectViewController.h"/>
+        </class>
+        <class className="AccountsListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AccountsListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="bannerView" candidateClass="ADBannerView"/>
+                <relationship kind="outlet" name="constraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="BottomShadowView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BottomShadowView.h"/>
+        </class>
+        <class className="CopyrightContactViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CopyrightContactViewController.h"/>
+        </class>
+        <class className="HelpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HelpViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="HistoryViewController" superclassName="AccountsListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HistoryViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="baseViewHeightConstraint" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="MainListViewController" superclassName="AccountsListViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="follow:"/>
+                <relationship kind="action" name="select:"/>
+                <relationship kind="action" name="trash:"/>
+                <relationship kind="outlet" name="lockScreenView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="segmentedControl" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="trashButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="twitterAccountButton" candidateClass="MessageBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MessageBarButtonItem" superclassName="UIBarButtonItem">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MessageBarButtonItem.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SettingViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="didChangeBackgroundSwitch:"/>
+                <relationship kind="action" name="didChangeShowFollowingSwitch:"/>
+                <relationship kind="action" name="didChangeShowRedundantSwitch:"/>
+                <relationship kind="action" name="didChangeTweetOnBackgroundSwitch:"/>
+                <relationship kind="outlet" name="applicationNameCell" candidateClass="UITableViewCell"/>
+                <relationship kind="outlet" name="backgroundSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="showFollowingSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="showRedundantSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="tweetOnBackgroundSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="versionCell" candidateClass="UITableViewCell"/>
+            </relationships>
+        </class>
+        <class className="TimeLineViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeLineViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="follow:"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="TweetCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tweetContentView" candidateClass="TweetContentView"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="TweetContentView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TweetContentView.h"/>
+        </class>
+        <class className="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dismiss:"/>
+            </relationships>
+        </class>
+        <class className="UserInfoCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UserInfoCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndicatorView" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="iconImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="line1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="line2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ribbonImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tweetContentView" candidateClass="TweetContentView"/>
+                <relationship kind="outlet" name="vacantImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

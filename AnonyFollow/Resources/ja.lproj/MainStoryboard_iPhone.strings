@@ -1,0 +1,162 @@
+
+/* Class = "IBUINavigationItem"; title = "How to use"; ObjectID = "1nG-Hh-jUx"; */
+"1nG-Hh-jUx.title" = "簡単な使い方";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Programming & Design"; ObjectID = "2Dg-9F-Jjw"; */
+"2Dg-9F-Jjw.headerTitle" = "プログラミング&デザイン";
+
+/* Class = "IBUINavigationItem"; title = "License"; ObjectID = "4CW-RB-bht"; */
+"4CW-RB-bht.title" = "ライセンス";
+
+/* Class = "IBUIBarButtonItem"; title = "Follow"; ObjectID = "9W2-u2-dgt"; */
+"9W2-u2-dgt.title" = "フォロー";
+
+/* Class = "IBUILabel"; text = "Tap upper \"wave icon\", and then start broadcasting your account. While the status bar is blinking in green, broadcasting turns off automatically after AnonyFollow enters background."; ObjectID = "9tO-xx-BlC"; */
+"9tO-xx-BlC.text" = "上部の「無線ボタン」をタップすると、アカウントの公開が始まります。ステータスバーが緑色に点滅しているときは、AnonyFollowを終了させると、自動的に公開も止まります。";
+
+/* Class = "IBUILabel"; text = "Line1"; ObjectID = "9v3-fg-QGw"; */
+"9v3-fg-QGw.text" = "名前";
+
+/* Class = "IBUILabel"; text = "Show redundant"; ObjectID = "AG8-WE-dNM"; */
+"AG8-WE-dNM.text" = "重複ユーザを表示";
+
+/* Class = "IBUILabel"; text = "Turn on Bluetooth and setup Twitter privacy via Setting.app in order to use AnonyFollow."; ObjectID = "AWe-JL-m3t"; */
+"AWe-JL-m3t.text" = "設定アプリで，Bluetoothをオンに、Twitterのアカウントにアクセスできるようにしてください。";
+
+/* Class = "IBUILabel"; text = "AnonyFollow allows you to exchange Twitter accounts each other with Bluetooth LE. In addition, you can enjoy anoymous communication by AnonyFollow."; ObjectID = "Dco-NJ-2Fy"; */
+"Dco-NJ-2Fy.text" = "AnonyFollowは、TwitterアカウントをBluetoothを使って交換できるアプリです。さらに、すれ違い通信のようにアカウントを交換することもできます。";
+
+/* Class = "IBUILabel"; text = "Line2"; ObjectID = "DjM-cF-79o"; */
+"DjM-cF-79o.text" = "スクリーン名";
+
+/* Class = "IBUILabel"; text = "More by YusukeSekikawa"; ObjectID = "EBc-2o-JSg"; */
+"EBc-2o-JSg.text" = "YusukeSekikawaの他のApp";
+
+/* Class = "IBUILabel"; text = "Background"; ObjectID = "Ffr-zT-25Q"; */
+"Ffr-zT-25Q.text" = "バックグラウンド";
+
+/* Class = "IBUILabel"; text = "Thank you for downloading. Have fun!"; ObjectID = "GXv-xD-7i6"; */
+"GXv-xD-7i6.text" = "最後にダウンロードしていただき、ありがとうございました！";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Programming"; ObjectID = "GsA-Qj-4pS"; */
+"GsA-Qj-4pS.headerTitle" = "プログラミング";
+
+/* Class = "IBUILabel"; text = "@sonson_twit"; ObjectID = "H7z-gR-57t"; */
+"H7z-gR-57t.text" = "@sonson_twit";
+
+/* Class = "IBUILabel"; text = "AnonyFollow"; ObjectID = "HPQ-Ie-HaJ"; */
+"HPQ-Ie-HaJ.text" = "AnonyFollow";
+
+/* Class = "IBUIBarButtonItem"; title = "Done"; ObjectID = "INl-F4-GGy"; */
+"INl-F4-GGy.title" = "完了";
+
+/* Class = "IBUILabel"; text = "Show following"; ObjectID = "JEM-Bg-J1x"; */
+"JEM-Bg-J1x.text" = "フォローしてる人も表示";
+
+/* Class = "IBUILabel"; text = "Send report"; ObjectID = "LL2-MK-cRk"; */
+"LL2-MK-cRk.text" = "レポートを送る";
+
+/* Class = "IBUILabel"; text = "1.0"; ObjectID = "NWz-cG-0iO"; */
+"NWz-cG-0iO.text" = "1.0";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Information"; ObjectID = "OE2-x8-m0R"; */
+"OE2-x8-m0R.headerTitle" = "情報";
+
+/* Class = "IBUILabel"; text = "Tweet on Background"; ObjectID = "P1l-Em-y1f"; */
+"P1l-Em-y1f.text" = "バックグラウンドでTweet";
+
+/* Class = "IBUILabel"; text = "If you change \"Background is enabled\", please open Setting view via the right-bottom toolbar button."; ObjectID = "Pqe-9S-QgY"; */
+"Pqe-9S-QgY.text" = "「バックグラウンドがオン」になっている状態を変更したい場合は、ツールバーの右下のボタンをタップして、設定画面を開いてください。";
+
+/* Class = "IBUITableViewSection"; footerTitle = "If \"Background\" is enabled (status bar is blinking in red), broadcasting DOES NOT stop when you quit AnonyFollow while you are broadcasting."; ObjectID = "Sea-cd-Suf"; */
+"Sea-cd-Suf.footerTitle" = "\"バックグラウンド\"をONにすると（ステータスバーが赤色に点滅します）、公開中にAnonyFollowを終了した後も、バックグラウンドでアカウントを公開しつづけます。";
+
+/* Class = "IBUILabel"; text = "Can't access Bluetooth or Twitter account"; ObjectID = "TLp-kc-HTE"; */
+"TLp-kc-HTE.text" = "設定アプリで，Bluetoothをオンに、Twitterのアカウントにアクセスできるようにしてください。";
+
+/* Class = "IBUIBarButtonItem"; title = "account:name"; ObjectID = "Urb-AU-m22"; */
+"Urb-AU-m22.title" = "account:name";
+
+/* Class = "IBUIBarButtonItem"; title = "Close"; ObjectID = "VYG-ld-04i"; */
+"VYG-ld-04i.title" = "閉じる";
+
+/* Class = "IBUINavigationItem"; title = "Copyrights"; ObjectID = "WDS-IY-GWz"; */
+"WDS-IY-GWz.title" = "著作権";
+
+/* Class = "IBUILabel"; text = "2012/12/08/12:00:00"; ObjectID = "Wcv-Yo-VyH"; */
+"Wcv-Yo-VyH.text" = "2012/12/08/12:00:00";
+
+/* Class = "IBUILabel"; text = "2012/12/08/12:00:00"; ObjectID = "Ypv-sm-qzJ"; */
+"Ypv-sm-qzJ.text" = "2012/12/08/12:00:00";
+
+/* Class = "IBUILabel"; text = "Line1"; ObjectID = "b7x-8B-GsY"; */
+"b7x-8B-GsY.text" = "名前";
+
+/* Class = "IBUILabel"; text = "License"; ObjectID = "bHj-3V-cCZ"; */
+"bHj-3V-cCZ.text" = "ライセンス";
+
+/* Class = "IBUILabel"; text = "sonson"; ObjectID = "bh7-ze-uvy"; */
+"bh7-ze-uvy.text" = "sonson";
+
+/* Class = "IBUILabel"; text = "@sonson_twit"; ObjectID = "bnj-l1-i5S"; */
+"bnj-l1-i5S.text" = "@sonson_twit";
+
+/* Class = "IBUILabel"; text = "Open Twitter"; ObjectID = "diz-3E-tYZ"; */
+"diz-3E-tYZ.text" = "Twitterを開く";
+
+/* Class = "IBUIBarButtonItem"; title = "Done"; ObjectID = "ejV-WM-QwW"; */
+"ejV-WM-QwW.title" = "完了";
+
+/* Class = "IBUINavigationItem"; title = "Select account"; ObjectID = "hHR-IB-Wqi"; */
+"hHR-IB-Wqi.title" = "アカウントの選択";
+
+/* Class = "IBUIBarButtonItem"; title = "Close"; ObjectID = "iNb-5c-fmR"; */
+"iNb-5c-fmR.title" = "閉じる";
+
+/* Class = "IBUITextView"; text = "*Included Software License and Copyrights\n\n*Google Toolbox for Mac \n\nCopyright 2007 Google Inc.\n\nLicensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License.\nYou may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and limitations under the License.\n"; ObjectID = "ifz-Kr-siN"; */
+"ifz-Kr-siN.text" = "*Included Software License and Copyrights\n\n*Google Toolbox for Mac \n\nCopyright 2007 Google Inc.\n\nLicensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License.\nYou may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and limitations under the License.\n";
+
+/* Class = "IBUILabel"; text = "While the status bar is blinking in red, broadcasting DOES NOT turn off after AnonyFollow enters background automatically. That is \"Background is enabled\" like anonymous communication."; ObjectID = "jK4-dR-hgi"; */
+"jK4-dR-hgi.text" = "ステータスバーが赤色に点滅している間は、アプリケーションをバックグラウンドに移行してもアカウントの公開は止まりません。このときは、「すれ違い通信」のような「バックグラウンドがオン」の状態になります。";
+
+/* Class = "IBUILabel"; text = "More by sonson"; ObjectID = "m2v-Xw-q2x"; */
+"m2v-Xw-q2x.text" = "sonsonの他のApp";
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "nwg-Im-C6Z"; */
+"nwg-Im-C6Z.text" = "名前";
+
+/* Class = "IBUINavigationItem"; title = "Settings"; ObjectID = "rT3-by-9DK"; */
+"rT3-by-9DK.title" = "設定";
+
+/* Class = "IBUILabel"; text = "Open Twitter"; ObjectID = "rkD-YP-3Qf"; */
+"rkD-YP-3Qf.text" = "Twitterを開く";
+
+/* Class = "IBUILabel"; text = "@sonson_twit"; ObjectID = "sAQ-a7-wdw"; */
+"sAQ-a7-wdw.text" = "@sonson_twit";
+
+/* Class = "IBUILabel"; text = "Copyrights"; ObjectID = "t9O-ni-Ddg"; */
+"t9O-ni-Ddg.text" = "著作権";
+
+/* Class = "IBUIButton"; normalTitle = "Follow"; ObjectID = "uZM-cD-qvT"; */
+"uZM-cD-qvT.normalTitle" = "フォロー";
+
+/* Class = "IBUIBarButtonItem"; title = "Close"; ObjectID = "ubI-D1-RfA"; */
+"ubI-D1-RfA.title" = "閉じる";
+
+/* Class = "IBUILabel"; text = "YusukeSekikawa"; ObjectID = "wIq-C7-nVc"; */
+"wIq-C7-nVc.text" = "YusukeSekikawa";
+
+/* Class = "IBUILabel"; text = "Version"; ObjectID = "wW7-c8-Sb9"; */
+"wW7-c8-Sb9.text" = "バージョン";
+
+/* Class = "IBUIBarButtonItem"; title = "Follow"; ObjectID = "xfe-Oa-G8Z"; */
+"xfe-Oa-G8Z.title" = "フォロー";
+
+/* Class = "IBUILabel"; text = "Line2"; ObjectID = "xxL-91-0ZC"; */
+"xxL-91-0ZC.text" = "スクリーン名";
+
+/* Class = "IBUILabel"; text = "2012/08/21 12:00:00"; ObjectID = "xz2-Hm-7pU"; */
+"xz2-Hm-7pU.text" = "2012/08/21 12:00:00";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Debug"; ObjectID = "zX2-fy-M7R"; */
+"zX2-fy-M7R.headerTitle" = "デバッグ";
